@@ -1,5 +1,6 @@
 import numpy as np
 import pandas as pd
+from leagues.models import LeagueMatch
 from . import filters, utils
 pd.set_option('mode.chained_assignment', None)
 
@@ -28,7 +29,7 @@ def get_draw_count(data: pd.DataFrame, team: str) -> int:
     """Get count of draws by team"""
     team_is_playing = (data['home_team'] == team) | (data['away_team'] == team)
     is_drawn = (data['home_goals'] == data['away_goals'])
-    data = data.loc[(data[team_is_playing & is_drawn]), :]
+    data = data[team_is_playing & is_drawn]
     draw_count = len(data)
     return draw_count
 
@@ -138,4 +139,19 @@ def get_league_standings(data: pd.DataFrame) -> pd.DataFrame:
         }, index=[0])
         df_league_standings = pd.concat(objs=[df_league_standings, df_temp], ignore_index=True, sort=False)
     df_league_standings = add_ranking(data=df_league_standings)
+    return df_league_standings
+
+
+def get_historical_league_standings() -> pd.DataFrame:
+    """Gets league standings from data of matches (for all seasons)"""
+    df_league_standings = pd.DataFrame()
+    qs_matches = LeagueMatch.objects.all()
+    data = utils.queryset_to_dataframe(qs=qs_matches, drop_id=True)
+    leagues = sorted(data['league'].unique().tolist())
+    seasons = sorted(data['season'].unique().tolist())
+    for league in leagues:
+        for season in seasons:
+            df_by_season = data.loc[((data['league'] == league) & (data['season'] == season)), :]
+            df_temp = get_league_standings(data=df_by_season)
+            df_league_standings = pd.concat(objs=[df_league_standings, df_temp], ignore_index=True, sort=False)
     return df_league_standings
