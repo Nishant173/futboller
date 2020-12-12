@@ -1,0 +1,51 @@
+from django.db import models
+
+
+class LeagueMatch(models.Model):
+    home_team = models.CharField(verbose_name="Home team", max_length=50, null=False)
+    away_team = models.CharField(verbose_name="Away team", max_length=50, null=False)
+    home_goals = models.IntegerField(verbose_name="Home goals", null=False)
+    away_goals = models.IntegerField(verbose_name="Away goals", null=False)
+    season = models.CharField(verbose_name="Season", max_length=10, null=False)
+    date = models.DateField(verbose_name="Date", null=False)
+    league = models.CharField(verbose_name="League", max_length=30, null=False)
+    country = models.CharField(verbose_name="Country", max_length=30, null=False)
+
+    class Meta:
+        verbose_name = "League Match"
+        verbose_name_plural = "League Matches"
+    
+    def __str__(self) -> str:
+        return f"{self.home_team} vs {self.away_team} ({self.league} {self.season})"
+    
+    def obj_to_dict(self):
+        """Converts model object to dictionary, and keeps the relevant keys"""
+        dict_obj = self.__dict__
+        dict_obj_needed = {
+            'home_team': dict_obj['home_team'],
+            'away_team': dict_obj['away_team'],
+            'home_goals': dict_obj['home_goals'],
+            'away_goals': dict_obj['away_goals'],
+            'season': dict_obj['season'],
+            'date': str(dict_obj['date']),
+            'league': dict_obj['league'],
+            'country': dict_obj['country'],
+        }
+        return dict_obj_needed
+    
+    @property
+    def draw(self) -> bool:
+        return (self.home_goals == self.away_goals)
+    
+    @property
+    def home_win(self) -> bool:
+        return (self.home_goals > self.away_goals)
+    
+    @property
+    def away_win(self) -> bool:
+        return (self.home_goals < self.away_goals)
+    
+    @property
+    def one_sided(self) -> bool:
+        gd = abs(self.home_goals - self.away_goals)
+        return (gd >= 3)
