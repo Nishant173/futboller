@@ -83,4 +83,22 @@ ENDPOINTS = [
         "example": f"{VERSION_PREFIX}/matches/?league=EPL&season=2017-18&matchup=Arsenal,Chelsea",
         "methods": ["GET"],
     },
+    {
+        "endpoint": f"{VERSION_PREFIX}/league-standings/",
+        "description": "Gets list having league-standings (based on parameters)",
+        "parameters": [
+            {
+                "name": "league",
+                "datatype": "str",
+                "required": True,
+            },
+            {
+                "name": "season",
+                "datatype": "str",
+                "required": True,
+            },
+        ],
+        "example": f"{VERSION_PREFIX}/league-standings/?league=Bundesliga&season=2012-13",
+        "methods": ["GET"],
+    },
 ]

@@ -5,6 +5,18 @@ import sqlite3
 from . import config
 
 
+def get_games_played(data: pd.DataFrame) -> int:
+    """Get count of games played"""
+    return len(data)
+
+
+def get_teams(data: pd.DataFrame) -> List[str]:
+    """Returns list of all teams present in DataFrame"""
+    teams_series = pd.concat(objs=[data['home_team'], data['away_team']]).sort_values(ascending=True)
+    teams = teams_series.unique().tolist()
+    return teams
+
+
 def drop_id_column(data: pd.DataFrame) -> pd.DataFrame:
     """Drops the `id` column from Pandas DataFrame"""
     data.drop(labels=['id'], axis=1, inplace=True)
