@@ -50,3 +50,30 @@ class LeagueMatch(models.Model):
     def one_sided(self) -> bool:
         gd = abs(self.home_goals - self.away_goals)
         return (gd >= 3)
+
+
+
+class LeagueStandings(models.Model):
+    standings = models.IntegerField(verbose_name="Standing", null=False)
+    team = models.CharField(verbose_name="Team", max_length=50, null=False)
+    played = models.IntegerField(verbose_name="Games played", null=False)
+    points = models.IntegerField(verbose_name="Points", null=False)
+    goal_difference = models.IntegerField(verbose_name="Goal difference", null=False)
+    wins = models.IntegerField(verbose_name="Wins", null=False)
+    losses = models.IntegerField(verbose_name="Losses", null=False)
+    draws = models.IntegerField(verbose_name="Draws", null=False)
+    goals_scored = models.IntegerField(verbose_name="Goals scored", null=False)
+    goals_allowed = models.IntegerField(verbose_name="Goals allowed", null=False)
+    clean_sheets = models.IntegerField(verbose_name="Clean sheets", null=False)
+    clean_sheets_against = models.IntegerField(verbose_name="Clean sheets against", null=False)
+    big_wins = models.IntegerField(verbose_name="Big wins", null=False)
+    big_losses = models.IntegerField(verbose_name="Big losses", null=False)
+    season = models.CharField(verbose_name="Season", max_length=10, null=False)
+    league = models.CharField(verbose_name="League", max_length=30, null=False)
+
+    class Meta:
+        verbose_name = "League Standings"
+        verbose_name_plural = "League Standings"
+    
+    def __str__(self) -> str:
+        return f"{self.team} - {self.league} ({self.season})"
