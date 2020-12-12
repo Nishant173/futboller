@@ -1,3 +1,4 @@
+from typing import Dict
 from django.db import models
 
 
@@ -18,7 +19,7 @@ class LeagueMatch(models.Model):
     def __str__(self) -> str:
         return f"{self.home_team} vs {self.away_team} ({self.league} {self.season})"
     
-    def obj_to_dict(self):
+    def obj_to_dict(self) -> Dict:
         """Converts model object to dictionary, and keeps the relevant keys"""
         dict_obj = self.__dict__
         dict_obj_needed = {
