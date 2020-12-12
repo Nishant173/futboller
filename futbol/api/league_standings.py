@@ -143,7 +143,7 @@ def get_league_standings(data: pd.DataFrame) -> pd.DataFrame:
 
 
 def get_historical_league_standings() -> pd.DataFrame:
-    """Gets league standings from data of matches (for all seasons)"""
+    """Gets league standings from data of matches (for all seasons and for all leagues)"""
     df_league_standings = pd.DataFrame()
     qs_matches = LeagueMatch.objects.all()
     data = utils.queryset_to_dataframe(qs=qs_matches, drop_id=True)
@@ -153,5 +153,7 @@ def get_historical_league_standings() -> pd.DataFrame:
         for season in seasons:
             df_by_season = data.loc[((data['league'] == league) & (data['season'] == season)), :]
             df_temp = get_league_standings(data=df_by_season)
+            df_temp['league'] = league
+            df_temp['season'] = season
             df_league_standings = pd.concat(objs=[df_league_standings, df_temp], ignore_index=True, sort=False)
     return df_league_standings
