@@ -1,7 +1,7 @@
 import numpy as np
 import pandas as pd
 from . import filters, utils
-# pd.set_option('mode.chained_assignment', None)
+pd.set_option('mode.chained_assignment', None)
 
 
 def get_win_count(data: pd.DataFrame, team: str) -> int:
