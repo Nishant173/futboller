@@ -1,0 +1,9 @@
+https://able.bio/rhett/how-to-set-and-get-environment-variables-in-python--274rgt5
+https://stackoverflow.com/questions/19128540/django-improperlyconfigured-the-secret-key-setting-must-not-be-empty
+https://www.dataquest.io/blog/settingwithcopywarning/
+https://stackoverflow.com/questions/20625582/how-to-deal-with-settingwithcopywarning-in-pandas
+https://books.agiliq.com/projects/django-orm-cookbook/en/latest/or_query.html
+https://books.agiliq.com/projects/django-orm-cookbook/en/latest/f_query.html
+https://docs.djangoproject.com/en/3.1/ref/models/querysets/
+https://docs.djangoproject.com/en/3.1/ref/models/expressions/
+https://stackoverflow.com/questions/21925671/convert-django-model-object-to-dict-with-all-of-the-fields-intact
