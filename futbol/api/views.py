@@ -1,9 +1,16 @@
 from rest_framework.decorators import api_view
 from django.http import JsonResponse
 from leagues.models import LeagueMatch
+from . import docs
 from . import filters
 from . import queries
 from . import utils
+
+
+@api_view(['GET'])
+def get_documentation(request):
+    endpoints = docs.ENDPOINTS
+    return JsonResponse(data=endpoints, safe=False)
 
 
 @api_view(['GET'])

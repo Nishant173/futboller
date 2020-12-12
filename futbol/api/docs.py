@@ -1,0 +1,86 @@
+VERSION_PREFIX = "/api/v1"
+
+ENDPOINTS = [
+    {
+        "endpoint": f"{VERSION_PREFIX}/documentation/",
+        "description": "Gets documentation",
+        "parameters": [],
+        "example": f"{VERSION_PREFIX}/documentation/",
+        "methods": ["GET"],
+    },
+    {
+        "endpoint": f"{VERSION_PREFIX}/teams/",
+        "description": "Gets list of all teams",
+        "parameters": [],
+        "example": f"{VERSION_PREFIX}/teams/",
+        "methods": ["GET"],
+    },
+    {
+        "endpoint": f"{VERSION_PREFIX}/leagues/",
+        "description": "Gets list of all leagues",
+        "parameters": [],
+        "example": f"{VERSION_PREFIX}/leagues/",
+        "methods": ["GET"],
+    },
+    {
+        "endpoint": f"{VERSION_PREFIX}/seasons/",
+        "description": "Gets list of all seasons",
+        "parameters": [],
+        "example": f"{VERSION_PREFIX}/seasons/",
+        "methods": ["GET"],
+    },
+    {
+        "endpoint": f"{VERSION_PREFIX}/matches/",
+        "description": "Gets list of league matches (filter parameters are allowed)",
+        "parameters": [
+            {
+                "name": "team",
+                "datatype": "str",
+                "required": False,
+            },
+            {
+                "name": "league",
+                "datatype": "str",
+                "required": False,
+            },
+            {
+                "name": "season",
+                "datatype": "str",
+                "required": False,
+            },
+            {
+                "name": "goalDifference",
+                "datatype": "int",
+                "required": False,
+            },
+            {
+                "name": "minGoalDifference",
+                "datatype": "int",
+                "required": False,
+            },
+            {
+                "name": "maxGoalDifference",
+                "datatype": "int",
+                "required": False,
+            },
+            {
+                "name": "matchup",
+                "datatype": "str",
+                "format": "<team1>,<team2>",
+                "required": False,
+            },
+            {
+                "name": "winningTeam",
+                "datatype": "str",
+                "required": False,
+            },
+            {
+                "name": "losingTeam",
+                "datatype": "str",
+                "required": False,
+            },
+        ],
+        "example": f"{VERSION_PREFIX}/matches/?league=EPL&season=2017-18&matchup=Arsenal,Chelsea",
+        "methods": ["GET"],
+    },
+]
