@@ -1,6 +1,6 @@
 from rest_framework.decorators import api_view
 from django.http import JsonResponse
-from leagues.models import LeagueMatch
+from leagues.models import LeagueMatch, LeagueStandings
 from . import docs, filters, league_standings, queries, utils
 
 
@@ -60,9 +60,6 @@ def get_matches(request):
 def get_league_standings(request):
     league = request.GET['league']
     season = request.GET['season']
-    qs_matches = LeagueMatch.objects.all()
-    df_matches = utils.queryset_to_dataframe(qs=qs_matches, drop_id=True)
-    df_matches = filters.filter_league_data(data=df_matches, league=league, season=season)
-    df_league_standings = league_standings.get_league_standings(data=df_matches)
-    list_league_standings = df_league_standings.to_dict(orient='records')
+    qs = LeagueStandings.objects.filter(league=league) & LeagueStandings.objects.filter(season=season)
+    list_league_standings = utils.queryset_to_list(qs=qs, drop_id=True)
     return JsonResponse(data=list_league_standings, safe=False)
