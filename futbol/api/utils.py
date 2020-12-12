@@ -1,45 +1,8 @@
 from typing import Dict, List, Union
 from django.db.models import QuerySet
 import pandas as pd
-import re
 import sqlite3
 from . import config
-
-
-def cc2ucc(string: str) -> str:
-    """Converts camel-case to upper-camel-case"""
-    return string[0].upper() + string[1:]
-
-
-def ucc2cc(string: str) -> str:
-    """Converts upper-camel-case to camel-case"""
-    return string[0].lower() + string[1:]
-
-
-def ucc2underscored(string: str) -> str:
-    """Converts upper-camel-case to underscore-separated (lower-case)"""
-    words = re.findall(pattern="[A-Z][^A-Z]*", string=string)
-    words = [word.lower() for word in words]
-    return "_".join(words)
-
-
-def cc2underscored(string: str) -> str:
-    """Converts camel-case to underscore-separated (lower-case)"""
-    string_ucc = cc2ucc(string=string)
-    return ucc2underscored(string=string_ucc)
-
-
-def underscored2ucc(string: str) -> str:
-    """Converts underscore-separated (lower-case) to upper-camel-case"""
-    words = string.split('_')
-    words_capitalized = [word.strip().capitalize() for word in words]
-    return "".join(words_capitalized)
-
-
-def underscored2cc(string: str) -> str:
-    """Converts underscore-separated (lower-case) to camel-case"""
-    string_ucc = underscored2ucc(string=string)
-    return ucc2cc(string=string_ucc)
 
 
 def drop_id_column(data: pd.DataFrame) -> pd.DataFrame:

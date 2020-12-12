@@ -1,7 +1,6 @@
 import pandas as pd
 import sqlite3
-from api import config
-from api import utils
+from api import casing, config
 
 
 def league_matches_to_db(filepath: str) -> None:
@@ -10,7 +9,7 @@ def league_matches_to_db(filepath: str) -> None:
     Note: This function APPENDS to the database. Multiple function calls will create duplicates.
     """
     df = pd.read_csv(filepath)
-    df.columns = pd.Series(data=df.columns.tolist()).apply(utils.ucc2underscored)
+    df.columns = pd.Series(data=df.columns.tolist()).apply(casing.ucc2underscored)
     connection = sqlite3.connect(database=config.DB_FILEPATH)
     df.to_sql(name=config.TBL_LEAGUES, con=connection, if_exists='append', index=False)
     connection.close()
