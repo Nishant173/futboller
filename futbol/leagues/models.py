@@ -54,9 +54,9 @@ class LeagueMatch(models.Model):
 
 
 class LeagueStandings(models.Model):
-    standings = models.IntegerField(verbose_name="Standing", null=False)
+    position = models.IntegerField(verbose_name="Position", null=False, default=0)
     team = models.CharField(verbose_name="Team", max_length=50, null=False)
-    played = models.IntegerField(verbose_name="Games played", null=False)
+    games_played = models.IntegerField(verbose_name="Games played", null=False)
     points = models.IntegerField(verbose_name="Points", null=False)
     goal_difference = models.IntegerField(verbose_name="Goal difference", null=False)
     wins = models.IntegerField(verbose_name="Wins", null=False)

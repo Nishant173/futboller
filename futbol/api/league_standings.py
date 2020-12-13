@@ -96,13 +96,13 @@ def get_capitulation_count(data: pd.DataFrame, team: str, goal_margin: int) -> i
     return total_capitulations
 
 
-def add_ranking(data: pd.DataFrame) -> pd.DataFrame:
-    """Adds 'standings' column based on ['points', 'goal_difference'] columns"""
+def add_ranking(data: pd.DataFrame, column_name: str) -> pd.DataFrame:
+    """Adds ranking column (`column_name`) based on ['points', 'goal_difference'] columns"""
     data.sort_values(by=['points', 'goal_difference'], ascending=[False, False], inplace=True, ignore_index=True)
-    standings = np.arange(start=1, stop=len(data) + 1, step=1)
-    data['standings'] = standings
-    columns = ['standings'] + data.drop(labels=['standings'], axis=1).columns.tolist()
-    data = data.loc[:, columns]
+    rankings = np.arange(start=1, stop=len(data) + 1, step=1)
+    data[column_name] = rankings
+    column_order = [column_name] + data.drop(labels=[column_name], axis=1).columns.tolist()
+    data = data.loc[:, column_order]
     return data
 
 
@@ -112,7 +112,7 @@ def get_league_standings(data: pd.DataFrame) -> pd.DataFrame:
     df_league_standings = pd.DataFrame()
     for team in teams:
         df_by_team = filters.filter_by_team(data=data, team=team)
-        played = utils.get_games_played(data=df_by_team)
+        games_played = utils.get_games_played(data=df_by_team)
         wins = get_win_count(data=df_by_team, team=team)
         losses = get_loss_count(data=df_by_team, team=team)
         draws = get_draw_count(data=df_by_team, team=team)
@@ -124,7 +124,7 @@ def get_league_standings(data: pd.DataFrame) -> pd.DataFrame:
         capitulations = get_capitulation_count(data=df_by_team, team=team, goal_margin=3)
         df_temp = pd.DataFrame(data={
             'team': team,
-            'played': played,
+            'games_played': games_played,
             'points': 3 * wins + draws,
             'goal_difference': gs - ga,
             'wins': wins,
@@ -135,10 +135,10 @@ def get_league_standings(data: pd.DataFrame) -> pd.DataFrame:
             'clean_sheets': cs,
             'clean_sheets_against': csa,
             'big_wins': routs,
-            'big_losses': capitulations
+            'big_losses': capitulations,
         }, index=[0])
         df_league_standings = pd.concat(objs=[df_league_standings, df_temp], ignore_index=True, sort=False)
-    df_league_standings = add_ranking(data=df_league_standings)
+    df_league_standings = add_ranking(data=df_league_standings, column_name='position')
     return df_league_standings
 
 
