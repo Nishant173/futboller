@@ -5,6 +5,26 @@ import sqlite3
 from . import config
 
 
+def string_to_int_or_float(value: str) -> Union[int, float]:
+    """Converts stringified number to either int or float"""
+    value = float(value)
+    if int(value) == value:
+        value = int(value)
+    return value
+
+
+def stringify_list_of_nums(array: Union[List[int], List[float]]) -> str:
+    """Converts list of ints/floats to comma separated string of the same"""
+    return ",".join(list(map(str, array)))
+
+
+def listify_string_of_nums(string: str) -> Union[List[int], List[float]]:
+    """Converts string of comma separated ints/floats to list of numbers"""
+    numbers = string.split(',')
+    numbers = list(map(string_to_int_or_float, numbers))
+    return numbers
+
+
 def get_games_played(data: pd.DataFrame) -> int:
     """Get count of games played"""
     return len(data)
