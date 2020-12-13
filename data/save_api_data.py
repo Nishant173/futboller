@@ -20,7 +20,7 @@ def save_api_data():
     for standing in standings:
         league = standing['league']
         season = standing['season']
-        url = f"http://localhost:8000/api/v1/league-standings/?league={league}&season={season}"
+        url = f"http://localhost:8000/api/v1/league-standings?league={league}&season={season}"
         response = requests.get(url=url)
         if response.ok:
             obj = json.loads(response.text)
