@@ -37,6 +37,9 @@ Run the below code from Django shell via `python manage.py shell` (open in appro
 
 To view the queryset/s
 >>> from leagues.models import LeagueMatch, LeagueStandings
->>> LeagueMatch.objects.all()
->>> LeagueStandings.objects.all()
+>>> from api.utils import (queryset_to_dataframe, queryset_to_list)
+>>> qs = LeagueMatch.objects.all()
+>>> qs = LeagueStandings.objects.all()
+>>> queryset_to_dataframe(qs=qs, drop_id=True)
+>>> queryset_to_list(qs=qs, drop_id=True)
 '''
