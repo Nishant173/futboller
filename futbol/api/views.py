@@ -1,13 +1,12 @@
 from rest_framework.decorators import api_view
 from django.http import JsonResponse
 from leagues.models import LeagueMatch, LeagueStandings
-from . import docs, filters, league_standings, queries, utils
+from . import docs, filters, queries, utils
 
 
 @api_view(['GET'])
 def get_documentation(request):
-    endpoints = docs.ENDPOINTS
-    return JsonResponse(data=endpoints, safe=False)
+    return JsonResponse(data=docs.ENDPOINTS, safe=False)
 
 
 @api_view(['GET'])
@@ -60,9 +59,9 @@ def get_matches(request):
 def get_league_standings(request):
     league = request.GET['league']
     season = request.GET['season']
-    qs = LeagueStandings.objects.filter(league=league) & LeagueStandings.objects.filter(season=season)
-    data = utils.queryset_to_dataframe(qs=qs, drop_id=True)
-    data['cumulative_points'] = data['cumulative_points'].apply(utils.listify_string_of_nums)
-    data['cumulative_goal_difference'] = data['cumulative_goal_difference'].apply(utils.listify_string_of_nums)
-    list_league_standings = data.to_dict(orient='records')
+    qs_standings = LeagueStandings.objects.filter(league=league) & LeagueStandings.objects.filter(season=season)
+    df_standings = utils.queryset_to_dataframe(qs=qs_standings, drop_id=True)
+    df_standings['cumulative_points'] = df_standings['cumulative_points'].apply(utils.listify_string_of_nums)
+    df_standings['cumulative_goal_difference'] = df_standings['cumulative_goal_difference'].apply(utils.listify_string_of_nums)
+    list_league_standings = df_standings.to_dict(orient='records')
     return JsonResponse(data=list_league_standings, safe=False)
