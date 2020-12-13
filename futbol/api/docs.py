@@ -30,7 +30,7 @@ ENDPOINTS = [
         "methods": ["GET"],
     },
     {
-        "endpoint": f"{VERSION_PREFIX}/matches/",
+        "endpoint": f"{VERSION_PREFIX}/matches",
         "description": "Gets list of league matches (filter parameters are allowed)",
         "parameters": [
             {
@@ -80,11 +80,11 @@ ENDPOINTS = [
                 "required": False,
             },
         ],
-        "example": f"{VERSION_PREFIX}/matches/?league=EPL&season=2017-18&matchup=Arsenal,Chelsea",
+        "example": f"{VERSION_PREFIX}/matches?league=EPL&season=2017-18&matchup=Arsenal,Chelsea",
         "methods": ["GET"],
     },
     {
-        "endpoint": f"{VERSION_PREFIX}/league-standings/",
+        "endpoint": f"{VERSION_PREFIX}/league-standings",
         "description": "Gets list having league-standings (based on parameters)",
         "parameters": [
             {
@@ -98,7 +98,7 @@ ENDPOINTS = [
                 "required": True,
             },
         ],
-        "example": f"{VERSION_PREFIX}/league-standings/?league=Bundesliga&season=2012-13",
+        "example": f"{VERSION_PREFIX}/league-standings?league=Bundesliga&season=2012-13",
         "methods": ["GET"],
     },
 ]
