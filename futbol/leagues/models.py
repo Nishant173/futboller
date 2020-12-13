@@ -68,6 +68,7 @@ class LeagueStandings(models.Model):
     clean_sheets_against = models.IntegerField(verbose_name="Clean sheets against", null=False)
     big_wins = models.IntegerField(verbose_name="Big wins", null=False)
     big_losses = models.IntegerField(verbose_name="Big losses", null=False)
+    results_string = models.CharField(verbose_name="Results string", max_length=38, null=False, default="")
     season = models.CharField(verbose_name="Season", max_length=10, null=False)
     league = models.CharField(verbose_name="League", max_length=30, null=False)
 

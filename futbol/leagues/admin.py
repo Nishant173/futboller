@@ -11,7 +11,7 @@ class LeagueMatchAdmin(admin.ModelAdmin):
 
 class LeagueStandingsAdmin(admin.ModelAdmin):
     list_display = ('position', 'team', 'games_played', 'points', 'goal_difference',
-                    'season', 'league')
+                    'season', 'league', 'results_string')
     list_filter = ('season', 'league', 'team', 'points', 'goal_difference')
     search_fields = ('season', 'league', 'team')
 

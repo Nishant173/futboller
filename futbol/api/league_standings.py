@@ -1,3 +1,4 @@
+from typing import Dict
 import numpy as np
 import pandas as pd
 from leagues.models import LeagueMatch
@@ -96,6 +97,40 @@ def get_capitulation_count(data: pd.DataFrame, team: str, goal_margin: int) -> i
     return total_capitulations
 
 
+def get_results_string(data: pd.DataFrame) -> Dict[str, str]:
+    """
+    Get results-string for games of all teams in DataFrame (in ascending order of 'date' column).
+    Returns dictionary having keys = team names, and values = results-string for said team.
+    Example output: {
+        "Bayern Munich": "WDLWDLLWWW",
+        "Leipzig": "WDDWDWLWLD",
+        "Leverkusen": "DLLWWWLLWW",
+    }
+    """
+    dictionary_results = {}
+    data.sort_values(by='date', ascending=True, inplace=True, ignore_index=True)
+    teams = utils.get_teams(data=data)
+
+    for team in teams:
+        dictionary_results[team] = "" # Initialize with empty string
+    
+    for row in data.itertuples():
+        home_team = row.home_team
+        away_team = row.away_team
+        home_goals = row.home_goals
+        away_goals = row.away_goals
+        if home_goals > away_goals:
+            dictionary_results[home_team] += 'W'
+            dictionary_results[away_team] += 'L'
+        elif away_goals > home_goals:
+            dictionary_results[home_team] += 'L'
+            dictionary_results[away_team] += 'W'
+        elif home_goals == away_goals:
+            dictionary_results[home_team] += 'D'
+            dictionary_results[away_team] += 'D'
+    return dictionary_results
+
+
 def add_ranking(data: pd.DataFrame, column_name: str) -> pd.DataFrame:
     """Adds ranking column (`column_name`) based on ['points', 'goal_difference'] columns"""
     data.sort_values(by=['points', 'goal_difference'], ascending=[False, False], inplace=True, ignore_index=True)
@@ -108,8 +143,9 @@ def add_ranking(data: pd.DataFrame, column_name: str) -> pd.DataFrame:
 
 def get_league_standings(data: pd.DataFrame) -> pd.DataFrame:
     """Gets league standings from data of matches (for one season)"""
-    teams = utils.get_teams(data=data)
     df_league_standings = pd.DataFrame()
+    dict_results_string = get_results_string(data=data)
+    teams = utils.get_teams(data=data)
     for team in teams:
         df_by_team = filters.filter_by_team(data=data, team=team)
         games_played = utils.get_games_played(data=df_by_team)
@@ -136,6 +172,7 @@ def get_league_standings(data: pd.DataFrame) -> pd.DataFrame:
             'clean_sheets_against': csa,
             'big_wins': routs,
             'big_losses': capitulations,
+            'results_string': dict_results_string[team],
         }, index=[0])
         df_league_standings = pd.concat(objs=[df_league_standings, df_temp], ignore_index=True, sort=False)
     df_league_standings = add_ranking(data=df_league_standings, column_name='position')
