@@ -61,5 +61,8 @@ def get_league_standings(request):
     league = request.GET['league']
     season = request.GET['season']
     qs = LeagueStandings.objects.filter(league=league) & LeagueStandings.objects.filter(season=season)
-    list_league_standings = utils.queryset_to_list(qs=qs, drop_id=True)
+    data = utils.queryset_to_dataframe(qs=qs, drop_id=True)
+    data['cumulative_points'] = data['cumulative_points'].apply(utils.listify_string_of_nums)
+    data['cumulative_goal_difference'] = data['cumulative_goal_difference'].apply(utils.listify_string_of_nums)
+    list_league_standings = data.to_dict(orient='records')
     return JsonResponse(data=list_league_standings, safe=False)
