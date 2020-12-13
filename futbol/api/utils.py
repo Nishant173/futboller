@@ -13,12 +13,12 @@ def string_to_int_or_float(value: str) -> Union[int, float]:
     return value
 
 
-def stringify_list_of_nums(array: Union[List[int], List[float]]) -> str:
+def stringify_list_of_nums(array: List[int, float]) -> str:
     """Converts list of ints/floats to comma separated string of the same"""
     return ",".join(list(map(str, array)))
 
 
-def listify_string_of_nums(string: str) -> Union[List[int], List[float]]:
+def listify_string_of_nums(string: str) -> List[int, float]:
     """Converts string of comma separated ints/floats to list of numbers"""
     numbers = string.split(',')
     numbers = list(map(string_to_int_or_float, numbers))
