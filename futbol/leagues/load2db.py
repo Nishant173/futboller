@@ -1,7 +1,7 @@
 import pandas as pd
 import sqlite3
 from api.league_standings import get_historical_league_standings
-from api import casing, config
+from api import casing, config, utils
 
 
 def league_matches_to_db(filepath: str) -> None:
@@ -10,7 +10,7 @@ def league_matches_to_db(filepath: str) -> None:
     Note: This function APPENDS to the database. Multiple function calls will create duplicates.
     """
     df = pd.read_csv(filepath)
-    df.columns = pd.Series(data=df.columns.tolist()).apply(casing.ucc2underscored)
+    df = utils.switch_column_casing(data=df, func=casing.ucc2sc)
     connection = sqlite3.connect(database=config.DB_FILEPATH)
     df.to_sql(name=config.TBL_LEAGUES, con=connection, if_exists='append', index=False)
     connection.close()
