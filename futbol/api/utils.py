@@ -1,4 +1,4 @@
-from typing import Dict, List, Union
+from typing import Callable, Dict, List, Union
 from django.db.models import QuerySet
 import pandas as pd
 import sqlite3
@@ -35,6 +35,13 @@ def get_teams(data: pd.DataFrame) -> List[str]:
     teams_series = pd.concat(objs=[data['home_team'], data['away_team']]).sort_values(ascending=True)
     teams = teams_series.unique().tolist()
     return teams
+
+
+def switch_column_casing(data: pd.DataFrame, func: Callable) -> pd.DataFrame:
+    """Switch casing of columns in DataFrame (based on given function)"""
+    columns = data.columns.tolist()
+    data.columns = pd.Series(data=columns).apply(func=func)
+    return data
 
 
 def drop_id_column(data: pd.DataFrame) -> pd.DataFrame:
