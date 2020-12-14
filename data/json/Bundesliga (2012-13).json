@@ -2,20 +2,20 @@
     {
         "position": 1,
         "team": "Bayern Munich",
-        "games_played": 34,
+        "gamesPlayed": 34,
         "points": 91,
-        "goal_difference": 80,
+        "goalDifference": 80,
         "wins": 29,
         "losses": 1,
         "draws": 4,
-        "goals_scored": 98,
-        "goals_allowed": 18,
-        "clean_sheets": 21,
-        "clean_sheets_against": 0,
-        "big_wins": 13,
-        "big_losses": 0,
-        "results_string": "WWWWWWWWLWWDWWDWDWWWWWWWWWWWWWWDWW",
-        "cumulative_points": [
+        "goalsScored": 98,
+        "goalsAllowed": 18,
+        "cleanSheets": 21,
+        "cleanSheetsAgainst": 0,
+        "bigWins": 13,
+        "bigLosses": 0,
+        "resultsString": "WWWWWWWWLWWDWWDWDWWWWWWWWWWWWWWDWW",
+        "cumulativePoints": [
             0,
             3,
             6,
@@ -52,7 +52,7 @@
             88,
             91
         ],
-        "cumulative_goal_difference": [
+        "cumulativeGoalDifference": [
             0,
             3,
             8,
@@ -95,20 +95,20 @@
     {
         "position": 2,
         "team": "Dortmund",
-        "games_played": 34,
+        "gamesPlayed": 34,
         "points": 66,
-        "goal_difference": 39,
+        "goalDifference": 39,
         "wins": 19,
         "losses": 6,
         "draws": 9,
-        "goals_scored": 81,
-        "goals_allowed": 42,
-        "clean_sheets": 8,
-        "clean_sheets_against": 1,
-        "big_wins": 7,
-        "big_losses": 1,
-        "results_string": "WDWLDWDLWDWWWDDLWWWWLWDWLWWWWWWDDL",
-        "cumulative_points": [
+        "goalsScored": 81,
+        "goalsAllowed": 42,
+        "cleanSheets": 8,
+        "cleanSheetsAgainst": 1,
+        "bigWins": 7,
+        "bigLosses": 1,
+        "resultsString": "WDWLDWDLWDWWWDDLWWWWLWDWLWWWWWWDDL",
+        "cumulativePoints": [
             0,
             3,
             4,
@@ -145,7 +145,7 @@
             66,
             66
         ],
-        "cumulative_goal_difference": [
+        "cumulativeGoalDifference": [
             0,
             1,
             1,
@@ -188,20 +188,20 @@
     {
         "position": 3,
         "team": "Leverkusen",
-        "games_played": 34,
+        "gamesPlayed": 34,
         "points": 65,
-        "goal_difference": 26,
+        "goalDifference": 26,
         "wins": 19,
         "losses": 7,
         "draws": 8,
-        "goals_scored": 65,
-        "goals_allowed": 39,
-        "clean_sheets": 11,
-        "clean_sheets_against": 4,
-        "big_wins": 4,
-        "big_losses": 1,
-        "results_string": "LWLDWWDDWWLWWWWLWWDLDWDWLLWDDWWWWW",
-        "cumulative_points": [
+        "goalsScored": 65,
+        "goalsAllowed": 39,
+        "cleanSheets": 11,
+        "cleanSheetsAgainst": 4,
+        "bigWins": 4,
+        "bigLosses": 1,
+        "resultsString": "LWLDWWDDWWLWWWWLWWDLDWDWLLWDDWWWWW",
+        "cumulativePoints": [
             0,
             0,
             3,
@@ -238,7 +238,7 @@
             62,
             65
         ],
-        "cumulative_goal_difference": [
+        "cumulativeGoalDifference": [
             0,
             -1,
             1,
@@ -281,20 +281,20 @@
     {
         "position": 4,
         "team": "Schalke 04",
-        "games_played": 34,
+        "gamesPlayed": 34,
         "points": 55,
-        "goal_difference": 8,
+        "goalDifference": 8,
         "wins": 16,
         "losses": 11,
         "draws": 7,
-        "goals_scored": 58,
-        "goals_allowed": 50,
-        "clean_sheets": 8,
-        "clean_sheets_against": 6,
-        "big_wins": 5,
-        "big_losses": 2,
-        "results_string": "DWWLWDWWWLWLDLDLLWDLLDWWWLWWDLWWLW",
-        "cumulative_points": [
+        "goalsScored": 58,
+        "goalsAllowed": 50,
+        "cleanSheets": 8,
+        "cleanSheetsAgainst": 6,
+        "bigWins": 5,
+        "bigLosses": 2,
+        "resultsString": "DWWLWDWWWLWLDLDLLWDLLDWWWLWWDLWWLW",
+        "cumulativePoints": [
             0,
             1,
             4,
@@ -331,7 +331,7 @@
             52,
             55
         ],
-        "cumulative_goal_difference": [
+        "cumulativeGoalDifference": [
             0,
             0,
             2,
@@ -374,20 +374,20 @@
     {
         "position": 5,
         "team": "Freiburg",
-        "games_played": 34,
+        "gamesPlayed": 34,
         "points": 51,
-        "goal_difference": 5,
+        "goalDifference": 5,
         "wins": 14,
         "losses": 11,
         "draws": 9,
-        "goals_scored": 45,
-        "goals_allowed": 40,
-        "clean_sheets": 13,
-        "clean_sheets_against": 9,
-        "big_wins": 2,
-        "big_losses": 2,
-        "results_string": "DLWDLLWWLDDWWLDWWDDLWWDDLLWWWLLWWL",
-        "cumulative_points": [
+        "goalsScored": 45,
+        "goalsAllowed": 40,
+        "cleanSheets": 13,
+        "cleanSheetsAgainst": 9,
+        "bigWins": 2,
+        "bigLosses": 2,
+        "resultsString": "DLWDLLWWLDDWWLDWWDDLWWDDLLWWWLLWWL",
+        "cumulativePoints": [
             0,
             1,
             1,
@@ -424,7 +424,7 @@
             51,
             51
         ],
-        "cumulative_goal_difference": [
+        "cumulativeGoalDifference": [
             0,
             0,
             -2,
@@ -467,20 +467,20 @@
     {
         "position": 6,
         "team": "Ein Frankfurt",
-        "games_played": 34,
+        "gamesPlayed": 34,
         "points": 51,
-        "goal_difference": 3,
+        "goalDifference": 3,
         "wins": 14,
         "losses": 11,
         "draws": 9,
-        "goals_scored": 49,
-        "goals_allowed": 46,
-        "clean_sheets": 8,
-        "clean_sheets_against": 11,
-        "big_wins": 2,
-        "big_losses": 2,
-        "results_string": "WWWWDWLWLDLWDLLWWLWWDLDLDLWLLWDWDD",
-        "cumulative_points": [
+        "goalsScored": 49,
+        "goalsAllowed": 46,
+        "cleanSheets": 8,
+        "cleanSheetsAgainst": 11,
+        "bigWins": 2,
+        "bigLosses": 2,
+        "resultsString": "WWWWDWLWLDLWDLLWWLWWDLDLDLWLLWDWDD",
+        "cumulativePoints": [
             0,
             3,
             6,
@@ -517,7 +517,7 @@
             50,
             51
         ],
-        "cumulative_goal_difference": [
+        "cumulativeGoalDifference": [
             0,
             1,
             5,
@@ -560,20 +560,20 @@
     {
         "position": 7,
         "team": "Hamburg",
-        "games_played": 34,
+        "gamesPlayed": 34,
         "points": 48,
-        "goal_difference": -11,
+        "goalDifference": -11,
         "wins": 14,
         "losses": 14,
         "draws": 6,
-        "goals_scored": 42,
-        "goals_allowed": 53,
-        "clean_sheets": 8,
-        "clean_sheets_against": 11,
-        "big_wins": 2,
-        "big_losses": 5,
-        "results_string": "LLLWDWWLWLDWLWDWLDWLWWLDWLLLWWLDWL",
-        "cumulative_points": [
+        "goalsScored": 42,
+        "goalsAllowed": 53,
+        "cleanSheets": 8,
+        "cleanSheetsAgainst": 11,
+        "bigWins": 2,
+        "bigLosses": 5,
+        "resultsString": "LLLWDWWLWLDWLWDWLDWLWWLDWLLLWWLDWL",
+        "cumulativePoints": [
             0,
             0,
             0,
@@ -610,7 +610,7 @@
             48,
             48
         ],
-        "cumulative_goal_difference": [
+        "cumulativeGoalDifference": [
             0,
             -1,
             -3,
@@ -653,20 +653,20 @@
     {
         "position": 8,
         "team": "M'gladbach",
-        "games_played": 34,
+        "gamesPlayed": 34,
         "points": 47,
-        "goal_difference": -4,
+        "goalDifference": -4,
         "wins": 12,
         "losses": 11,
         "draws": 11,
-        "goals_scored": 45,
-        "goals_allowed": 49,
-        "clean_sheets": 9,
-        "clean_sheets_against": 8,
-        "big_wins": 0,
-        "big_losses": 2,
-        "results_string": "WDLDDLWLWDWLDWDWDDWLDLDWDWLWLWLLWL",
-        "cumulative_points": [
+        "goalsScored": 45,
+        "goalsAllowed": 49,
+        "cleanSheets": 9,
+        "cleanSheetsAgainst": 8,
+        "bigWins": 0,
+        "bigLosses": 2,
+        "resultsString": "WDLDDLWLWDWLDWDWDDWLDLDWDWLWLWLLWL",
+        "cumulativePoints": [
             0,
             3,
             4,
@@ -703,7 +703,7 @@
             47,
             47
         ],
-        "cumulative_goal_difference": [
+        "cumulativeGoalDifference": [
             0,
             1,
             1,
@@ -746,20 +746,20 @@
     {
         "position": 9,
         "team": "Hannover",
-        "games_played": 34,
+        "gamesPlayed": 34,
         "points": 45,
-        "goal_difference": -2,
+        "goalDifference": -2,
         "wins": 13,
         "losses": 15,
         "draws": 6,
-        "goals_scored": 60,
-        "goals_allowed": 62,
-        "clean_sheets": 8,
-        "clean_sheets_against": 6,
-        "big_wins": 4,
-        "big_losses": 2,
-        "results_string": "DWWLWLDLLWWLLWLWLLWLWDWLDLWDLLWDLW",
-        "cumulative_points": [
+        "goalsScored": 60,
+        "goalsAllowed": 62,
+        "cleanSheets": 8,
+        "cleanSheetsAgainst": 6,
+        "bigWins": 4,
+        "bigLosses": 2,
+        "resultsString": "DWWLWLDLLWWLLWLWLLWLWDWLDLWDLLWDLW",
+        "cumulativePoints": [
             0,
             1,
             4,
@@ -796,7 +796,7 @@
             42,
             45
         ],
-        "cumulative_goal_difference": [
+        "cumulativeGoalDifference": [
             0,
             0,
             4,
@@ -839,20 +839,20 @@
     {
         "position": 10,
         "team": "Nurnberg",
-        "games_played": 34,
+        "gamesPlayed": 34,
         "points": 44,
-        "goal_difference": -8,
+        "goalDifference": -8,
         "wins": 11,
         "losses": 12,
         "draws": 11,
-        "goals_scored": 39,
-        "goals_allowed": 47,
-        "clean_sheets": 7,
-        "clean_sheets_against": 11,
-        "big_wins": 1,
-        "big_losses": 4,
-        "results_string": "WDWLLLLDLWLDDWLWDDLWDDDDWWDWLLLLWW",
-        "cumulative_points": [
+        "goalsScored": 39,
+        "goalsAllowed": 47,
+        "cleanSheets": 7,
+        "cleanSheetsAgainst": 11,
+        "bigWins": 1,
+        "bigLosses": 4,
+        "resultsString": "WDWLLLLDLWLDDWLWDDLWDDDDWWDWLLLLWW",
+        "cumulativePoints": [
             0,
             3,
             4,
@@ -889,7 +889,7 @@
             41,
             44
         ],
-        "cumulative_goal_difference": [
+        "cumulativeGoalDifference": [
             0,
             1,
             1,
@@ -932,20 +932,20 @@
     {
         "position": 11,
         "team": "Wolfsburg",
-        "games_played": 34,
+        "gamesPlayed": 34,
         "points": 43,
-        "goal_difference": -5,
+        "goalDifference": -5,
         "wins": 10,
         "losses": 11,
         "draws": 13,
-        "goals_scored": 47,
-        "goals_allowed": 52,
-        "clean_sheets": 5,
-        "clean_sheets_against": 10,
-        "big_wins": 3,
-        "big_losses": 4,
-        "results_string": "WLDDLLLLWLWWDLDWLWLDWLDLWDDDDWWDDD",
-        "cumulative_points": [
+        "goalsScored": 47,
+        "goalsAllowed": 52,
+        "cleanSheets": 5,
+        "cleanSheetsAgainst": 10,
+        "bigWins": 3,
+        "bigLosses": 4,
+        "resultsString": "WLDDLLLLWLWWDLDWLWLDWLDLWDDDDWWDDD",
+        "cumulativePoints": [
             0,
             3,
             3,
@@ -982,7 +982,7 @@
             42,
             43
         ],
-        "cumulative_goal_difference": [
+        "cumulativeGoalDifference": [
             0,
             1,
             -3,
@@ -1025,20 +1025,20 @@
     {
         "position": 12,
         "team": "Stuttgart",
-        "games_played": 34,
+        "gamesPlayed": 34,
         "points": 43,
-        "goal_difference": -18,
+        "goalDifference": -18,
         "wins": 12,
         "losses": 15,
         "draws": 7,
-        "goals_scored": 37,
-        "goals_allowed": 55,
-        "clean_sheets": 8,
-        "clean_sheets_against": 11,
-        "big_wins": 0,
-        "big_losses": 5,
-        "results_string": "LLDDLWDWWDLWLWWWLLLLLWDLLWLDWWLLWD",
-        "cumulative_points": [
+        "goalsScored": 37,
+        "goalsAllowed": 55,
+        "cleanSheets": 8,
+        "cleanSheetsAgainst": 11,
+        "bigWins": 0,
+        "bigLosses": 5,
+        "resultsString": "LLDDLWDWWDLWLWWWLLLLLWDLLWLDWWLLWD",
+        "cumulativePoints": [
             0,
             0,
             0,
@@ -1075,7 +1075,7 @@
             42,
             43
         ],
-        "cumulative_goal_difference": [
+        "cumulativeGoalDifference": [
             0,
             -1,
             -6,
@@ -1118,20 +1118,20 @@
     {
         "position": 13,
         "team": "Mainz",
-        "games_played": 34,
+        "gamesPlayed": 34,
         "points": 42,
-        "goal_difference": -2,
+        "goalDifference": -2,
         "wins": 10,
         "losses": 12,
         "draws": 12,
-        "goals_scored": 42,
-        "goals_allowed": 44,
-        "clean_sheets": 9,
-        "clean_sheets_against": 9,
-        "big_wins": 2,
-        "big_losses": 2,
-        "results_string": "DLLWLWWDWLWLLWWLWDWLDDDDWDDLLLDDLD",
-        "cumulative_points": [
+        "goalsScored": 42,
+        "goalsAllowed": 44,
+        "cleanSheets": 9,
+        "cleanSheetsAgainst": 9,
+        "bigWins": 2,
+        "bigLosses": 2,
+        "resultsString": "DLLWLWWDWLWLLWWLWDWLDDDDWDDLLLDDLD",
+        "cumulativePoints": [
             0,
             1,
             1,
@@ -1168,7 +1168,7 @@
             41,
             42
         ],
-        "cumulative_goal_difference": [
+        "cumulativeGoalDifference": [
             0,
             0,
             -1,
@@ -1211,20 +1211,20 @@
     {
         "position": 14,
         "team": "Werder Bremen",
-        "games_played": 34,
+        "gamesPlayed": 34,
         "points": 34,
-        "goal_difference": -16,
+        "goalDifference": -16,
         "wins": 8,
         "losses": 16,
         "draws": 10,
-        "goals_scored": 50,
-        "goals_allowed": 66,
-        "clean_sheets": 3,
-        "clean_sheets_against": 6,
-        "big_wins": 3,
-        "big_losses": 5,
-        "results_string": "LWLDWLLWDWLWDLWLDLLWWLLLDDDLDLLDDL",
-        "cumulative_points": [
+        "goalsScored": 50,
+        "goalsAllowed": 66,
+        "cleanSheets": 3,
+        "cleanSheetsAgainst": 6,
+        "bigWins": 3,
+        "bigLosses": 5,
+        "resultsString": "LWLDWLLWDWLWDLWLDLLWWLLLDDDLDLLDDL",
+        "cumulativePoints": [
             0,
             0,
             3,
@@ -1261,7 +1261,7 @@
             34,
             34
         ],
-        "cumulative_goal_difference": [
+        "cumulativeGoalDifference": [
             0,
             -1,
             1,
@@ -1304,20 +1304,20 @@
     {
         "position": 15,
         "team": "Augsburg",
-        "games_played": 34,
+        "gamesPlayed": 34,
         "points": 33,
-        "goal_difference": -18,
+        "goalDifference": -18,
         "wins": 8,
         "losses": 17,
         "draws": 9,
-        "goals_scored": 33,
-        "goals_allowed": 51,
-        "clean_sheets": 8,
-        "clean_sheets_against": 13,
-        "big_wins": 1,
-        "big_losses": 1,
-        "results_string": "LLDLLDWDLLLLDLDLDWDDDLWWLWLLWLWLLW",
-        "cumulative_points": [
+        "goalsScored": 33,
+        "goalsAllowed": 51,
+        "cleanSheets": 8,
+        "cleanSheetsAgainst": 13,
+        "bigWins": 1,
+        "bigLosses": 1,
+        "resultsString": "LLDLLDWDLLLLDLDLDWDDDLWWLWLLWLWLLW",
+        "cumulativePoints": [
             0,
             0,
             0,
@@ -1354,7 +1354,7 @@
             30,
             33
         ],
-        "cumulative_goal_difference": [
+        "cumulativeGoalDifference": [
             0,
             -2,
             -4,
@@ -1397,20 +1397,20 @@
     {
         "position": 16,
         "team": "Hoffenheim",
-        "games_played": 34,
+        "gamesPlayed": 34,
         "points": 31,
-        "goal_difference": -25,
+        "goalDifference": -25,
         "wins": 8,
         "losses": 19,
         "draws": 7,
-        "goals_scored": 42,
-        "goals_allowed": 67,
-        "clean_sheets": 6,
-        "clean_sheets_against": 12,
-        "big_wins": 3,
-        "big_losses": 6,
-        "results_string": "LLLWWDLDLWDLLLLLLDLWLLLLWDLWDLWDLW",
-        "cumulative_points": [
+        "goalsScored": 42,
+        "goalsAllowed": 67,
+        "cleanSheets": 6,
+        "cleanSheetsAgainst": 12,
+        "bigWins": 3,
+        "bigLosses": 6,
+        "resultsString": "LLLWWDLDLWDLLLLLLDLWLLLLWDLWDLWDLW",
+        "cumulativePoints": [
             0,
             0,
             0,
@@ -1447,7 +1447,7 @@
             28,
             31
         ],
-        "cumulative_goal_difference": [
+        "cumulativeGoalDifference": [
             0,
             -1,
             -5,
@@ -1490,20 +1490,20 @@
     {
         "position": 17,
         "team": "Fortuna Dusseldorf",
-        "games_played": 34,
+        "gamesPlayed": 34,
         "points": 30,
-        "goal_difference": -18,
+        "goalDifference": -18,
         "wins": 7,
         "losses": 18,
         "draws": 9,
-        "goals_scored": 39,
-        "goals_allowed": 57,
-        "clean_sheets": 8,
-        "clean_sheets_against": 9,
-        "big_wins": 1,
-        "big_losses": 5,
-        "results_string": "WDDDWDLLLLDLWDWLWLLWLWLDLDLLDLLLLL",
-        "cumulative_points": [
+        "goalsScored": 39,
+        "goalsAllowed": 57,
+        "cleanSheets": 8,
+        "cleanSheetsAgainst": 9,
+        "bigWins": 1,
+        "bigLosses": 5,
+        "resultsString": "WDDDWDLLLLDLWDWLWLLWLWLDLDLLDLLLLL",
+        "cumulativePoints": [
             0,
             3,
             4,
@@ -1540,7 +1540,7 @@
             30,
             30
         ],
-        "cumulative_goal_difference": [
+        "cumulativeGoalDifference": [
             0,
             2,
             2,
@@ -1583,20 +1583,20 @@
     {
         "position": 18,
         "team": "Greuther Furth",
-        "games_played": 34,
+        "gamesPlayed": 34,
         "points": 21,
-        "goal_difference": -34,
+        "goalDifference": -34,
         "wins": 4,
         "losses": 21,
         "draws": 9,
-        "goals_scored": 26,
-        "goals_allowed": 60,
-        "clean_sheets": 5,
-        "clean_sheets_against": 16,
-        "big_wins": 0,
-        "big_losses": 4,
-        "results_string": "LWLDLLLDDDLLDLLLDLLWLLDDLDLLLWLWLL",
-        "cumulative_points": [
+        "goalsScored": 26,
+        "goalsAllowed": 60,
+        "cleanSheets": 5,
+        "cleanSheetsAgainst": 16,
+        "bigWins": 0,
+        "bigLosses": 4,
+        "resultsString": "LWLDLLLDDDLLDLLLDLLWLLDDLDLLLWLWLL",
+        "cumulativePoints": [
             0,
             0,
             3,
@@ -1633,7 +1633,7 @@
             21,
             21
         ],
-        "cumulative_goal_difference": [
+        "cumulativeGoalDifference": [
             0,
             -3,
             -2,

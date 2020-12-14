@@ -2,20 +2,20 @@
     {
         "position": 1,
         "team": "Man United",
-        "games_played": 38,
+        "gamesPlayed": 38,
         "points": 89,
-        "goal_difference": 43,
+        "goalDifference": 43,
         "wins": 28,
         "losses": 5,
         "draws": 5,
-        "goals_scored": 86,
-        "goals_allowed": 43,
-        "clean_sheets": 13,
-        "clean_sheets_against": 3,
-        "big_wins": 5,
-        "big_losses": 0,
-        "results_string": "LWWWWLWWWWWLWWWWWDWWWWDWWWWWWWLWDWDLWD",
-        "cumulative_points": [
+        "goalsScored": 86,
+        "goalsAllowed": 43,
+        "cleanSheets": 13,
+        "cleanSheetsAgainst": 3,
+        "bigWins": 5,
+        "bigLosses": 0,
+        "resultsString": "LWWWWLWWWWWLWWWWWDWWWWDWWWWWWWLWDWDLWD",
+        "cumulativePoints": [
             0,
             0,
             3,
@@ -56,7 +56,7 @@
             88,
             89
         ],
-        "cumulative_goal_difference": [
+        "cumulativeGoalDifference": [
             0,
             -1,
             0,
@@ -103,20 +103,20 @@
     {
         "position": 2,
         "team": "Man City",
-        "games_played": 38,
+        "gamesPlayed": 38,
         "points": 78,
-        "goal_difference": 32,
+        "goalDifference": 32,
         "wins": 23,
         "losses": 6,
         "draws": 9,
-        "goals_scored": 66,
-        "goals_allowed": 34,
-        "clean_sheets": 18,
-        "clean_sheets_against": 6,
-        "big_wins": 4,
-        "big_losses": 0,
-        "results_string": "WDWDDWWWWDWWDWDLWWLWWWWDDLWWLWWWLWDWWL",
-        "cumulative_points": [
+        "goalsScored": 66,
+        "goalsAllowed": 34,
+        "cleanSheets": 18,
+        "cleanSheetsAgainst": 6,
+        "bigWins": 4,
+        "bigLosses": 0,
+        "resultsString": "WDWDDWWWWDWWDWDLWWLWWWWDDLWWLWWWLWDWWL",
+        "cumulativePoints": [
             0,
             3,
             4,
@@ -157,7 +157,7 @@
             78,
             78
         ],
-        "cumulative_goal_difference": [
+        "cumulativeGoalDifference": [
             0,
             1,
             1,
@@ -204,20 +204,20 @@
     {
         "position": 3,
         "team": "Chelsea",
-        "games_played": 38,
+        "gamesPlayed": 38,
         "points": 75,
-        "goal_difference": 36,
+        "goalDifference": 36,
         "wins": 22,
         "losses": 7,
         "draws": 9,
-        "goals_scored": 75,
-        "goals_allowed": 39,
-        "clean_sheets": 14,
-        "clean_sheets_against": 5,
-        "big_wins": 5,
-        "big_losses": 0,
-        "results_string": "WWWDWWWWLDDLDDLWWWWLWDWDLWLWWLWWDWWDWW",
-        "cumulative_points": [
+        "goalsScored": 75,
+        "goalsAllowed": 39,
+        "cleanSheets": 14,
+        "cleanSheetsAgainst": 5,
+        "bigWins": 5,
+        "bigLosses": 0,
+        "resultsString": "WWWDWWWWLDDLDDLWWWWLWDWDLWLWWLWWDWWDWW",
+        "cumulativePoints": [
             0,
             3,
             6,
@@ -258,7 +258,7 @@
             72,
             75
         ],
-        "cumulative_goal_difference": [
+        "cumulativeGoalDifference": [
             0,
             2,
             4,
@@ -305,20 +305,20 @@
     {
         "position": 4,
         "team": "Arsenal",
-        "games_played": 38,
+        "gamesPlayed": 38,
         "points": 73,
-        "goal_difference": 35,
+        "goalDifference": 35,
         "wins": 21,
         "losses": 7,
         "draws": 10,
-        "goals_scored": 72,
-        "goals_allowed": 37,
-        "clean_sheets": 14,
-        "clean_sheets_against": 7,
-        "big_wins": 7,
-        "big_losses": 0,
-        "results_string": "DDWWDLWLWLDWDDLWWWWDLLWDWWWLWWWWDWDWWW",
-        "cumulative_points": [
+        "goalsScored": 72,
+        "goalsAllowed": 37,
+        "cleanSheets": 14,
+        "cleanSheetsAgainst": 7,
+        "bigWins": 7,
+        "bigLosses": 0,
+        "resultsString": "DDWWDLWLWLDWDDLWWWWDLLWDWWWLWWWWDWDWWW",
+        "cumulativePoints": [
             0,
             1,
             2,
@@ -359,7 +359,7 @@
             70,
             73
         ],
-        "cumulative_goal_difference": [
+        "cumulativeGoalDifference": [
             0,
             0,
             0,
@@ -406,20 +406,20 @@
     {
         "position": 5,
         "team": "Tottenham",
-        "games_played": 38,
+        "gamesPlayed": 38,
         "points": 72,
-        "goal_difference": 20,
+        "goalDifference": 20,
         "wins": 21,
         "losses": 8,
         "draws": 9,
-        "goals_scored": 66,
-        "goals_allowed": 46,
-        "clean_sheets": 9,
-        "clean_sheets_against": 4,
-        "big_wins": 2,
-        "big_losses": 1,
-        "results_string": "LDDWWWWLWLLLWWWLWDWWWDDDWWWWLLWDWDWDWW",
-        "cumulative_points": [
+        "goalsScored": 66,
+        "goalsAllowed": 46,
+        "cleanSheets": 9,
+        "cleanSheetsAgainst": 4,
+        "bigWins": 2,
+        "bigLosses": 1,
+        "resultsString": "LDDWWWWLWLLLWWWLWDWWWDDDWWWWLLWDWDWDWW",
+        "cumulativePoints": [
             0,
             0,
             1,
@@ -460,7 +460,7 @@
             69,
             72
         ],
-        "cumulative_goal_difference": [
+        "cumulativeGoalDifference": [
             0,
             -1,
             -1,
@@ -507,20 +507,20 @@
     {
         "position": 6,
         "team": "Everton",
-        "games_played": 38,
+        "gamesPlayed": 38,
         "points": 63,
-        "goal_difference": 15,
+        "goalDifference": 15,
         "wins": 16,
         "losses": 7,
         "draws": 15,
-        "goals_scored": 55,
-        "goals_allowed": 40,
-        "clean_sheets": 11,
-        "clean_sheets_against": 7,
-        "big_wins": 1,
-        "big_losses": 0,
-        "results_string": "WWLDWWDDDDWLDDDWDWWLWDDWDLLWWWDWDLWDWL",
-        "cumulative_points": [
+        "goalsScored": 55,
+        "goalsAllowed": 40,
+        "cleanSheets": 11,
+        "cleanSheetsAgainst": 7,
+        "bigWins": 1,
+        "bigLosses": 0,
+        "resultsString": "WWLDWWDDDDWLDDDWDWWLWDDWDLLWWWDWDLWDWL",
+        "cumulativePoints": [
             0,
             3,
             6,
@@ -561,7 +561,7 @@
             63,
             63
         ],
-        "cumulative_goal_difference": [
+        "cumulativeGoalDifference": [
             0,
             1,
             3,
@@ -608,20 +608,20 @@
     {
         "position": 7,
         "team": "Liverpool",
-        "games_played": 38,
+        "gamesPlayed": 38,
         "points": 61,
-        "goal_difference": 28,
+        "goalDifference": 28,
         "wins": 16,
         "losses": 9,
         "draws": 13,
-        "goals_scored": 71,
-        "goals_allowed": 43,
-        "clean_sheets": 16,
-        "clean_sheets_against": 8,
-        "big_wins": 9,
-        "big_losses": 1,
-        "results_string": "LDLDLWDWDDDWDLWWLWLWWLWDDLWWWLWDDDWDWW",
-        "cumulative_points": [
+        "goalsScored": 71,
+        "goalsAllowed": 43,
+        "cleanSheets": 16,
+        "cleanSheetsAgainst": 8,
+        "bigWins": 9,
+        "bigLosses": 1,
+        "resultsString": "LDLDLWDWDDDWDLWWLWLWWLWDDLWWWLWDDDWDWW",
+        "cumulativePoints": [
             0,
             0,
             1,
@@ -662,7 +662,7 @@
             58,
             61
         ],
-        "cumulative_goal_difference": [
+        "cumulativeGoalDifference": [
             0,
             -3,
             -3,
@@ -709,20 +709,20 @@
     {
         "position": 8,
         "team": "West Brom",
-        "games_played": 38,
+        "gamesPlayed": 38,
         "points": 49,
-        "goal_difference": -4,
+        "goalDifference": -4,
         "wins": 14,
         "losses": 17,
         "draws": 7,
-        "goals_scored": 53,
-        "goals_allowed": 57,
-        "clean_sheets": 8,
-        "clean_sheets_against": 10,
-        "big_wins": 2,
-        "big_losses": 2,
-        "results_string": "WDWLWDWLLWWWWLLLDWWLLLDLLWWLWDLLDWLLLD",
-        "cumulative_points": [
+        "goalsScored": 53,
+        "goalsAllowed": 57,
+        "cleanSheets": 8,
+        "cleanSheetsAgainst": 10,
+        "bigWins": 2,
+        "bigLosses": 2,
+        "resultsString": "WDWLWDWLLWWWWLLLDWWLLLDLLWWLWDLLDWLLLD",
+        "cumulativePoints": [
             0,
             3,
             4,
@@ -763,7 +763,7 @@
             48,
             49
         ],
-        "cumulative_goal_difference": [
+        "cumulativeGoalDifference": [
             0,
             3,
             3,
@@ -810,20 +810,20 @@
     {
         "position": 9,
         "team": "Swansea",
-        "games_played": 38,
+        "gamesPlayed": 38,
         "points": 46,
-        "goal_difference": -4,
+        "goalDifference": -4,
         "wins": 11,
         "losses": 14,
         "draws": 13,
-        "goals_scored": 47,
-        "goals_allowed": 51,
-        "clean_sheets": 10,
-        "clean_sheets_against": 16,
-        "big_wins": 3,
-        "big_losses": 3,
-        "results_string": "WWDLLLDWLDDWDWWLLDDWDDWDLWLWLLLDDLDWLL",
-        "cumulative_points": [
+        "goalsScored": 47,
+        "goalsAllowed": 51,
+        "cleanSheets": 10,
+        "cleanSheetsAgainst": 16,
+        "bigWins": 3,
+        "bigLosses": 3,
+        "resultsString": "WWDLLLDWLDDWDWWLLDDWDDWDLWLWLLLDDLDWLL",
+        "cumulativePoints": [
             0,
             3,
             6,
@@ -864,7 +864,7 @@
             46,
             46
         ],
-        "cumulative_goal_difference": [
+        "cumulativeGoalDifference": [
             0,
             5,
             8,
@@ -911,20 +911,20 @@
     {
         "position": 10,
         "team": "West Ham",
-        "games_played": 38,
+        "gamesPlayed": 38,
         "points": 46,
-        "goal_difference": -8,
+        "goalDifference": -8,
         "wins": 12,
         "losses": 16,
         "draws": 10,
-        "goals_scored": 45,
-        "goals_allowed": 53,
-        "clean_sheets": 11,
-        "clean_sheets_against": 11,
-        "big_wins": 2,
-        "big_losses": 3,
-        "results_string": "WLWDDWLWLDWDLLWLDLLWLDLLWLLWLWDDDWLDLW",
-        "cumulative_points": [
+        "goalsScored": 45,
+        "goalsAllowed": 53,
+        "cleanSheets": 11,
+        "cleanSheetsAgainst": 11,
+        "bigWins": 2,
+        "bigLosses": 3,
+        "resultsString": "WLWDDWLWLDWDLLWLDLLWLDLLWLLWLWDDDWLDLW",
+        "cumulativePoints": [
             0,
             3,
             3,
@@ -965,7 +965,7 @@
             43,
             46
         ],
-        "cumulative_goal_difference": [
+        "cumulativeGoalDifference": [
             0,
             1,
             -2,
@@ -1012,20 +1012,20 @@
     {
         "position": 11,
         "team": "Norwich",
-        "games_played": 38,
+        "gamesPlayed": 38,
         "points": 44,
-        "goal_difference": -17,
+        "goalDifference": -17,
         "wins": 10,
         "losses": 14,
         "draws": 14,
-        "goals_scored": 41,
-        "goals_allowed": 58,
-        "clean_sheets": 10,
-        "clean_sheets_against": 13,
-        "big_wins": 1,
-        "big_losses": 5,
-        "results_string": "LDDDLLLWDWDWDDWWWLLLLDLDDDWLDDLDLWLLWW",
-        "cumulative_points": [
+        "goalsScored": 41,
+        "goalsAllowed": 58,
+        "cleanSheets": 10,
+        "cleanSheetsAgainst": 13,
+        "bigWins": 1,
+        "bigLosses": 5,
+        "resultsString": "LDDDLLLWDWDWDDWWWLLLLDLDDDWLDDLDLWLLWW",
+        "cumulativePoints": [
             0,
             0,
             1,
@@ -1066,7 +1066,7 @@
             41,
             44
         ],
-        "cumulative_goal_difference": [
+        "cumulativeGoalDifference": [
             0,
             -5,
             -5,
@@ -1113,20 +1113,20 @@
     {
         "position": 12,
         "team": "Fulham",
-        "games_played": 38,
+        "gamesPlayed": 38,
         "points": 43,
-        "goal_difference": -10,
+        "goalDifference": -10,
         "wins": 11,
         "losses": 17,
         "draws": 10,
-        "goals_scored": 50,
-        "goals_allowed": 60,
-        "clean_sheets": 8,
-        "clean_sheets_against": 12,
-        "big_wins": 3,
-        "big_losses": 4,
-        "results_string": "WLLWWLDWDDDLLDLWLLDLWDLWLDWDWWLDLLLLLW",
-        "cumulative_points": [
+        "goalsScored": 50,
+        "goalsAllowed": 60,
+        "cleanSheets": 8,
+        "cleanSheetsAgainst": 12,
+        "bigWins": 3,
+        "bigLosses": 4,
+        "resultsString": "WLLWWLDWDDDLLDLWLLDLWDLWLDWDWWLDLLLLLW",
+        "cumulativePoints": [
             0,
             3,
             3,
@@ -1167,7 +1167,7 @@
             40,
             43
         ],
-        "cumulative_goal_difference": [
+        "cumulativeGoalDifference": [
             0,
             5,
             4,
@@ -1214,20 +1214,20 @@
     {
         "position": 13,
         "team": "Stoke",
-        "games_played": 38,
+        "gamesPlayed": 38,
         "points": 42,
-        "goal_difference": -11,
+        "goalDifference": -11,
         "wins": 9,
         "losses": 14,
         "draws": 15,
-        "goals_scored": 34,
-        "goals_allowed": 45,
-        "clean_sheets": 12,
-        "clean_sheets_against": 15,
-        "big_wins": 0,
-        "big_losses": 2,
-        "results_string": "DDDDLWDLDLWDWWWDDDWDLLLDLWLLLDLLLWWDLD",
-        "cumulative_points": [
+        "goalsScored": 34,
+        "goalsAllowed": 45,
+        "cleanSheets": 12,
+        "cleanSheetsAgainst": 15,
+        "bigWins": 0,
+        "bigLosses": 2,
+        "resultsString": "DDDDLWDLDLWDWWWDDDWDLLLDLWLLLDLLLWWDLD",
+        "cumulativePoints": [
             0,
             1,
             2,
@@ -1268,7 +1268,7 @@
             41,
             42
         ],
-        "cumulative_goal_difference": [
+        "cumulativeGoalDifference": [
             0,
             0,
             0,
@@ -1315,20 +1315,20 @@
     {
         "position": 14,
         "team": "Southampton",
-        "games_played": 38,
+        "gamesPlayed": 38,
         "points": 41,
-        "goal_difference": -11,
+        "goalDifference": -11,
         "wins": 9,
         "losses": 15,
         "draws": 14,
-        "goals_scored": 49,
-        "goals_allowed": 60,
-        "clean_sheets": 7,
-        "clean_sheets_against": 9,
-        "big_wins": 1,
-        "big_losses": 3,
-        "results_string": "LLLLWLDLLLDWWDLWLDDDWDDLDWLLDWWWDDLLDD",
-        "cumulative_points": [
+        "goalsScored": 49,
+        "goalsAllowed": 60,
+        "cleanSheets": 7,
+        "cleanSheetsAgainst": 9,
+        "bigWins": 1,
+        "bigLosses": 3,
+        "resultsString": "LLLLWLDLLLDWWDLWLDDDWDDLDWLLDWWWDDLLDD",
+        "cumulativePoints": [
             0,
             0,
             0,
@@ -1369,7 +1369,7 @@
             40,
             41
         ],
-        "cumulative_goal_difference": [
+        "cumulativeGoalDifference": [
             0,
             -1,
             -3,
@@ -1416,20 +1416,20 @@
     {
         "position": 15,
         "team": "Aston Villa",
-        "games_played": 38,
+        "gamesPlayed": 38,
         "points": 41,
-        "goal_difference": -22,
+        "goalDifference": -22,
         "wins": 10,
         "losses": 17,
         "draws": 11,
-        "goals_scored": 47,
-        "goals_allowed": 69,
-        "clean_sheets": 5,
-        "clean_sheets_against": 12,
-        "big_wins": 1,
-        "big_losses": 6,
-        "results_string": "LLDWLDLLDWLLDWDDWLLLDLDLDWLLWWLWDLWWLD",
-        "cumulative_points": [
+        "goalsScored": 47,
+        "goalsAllowed": 69,
+        "cleanSheets": 5,
+        "cleanSheetsAgainst": 12,
+        "bigWins": 1,
+        "bigLosses": 6,
+        "resultsString": "LLDWLDLLDWLLDWDDWLLLDLDLDWLLWWLWDLWWLD",
+        "cumulativePoints": [
             0,
             0,
             0,
@@ -1470,7 +1470,7 @@
             40,
             41
         ],
-        "cumulative_goal_difference": [
+        "cumulativeGoalDifference": [
             0,
             -1,
             -3,
@@ -1517,20 +1517,20 @@
     {
         "position": 16,
         "team": "Newcastle",
-        "games_played": 38,
+        "gamesPlayed": 38,
         "points": 41,
-        "goal_difference": -23,
+        "goalDifference": -23,
         "wins": 11,
         "losses": 19,
         "draws": 8,
-        "goals_scored": 45,
-        "goals_allowed": 68,
-        "clean_sheets": 6,
-        "clean_sheets_against": 11,
-        "big_wins": 1,
-        "big_losses": 5,
-        "results_string": "WLDDWDLDWDLLLLWLLWLLLDLWWLWLWLLWLDLDWL",
-        "cumulative_points": [
+        "goalsScored": 45,
+        "goalsAllowed": 68,
+        "cleanSheets": 6,
+        "cleanSheetsAgainst": 11,
+        "bigWins": 1,
+        "bigLosses": 5,
+        "resultsString": "WLDDWDLDWDLLLLWLLWLLLDLWWLWLWLLWLDLDWL",
+        "cumulativePoints": [
             0,
             3,
             3,
@@ -1571,7 +1571,7 @@
             41,
             41
         ],
-        "cumulative_goal_difference": [
+        "cumulativeGoalDifference": [
             0,
             1,
             -1,
@@ -1618,20 +1618,20 @@
     {
         "position": 17,
         "team": "Sunderland",
-        "games_played": 38,
+        "gamesPlayed": 38,
         "points": 39,
-        "goal_difference": -13,
+        "goalDifference": -13,
         "wins": 9,
         "losses": 17,
         "draws": 12,
-        "goals_scored": 41,
-        "goals_allowed": 54,
-        "clean_sheets": 11,
-        "clean_sheets_against": 10,
-        "big_wins": 3,
-        "big_losses": 3,
-        "results_string": "DDDDWLDDLLWLDLLWLWWLLWWDLLLDLDLLWWLDDL",
-        "cumulative_points": [
+        "goalsScored": 41,
+        "goalsAllowed": 54,
+        "cleanSheets": 11,
+        "cleanSheetsAgainst": 10,
+        "bigWins": 3,
+        "bigLosses": 3,
+        "resultsString": "DDDDWLDDLLWLDLLWLWWLLWWDLLLDLDLLWWLDDL",
+        "cumulativePoints": [
             0,
             1,
             2,
@@ -1672,7 +1672,7 @@
             39,
             39
         ],
-        "cumulative_goal_difference": [
+        "cumulativeGoalDifference": [
             0,
             0,
             0,
@@ -1719,20 +1719,20 @@
     {
         "position": 18,
         "team": "Wigan",
-        "games_played": 38,
+        "gamesPlayed": 38,
         "points": 36,
-        "goal_difference": -26,
+        "goalDifference": -26,
         "wins": 9,
         "losses": 20,
         "draws": 9,
-        "goals_scored": 47,
-        "goals_allowed": 73,
-        "clean_sheets": 5,
-        "clean_sheets_against": 11,
-        "big_wins": 2,
-        "big_losses": 7,
-        "results_string": "LWDLLLDLWWLLWLLDLLLWLDLDDLWLWWDLLDWLLD",
-        "cumulative_points": [
+        "goalsScored": 47,
+        "goalsAllowed": 73,
+        "cleanSheets": 5,
+        "cleanSheetsAgainst": 11,
+        "bigWins": 2,
+        "bigLosses": 7,
+        "resultsString": "LWDLLLDLWWLLWLLDLLLWLDLDDLWLWWDLLDWLLD",
+        "cumulativePoints": [
             0,
             0,
             3,
@@ -1773,7 +1773,7 @@
             35,
             36
         ],
-        "cumulative_goal_difference": [
+        "cumulativeGoalDifference": [
             0,
             -2,
             0,
@@ -1820,20 +1820,20 @@
     {
         "position": 19,
         "team": "Reading",
-        "games_played": 38,
+        "gamesPlayed": 38,
         "points": 28,
-        "goal_difference": -30,
+        "goalDifference": -30,
         "wins": 6,
         "losses": 22,
         "draws": 10,
-        "goals_scored": 43,
-        "goals_allowed": 73,
-        "clean_sheets": 5,
-        "clean_sheets_against": 14,
-        "big_wins": 0,
-        "big_losses": 4,
-        "results_string": "DLLLDDLDDDWLLLLLLLDWLWWDWLLLLLLLDLDWLL",
-        "cumulative_points": [
+        "goalsScored": 43,
+        "goalsAllowed": 73,
+        "cleanSheets": 5,
+        "cleanSheetsAgainst": 14,
+        "bigWins": 0,
+        "bigLosses": 4,
+        "resultsString": "DLLLDDLDDDWLLLLLLLDWLWWDWLLLLLLLDLDWLL",
+        "cumulativePoints": [
             0,
             1,
             1,
@@ -1874,7 +1874,7 @@
             28,
             28
         ],
-        "cumulative_goal_difference": [
+        "cumulativeGoalDifference": [
             0,
             0,
             -2,
@@ -1921,20 +1921,20 @@
     {
         "position": 20,
         "team": "QPR",
-        "games_played": 38,
+        "gamesPlayed": 38,
         "points": 25,
-        "goal_difference": -30,
+        "goalDifference": -30,
         "wins": 4,
         "losses": 21,
         "draws": 13,
-        "goals_scored": 30,
-        "goals_allowed": 60,
-        "clean_sheets": 7,
-        "clean_sheets_against": 16,
-        "big_wins": 0,
-        "big_losses": 3,
-        "results_string": "LDLDLLLDLDLLLDDDWLLLWDDDDLLWWLLDLLDLLL",
-        "cumulative_points": [
+        "goalsScored": 30,
+        "goalsAllowed": 60,
+        "cleanSheets": 7,
+        "cleanSheetsAgainst": 16,
+        "bigWins": 0,
+        "bigLosses": 3,
+        "resultsString": "LDLDLLLDLDLLLDDDWLLLWDDDDLLWWLLDLLDLLL",
+        "cumulativePoints": [
             0,
             0,
             1,
@@ -1975,7 +1975,7 @@
             25,
             25
         ],
-        "cumulative_goal_difference": [
+        "cumulativeGoalDifference": [
             0,
             -5,
             -5,
