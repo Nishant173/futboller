@@ -1,7 +1,7 @@
 from rest_framework.decorators import api_view
 from django.http import JsonResponse
 from leagues.models import LeagueMatch, LeagueStandings
-from . import docs, filters, queries, utils
+from . import casing, docs, filters, queries, utils
 
 
 @api_view(['GET'])
@@ -51,6 +51,7 @@ def get_matches(request):
                                             matchup=matchup,
                                             winning_team=winning_team,
                                             losing_team=losing_team)
+    df_matches = utils.switch_column_casing(data=df_matches, func=casing.sc2lcc)
     matches = df_matches.to_dict(orient='records')
     return JsonResponse(data=matches, safe=False)
 
@@ -63,5 +64,6 @@ def get_league_standings(request):
     df_standings = utils.queryset_to_dataframe(qs=qs_standings, drop_id=True)
     df_standings['cumulative_points'] = df_standings['cumulative_points'].apply(utils.listify_string_of_nums)
     df_standings['cumulative_goal_difference'] = df_standings['cumulative_goal_difference'].apply(utils.listify_string_of_nums)
+    df_standings = utils.switch_column_casing(data=df_standings, func=casing.sc2lcc)
     list_league_standings = df_standings.to_dict(orient='records')
     return JsonResponse(data=list_league_standings, safe=False)
