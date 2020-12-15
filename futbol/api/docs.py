@@ -3,7 +3,7 @@ VERSION_PREFIX = "/api/v1"
 ENDPOINTS = [
     {
         "endpoint": f"{VERSION_PREFIX}/documentation/",
-        "description": "Gets documentation",
+        "description": "Gets API documentation",
         "parameters": [],
         "example": f"{VERSION_PREFIX}/documentation/",
         "methods": ["GET"],
@@ -37,7 +37,7 @@ ENDPOINTS = [
         "methods": ["GET"],
     },
     {
-        "endpoint": f"{VERSION_PREFIX}/matches/",
+        "endpoint": f"{VERSION_PREFIX}/league-matches/",
         "description": "Gets list of league matches (filter parameters are allowed)",
         "parameters": [
             {
@@ -88,7 +88,7 @@ ENDPOINTS = [
                 "required": False,
             },
         ],
-        "example": f"{VERSION_PREFIX}/matches/?league=EPL&season=2017-18&matchup=Arsenal,Chelsea",
+        "example": f"{VERSION_PREFIX}/league-matches/?league=EPL&season=2017-18&matchup=Arsenal,Chelsea",
         "methods": ["GET"],
     },
     {
