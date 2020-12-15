@@ -11,7 +11,9 @@ def get_documentation(request):
 
 @api_view(['GET'])
 def get_teams(request):
+    name_contains = request.GET.get('nameContains', default=None)
     teams = queries.get_teams()
+    teams = filters.filter_teams_by_icontains(teams=teams, name_contains=name_contains)
     return JsonResponse(data=teams, safe=False)
 
 
