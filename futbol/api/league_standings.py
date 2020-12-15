@@ -214,9 +214,20 @@ def add_ranking(data: pd.DataFrame, column_name: str) -> pd.DataFrame:
     return data
 
 
-def get_league_standings(data: pd.DataFrame) -> pd.DataFrame:
-    """Gets league standings from data of matches (for one season)"""
+def get_league_standings(data: pd.DataFrame,
+                         league: str,
+                         season: str) -> pd.DataFrame:
+    """
+    Gets league standings from data of matches (for one particular league season).
+    Columns expected in `data`: ['home_team', 'away_team', 'home_goals', 'away_goals',
+                                 'date', 'season', 'league', 'country']
+    Columns returned in League Standings: ['position', 'team', 'games_played', 'points', 'goal_difference',
+                                           'wins', 'losses', 'draws', 'goals_scored', 'goals_allowed', 'clean_sheets',
+                                           'clean_sheets_against', 'big_wins', 'big_losses', 'results_string',
+                                           'cumulative_points', 'cumulative_goal_difference', 'league', 'season']
+    """
     df_league_standings = pd.DataFrame()
+    data = filters.filter_league_data(data=data, league=league, season=season)
     dict_results_string = get_results_string(data=data)
     dict_cum_pts = get_cumulative_points(data=data)
     dict_cum_gd = get_cumulative_goal_difference(data=data)
@@ -253,21 +264,20 @@ def get_league_standings(data: pd.DataFrame) -> pd.DataFrame:
         }, index=[0])
         df_league_standings = pd.concat(objs=[df_league_standings, df_temp], ignore_index=True, sort=False)
     df_league_standings = add_ranking(data=df_league_standings, column_name='position')
+    df_league_standings['league'] = league
+    df_league_standings['season'] = season
     return df_league_standings
 
 
 def get_historical_league_standings() -> pd.DataFrame:
     """Gets league standings from data of matches (for all seasons and for all leagues)"""
-    df_league_standings = pd.DataFrame()
+    df_all_league_standings = pd.DataFrame()
     qs_matches = LeagueMatch.objects.all()
     data = utils.queryset_to_dataframe(qs=qs_matches, drop_id=True)
     leagues = sorted(data['league'].unique().tolist())
     seasons = sorted(data['season'].unique().tolist())
     for league in leagues:
         for season in seasons:
-            df_by_season = data.loc[((data['league'] == league) & (data['season'] == season)), :]
-            df_temp = get_league_standings(data=df_by_season)
-            df_temp['league'] = league
-            df_temp['season'] = season
-            df_league_standings = pd.concat(objs=[df_league_standings, df_temp], ignore_index=True, sort=False)
-    return df_league_standings
+            df_temp = get_league_standings(data=data, league=league, season=season)
+            df_all_league_standings = pd.concat(objs=[df_all_league_standings, df_temp], ignore_index=True, sort=False)
+    return df_all_league_standings
