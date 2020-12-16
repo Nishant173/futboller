@@ -1,5 +1,5 @@
 from rest_framework.decorators import api_view
-from django.http import JsonResponse
+from rest_framework.response import Response
 from leagues import filters, queries
 from leagues.models import LeagueMatch, LeagueStandings
 from utilities import casing, utils
@@ -8,7 +8,7 @@ from . import docs
 
 @api_view(['GET'])
 def get_documentation(request):
-    return JsonResponse(data=docs.ENDPOINTS, safe=False)
+    return Response(data=docs.ENDPOINTS, status=200)
 
 
 @api_view(['GET'])
@@ -16,19 +16,19 @@ def get_teams(request):
     name_contains = request.GET.get('nameContains', default=None)
     teams = queries.get_teams()
     teams = filters.filter_teams_by_icontains(teams=teams, name_contains=name_contains)
-    return JsonResponse(data=teams, safe=False)
+    return Response(data=teams, status=200)
 
 
 @api_view(['GET'])
 def get_leagues(request):
     leagues = queries.get_leagues()
-    return JsonResponse(data=leagues, safe=False)
+    return Response(data=leagues, status=200)
 
 
 @api_view(['GET'])
 def get_seasons(request):
     seasons = queries.get_seasons()
-    return JsonResponse(data=seasons, safe=False)
+    return Response(data=seasons, status=200)
 
 
 @api_view(['GET'])
@@ -57,7 +57,7 @@ def get_matches(request):
                                             losing_team=losing_team)
     df_matches = utils.switch_column_casing(data=df_matches, func=casing.sc2lcc)
     matches = utils.dataframe_to_list(data=df_matches)
-    return JsonResponse(data=matches, safe=False)
+    return Response(data=matches, status=200)
 
 
 @api_view(['GET'])
@@ -70,4 +70,4 @@ def get_league_standings(request):
     df_standings['cumulative_goal_difference'] = df_standings['cumulative_goal_difference'].apply(utils.listify_string_of_nums)
     df_standings = utils.switch_column_casing(data=df_standings, func=casing.sc2lcc)
     league_standings = utils.dataframe_to_list(data=df_standings)
-    return JsonResponse(data=league_standings, safe=False)
+    return Response(data=league_standings, status=200)
