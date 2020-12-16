@@ -89,3 +89,8 @@ class LeagueStandings(models.Model):
     
     def __str__(self) -> str:
         return f"{self.team} - {self.league} ({self.season})"
+    
+    @property
+    def league_winner(self) -> bool:
+        """Returns True if the team won their league that season; False otherwise"""
+        return (self.position == 1)

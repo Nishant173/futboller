@@ -1,7 +1,9 @@
 from rest_framework.decorators import api_view
 from django.http import JsonResponse
+from leagues import filters, queries
 from leagues.models import LeagueMatch, LeagueStandings
-from . import casing, docs, filters, queries, utils
+from utilities import casing, utils
+from . import docs
 
 
 @api_view(['GET'])
