@@ -8,8 +8,7 @@ def filter_teams_by_icontains(teams: Union[List[str], List],
     """Filters list of teams based on case-insensitive search"""
     if not name_contains:
         return teams
-    data = pd.DataFrame()
-    data['team'] = teams
+    data = pd.DataFrame(data={'team': teams})
     data = data.loc[(data['team'].str.lower().str.contains(name_contains.lower())), :]
     teams_filtered = data['team'].tolist()
     return teams_filtered
@@ -24,7 +23,7 @@ def filter_by_team(data: pd.DataFrame,
 
 def filter_by_matchup(data: pd.DataFrame,
                       teams: List[str]) -> pd.DataFrame:
-    """Filters DataFrame by matchup b/w given team combo (list of two teams)"""
+    """Filters DataFrame by matchup between given team combo (list of two teams)"""
     if data.empty:
         return data
     if len(teams) != 2:
@@ -39,7 +38,7 @@ def filter_by_matchup(data: pd.DataFrame,
 def filter_by_result(data: pd.DataFrame,
                      team: str,
                      result: str) -> pd.DataFrame:
-    """Gets records wherein `team` gets the given `result` ('win', 'loss', 'draw')"""
+    """Gets records wherein `team` gets the given `result` ['win', 'loss', 'draw']"""
     if result not in ['win', 'loss', 'draw']:
         raise ValueError(f"Expected one of ['win', 'loss', 'draw'] for `result`, but got {result}")
     data = filter_by_team(data=data, team=team)
@@ -78,6 +77,7 @@ def filter_league_data(data: pd.DataFrame,
                        matchup: Optional[str] = None,
                        winning_team: Optional[str] = None,
                        losing_team: Optional[str] = None) -> pd.DataFrame:
+    """Filters DataFrame having `LeagueMatch` data (based on certain parameters)"""
     if data.empty:
         return data
     data['gd'] = (data['home_goals'] - data['away_goals']).abs()

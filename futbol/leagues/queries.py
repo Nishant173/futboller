@@ -1,20 +1,22 @@
 from typing import List
 import pandas as pd
-from . import config
+import sqlite3
 from . import utils
+from futbol import config
 
 
 def get_teams() -> List[str]:
     """Returns list of teams from `leagues_leaguematch` table"""
     sql = f"""
     SELECT home_team, away_team
-    FROM {config.TBL_LEAGUES}
+    FROM {config.TBL_LEAGUE_MATCHES}
     """
-    df = utils.sql_to_dataframe(sql=sql)
+    connection = sqlite3.connect(database=config.DB_FILEPATH)
+    df = pd.read_sql(sql=sql, con=connection)
+    connection.close()
     if df.empty:
         return []
-    teams_series = pd.concat(objs=[df['home_team'], df['away_team']]).sort_values(ascending=True)
-    teams = teams_series.unique().tolist()
+    teams = utils.get_unique_teams(data=df)
     return teams
 
 
@@ -22,10 +24,12 @@ def get_leagues() -> List[str]:
     """Returns list of league names from `leagues_leaguematch` table"""
     sql = f"""
     SELECT DISTINCT(league)
-    FROM {config.TBL_LEAGUES}
+    FROM {config.TBL_LEAGUE_MATCHES}
     ORDER BY league ASC
     """
-    df = utils.sql_to_dataframe(sql=sql)
+    connection = sqlite3.connect(database=config.DB_FILEPATH)
+    df = pd.read_sql(sql=sql, con=connection)
+    connection.close()
     if df.empty:
         return []
     leagues = df['league'].tolist()
@@ -36,10 +40,12 @@ def get_seasons() -> List[str]:
     """Returns list of season names from `leagues_leaguematch` table"""
     sql = f"""
     SELECT DISTINCT(season)
-    FROM {config.TBL_LEAGUES}
+    FROM {config.TBL_LEAGUE_MATCHES}
     ORDER BY season ASC
     """
-    df = utils.sql_to_dataframe(sql=sql)
+    connection = sqlite3.connect(database=config.DB_FILEPATH)
+    df = pd.read_sql(sql=sql, con=connection)
+    connection.close()
     if df.empty:
         return []
     seasons = df['season'].tolist()

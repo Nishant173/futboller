@@ -1,8 +1,10 @@
 from typing import Dict, List
 import numpy as np
 import pandas as pd
-from leagues.models import LeagueMatch
-from . import filters, utils
+from . import filters
+from .models import LeagueMatch
+from . import utils as league_utils
+from utilities import utils
 pd.set_option('mode.chained_assignment', None)
 
 
@@ -109,7 +111,7 @@ def get_results_string(data: pd.DataFrame) -> Dict[str, str]:
     """
     dictionary_results = {}
     data.sort_values(by='date', ascending=True, inplace=True, ignore_index=True)
-    teams = utils.get_teams(data=data)
+    teams = league_utils.get_unique_teams(data=data)
 
     for team in teams:
         dictionary_results[team] = "" # Initialize with empty string
@@ -143,7 +145,7 @@ def get_cumulative_points(data: pd.DataFrame) -> Dict[str, List[int]]:
     """
     dict_cum_pts = {} # Cumulative points by team
     data.sort_values(by='date', ascending=True, inplace=True, ignore_index=True)
-    teams = utils.get_teams(data=data)
+    teams = league_utils.get_unique_teams(data=data)
 
     for team in teams:
         dict_cum_pts[team] = [0]
@@ -179,7 +181,7 @@ def get_cumulative_goal_difference(data: pd.DataFrame) -> Dict[str, List[int]]:
     """
     dict_cum_gd = {} # Cumulative goal differences by team
     data.sort_values(by='date', ascending=True, inplace=True, ignore_index=True)
-    teams = utils.get_teams(data=data)
+    teams = league_utils.get_unique_teams(data=data)
 
     for team in teams:
         dict_cum_gd[team] = [0]
@@ -231,10 +233,10 @@ def get_league_standings(data: pd.DataFrame,
     dict_results_string = get_results_string(data=data)
     dict_cum_pts = get_cumulative_points(data=data)
     dict_cum_gd = get_cumulative_goal_difference(data=data)
-    teams = utils.get_teams(data=data)
+    teams = league_utils.get_unique_teams(data=data)
     for team in teams:
         df_by_team = filters.filter_by_team(data=data, team=team)
-        games_played = utils.get_games_played(data=df_by_team)
+        games_played = league_utils.get_games_played(data=df_by_team)
         wins = get_win_count(data=df_by_team, team=team)
         losses = get_loss_count(data=df_by_team, team=team)
         draws = get_draw_count(data=df_by_team, team=team)
