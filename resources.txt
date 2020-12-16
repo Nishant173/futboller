@@ -9,3 +9,9 @@ https://docs.djangoproject.com/en/3.1/ref/models/expressions/
 https://stackoverflow.com/questions/21925671/convert-django-model-object-to-dict-with-all-of-the-fields-intact
 https://www.smashingmagazine.com/2020/06/rest-api-react-fetch-axios/
 https://www.youtube.com/watch?v=T3Px88x_PsA
+
+Django - Testing, API documentation, serializers and more
+https://djangostars.com/blog/rest-apis-django-development/
+
+Structuring Django apps
+http://danielhnyk.cz/django-rest-framework-how-to-structure-your-app/
