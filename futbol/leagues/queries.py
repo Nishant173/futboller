@@ -1,7 +1,7 @@
 from typing import List
 import pandas as pd
 import sqlite3
-from . import utils
+from .utils import get_unique_teams
 from futbol import config
 
 
@@ -16,7 +16,7 @@ def get_teams() -> List[str]:
     connection.close()
     if df.empty:
         return []
-    teams = utils.get_unique_teams(data=df)
+    teams = get_unique_teams(data=df)
     return teams
 
 
