@@ -56,7 +56,7 @@ def get_matches(request):
                                             winning_team=winning_team,
                                             losing_team=losing_team)
     df_matches = utils.switch_column_casing(data=df_matches, func=casing.sc2lcc)
-    matches = df_matches.to_dict(orient='records')
+    matches = utils.dataframe_to_list(data=df_matches)
     return JsonResponse(data=matches, safe=False)
 
 
@@ -69,5 +69,5 @@ def get_league_standings(request):
     df_standings['cumulative_points'] = df_standings['cumulative_points'].apply(utils.listify_string_of_nums)
     df_standings['cumulative_goal_difference'] = df_standings['cumulative_goal_difference'].apply(utils.listify_string_of_nums)
     df_standings = utils.switch_column_casing(data=df_standings, func=casing.sc2lcc)
-    list_league_standings = df_standings.to_dict(orient='records')
-    return JsonResponse(data=list_league_standings, safe=False)
+    league_standings = utils.dataframe_to_list(data=df_standings)
+    return JsonResponse(data=league_standings, safe=False)
