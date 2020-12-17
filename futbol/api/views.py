@@ -32,7 +32,7 @@ def get_seasons(request):
 
 
 @api_view(['GET'])
-def get_matches(request):
+def get_league_matches(request):
     team = request.GET.get('team', default=None)
     league = request.GET.get('league', default=None)
     season = request.GET.get('season', default=None)

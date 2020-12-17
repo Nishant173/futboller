@@ -6,6 +6,6 @@ urlpatterns = [
     path(route='teams/', view=views.get_teams, name='api-teams'),
     path(route='leagues/', view=views.get_leagues, name='api-leagues'),
     path(route='seasons/', view=views.get_seasons, name='api-seasons'),
-    path(route='league-matches/', view=views.get_matches, name='api-league-matches'),
+    path(route='league-matches/', view=views.get_league_matches, name='api-league-matches'),
     path(route='league-standings/', view=views.get_league_standings, name='api-league-standings'),
 ]
