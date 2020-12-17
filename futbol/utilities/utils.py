@@ -1,6 +1,8 @@
 from typing import Callable, Dict, List, Union
 from django.db.models import QuerySet
+import numpy as np
 import pandas as pd
+import random
 
 
 def string_to_int_or_float(value: str) -> Union[int, float]:
@@ -78,3 +80,48 @@ def queryset_to_dataframe(qs: QuerySet, drop_id: bool) -> pd.DataFrame:
 def queryset_to_list(qs: QuerySet, drop_id: bool) -> Union[List[Dict], List]:
     data = queryset_to_dataframe(qs=qs, drop_id=drop_id)
     return dataframe_to_list(data=data)
+
+
+def spread_by_factor(array: List[Union[int, float]], factor: int) -> List[Union[int, float]]:
+    """
+    Spread out an array by given factor.
+    Example:
+        >>> spread_by_factor(array=[4, 6, 7, 3], factor=3)
+        >>> [4, 4, 4, 6, 6, 6, 7, 7, 7, 3, 3, 3]
+    """
+    array_after_spreading = []
+    for idx, _ in enumerate(array):
+        array_after_spreading += [array[idx]] * int(factor)
+    return array_after_spreading
+
+
+def spread_array(array: List[Union[int, float]], to: int) -> List[Union[int, float]]:
+    """
+    Definition:
+        Spread out an array to particular length without distorting signal of the original data.
+    Parameters:
+        - array (list): List or list-like array data
+        - to (int): Length of array to be spread into
+    Example:
+        >>> spread_array(array=[2, 3, -7], to=14)
+        >>> [2, 2, 2, 2, 3, 3, 3, 3, 3, -7, -7, -7, -7, -7]
+    """
+    initial_array_length = len(array)
+    if initial_array_length >= to:
+        return array
+    array_after_spread = []
+    spread_factor = to / initial_array_length
+    # If length of array to spread into is divisible by length of initial array
+    if int(spread_factor) == spread_factor:
+        array_after_spread = spread_by_factor(array=array, factor=int(spread_factor))
+        return array_after_spread
+    # Perform necessary complete fill-ups of the array to spread into
+    num_complete_fillups = int(np.floor(spread_factor))
+    if num_complete_fillups > 0:
+        array_after_spread = spread_by_factor(array=array, factor=num_complete_fillups)
+    # Fill-up the remaining elements of `array_after_spread` randomly (to minimise distortion)
+    while len(array_after_spread) != to:
+        random_index = random.randint(0, len(array_after_spread)-1)
+        random_element = array_after_spread[random_index]
+        array_after_spread.insert(random_index+1, random_element)
+    return array_after_spread
