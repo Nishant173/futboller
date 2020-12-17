@@ -88,11 +88,11 @@ def get_cross_league_standings() -> pd.DataFrame:
         }, index=[0])
         df_cls = pd.concat(objs=[df_cls, df_temp], ignore_index=True, sort=False)
     
-    max_num_games_played = int(df_cls['games_played'].max())
+    spread_to = int(df_cls['games_played'].max()) + 1 # The +1 is because Points/GoalDifference is [0] initially
     df_cls['cumulative_points'] = df_cls['cumulative_points'].apply(utils.listify_string_of_nums)
     df_cls['cumulative_goal_difference'] = df_cls['cumulative_goal_difference'].apply(utils.listify_string_of_nums)
-    df_cls['cumulative_points_normalized'] = df_cls['cumulative_points'].apply(utils.spread_array, to=max_num_games_played)
-    df_cls['cumulative_goal_difference_normalized'] = df_cls['cumulative_goal_difference'].apply(utils.spread_array, to=max_num_games_played)
+    df_cls['cumulative_points_normalized'] = df_cls['cumulative_points'].apply(utils.spread_array, to=spread_to)
+    df_cls['cumulative_goal_difference_normalized'] = df_cls['cumulative_goal_difference'].apply(utils.spread_array, to=spread_to)
     df_cls['cumulative_points'] = df_cls['cumulative_points'].apply(utils.stringify_list_of_nums)
     df_cls['cumulative_goal_difference'] = df_cls['cumulative_goal_difference'].apply(utils.stringify_list_of_nums)
     df_cls['cumulative_points_normalized'] = df_cls['cumulative_points_normalized'].apply(utils.stringify_list_of_nums)
