@@ -15,6 +15,7 @@ from .league_standings import (get_results_string,
                                get_rout_count,
                                get_capitulation_count,
                                get_longest_streak)
+from .models import LeagueMatch
 from .utils import get_unique_teams
 from utilities import utils
 
@@ -32,12 +33,9 @@ def add_cross_league_ranking(data: pd.DataFrame, column_name: str) -> pd.DataFra
     return data
 
 
-def get_cross_league_standings(data: pd.DataFrame) -> pd.DataFrame:
+def get_cross_league_standings() -> pd.DataFrame:
     """
-    Gets cross league standings from data of matches (for all leagues and for all seasons).
-    Expects DataFrame having `LeagueMatch` data.
-    Columns expected in `data`: ['home_team', 'away_team', 'home_goals', 'away_goals',
-                                 'date', 'season', 'league', 'country']
+    Gets cross league standings from `LeagueMatch` data (for all leagues and for all seasons).
     Columns returned in Cross League Standings:
         ['position', 'team', 'games_played', 'avg_points', 'avg_goal_difference',
          'win_percent', 'loss_percent', 'draw_percent', 'avg_goals_scored', 'avg_goals_allowed',
@@ -45,6 +43,8 @@ def get_cross_league_standings(data: pd.DataFrame) -> pd.DataFrame:
          'results_string', 'cumulative_points', 'cumulative_goal_difference', 'longest_win_streak',
          'longest_loss_streak', 'longest_draw_streak', 'longest_unbeaten_streak', 'league']
     """
+    qs_matches = LeagueMatch.objects.all()
+    data = utils.queryset_to_dataframe(qs=qs_matches, drop_id=True)
     df_cross_league_standings = pd.DataFrame()
     dict_results_string = get_results_string(data=data)
     dict_cum_pts = get_cumulative_points(data=data)

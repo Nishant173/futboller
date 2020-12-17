@@ -98,3 +98,45 @@ class LeagueStandings(models.Model):
     def league_winner(self) -> bool:
         """Returns True if the team won their league that season; False otherwise"""
         return (self.position == 1)
+
+
+
+class CrossLeagueStandings(models.Model):
+    position = models.IntegerField(verbose_name="Position", null=False, default=0)
+    team = models.CharField(verbose_name="Team", max_length=50, null=False)
+    games_played = models.IntegerField(verbose_name="Games played", null=False)
+    avg_points = models.FloatField(verbose_name="Average points", null=False)
+    avg_goal_difference = models.FloatField(verbose_name="Average goal difference", null=False)
+    win_percent = models.FloatField(verbose_name="Win percent", null=False)
+    loss_percent = models.FloatField(verbose_name="Loss percent", null=False)
+    draw_percent = models.FloatField(verbose_name="Draw percent", null=False)
+    avg_goals_scored = models.FloatField(verbose_name="Average goals scored", null=False)
+    avg_goals_allowed = models.FloatField(verbose_name="Average goals allowed", null=False)
+    clean_sheets_percent = models.FloatField(verbose_name="Clean sheets percent", null=False)
+    clean_sheets_against_percent = models.FloatField(verbose_name="Clean sheets against percent", null=False)
+    big_win_percent = models.FloatField(verbose_name="Big win percent", null=False)
+    big_loss_percent = models.FloatField(verbose_name="Big loss percent", null=False)
+    results_string = models.CharField(verbose_name="Results string",
+                                      max_length=38,
+                                      null=False,
+                                      default="")
+    cumulative_points = models.CharField(verbose_name="Cumulative points",
+                                         max_length=200,
+                                         null=False,
+                                         default="")
+    cumulative_goal_difference = models.CharField(verbose_name="Cumulative goal difference",
+                                                  max_length=200,
+                                                  null=False,
+                                                  default="")
+    longest_win_streak = models.IntegerField(verbose_name="Longest win streak", null=False, default=-1)
+    longest_loss_streak = models.IntegerField(verbose_name="Longest loss streak", null=False, default=-1)
+    longest_draw_streak = models.IntegerField(verbose_name="Longest draw streak", null=False, default=-1)
+    longest_unbeaten_streak = models.IntegerField(verbose_name="Longest unbeaten streak", null=False, default=-1)
+    league = models.CharField(verbose_name="League", max_length=30, null=False)
+
+    class Meta:
+        verbose_name = "Cross League Standings"
+        verbose_name_plural = "Cross League Standings"
+    
+    def __str__(self) -> str:
+        return f"{self.team} ({self.league})"
