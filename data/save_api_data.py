@@ -8,8 +8,7 @@ def save_object_as_json(obj, filepath):
     return None
 
 
-def save_api_data():
-    """Saves data fetched from the API to local JSON file/s"""
+def save_league_standings():
     leagues = ["Bundesliga", "EPL", "La Liga", "Ligue 1", "Serie A"]
     seasons = [
         "2009-10", "2010-11", "2011-12", "2012-13", "2013-14",
@@ -17,16 +16,28 @@ def save_api_data():
     ]
     for league in leagues:
         for season in seasons:
-            url = f"http://localhost:8000/api/v1/league-standings?league={league}&season={season}"
+            url = f"http://localhost:8000/api/v1/league-standings/?league={league}&season={season}"
             response = requests.get(url=url)
             if response.ok:
                 obj = json.loads(response.text)
-                save_object_as_json(obj=obj, filepath=f"json/{league} ({season}).json")
+                save_object_as_json(obj=obj, filepath=f"json/LeagueStandings - {league} ({season}).json")
             else:
                 print(f"API error for {league} ({season}) data")
-    print("Done")
+    return None
+
+
+def save_cross_league_standings():
+    url = "http://localhost:8000/api/v1/cross-league-standings/"
+    response = requests.get(url=url)
+    if response.ok:
+        obj = json.loads(response.text)
+        save_object_as_json(obj=obj, filepath=f"json/CrossLeagueStandings.json")
+    else:
+        print("API error for cross league standings data")
     return None
 
 
 if __name__ == "__main__":
-    save_api_data()
+    save_league_standings()
+    save_cross_league_standings()
+    print("Done")
