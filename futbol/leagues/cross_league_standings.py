@@ -41,11 +41,12 @@ def get_cross_league_standings() -> pd.DataFrame:
          'win_percent', 'loss_percent', 'draw_percent', 'avg_goals_scored', 'avg_goals_allowed',
          'clean_sheets_percent', 'clean_sheets_against_percent', 'big_win_percent', 'big_loss_percent',
          'results_string', 'cumulative_points', 'cumulative_goal_difference', 'longest_win_streak',
-         'longest_loss_streak', 'longest_draw_streak', 'longest_unbeaten_streak', 'league']
+         'longest_loss_streak', 'longest_draw_streak', 'longest_unbeaten_streak', 'league',
+         'cumulative_points_normalized', 'cumulative_goal_difference_normalized']
     """
     qs_matches = LeagueMatch.objects.all()
     data = utils.queryset_to_dataframe(qs=qs_matches, drop_id=True)
-    df_cross_league_standings = pd.DataFrame()
+    df_cls = pd.DataFrame() # Initialize DataFrame of cross league standings
     dict_results_string = get_results_string(data=data)
     dict_cum_pts = get_cumulative_points(data=data)
     dict_cum_gd = get_cumulative_goal_difference(data=data)
@@ -85,9 +86,19 @@ def get_cross_league_standings() -> pd.DataFrame:
             'longest_unbeaten_streak': get_longest_streak(results_string=dict_results_string[team], by=['W', 'D']),
             'league': df_by_team['league'].unique().tolist()[0],
         }, index=[0])
-        df_cross_league_standings = pd.concat(objs=[df_cross_league_standings, df_temp], ignore_index=True, sort=False)
-    df_cross_league_standings = add_cross_league_ranking(data=df_cross_league_standings, column_name='position')
-    df_cross_league_standings = utils.round_off_columns(data=df_cross_league_standings, mapper={
+        df_cls = pd.concat(objs=[df_cls, df_temp], ignore_index=True, sort=False)
+    
+    max_num_games_played = int(df_cls['games_played'].max())
+    df_cls['cumulative_points'] = df_cls['cumulative_points'].apply(utils.listify_string_of_nums)
+    df_cls['cumulative_goal_difference'] = df_cls['cumulative_goal_difference'].apply(utils.listify_string_of_nums)
+    df_cls['cumulative_points_normalized'] = df_cls['cumulative_points'].apply(utils.spread_array, to=max_num_games_played)
+    df_cls['cumulative_goal_difference_normalized'] = df_cls['cumulative_goal_difference'].apply(utils.spread_array, to=max_num_games_played)
+    df_cls['cumulative_points'] = df_cls['cumulative_points'].apply(utils.stringify_list_of_nums)
+    df_cls['cumulative_goal_difference'] = df_cls['cumulative_goal_difference'].apply(utils.stringify_list_of_nums)
+    df_cls['cumulative_points_normalized'] = df_cls['cumulative_points_normalized'].apply(utils.stringify_list_of_nums)
+    df_cls['cumulative_goal_difference_normalized'] = df_cls['cumulative_goal_difference_normalized'].apply(utils.stringify_list_of_nums)
+    df_cls = add_cross_league_ranking(data=df_cls, column_name='position')
+    df_cls = utils.round_off_columns(data=df_cls, mapper={
         'avg_points': 4,
         'avg_goal_difference': 4,
         'avg_goals_scored': 3,
@@ -100,4 +111,4 @@ def get_cross_league_standings() -> pd.DataFrame:
         'big_win_percent': 2,
         'big_loss_percent': 2,
     })
-    return df_cross_league_standings
+    return df_cls

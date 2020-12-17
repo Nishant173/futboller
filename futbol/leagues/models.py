@@ -117,15 +117,15 @@ class CrossLeagueStandings(models.Model):
     big_win_percent = models.FloatField(verbose_name="Big win percent", null=False)
     big_loss_percent = models.FloatField(verbose_name="Big loss percent", null=False)
     results_string = models.CharField(verbose_name="Results string",
-                                      max_length=38,
+                                      max_length=10000,
                                       null=False,
                                       default="")
     cumulative_points = models.CharField(verbose_name="Cumulative points",
-                                         max_length=200,
+                                         max_length=10000,
                                          null=False,
                                          default="")
     cumulative_goal_difference = models.CharField(verbose_name="Cumulative goal difference",
-                                                  max_length=200,
+                                                  max_length=10000,
                                                   null=False,
                                                   default="")
     longest_win_streak = models.IntegerField(verbose_name="Longest win streak", null=False, default=-1)
@@ -133,6 +133,18 @@ class CrossLeagueStandings(models.Model):
     longest_draw_streak = models.IntegerField(verbose_name="Longest draw streak", null=False, default=-1)
     longest_unbeaten_streak = models.IntegerField(verbose_name="Longest unbeaten streak", null=False, default=-1)
     league = models.CharField(verbose_name="League", max_length=30, null=False)
+    cumulative_points_normalized = models.CharField(
+        verbose_name="Cumulative points normalized",
+        max_length=10000,
+        null=False,
+        default=""
+    )
+    cumulative_goal_difference_normalized = models.CharField(
+        verbose_name="Cumulative goal difference normalized",
+        max_length=10000,
+        null=False,
+        default=""
+    )
 
     class Meta:
         verbose_name = "Cross League Standings"

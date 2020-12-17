@@ -1,3 +1,22 @@
+'''
+- Run the below code from Django shell via `python manage.py shell` (open in appropriate directory)
+from leagues.load2db import (league_matches_to_db,
+                             league_standings_to_db,
+                             cross_league_standings_to_db)
+league_matches_to_db(filepath="../data/Top5LeaguesData.csv")
+league_standings_to_db()
+cross_league_standings_to_db()
+
+- To view the queryset/s
+from leagues.models import LeagueMatch, LeagueStandings, CrossLeagueStandings
+from utilities.utils import (queryset_to_dataframe, queryset_to_list)
+qs_matches = LeagueMatch.objects.all()
+qs_standings = LeagueStandings.objects.all()
+qs_cross_standings = CrossLeagueStandings.objects.all()
+queryset_to_dataframe(qs=qs, drop_id=True)
+queryset_to_list(qs=qs, drop_id=True)
+'''
+
 import pandas as pd
 import sqlite3
 from .cross_league_standings import get_cross_league_standings
@@ -41,21 +60,3 @@ def cross_league_standings_to_db() -> None:
     data.to_sql(name=config.TBL_CROSS_LEAGUE_STANDINGS, con=connection, if_exists='append', index=False)
     connection.close()
     return None
-
-
-'''
-Run the below code from Django shell via `python manage.py shell` (open in appropriate directory)
->>> from leagues.load2db import (league_matches_to_db, league_standings_to_db, cross_league_standings_to_db)
->>> league_matches_to_db(filepath="../data/Top5LeaguesData.csv")
->>> league_standings_to_db()
->>> cross_league_standings_to_db()
-
-To view the queryset/s
->>> from leagues.models import LeagueMatch, LeagueStandings, CrossLeagueStandings
->>> from utilities.utils import (queryset_to_dataframe, queryset_to_list)
->>> qs_matches = LeagueMatch.objects.all()
->>> qs_standings = LeagueStandings.objects.all()
->>> qs_cross_standings = CrossLeagueStandings.objects.all()
->>> queryset_to_dataframe(qs=qs, drop_id=True)
->>> queryset_to_list(qs=qs, drop_id=True)
-'''
