@@ -41,7 +41,7 @@ def get_cross_league_standings(data: pd.DataFrame) -> pd.DataFrame:
     Columns returned in Cross League Standings:
         ['position', 'team', 'games_played', 'avg_points', 'avg_goal_difference',
          'win_percent', 'loss_percent', 'draw_percent', 'avg_goals_scored', 'avg_goals_allowed',
-         'clean_sheets_percent', 'clean_sheets_against_percent', 'big_wins_percent', 'big_losses_percent',
+         'clean_sheets_percent', 'clean_sheets_against_percent', 'big_win_percent', 'big_loss_percent',
          'results_string', 'cumulative_points', 'cumulative_goal_difference', 'longest_win_streak',
          'longest_loss_streak', 'longest_draw_streak', 'longest_unbeaten_streak', 'league']
     """
@@ -74,8 +74,8 @@ def get_cross_league_standings(data: pd.DataFrame) -> pd.DataFrame:
             'avg_goals_allowed': ga / games_played,
             'clean_sheets_percent': cs * 100 / games_played,
             'clean_sheets_against_percent': csa * 100 / games_played,
-            'big_wins_percent': routs * 100 / games_played,
-            'big_losses_percent': capitulations * 100 / games_played,
+            'big_win_percent': routs * 100 / games_played,
+            'big_loss_percent': capitulations * 100 / games_played,
             'results_string': dict_results_string[team],
             'cumulative_points': utils.stringify_list_of_nums(array=dict_cum_pts[team]),
             'cumulative_goal_difference': utils.stringify_list_of_nums(array=dict_cum_gd[team]),
@@ -97,7 +97,7 @@ def get_cross_league_standings(data: pd.DataFrame) -> pd.DataFrame:
         'draw_percent': 2,
         'clean_sheets_percent': 2,
         'clean_sheets_against_percent': 2,
-        'big_wins_percent': 2,
-        'big_losses_percent': 2,
+        'big_win_percent': 2,
+        'big_loss_percent': 2,
     })
     return df_cross_league_standings
