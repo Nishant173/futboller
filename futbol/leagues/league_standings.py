@@ -259,7 +259,9 @@ def get_league_standings(data: pd.DataFrame,
     Columns returned in League Standings: ['position', 'team', 'games_played', 'points', 'goal_difference',
                                            'wins', 'losses', 'draws', 'goals_scored', 'goals_allowed', 'clean_sheets',
                                            'clean_sheets_against', 'big_wins', 'big_losses', 'results_string',
-                                           'cumulative_points', 'cumulative_goal_difference', 'league', 'season']
+                                           'cumulative_points', 'cumulative_goal_difference', 'longest_win_streak',
+                                           'longest_loss_streak', 'longest_draw_streak', 'longest_unbeaten_streak',
+                                           'league', 'season']
     """
     df_league_standings = pd.DataFrame()
     data = filters.filter_league_data(data=data, league=league, season=season)
