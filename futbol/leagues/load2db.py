@@ -45,7 +45,7 @@ def cross_league_standings_to_db() -> None:
 
 '''
 Run the below code from Django shell via `python manage.py shell` (open in appropriate directory)
->>> from leagues.load2db import (league_matches_to_db, league_standings_to_db)
+>>> from leagues.load2db import (league_matches_to_db, league_standings_to_db, cross_league_standings_to_db)
 >>> league_matches_to_db(filepath="../data/Top5LeaguesData.csv")
 >>> league_standings_to_db()
 >>> cross_league_standings_to_db()
