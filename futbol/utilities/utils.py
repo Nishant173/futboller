@@ -39,6 +39,23 @@ def switch_column_casing(data: pd.DataFrame, func: Callable) -> pd.DataFrame:
     return data
 
 
+def round_off_columns(data: pd.DataFrame, mapper: Dict[str, int]):
+    """
+    Rounds off specified numerical (float) columns in DataFrame.
+    Example:
+        >>> round_off_columns(data=data, mapper={
+            'column1': 3,
+            'column2': 4,
+            'column3': 4,
+        })
+    """
+    columns_available = data.columns.tolist()
+    for column, round_by in mapper.items():
+        if column in columns_available:
+            data[column] = data[column].apply(round, args=[int(round_by)])
+    return data
+
+
 def drop_id_column(data: pd.DataFrame) -> pd.DataFrame:
     """Drops the 'id' column from Pandas DataFrame"""
     data.drop(labels=['id'], axis=1, inplace=True)
