@@ -8,4 +8,5 @@ urlpatterns = [
     path(route='seasons/', view=views.get_seasons, name='api-seasons'),
     path(route='league-matches/', view=views.get_league_matches, name='api-league-matches'),
     path(route='league-standings/', view=views.get_league_standings, name='api-league-standings'),
+    path(route='cross-league-standings/', view=views.get_cross_league_standings, name='api-cross-league-standings'),
 ]

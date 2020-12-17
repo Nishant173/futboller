@@ -1,7 +1,7 @@
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from leagues import filters, queries
-from leagues.models import LeagueMatch, LeagueStandings
+from leagues.models import LeagueMatch, LeagueStandings, CrossLeagueStandings
 from utilities import casing, utils
 from . import docs
 
@@ -71,3 +71,12 @@ def get_league_standings(request):
     df_standings = utils.switch_column_casing(data=df_standings, func=casing.sc2lcc)
     league_standings = utils.dataframe_to_list(data=df_standings)
     return Response(data=league_standings, status=200)
+
+
+@api_view(['GET'])
+def get_cross_league_standings(request):
+    qs_cross_standings = CrossLeagueStandings.objects.all()
+    df_cross_standings = utils.queryset_to_dataframe(qs=qs_cross_standings, drop_id=True)
+    df_cross_standings = utils.switch_column_casing(data=df_cross_standings, func=casing.sc2lcc)
+    cross_league_standings = utils.dataframe_to_list(data=df_cross_standings)
+    return Response(data=cross_league_standings, status=200)

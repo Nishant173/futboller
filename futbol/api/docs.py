@@ -109,4 +109,11 @@ ENDPOINTS = [
         "example": f"{VERSION_PREFIX}/league-standings/?league=Bundesliga&season=2012-13",
         "methods": ["GET"],
     },
+    {
+        "endpoint": f"{VERSION_PREFIX}/cross-league-standings/",
+        "description": "Gets list having cross-league-standings",
+        "parameters": [],
+        "example": f"{VERSION_PREFIX}/cross-league-standings/",
+        "methods": ["GET"],
+    },
 ]
