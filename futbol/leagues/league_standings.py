@@ -163,8 +163,8 @@ def get_cumulative_points(data: pd.DataFrame) -> Dict[str, List[int]]:
             dict_cum_pts[home_team].append(home_latest_pts + 3)
             dict_cum_pts[away_team].append(away_latest_pts + 0)
         elif away_goals > home_goals:
-            dict_cum_pts[away_team].append(away_latest_pts + 3)
             dict_cum_pts[home_team].append(home_latest_pts + 0)
+            dict_cum_pts[away_team].append(away_latest_pts + 3)
         elif home_goals == away_goals:
             dict_cum_pts[home_team].append(home_latest_pts + 1)
             dict_cum_pts[away_team].append(away_latest_pts + 1)
@@ -201,8 +201,8 @@ def get_cumulative_goal_difference(data: pd.DataFrame) -> Dict[str, List[int]]:
             dict_cum_gd[home_team].append(home_latest_gd + gd_absolute)
             dict_cum_gd[away_team].append(away_latest_gd - gd_absolute)
         elif away_goals > home_goals:
-            dict_cum_gd[away_team].append(away_latest_gd + gd_absolute)
             dict_cum_gd[home_team].append(home_latest_gd - gd_absolute)
+            dict_cum_gd[away_team].append(away_latest_gd + gd_absolute)
         elif home_goals == away_goals:
             dict_cum_gd[home_team].append(home_latest_gd + 0)
             dict_cum_gd[away_team].append(away_latest_gd + 0)
