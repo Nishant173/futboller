@@ -209,7 +209,36 @@ def get_cumulative_goal_difference(data: pd.DataFrame) -> Dict[str, List[int]]:
     return dict_cum_gd
 
 
-def add_ranking(data: pd.DataFrame, column_name: str) -> pd.DataFrame:
+def get_longest_streak(results_string: str, by: List[str]) -> int:
+    """
+    Gets count of longest streak by particular result/s (from the `results_string`).
+    Examples:
+        >>> results_string = "WWWLLDDWLDDWLDDDLWWWWDWW"
+        >>> get_longest_streak(results_string=results_string, by=['W']) # Longest win-streak
+        >>> get_longest_streak(results_string=results_string, by=['L']) # Longest loss-streak
+        >>> get_longest_streak(results_string=results_string, by=['D']) # Longest draw-streak
+        >>> get_longest_streak(results_string=results_string, by=['W', 'D']) # Longest unbeaten-streak
+    """
+    for desired_result in by:
+        if desired_result not in ['W', 'L', 'D']:
+            raise ValueError(f"Expected `by` to be in ['W', 'L', 'D'], but got {by}")
+    num_results = len(results_string)
+    streak_counter = 0
+    streaks = []
+    for i in range(num_results):
+        if results_string[i] in by:
+            streak_counter += 1
+        else:
+            if streak_counter > 0:
+                streaks.append(streak_counter)
+            streak_counter = 0
+        if i == num_results - 1: # For the last index in `results_string`
+            streaks.append(streak_counter)
+    longest_streak = max(streaks)
+    return longest_streak
+
+
+def add_league_ranking(data: pd.DataFrame, column_name: str) -> pd.DataFrame:
     """Adds ranking column (`column_name`) based on ['points', 'goal_difference'] columns"""
     data.sort_values(by=['points', 'goal_difference'], ascending=[False, False], inplace=True, ignore_index=True)
     rankings = np.arange(start=1, stop=len(data) + 1, step=1)
@@ -267,9 +296,13 @@ def get_league_standings(data: pd.DataFrame,
             'results_string': dict_results_string[team],
             'cumulative_points': utils.stringify_list_of_nums(array=dict_cum_pts[team]),
             'cumulative_goal_difference': utils.stringify_list_of_nums(array=dict_cum_gd[team]),
+            'longest_win_streak': get_longest_streak(results_string=dict_results_string[team], by=['W']),
+            'longest_loss_streak': get_longest_streak(results_string=dict_results_string[team], by=['L']),
+            'longest_draw_streak': get_longest_streak(results_string=dict_results_string[team], by=['D']),
+            'longest_unbeaten_streak': get_longest_streak(results_string=dict_results_string[team], by=['W', 'D']),
         }, index=[0])
         df_league_standings = pd.concat(objs=[df_league_standings, df_temp], ignore_index=True, sort=False)
-    df_league_standings = add_ranking(data=df_league_standings, column_name='position')
+    df_league_standings = add_league_ranking(data=df_league_standings, column_name='position')
     df_league_standings['league'] = league
     df_league_standings['season'] = season
     return df_league_standings

@@ -80,6 +80,10 @@ class LeagueStandings(models.Model):
                                                   max_length=200,
                                                   null=False,
                                                   default="")
+    longest_win_streak = models.IntegerField(verbose_name="Longest win streak", null=False, default=-1)
+    longest_loss_streak = models.IntegerField(verbose_name="Longest loss streak", null=False, default=-1)
+    longest_draw_streak = models.IntegerField(verbose_name="Longest draw streak", null=False, default=-1)
+    longest_unbeaten_streak = models.IntegerField(verbose_name="Longest unbeaten streak", null=False, default=-1)
     season = models.CharField(verbose_name="Season", max_length=10, null=False)
     league = models.CharField(verbose_name="League", max_length=30, null=False)
 
