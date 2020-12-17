@@ -77,6 +77,8 @@ def get_league_standings(request):
 def get_cross_league_standings(request):
     qs_cross_standings = CrossLeagueStandings.objects.all()
     df_cross_standings = utils.queryset_to_dataframe(qs=qs_cross_standings, drop_id=True)
+    df_cross_standings['cumulative_points'] = df_cross_standings['cumulative_points'].apply(utils.listify_string_of_nums)
+    df_cross_standings['cumulative_goal_difference'] = df_cross_standings['cumulative_goal_difference'].apply(utils.listify_string_of_nums)
     df_cross_standings = utils.switch_column_casing(data=df_cross_standings, func=casing.sc2lcc)
     cross_league_standings = utils.dataframe_to_list(data=df_cross_standings)
     return Response(data=cross_league_standings, status=200)
