@@ -101,7 +101,8 @@ def get_capitulation_count(data: pd.DataFrame, team: str, goal_margin: int) -> i
 
 def get_results_string(data: pd.DataFrame) -> Dict[str, str]:
     """
-    Gets results-string for games of all teams in DataFrame (in ascending order of 'date' column).
+    Gets results-string for games of all teams in DataFrame.
+    Each results-string will be in ascending order of 'date' column.
     Expects DataFrame having `LeagueMatch` data.
     Returns dictionary having keys = team names, and values = results-string for said team.
     Example output: {
@@ -136,7 +137,8 @@ def get_results_string(data: pd.DataFrame) -> Dict[str, str]:
 
 def get_cumulative_points(data: pd.DataFrame) -> Dict[str, List[int]]:
     """
-    Gets cumulative points for games of all teams in DataFrame (in ascending order of 'date' column).
+    Gets cumulative points for games of all teams in DataFrame.
+    Cumulative points will be in ascending order of 'date' column.
     Expects DataFrame having `LeagueMatch` data.
     Returns dictionary having keys = team names, and values = list of cumulative points for respective team.
     Example output: {
@@ -157,23 +159,24 @@ def get_cumulative_points(data: pd.DataFrame) -> Dict[str, List[int]]:
         away_team = row.away_team
         home_goals = row.home_goals
         away_goals = row.away_goals
-        home_latest_pts = dict_cum_pts[home_team][-1] # Gets value of latest cumulative points by team
-        away_latest_pts = dict_cum_pts[away_team][-1]
+        latest_home_pts = dict_cum_pts[home_team][-1] # Gets value of latest cumulative points by team
+        latest_away_pts = dict_cum_pts[away_team][-1]
         if home_goals > away_goals:
-            dict_cum_pts[home_team].append(home_latest_pts + 3)
-            dict_cum_pts[away_team].append(away_latest_pts + 0)
+            dict_cum_pts[home_team].append(latest_home_pts + 3)
+            dict_cum_pts[away_team].append(latest_away_pts + 0)
         elif away_goals > home_goals:
-            dict_cum_pts[home_team].append(home_latest_pts + 0)
-            dict_cum_pts[away_team].append(away_latest_pts + 3)
+            dict_cum_pts[home_team].append(latest_home_pts + 0)
+            dict_cum_pts[away_team].append(latest_away_pts + 3)
         elif home_goals == away_goals:
-            dict_cum_pts[home_team].append(home_latest_pts + 1)
-            dict_cum_pts[away_team].append(away_latest_pts + 1)
+            dict_cum_pts[home_team].append(latest_home_pts + 1)
+            dict_cum_pts[away_team].append(latest_away_pts + 1)
     return dict_cum_pts
 
 
 def get_cumulative_goal_difference(data: pd.DataFrame) -> Dict[str, List[int]]:
     """
-    Gets cumulative goal differences for games of all teams in DataFrame (in ascending order of 'date' column).
+    Gets cumulative goal differences for games of all teams in DataFrame.
+    Cumulative goal differences will be in ascending order of 'date' column.
     Expects DataFrame having `LeagueMatch` data.
     Returns dictionary having keys = team names, and values = list of cumulative goal differences for respective team.
     Example output: {
@@ -195,29 +198,28 @@ def get_cumulative_goal_difference(data: pd.DataFrame) -> Dict[str, List[int]]:
         home_goals = row.home_goals
         away_goals = row.away_goals
         gd_absolute = abs(home_goals - away_goals)
-        home_latest_gd = dict_cum_gd[home_team][-1] # Gets value of latest cumulative goal differences by team
-        away_latest_gd = dict_cum_gd[away_team][-1]
+        latest_home_gd = dict_cum_gd[home_team][-1] # Gets value of latest cumulative goal differences by team
+        latest_away_gd = dict_cum_gd[away_team][-1]
         if home_goals > away_goals:
-            dict_cum_gd[home_team].append(home_latest_gd + gd_absolute)
-            dict_cum_gd[away_team].append(away_latest_gd - gd_absolute)
+            dict_cum_gd[home_team].append(latest_home_gd + gd_absolute)
+            dict_cum_gd[away_team].append(latest_away_gd - gd_absolute)
         elif away_goals > home_goals:
-            dict_cum_gd[home_team].append(home_latest_gd - gd_absolute)
-            dict_cum_gd[away_team].append(away_latest_gd + gd_absolute)
+            dict_cum_gd[home_team].append(latest_home_gd - gd_absolute)
+            dict_cum_gd[away_team].append(latest_away_gd + gd_absolute)
         elif home_goals == away_goals:
-            dict_cum_gd[home_team].append(home_latest_gd + 0)
-            dict_cum_gd[away_team].append(away_latest_gd + 0)
+            dict_cum_gd[home_team].append(latest_home_gd + 0)
+            dict_cum_gd[away_team].append(latest_away_gd + 0)
     return dict_cum_gd
 
 
 def get_longest_streak(results_string: str, by: List[str]) -> int:
     """
     Gets count of longest streak by particular result/s (from the `results_string`).
-    Examples:
-        >>> results_string = "WWWLLDDWLDDWLDDDLWWWWDWW"
-        >>> get_longest_streak(results_string=results_string, by=['W']) # Longest win-streak
-        >>> get_longest_streak(results_string=results_string, by=['L']) # Longest loss-streak
-        >>> get_longest_streak(results_string=results_string, by=['D']) # Longest draw-streak
-        >>> get_longest_streak(results_string=results_string, by=['W', 'D']) # Longest unbeaten-streak
+    >>> results_string = "WWWLLDDWLDDWLDDDLWWWWDWW"
+    >>> get_longest_streak(results_string=results_string, by=['W']) # Longest win-streak
+    >>> get_longest_streak(results_string=results_string, by=['L']) # Longest loss-streak
+    >>> get_longest_streak(results_string=results_string, by=['D']) # Longest draw-streak
+    >>> get_longest_streak(results_string=results_string, by=['W', 'D']) # Longest unbeaten-streak
     """
     for desired_result in by:
         if desired_result not in ['W', 'L', 'D']:
@@ -238,12 +240,20 @@ def get_longest_streak(results_string: str, by: List[str]) -> int:
     return longest_streak
 
 
-def add_league_ranking(data: pd.DataFrame, column_name: str) -> pd.DataFrame:
-    """Adds ranking column (`column_name`) based on ['points', 'goal_difference'] columns"""
-    data.sort_values(by=['points', 'goal_difference'], ascending=[False, False], inplace=True, ignore_index=True)
+def add_ranking_column(data: pd.DataFrame,
+                       rank_column_name: str,
+                       rank_by= List[str],
+                       ascending=List[bool]) -> pd.DataFrame:
+    """Adds ranking column based on `rank_by` column/s to DataFrame"""
+    if len(rank_by) != len(ascending):
+        raise ValueError(
+            "Expected `rank_by` and `ascending` to be of same length,"
+            f" but got lengths {len(rank_by)} and {len(ascending)} respectively"
+        )
+    data.sort_values(by=rank_by, ascending=ascending, inplace=True, ignore_index=True)
     rankings = np.arange(start=1, stop=len(data) + 1, step=1)
-    data[column_name] = rankings
-    column_order = [column_name] + data.drop(labels=[column_name], axis=1).columns.tolist()
+    data[rank_column_name] = rankings
+    column_order = [rank_column_name] + data.drop(labels=[rank_column_name], axis=1).columns.tolist()
     data = data.loc[:, column_order]
     return data
 
@@ -304,7 +314,10 @@ def get_league_standings(data: pd.DataFrame,
             'longest_unbeaten_streak': get_longest_streak(results_string=dict_results_string[team], by=['W', 'D']),
         }, index=[0])
         df_league_standings = pd.concat(objs=[df_league_standings, df_temp], ignore_index=True, sort=False)
-    df_league_standings = add_league_ranking(data=df_league_standings, column_name='position')
+    df_league_standings = add_ranking_column(data=df_league_standings,
+                                             rank_column_name='position',
+                                             rank_by=['points', 'goal_difference'],
+                                             ascending=[False, False])
     df_league_standings['league'] = league
     df_league_standings['season'] = season
     return df_league_standings

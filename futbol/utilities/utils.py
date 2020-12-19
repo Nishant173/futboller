@@ -44,12 +44,11 @@ def switch_column_casing(data: pd.DataFrame, func: Callable) -> pd.DataFrame:
 def round_off_columns(data: pd.DataFrame, mapper: Dict[str, int]):
     """
     Rounds off specified numerical (float) columns in DataFrame.
-    Example:
-        >>> round_off_columns(data=data, mapper={
-            'column1': 3,
-            'column2': 4,
-            'column3': 4,
-        })
+    >>> round_off_columns(data=data, mapper={
+        'column1': 3,
+        'column2': 4,
+        'column3': 4,
+    })
     """
     columns_available = data.columns.tolist()
     for column, round_by in mapper.items():
@@ -85,9 +84,8 @@ def queryset_to_list(qs: QuerySet, drop_id: bool) -> Union[List[Dict], List]:
 def spread_by_factor(array: List[Union[int, float]], factor: int) -> List[Union[int, float]]:
     """
     Spread out an array by given factor.
-    Example:
-        >>> spread_by_factor(array=[4, 6, 7, 3], factor=3)
-        >>> [4, 4, 4, 6, 6, 6, 7, 7, 7, 3, 3, 3]
+    >>> spread_by_factor(array=[4, 6, 7, 3], factor=3)
+    >>> [4, 4, 4, 6, 6, 6, 7, 7, 7, 3, 3, 3]
     """
     array_after_spreading = []
     for idx, _ in enumerate(array):
@@ -102,9 +100,8 @@ def spread_array(array: List[Union[int, float]], to: int) -> List[Union[int, flo
     Parameters:
         - array (list): List or list-like array data
         - to (int): Length of array to be spread into
-    Example:
-        >>> spread_array(array=[2, 3, -7], to=14)
-        >>> [2, 2, 2, 2, 3, 3, 3, 3, 3, -7, -7, -7, -7, -7]
+    >>> spread_array(array=[2, 3, -7], to=14)
+    >>> [2, 2, 2, 2, 3, 3, 3, 3, 3, -7, -7, -7, -7, -7]
     """
     initial_array_length = len(array)
     if initial_array_length >= to:

@@ -1,5 +1,3 @@
-from typing import Dict
-import numpy as np
 import pandas as pd
 from . import filters
 from .league_standings import (get_results_string,
@@ -14,23 +12,11 @@ from .league_standings import (get_results_string,
                                get_clean_sheets_against_count,
                                get_rout_count,
                                get_capitulation_count,
-                               get_longest_streak)
+                               get_longest_streak,
+                               add_ranking_column)
 from .models import LeagueMatch
 from .utils import get_unique_teams
 from utilities import utils
-
-
-def add_cross_league_ranking(data: pd.DataFrame, column_name: str) -> pd.DataFrame:
-    """Adds ranking column (`column_name`) based on ['avg_points', 'avg_goal_difference', 'games_played'] columns"""
-    data.sort_values(by=['avg_points', 'avg_goal_difference', 'games_played'],
-                     ascending=[False, False, False],
-                     inplace=True,
-                     ignore_index=True)
-    rankings = np.arange(start=1, stop=len(data) + 1, step=1)
-    data[column_name] = rankings
-    column_order = [column_name] + data.drop(labels=[column_name], axis=1).columns.tolist()
-    data = data.loc[:, column_order]
-    return data
 
 
 def get_cross_league_standings() -> pd.DataFrame:
@@ -97,7 +83,10 @@ def get_cross_league_standings() -> pd.DataFrame:
     df_cls['cumulative_goal_difference'] = df_cls['cumulative_goal_difference'].apply(utils.stringify_list_of_nums)
     df_cls['cumulative_points_normalized'] = df_cls['cumulative_points_normalized'].apply(utils.stringify_list_of_nums)
     df_cls['cumulative_goal_difference_normalized'] = df_cls['cumulative_goal_difference_normalized'].apply(utils.stringify_list_of_nums)
-    df_cls = add_cross_league_ranking(data=df_cls, column_name='position')
+    df_cls = add_ranking_column(data=df_cls,
+                                rank_column_name='position',
+                                rank_by=['avg_points', 'avg_goal_difference', 'games_played'],
+                                ascending=[False, False, False])
     df_cls = utils.round_off_columns(data=df_cls, mapper={
         'avg_points': 4,
         'avg_goal_difference': 4,

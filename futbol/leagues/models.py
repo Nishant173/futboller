@@ -133,18 +133,14 @@ class CrossLeagueStandings(models.Model):
     longest_draw_streak = models.IntegerField(verbose_name="Longest draw streak", null=False, default=-1)
     longest_unbeaten_streak = models.IntegerField(verbose_name="Longest unbeaten streak", null=False, default=-1)
     league = models.CharField(verbose_name="League", max_length=30, null=False)
-    cumulative_points_normalized = models.CharField(
-        verbose_name="Cumulative points normalized",
-        max_length=10000,
-        null=False,
-        default=""
-    )
-    cumulative_goal_difference_normalized = models.CharField(
-        verbose_name="Cumulative goal difference normalized",
-        max_length=10000,
-        null=False,
-        default=""
-    )
+    cumulative_points_normalized = models.CharField(verbose_name="Cumulative points normalized",
+                                                    max_length=10000,
+                                                    null=False,
+                                                    default="")
+    cumulative_goal_difference_normalized = models.CharField(verbose_name="Cumulative goal difference normalized",
+                                                             max_length=10000,
+                                                             null=False,
+                                                             default="")
 
     class Meta:
         verbose_name = "Cross League Standings"
