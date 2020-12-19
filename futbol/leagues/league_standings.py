@@ -242,8 +242,8 @@ def get_longest_streak(results_string: str, by: List[str]) -> int:
 
 def add_ranking_column(data: pd.DataFrame,
                        rank_column_name: str,
-                       rank_by= List[str],
-                       ascending=List[bool]) -> pd.DataFrame:
+                       rank_by: List[str],
+                       ascending: List[bool]) -> pd.DataFrame:
     """Adds ranking column based on `rank_by` column/s to DataFrame"""
     if len(rank_by) != len(ascending):
         raise ValueError(
