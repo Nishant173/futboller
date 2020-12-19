@@ -4,7 +4,7 @@ import pandas as pd
 
 
 def filter_teams_by_icontains(teams: Union[List[str], List],
-                              name_contains: Optional[str] = None) -> Union[List[str], List]:
+                              name_contains: Optional[str]) -> Union[List[str], List]:
     """Filters list of teams based on case-insensitive search"""
     if not name_contains:
         return teams
@@ -68,15 +68,15 @@ def filter_by_goal_difference_0(data: pd.DataFrame,
 
 
 def filter_league_data(data: pd.DataFrame,
-                       team: Optional[str] = None,
-                       league: Optional[str] = None,
-                       season: Optional[str] = None,
-                       gd: Optional[int] = None,
-                       min_gd: Optional[int] = None,
-                       max_gd: Optional[int] = None,
-                       matchup: Optional[str] = None,
-                       winning_team: Optional[str] = None,
-                       losing_team: Optional[str] = None) -> pd.DataFrame:
+                       team: Optional[str],
+                       league: Optional[str],
+                       season: Optional[str],
+                       gd: Optional[int],
+                       min_gd: Optional[int],
+                       max_gd: Optional[int],
+                       matchup: Optional[str],
+                       winning_team: Optional[str],
+                       losing_team: Optional[str]) -> pd.DataFrame:
     """Filters DataFrame having `LeagueMatch` data (based on certain parameters)"""
     if data.empty:
         return data
