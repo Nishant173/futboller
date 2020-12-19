@@ -41,6 +41,18 @@ ENDPOINTS = [
         "description": "Gets list of league matches (filter parameters are allowed)",
         "parameters": [
             {
+                "name": "offset",
+                "datatype": "int",
+                "required": False,
+                "description": "Position of starting record in dataset. Default: 0",
+            },
+            {
+                "name": "limit",
+                "datatype": "int",
+                "required": False,
+                "description": "Number of records you want to retrieve. Maximum allowed limit is 25. Default: 25",
+            },
+            {
                 "name": "team",
                 "datatype": "str",
                 "required": False,
@@ -112,8 +124,21 @@ ENDPOINTS = [
     {
         "endpoint": f"{VERSION_PREFIX}/cross-league-standings/",
         "description": "Gets list having cross-league-standings",
-        "parameters": [],
-        "example": f"{VERSION_PREFIX}/cross-league-standings/",
+        "parameters": [
+            {
+                "name": "offset",
+                "datatype": "int",
+                "required": False,
+                "description": "Position of starting record in dataset. Default: 0",
+            },
+            {
+                "name": "limit",
+                "datatype": "int",
+                "required": False,
+                "description": "Number of records you want to retrieve. Maximum allowed limit is 25. Default: 25",
+            },
+        ],
+        "example": f"{VERSION_PREFIX}/cross-league-standings/?offset=30&limit=10",
         "methods": ["GET"],
     },
 ]

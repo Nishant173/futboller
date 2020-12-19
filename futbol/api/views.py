@@ -15,7 +15,8 @@ def get_documentation(request):
 def get_teams(request):
     name_contains = request.GET.get('nameContains', default=None)
     teams = queries.get_teams()
-    teams = filters.filter_teams_by_icontains(teams=teams, name_contains=name_contains)
+    if name_contains:
+        teams = filters.filter_teams_by_icontains(teams=teams, name_contains=name_contains)
     return Response(data=teams, status=200)
 
 
@@ -33,6 +34,8 @@ def get_seasons(request):
 
 @api_view(['GET'])
 def get_league_matches(request):
+    offset = request.GET.get('offset', default=None)
+    limit = request.GET.get('limit', default=None)
     team = request.GET.get('team', default=None)
     league = request.GET.get('league', default=None)
     season = request.GET.get('season', default=None)
@@ -57,6 +60,9 @@ def get_league_matches(request):
                                             losing_team=losing_team)
     df_matches = utils.switch_column_casing(data=df_matches, func=casing.sc2lcc)
     matches = utils.dataframe_to_list(data=df_matches)
+    matches = utils.filter_list_by_offset(list_obj=matches,
+                                          offset=int(offset) if offset else None,
+                                          limit=int(limit) if limit else None)
     return Response(data=matches, status=200)
 
 
@@ -75,6 +81,8 @@ def get_league_standings(request):
 
 @api_view(['GET'])
 def get_cross_league_standings(request):
+    offset = request.GET.get('offset', default=None)
+    limit = request.GET.get('limit', default=None)
     qs_cls = CrossLeagueStandings.objects.all()
     df_cls = utils.queryset_to_dataframe(qs=qs_cls, drop_id=True)
     df_cls['cumulative_points'] = df_cls['cumulative_points'].apply(utils.listify_string_of_nums)
@@ -82,5 +90,8 @@ def get_cross_league_standings(request):
     df_cls['cumulative_points_normalized'] = df_cls['cumulative_points_normalized'].apply(utils.listify_string_of_nums)
     df_cls['cumulative_goal_difference_normalized'] = df_cls['cumulative_goal_difference_normalized'].apply(utils.listify_string_of_nums)
     df_cls = utils.switch_column_casing(data=df_cls, func=casing.sc2lcc)
-    cross_league_standings = utils.dataframe_to_list(data=df_cls)
-    return Response(data=cross_league_standings, status=200)
+    cls = utils.dataframe_to_list(data=df_cls)
+    cls = utils.filter_list_by_offset(list_obj=cls,
+                                      offset=int(offset) if offset else None,
+                                      limit=int(limit) if limit else None)
+    return Response(data=cls, status=200)
