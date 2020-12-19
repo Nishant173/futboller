@@ -4,10 +4,8 @@ import pandas as pd
 
 
 def filter_teams_by_icontains(teams: Union[List[str], List],
-                              name_contains: Optional[str]) -> Union[List[str], List]:
+                              name_contains: str) -> Union[List[str], List]:
     """Filters list of teams based on case-insensitive search"""
-    if not name_contains:
-        return teams
     data = pd.DataFrame(data={'team': teams})
     data = data.loc[(data['team'].str.lower().str.contains(name_contains.lower())), :]
     teams_filtered = data['team'].tolist()
