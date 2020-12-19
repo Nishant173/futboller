@@ -125,8 +125,8 @@ def spread_array(array: List[Union[int, float]], to: int) -> List[Union[int, flo
 
 
 def filter_list_by_offset(list_obj: List,
-                          offset: Optional[int],
-                          limit: Optional[int]):
+                          offset: Optional[int] = None,
+                          limit: Optional[int] = None):
     """
     Filters list object based on `offset` and `limit`.
     Note:
