@@ -131,18 +131,15 @@ def filter_list_by_offset(list_obj: List,
     default_offset = 0
     default_limit = 25
     max_limit = 25 # Value of `max_limit` must be >= `default_limit`
-
-    if offset:
-        if offset < 0:
-            offset = default_offset
-    else:
+    if not offset:
         offset = default_offset
-    
-    if limit:
-        if limit > max_limit:
-            limit = max_limit
-    else:
+    if not limit:
         limit = default_limit
-    
+    if offset < 0:
+        offset = default_offset
+    if limit < 0:
+        limit = default_limit
+    if limit > max_limit:
+        limit = max_limit
     list_obj_filtered = list_obj[offset : limit + offset]
     return list_obj_filtered
