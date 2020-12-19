@@ -10,6 +10,7 @@ API for top 5 leagues football data
 
 ## Looping through offset barrier
 - Use the following snippet to access all records of a resource by looping through the offset.
+- Change the URL in the `get_api_data_via_offset_loop` function as needed.
 ```python
 from typing import Dict, List, Union
 import json
@@ -25,7 +26,7 @@ def get_api_data(url: str) -> Union[Dict, List]:
     return result
 
 
-def get_paginated_api_data() -> List:
+def get_api_data_via_offset_loop() -> List:
     """Gets data for all records of a resource by looping through the offset"""
     all_results = []
     offset = 1
@@ -42,5 +43,5 @@ def get_paginated_api_data() -> List:
 
 
 if __name__ == "__main__":
-    results = get_paginated_api_data()
+    results = get_api_data_via_offset_loop()
 ```
