@@ -1,4 +1,4 @@
-from typing import Callable, Dict, List, Union
+from typing import Callable, Dict, List, Optional, Union
 from django.db.models import QuerySet
 import numpy as np
 import pandas as pd
@@ -122,3 +122,27 @@ def spread_array(array: List[Union[int, float]], to: int) -> List[Union[int, flo
         random_element = array_after_spread[random_index]
         array_after_spread.insert(random_index+1, random_element)
     return array_after_spread
+
+
+def filter_list_by_offset(list_obj: List,
+                          offset: Optional[int],
+                          limit: Optional[int]):
+    """Filters list object based on `offset` and `limit`. Maximum value for limit is 25"""
+    default_offset = 0
+    default_limit = 25
+    max_limit = 25 # Value of `max_limit` must be >= `default_limit`
+
+    if offset:
+        if offset < 0:
+            offset = default_offset
+    else:
+        offset = default_offset
+    
+    if limit:
+        if limit > max_limit:
+            limit = max_limit
+    else:
+        limit = default_limit
+    
+    list_obj_filtered = list_obj[offset : limit + offset]
+    return list_obj_filtered
