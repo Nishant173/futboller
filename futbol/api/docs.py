@@ -44,7 +44,7 @@ ENDPOINTS = [
                 "name": "offset",
                 "datatype": "int",
                 "required": False,
-                "description": "Position of starting record in dataset. Default: 0",
+                "description": "Position of starting record in dataset. Default: 1",
             },
             {
                 "name": "limit",
@@ -129,7 +129,7 @@ ENDPOINTS = [
                 "name": "offset",
                 "datatype": "int",
                 "required": False,
-                "description": "Position of starting record in dataset. Default: 0",
+                "description": "Position of starting record in dataset. Default: 1",
             },
             {
                 "name": "limit",

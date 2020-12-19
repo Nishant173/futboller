@@ -127,19 +127,25 @@ def spread_array(array: List[Union[int, float]], to: int) -> List[Union[int, flo
 def filter_list_by_offset(list_obj: List,
                           offset: Optional[int],
                           limit: Optional[int]):
-    """Filters list object based on `offset` and `limit`. Maximum value for limit is 25"""
-    default_offset = 0
+    """
+    Filters list object based on `offset` and `limit`.
+    Note:
+        - Default offset is 1
+        - Default limit is 25
+        - Maximum limit is 25
+    """
+    default_offset = 1
     default_limit = 25
     max_limit = 25 # Value of `max_limit` must be >= `default_limit`
     if not offset:
         offset = default_offset
     if not limit:
         limit = default_limit
-    if offset < 0:
+    if offset <= 0:
         offset = default_offset
-    if limit < 0:
+    if limit <= 0:
         limit = default_limit
     if limit > max_limit:
         limit = max_limit
-    list_obj_filtered = list_obj[offset : limit + offset]
+    list_obj_filtered = list_obj[offset - 1 : limit + offset - 1]
     return list_obj_filtered
