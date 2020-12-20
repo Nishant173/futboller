@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import LeagueMatch, LeagueStandings
+from .models import LeagueMatch, LeagueStandings, CrossLeagueStandings
 
 
 class LeagueMatchAdmin(admin.ModelAdmin):
@@ -16,5 +16,13 @@ class LeagueStandingsAdmin(admin.ModelAdmin):
     search_fields = ('season', 'league', 'team')
 
 
+class CrossLeagueStandingsAdmin(admin.ModelAdmin):
+    list_display = ('position', 'team', 'games_played', 'avg_points', 'avg_goal_difference',
+                    'win_percent', 'loss_percent', 'league')
+    list_filter = ('league', )
+    search_fields = ('league', 'team')
+
+
 admin.site.register(LeagueMatch, LeagueMatchAdmin)
 admin.site.register(LeagueStandings, LeagueStandingsAdmin)
+admin.site.register(CrossLeagueStandings, CrossLeagueStandingsAdmin)
