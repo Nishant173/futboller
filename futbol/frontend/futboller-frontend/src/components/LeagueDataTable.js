@@ -1,12 +1,11 @@
 import React, { useMemo } from 'react';
 import { useTable, useSortBy } from 'react-table';
-import { ColumnsLeagueResults, ColumnsLeagueTable, ColumnsLeagueStats } from './Columns';
 import './table.css';
 
 
-export default function LeagueDataTable({ dataObj }) {
+export default function LeagueDataTable({ dataObj, columnsObj }) {
     const data = useMemo(() => dataObj, []);
-    const columns = useMemo(() => ColumnsLeagueTable, []);
+    const columns = useMemo(() => columnsObj, []);
     const tableInstance = useTable({
         columns: columns,
         data: data,

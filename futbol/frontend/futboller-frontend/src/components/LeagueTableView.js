@@ -1,8 +1,8 @@
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useState } from 'react';
 import LeagueDataTable from './LeagueDataTable';
-import { LeagueTableLineChart, LeagueTableBarChart, LeagueGoalDifferenceBarChart } from './LeagueCharts';
+import { LeagueTableBarChart, LeagueGoalDifferenceBarChart } from './LeagueCharts';
+import { ColumnsLeagueResults, ColumnsLeagueTable, ColumnsLeagueStats } from './Columns';
 import { getLeagueStandingsAsync } from '../api/getData';
-import { isValidLeagueStandings } from '../api/validators';
 
 
 export default function LeagueTableView() {
@@ -11,7 +11,6 @@ export default function LeagueTableView() {
     const [season, setSeason] = useState("");
     const updateLeague = event => setLeague(event.target.value);
     const updateSeason = event => setSeason(event.target.value);
-
     const updateData = () => {
         getLeagueStandingsAsync(league, season)
             .then(function(response) {
@@ -55,8 +54,8 @@ export default function LeagueTableView() {
             </form>
 
             <br /><br />
-            {/* { data.length > 0 ? <LeagueDataTable dataObj={data} /> : null } */}
-            {/* { data.length > 0 ? <LeagueTableLineChart dataObj={data} /> : null } */}
+            {/* { data.length > 0 ? <LeagueDataTable dataObj={data} columnsObj={ColumnsLeagueTable} /> : null }
+            <br /><br /> */}
             { data.length > 0 ? <LeagueTableBarChart dataObj={data} /> : null }
             <br /><br />
             { data.length > 0 ? <LeagueGoalDifferenceBarChart dataObj={data} /> : null }

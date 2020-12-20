@@ -1,60 +1,17 @@
 import React from 'react';
-import { Line, HorizontalBar } from 'react-chartjs-2';
-import { ceilByTen, getTeamNames, getPoints, getGoalDifferences, getXlimitFromGD } from './utils';
-
-
-export function LeagueTableLineChart({ dataObj }) {
-    const data = {
-        labels: Array.from(Array(dataObj[0].cumulativePoints.length).keys()), // getTeamNames(dataObj),
-        datasets: [
-            {
-                label: 'Points over time',
-                data: dataObj[0].cumulativePoints, // getPoints(dataObj),
-                borderColor: '#238DD8',
-                fill: true,
-            }
-        ]
-    }
-
-    return (
-        <>
-            <Line
-                data={data}
-                options={
-                    {
-                        title: {
-                            display: true,
-                            text: 'Points over time',
-                            fontSize: 32,
-                        },
-                        scales: {
-                            xAxes: [{
-                                scaleLabel: {
-                                    display: true,
-                                    labelString: 'Matchday',
-                                    fontSize: 20,
-                                }
-                            }],
-                            yAxes: [{
-                                scaleLabel: {
-                                    display: true,
-                                    labelString: 'Points',
-                                    fontSize: 20,
-                                }
-                            }],
-                        }
-                    }
-                }
-            />
-        </>
-    )
-}
+import { HorizontalBar } from 'react-chartjs-2';
+import {
+    ceilBy,
+    getTeamNames,
+    getPoints,
+    getGoalDifferences,
+    getMaxOfAbsGoalDiff,
+} from './utils';
 
 
 export function LeagueTableBarChart({ dataObj }) {
     const league = dataObj[0].league
     const season = dataObj[0].season
-
     const data = {
         labels: getTeamNames(dataObj),
         datasets: [
@@ -65,46 +22,45 @@ export function LeagueTableBarChart({ dataObj }) {
             }
         ]
     }
+    const options = {
+        title: {
+            display: true,
+            text: `${league} (${season}) - Points chart`,
+            fontSize: 32,
+        },
+        scales: {
+            xAxes: [{
+                scaleLabel: {
+                    display: true,
+                    labelString: 'Points',
+                    fontSize: 20,
+                    fontColor: 'black',
+                },
+                ticks: {
+                    min: 0,
+                    max: ceilBy(dataObj[0].points, 10),
+                    fontSize: 15,
+                },
+            }],
+            yAxes: [{
+                scaleLabel: {
+                    display: true,
+                    labelString: 'Teams',
+                    fontSize: 20,
+                    fontColor: 'black',
+                },
+                ticks: {
+                    fontSize: 15,
+                },
+            }],
+        },
+    }
 
     return (
         <>
             <HorizontalBar
                 data={data}
-                options={
-                    {
-                        title: {
-                            display: true,
-                            text: `Points chart - ${league} (${season})`,
-                            fontSize: 32,
-                        },
-                        scales: {
-                            xAxes: [{
-                                scaleLabel: {
-                                    display: true,
-                                    labelString: 'Points',
-                                    fontSize: 20,
-                                    fontColor: 'black',
-                                },
-                                ticks: {
-                                    min: 0,
-                                    max: ceilByTen(dataObj[0].points),
-                                    fontSize: 15,
-                                },
-                            }],
-                            yAxes: [{
-                                scaleLabel: {
-                                    display: true,
-                                    labelString: 'Teams',
-                                    fontSize: 20,
-                                    fontColor: 'black',
-                                },
-                                ticks: {
-                                    fontSize: 15,
-                                },
-                            }],
-                        }
-                    }
-                }
+                options={options}
             />
         </>
     )
@@ -114,8 +70,7 @@ export function LeagueTableBarChart({ dataObj }) {
 export function LeagueGoalDifferenceBarChart({ dataObj }) {
     const league = dataObj[0].league
     const season = dataObj[0].season
-    const xLimit = ceilByTen(getXlimitFromGD(dataObj));
-    
+    const xLimit = ceilBy(getMaxOfAbsGoalDiff(dataObj), 10);
     const data = {
         labels: getTeamNames(dataObj),
         datasets: [
@@ -126,46 +81,45 @@ export function LeagueGoalDifferenceBarChart({ dataObj }) {
             }
         ]
     }
+    const options = {
+        title: {
+            display: true,
+            text: `${league} (${season}) - Goal Difference chart`,
+            fontSize: 32,
+        },
+        scales: {
+            xAxes: [{
+                scaleLabel: {
+                    display: true,
+                    labelString: 'Goal Difference',
+                    fontSize: 20,
+                    fontColor: 'black',
+                },
+                ticks: {
+                    min: -xLimit,
+                    max: xLimit,
+                    fontSize: 15,
+                },
+            }],
+            yAxes: [{
+                scaleLabel: {
+                    display: true,
+                    labelString: 'Teams',
+                    fontSize: 20,
+                    fontColor: 'black',
+                },
+                ticks: {
+                    fontSize: 15,
+                },
+            }],
+        },
+    }
 
     return (
         <>
             <HorizontalBar
                 data={data}
-                options={
-                    {
-                        title: {
-                            display: true,
-                            text: `Goal Difference chart - ${league} (${season})`,
-                            fontSize: 32,
-                        },
-                        scales: {
-                            xAxes: [{
-                                scaleLabel: {
-                                    display: true,
-                                    labelString: 'Goal Difference',
-                                    fontSize: 20,
-                                    fontColor: 'black',
-                                },
-                                ticks: {
-                                    min: -xLimit,
-                                    max: xLimit,
-                                    fontSize: 15,
-                                },
-                            }],
-                            yAxes: [{
-                                scaleLabel: {
-                                    display: true,
-                                    labelString: 'Teams',
-                                    fontSize: 20,
-                                    fontColor: 'black',
-                                },
-                                ticks: {
-                                    fontSize: 15,
-                                },
-                            }],
-                        }
-                    }
-                }
+                options={options}
             />
         </>
     )

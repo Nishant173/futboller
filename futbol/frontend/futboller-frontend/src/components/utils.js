@@ -1,3 +1,7 @@
+export function ceilBy(number, by) {
+    return Math.ceil((number + 1) / by) * by;
+}
+
 export function getTeamNames(leagueStandingsArray) {
     let teams = [];
     leagueStandingsArray.forEach((leagueStanding) => (
@@ -22,21 +26,17 @@ export function getGoalDifferences(leagueStandingsArray) {
     return gds
 }
 
-export function getXlimitFromGD(leagueStandingsArray) {
+export function getMaxOfAbsGoalDiff(leagueStandingsArray) {
     let gds = getGoalDifferences(leagueStandingsArray);
     let low = Math.min.apply(Math, gds);
     let high = Math.max.apply(Math, gds);
     let absLow = Math.abs(low);
     let absHigh = Math.abs(high);
-    let xLimit;
+    let maxOfAbsoluteGoalDiff;
     if (absLow > absHigh) {
-        xLimit = absLow;
+        maxOfAbsoluteGoalDiff = absLow;
     } else {
-        xLimit = absHigh;
+        maxOfAbsoluteGoalDiff = absHigh;
     }
-    return xLimit;
-}
-
-export function ceilByTen(number) {
-    return Math.ceil((number+1) / 10) * 10;
+    return maxOfAbsoluteGoalDiff;
 }
