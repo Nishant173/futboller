@@ -3,3 +3,4 @@ extras
 notebooks
 credentials.txt
 *__pycache__
+*node_modules
