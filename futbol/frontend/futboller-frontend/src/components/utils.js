@@ -26,10 +26,9 @@ export function getGoalDifferences(leagueStandingsArray) {
     return gds
 }
 
-export function getMaxOfAbsGoalDiff(leagueStandingsArray) {
-    let gds = getGoalDifferences(leagueStandingsArray);
-    let low = Math.min.apply(Math, gds);
-    let high = Math.max.apply(Math, gds);
+export function getMaxOfAbsGoalDiff(goalDifferences) {
+    let low = Math.min.apply(Math, goalDifferences);
+    let high = Math.max.apply(Math, goalDifferences);
     let absLow = Math.abs(low);
     let absHigh = Math.abs(high);
     let maxOfAbsoluteGoalDiff;

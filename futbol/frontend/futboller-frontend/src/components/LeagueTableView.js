@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import LeagueDataTable from './LeagueDataTable';
 import { LeagueTableBarChart, LeagueGoalDifferenceBarChart } from './LeagueCharts';
 import { ColumnsLeagueResults, ColumnsLeagueTable, ColumnsLeagueStats } from './Columns';
-import { getLeagueStandingsAsync } from '../api/getData';
+import { getLeagueStandings, getCrossLeagueStandings } from '../api/getData';
 
 
 export default function LeagueTableView() {
@@ -12,7 +12,7 @@ export default function LeagueTableView() {
     const updateLeague = event => setLeague(event.target.value);
     const updateSeason = event => setSeason(event.target.value);
     const updateData = () => {
-        getLeagueStandingsAsync(league, season)
+        getLeagueStandings(league, season)
             .then(function(response) {
                 setData(response);
             })
