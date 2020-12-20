@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import LeagueDataTable from './LeagueDataTable';
 import { LeagueTableBarChart, LeagueGoalDifferenceBarChart } from './LeagueCharts';
 import { ColumnsLeagueResults, ColumnsLeagueTable, ColumnsLeagueStats } from './Columns';
-import { getLeagueStandings, getCrossLeagueStandings } from '../api/getData';
+import { getLeagueStandings } from '../api/getData';
 
 
 export default function LeagueTableView() {
