@@ -1,3 +1,4 @@
+# Links
 https://able.bio/rhett/how-to-set-and-get-environment-variables-in-python--274rgt5
 https://stackoverflow.com/questions/19128540/django-improperlyconfigured-the-secret-key-setting-must-not-be-empty
 https://www.dataquest.io/blog/settingwithcopywarning/
@@ -15,3 +16,29 @@ https://djangostars.com/blog/rest-apis-django-development/
 
 Structuring Django apps
 http://danielhnyk.cz/django-rest-framework-how-to-structure-your-app/
+
+
+# Frontend-related:
+Disable McAfee Chrome extension
+npx create-react-app futboller-frontend
+cd futboller-frontend
+npm i react
+npm i react-dom
+npm i react-table
+npm install --save react-chartjs-2
+npm start
+
+https://www.chartjs.org/
+https://www.chartjs.org/docs/latest/
+https://reactchartjs.github.io/react-chartjs-2/#/
+https://reactjs.org/docs/conditional-rendering.html
+https://stackoverflow.com/questions/24706267/cannot-read-property-map-of-undefined
+https://stackoverflow.com/questions/38380462/syntaxerror-unexpected-token-o-in-json-at-position-1
+https://www.pluralsight.com/guides/access-data-from-an-external-api-into-a-react-component
+https://www.smashingmagazine.com/2020/06/rest-api-react-fetch-axios/
+https://stackoverflow.com/questions/45256329/how-to-get-the-response-data-from-promise-in-react
+https://levelup.gitconnected.com/all-possible-ways-of-making-an-api-call-in-plain-javascript-c0dee3c11b8b
+https://developer.mozilla.org/en-US/docs/Learn/Tools_and_testing/Cross_browser_testing/JavaScript
+https://stackoverflow.com/questions/42754388/uncaught-in-promise-typeerror-failed-to-fetch-and-cors-error
+https://www.javatpoint.com/react-table
+https://www.ag-grid.com/react-grid/?gclid=CjwKCAiAlNf-BRB_EiwA2osbxVzi_iLekFrKguDVLwUn5npntzWOG-jT8yLzUfxPVYFLG-NXQNSbzRoCXiwQAvD_BwE
