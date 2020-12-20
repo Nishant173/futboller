@@ -1,12 +1,17 @@
 # futboller
-API for top 5 leagues football data
+Web-application that provides football data from the top 5 European leagues (API + frontend)
 
 ## Installation
 - Install the backend API dependencies with `pip install -r requirements.txt`
+- Install ReactJS with `npm i react`
+- Install ReactJS DOM with `npm i react-dom`
+- Install ReactJS table with `npm i react-table`
+- Install ReactJS charts with `npm install --save react-chartjs-2`
 
 ## Usage
 - From the `futbol` directory, run `python manage.py runserver` to run the local server.
 - Visit the API documentation at `localhost:8000/api/v1/documentation/` to learn about the available endpoints.
+- From the `futbol/frontend/futboller-frontend` directory, run `npm start` and open `localhost:3000` to interact with the frontend UI.
 
 ## Looping through offset barrier
 - Use the following snippet to access all records of a resource by looping through the offset.
