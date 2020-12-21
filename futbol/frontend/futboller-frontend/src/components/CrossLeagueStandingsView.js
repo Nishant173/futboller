@@ -3,7 +3,7 @@ import { CrossLeagueScatterChart } from './CrossLeagueCharts';
 import { getCrossLeagueStandings } from '../api/getData';
 
 
-export default function CrossLeagueTableView() {
+export default function CrossLeagueStandingsView() {
     const [data, setData] = useState([]);
     const updateData = () => {
         getCrossLeagueStandings()
@@ -20,7 +20,7 @@ export default function CrossLeagueTableView() {
             <form className="cross-league-table-form">
                 <input
                     type="button"
-                    value="Get cross leagues data"
+                    value="Re-load"
                     onClick={updateData}
                 />
             </form>

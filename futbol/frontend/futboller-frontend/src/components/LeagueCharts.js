@@ -9,7 +9,7 @@ import {
 } from './utils';
 
 
-export function LeagueTableBarChart({ dataObj }) {
+export function LeaguePointsBarChart({ dataObj }) {
     const league = dataObj[0]['league'];
     const season = dataObj[0]['season'];
     const teams = getTeamNames(dataObj);

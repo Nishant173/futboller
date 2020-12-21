@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import LeagueDataTable from './LeagueDataTable';
-import { LeagueTableBarChart, LeagueGoalDifferenceBarChart } from './LeagueCharts';
+import { LeaguePointsBarChart, LeagueGoalDifferenceBarChart } from './LeagueCharts';
 import { ColumnsLeagueResults, ColumnsLeagueTable, ColumnsLeagueStats } from './Columns';
 import { getLeagueStandings } from '../api/getData';
 
 
-export default function LeagueTableView() {
+export default function LeagueStandingsView() {
     const [data, setData] = useState([]);
     const [league, setLeague] = useState("");
     const [season, setSeason] = useState("");
@@ -56,7 +56,7 @@ export default function LeagueTableView() {
             <br /><br />
             {/* { data.length > 0 ? <LeagueDataTable dataObj={data} columnsObj={ColumnsLeagueTable} /> : null }
             <br /><br /> */}
-            { data.length > 0 ? <LeagueTableBarChart dataObj={data} /> : null }
+            { data.length > 0 ? <LeaguePointsBarChart dataObj={data} /> : null }
             <br /><br />
             { data.length > 0 ? <LeagueGoalDifferenceBarChart dataObj={data} /> : null }
             <br /><br />

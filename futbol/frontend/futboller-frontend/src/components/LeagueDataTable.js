@@ -1,6 +1,6 @@
 import React, { useMemo } from 'react';
 import { useTable, useSortBy } from 'react-table';
-import './table.css';
+import './LeagueDataTable.css';
 
 
 export default function LeagueDataTable({ dataObj, columnsObj }) {
