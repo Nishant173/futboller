@@ -28,10 +28,13 @@ npm i react-table
 npm install --save react-chartjs-2
 npm start
 
+https://stackoverflow.com/questions/44661671/chart-js-scatter-chart-displaying-label-specific-to-point-in-tooltip
+https://apexcharts.com/react-chart-demos/scatter-charts/
 https://www.chartjs.org/
 https://www.chartjs.org/docs/latest/
 https://reactchartjs.github.io/react-chartjs-2/#/
 https://reactjs.org/docs/conditional-rendering.html
+https://stackoverflow.com/questions/62832760/how-to-create-a-scatter-plot-where-x-axis-represents-a-day-by-hours-with-datetim
 https://stackoverflow.com/questions/24706267/cannot-read-property-map-of-undefined
 https://stackoverflow.com/questions/38380462/syntaxerror-unexpected-token-o-in-json-at-position-1
 https://www.pluralsight.com/guides/access-data-from-an-external-api-into-a-react-component
