@@ -1,19 +1,62 @@
 import React from 'react';
 import { Scatter } from 'react-chartjs-2';
-import { getAvgPtsAndGdCoordinates } from './utils';
+import { getAvgPtsAndGdCoordinates, filterByLeague } from './utils';
 
 
 export function CrossLeagueScatterChart({ dataObj }) {
-    const scatterChartDataset = getAvgPtsAndGdCoordinates(dataObj);
+    const dataObjEpl = filterByLeague(dataObj, "EPL")
+    const dataObjBundesliga = filterByLeague(dataObj, "Bundesliga")
+    const dataObjLaLiga = filterByLeague(dataObj, "La Liga")
+    const dataObjLigue1 = filterByLeague(dataObj, "Ligue 1")
+    const dataObjSerieA = filterByLeague(dataObj, "Serie A")
+    const customStyles = {
+        radius: 10,
+        hoverRadius: 14,
+        borderColor: 'black',
+    }
     const data = {
-        datasets: [{
-            label: 'AvgPoints vs AvgGoalDifference',
-            data: scatterChartDataset,
-            radius: 10,
-            hoverRadius: 14,
-            backgroundColor: '#76AFEE',
-            borderColor: '#1D69BD',
-        }]
+        datasets: [
+            {
+                label: 'EPL',
+                backgroundColor: '#76AFEE',
+                data: getAvgPtsAndGdCoordinates(dataObjEpl),
+                radius: customStyles['radius'],
+                hoverRadius: customStyles['hoverRadius'],
+                borderColor: customStyles['borderColor'],
+            },
+            {
+                label: 'Bundesliga',
+                backgroundColor: '#D41442',
+                data: getAvgPtsAndGdCoordinates(dataObjBundesliga),
+                radius: customStyles['radius'],
+                hoverRadius: customStyles['hoverRadius'],
+                borderColor: customStyles['borderColor'],
+            },
+            {
+                label: 'La Liga',
+                backgroundColor: '#0DE243',
+                data: getAvgPtsAndGdCoordinates(dataObjLaLiga),
+                radius: customStyles['radius'],
+                hoverRadius: customStyles['hoverRadius'],
+                borderColor: customStyles['borderColor'],
+            },
+            {
+                label: 'Ligue 1',
+                backgroundColor: '#E8F50F',
+                data: getAvgPtsAndGdCoordinates(dataObjLigue1),
+                radius: customStyles['radius'],
+                hoverRadius: customStyles['hoverRadius'],
+                borderColor: customStyles['borderColor'],
+            },
+            {
+                label: 'Serie A',
+                backgroundColor: '#EE35D7',
+                data: getAvgPtsAndGdCoordinates(dataObjSerieA),
+                radius: customStyles['radius'],
+                hoverRadius: customStyles['hoverRadius'],
+                borderColor: customStyles['borderColor'],
+            },
+        ]
     }
     const options = {
         title: {

@@ -51,3 +51,14 @@ export function getAvgPtsAndGdCoordinates(crossLeagueStandingsArray) {
     ))
     return avgPtsAndGd
 }
+
+export function filterByLeague(crossLeagueStandingsArray, league) {
+    let standingsByLeague = []
+    for (let i = 0; i < crossLeagueStandingsArray.length; i++) {
+        let standing = crossLeagueStandingsArray[i]
+        if (standing['league'] === league) {
+            standingsByLeague.push(standing)
+        }
+    }
+    return standingsByLeague
+}
