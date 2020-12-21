@@ -4,9 +4,10 @@ Web-application that provides football data from the top 5 European leagues (API
 ## Installation
 - Install the backend API dependencies with `pip install -r requirements.txt`
 - Install ReactJS with `npm i react`
-- Install ReactJS DOM with `npm i react-dom`
-- Install ReactJS table with `npm i react-table`
-- Install ReactJS charts with `npm install --save react-chartjs-2`
+- Install React DOM with `npm i react-dom`
+- Install React Router DOM with `npm i react-router-dom --save`
+- Install React Table with `npm i react-table`
+- Install React ChartJS 2 with `npm install --save react-chartjs-2`
 
 ## Usage
 - From the `futbol` directory, run `python manage.py runserver` to run the local server.
