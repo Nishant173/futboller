@@ -1,6 +1,10 @@
 import React, { useState } from 'react';
 import LeagueDataTable from './LeagueDataTable';
-import { LeaguePointsBarChart, LeagueGoalDifferenceBarChart } from './LeagueCharts';
+import {
+    LeaguePointsBarChart,
+    LeagueGoalDifferenceBarChart,
+    LeagueTitleRaceLineChart,
+} from './LeagueCharts';
 import { ColumnsLeagueResults, ColumnsLeagueTable, ColumnsLeagueStats } from './Columns';
 import { getLeagueStandings } from '../api/getData';
 
@@ -59,6 +63,8 @@ export default function LeagueStandingsView() {
             { data.length > 0 ? <LeaguePointsBarChart dataObj={data} /> : null }
             <br /><br />
             { data.length > 0 ? <LeagueGoalDifferenceBarChart dataObj={data} /> : null }
+            <br /><br />
+            { data.length > 0 ? <LeagueTitleRaceLineChart dataObj={data} /> : null }
             <br /><br />
         </div>
     )
