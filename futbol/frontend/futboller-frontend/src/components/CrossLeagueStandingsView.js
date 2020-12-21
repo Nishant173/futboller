@@ -14,7 +14,7 @@ export default function CrossLeagueStandingsView() {
 
     return (
         <div>
-            <h1>Cross League Data - Top 5 Leagues</h1>
+            <h1>Cross League Standings - Top 5 Leagues</h1>
             <br />
 
             <form className="cross-league-table-form">

@@ -20,7 +20,7 @@ export default function LeagueStandingsView() {
 
     return (
         <div>
-            <h1>League Tables - Top 5 Leagues</h1>
+            <h1>League Standings - Top 5 Leagues</h1>
             <br />
 
             <h3>Enter league and season</h3>

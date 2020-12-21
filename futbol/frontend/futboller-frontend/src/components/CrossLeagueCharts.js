@@ -19,7 +19,7 @@ export function CrossLeagueScatterChart({ dataObj }) {
         title: {
             display: true,
             position: 'top',
-            text: "Cross league scatter chart",
+            text: "Cross league scatter chart (AvgPoints vs AvgGoalDifference)",
             fontSize: 32,
             fontColor: 'black',
         },
