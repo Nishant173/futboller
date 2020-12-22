@@ -1,6 +1,11 @@
 import React from 'react';
 import { Scatter } from 'react-chartjs-2';
-import { getRandomHexCode, getAvgPtsAndGdCoordinates, filterStandingsByLeague } from './utils';
+import {
+    getTeamNames,
+    getRandomHexCode,
+    getAvgPtsAndGdCoordinates,
+    filterStandingsByLeague,
+} from './utils';
 
 
 /*
@@ -73,14 +78,6 @@ export function CrossLeagueScatterChart({ dataObj }) {
                 },
             }],
         },
-        // tooltips: {
-        //     callbacks: {
-        //         label: function(tooltipItem, data) {
-        //             let label = data.labels[tooltipItem.index];
-        //             return label + ': (' + tooltipItem.xLabel + ', ' + tooltipItem.yLabel + ')';
-        //         }
-        //     }
-        // },
     }
 
     return (
