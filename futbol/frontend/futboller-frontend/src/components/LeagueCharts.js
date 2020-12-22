@@ -145,6 +145,7 @@ function getLeagueTitleRaceDatasets(teamsArray, cumPointsArray) {
             data: cumPointsArray[i],
             borderColor: color,
             backgroundColor: color,
+            borderWidth: 5,
             fill: false,
         })
     }
