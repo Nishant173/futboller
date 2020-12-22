@@ -1,5 +1,17 @@
+export function getRandomHexCode() {
+    return '#' + (Math.random() * 0xFFFFFF << 0).toString(16).padStart(6, '0')
+}
+
 export function ceilBy(number, by) {
     return Math.ceil((number + 1) / by) * by
+}
+
+export function generateRangeInclusiveArray(start, stop) {
+    let theArray = []
+    for (let i = 0; i < stop - start + 1; i++) {
+        theArray.push(start + i)
+    }
+    return theArray
 }
 
 export function getTeamNames(leagueStandingsArray) {
@@ -16,6 +28,14 @@ export function getPoints(leagueStandingsArray) {
         points.push(leagueStanding.points)
     ))
     return points
+}
+
+export function getCumPoints(leagueStandingsArray) {
+    let cumPoints = []
+    leagueStandingsArray.forEach((leagueStanding) => (
+        cumPoints.push(leagueStanding.cumulativePoints)
+    ))
+    return cumPoints
 }
 
 export function getGoalDifferences(leagueStandingsArray) {
