@@ -1,22 +1,28 @@
 import React from 'react';
 import { Scatter } from 'react-chartjs-2';
-import { getRandomHexCode, getAvgPtsAndGdCoordinates, filterByLeagues } from './utils';
+import { getRandomHexCode, getAvgPtsAndGdCoordinates, filterStandingsByLeague } from './utils';
 
 
 /*
 Returns array of objects containing data to be used in the CrossLeagueScatterChart's datasets.
-The actual data will be (x, y) co-ordinates of AvgPoints and AvgGoalDifference.
+The actual data will be (x, y) co-ordinates of AvgPoints and AvgGoalDifference (along with some styles).
 */
 function getCrossLeagueScatterChartDatasets(crossLeagueStandingsArray) {
     let leagueNames = ['EPL', 'Bundesliga', 'La Liga', 'Ligue 1', 'Serie A']
-    let standingsByLeague = filterByLeagues(crossLeagueStandingsArray)
+    let standingsByLeague = filterStandingsByLeague(crossLeagueStandingsArray)
+    let colorByLeague = {
+        'EPL': '#E6174F',
+        'Bundesliga': '#2D2FEA',
+        'La Liga': '#1AE27D',
+        'Ligue 1': '#D4EE0D',
+        'Serie A': '#F17824',
+    }
     let datasets = []
-    for (let i = 0; i < 5; i++) {
-        let color = getRandomHexCode()
+    for (let i = 0; i < leagueNames.length; i++) {
         let league = leagueNames[i]
         datasets.push({
             label: league,
-            backgroundColor: color,
+            backgroundColor: colorByLeague[league], // getRandomHexCode(),
             data: getAvgPtsAndGdCoordinates(standingsByLeague[league]),
             radius: 10,
             hoverRadius: 14,
@@ -25,6 +31,7 @@ function getCrossLeagueScatterChartDatasets(crossLeagueStandingsArray) {
     }
     return datasets
 }
+
 
 export function CrossLeagueScatterChart({ dataObj }) {
     const data = {

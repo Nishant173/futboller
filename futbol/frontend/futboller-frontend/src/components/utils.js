@@ -73,7 +73,7 @@ export function getAvgPtsAndGdCoordinates(crossLeagueStandingsArray) {
 }
 
 // Returns object having keys = league name, and values = CrossLeagueStandings array for respective leagues
-export function filterByLeagues(crossLeagueStandingsArray) {
+export function filterStandingsByLeague(crossLeagueStandingsArray) {
     let standingsEpl = []
     let standingsBundesliga = []
     let standingsLaLiga = []
