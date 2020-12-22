@@ -1,6 +1,9 @@
 # futboller
 Web-application that provides football data from the top 5 European leagues (API + frontend)
 
+## About
+- Open the `demo` folder in the root directory, and watch the demonstration via `demo.mp4`
+
 ## Installation
 - Install the backend API dependencies with `pip install -r requirements.txt`
 - Install ReactJS with `npm i react`
@@ -51,3 +54,13 @@ def get_api_data_via_offset_loop() -> List:
 if __name__ == "__main__":
     results = get_api_data_via_offset_loop()
 ```
+
+## Screenshots
+#### API - League standings
+![API - League standings](screenshots/api-league-standings.png)
+
+#### UI - Cross leagues scatter chart
+![UI - Cross leagues scatter chart](screenshots/ui-chart-cross-league-all-teams.png)
+
+#### UI - League Title Race line chart
+![UI - League Title Race line chart](screenshots/ui-chart-league-title-race.png)
