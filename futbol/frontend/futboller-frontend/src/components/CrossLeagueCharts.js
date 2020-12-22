@@ -1,62 +1,34 @@
 import React from 'react';
 import { Scatter } from 'react-chartjs-2';
-import { getAvgPtsAndGdCoordinates, filterByLeague } from './utils';
+import { getRandomHexCode, getAvgPtsAndGdCoordinates, filterByLeagues } from './utils';
 
+
+/*
+Returns array of objects containing data to be used in the CrossLeagueScatterChart's datasets.
+The actual data will be (x, y) co-ordinates of AvgPoints and AvgGoalDifference.
+*/
+function getCrossLeagueScatterChartDatasets(crossLeagueStandingsArray) {
+    let leagueNames = ['EPL', 'Bundesliga', 'La Liga', 'Ligue 1', 'Serie A']
+    let standingsByLeague = filterByLeagues(crossLeagueStandingsArray)
+    let datasets = []
+    for (let i = 0; i < 5; i++) {
+        let color = getRandomHexCode()
+        let league = leagueNames[i]
+        datasets.push({
+            label: league,
+            backgroundColor: color,
+            data: getAvgPtsAndGdCoordinates(standingsByLeague[league]),
+            radius: 10,
+            hoverRadius: 14,
+            borderColor: 'black',
+        })
+    }
+    return datasets
+}
 
 export function CrossLeagueScatterChart({ dataObj }) {
-    const dataObjEpl = filterByLeague(dataObj, "EPL")
-    const dataObjBundesliga = filterByLeague(dataObj, "Bundesliga")
-    const dataObjLaLiga = filterByLeague(dataObj, "La Liga")
-    const dataObjLigue1 = filterByLeague(dataObj, "Ligue 1")
-    const dataObjSerieA = filterByLeague(dataObj, "Serie A")
-    const customStyles = {
-        radius: 10,
-        hoverRadius: 14,
-        borderColor: 'black',
-    }
     const data = {
-        datasets: [
-            {
-                label: 'EPL',
-                backgroundColor: '#76AFEE',
-                data: getAvgPtsAndGdCoordinates(dataObjEpl),
-                radius: customStyles['radius'],
-                hoverRadius: customStyles['hoverRadius'],
-                borderColor: customStyles['borderColor'],
-            },
-            {
-                label: 'Bundesliga',
-                backgroundColor: '#D41442',
-                data: getAvgPtsAndGdCoordinates(dataObjBundesliga),
-                radius: customStyles['radius'],
-                hoverRadius: customStyles['hoverRadius'],
-                borderColor: customStyles['borderColor'],
-            },
-            {
-                label: 'La Liga',
-                backgroundColor: '#0DE243',
-                data: getAvgPtsAndGdCoordinates(dataObjLaLiga),
-                radius: customStyles['radius'],
-                hoverRadius: customStyles['hoverRadius'],
-                borderColor: customStyles['borderColor'],
-            },
-            {
-                label: 'Ligue 1',
-                backgroundColor: '#E8F50F',
-                data: getAvgPtsAndGdCoordinates(dataObjLigue1),
-                radius: customStyles['radius'],
-                hoverRadius: customStyles['hoverRadius'],
-                borderColor: customStyles['borderColor'],
-            },
-            {
-                label: 'Serie A',
-                backgroundColor: '#EE35D7',
-                data: getAvgPtsAndGdCoordinates(dataObjSerieA),
-                radius: customStyles['radius'],
-                hoverRadius: customStyles['hoverRadius'],
-                borderColor: customStyles['borderColor'],
-            },
-        ]
+        datasets: getCrossLeagueScatterChartDatasets(dataObj)
     }
     const options = {
         title: {

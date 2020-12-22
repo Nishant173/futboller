@@ -72,13 +72,32 @@ export function getAvgPtsAndGdCoordinates(crossLeagueStandingsArray) {
     return avgPtsAndGd
 }
 
-export function filterByLeague(crossLeagueStandingsArray, league) {
-    let standingsByLeague = []
+// Returns object having keys = league name, and values = CrossLeagueStandings array for respective leagues
+export function filterByLeagues(crossLeagueStandingsArray) {
+    let standingsEpl = []
+    let standingsBundesliga = []
+    let standingsLaLiga = []
+    let standingsLigue1 = []
+    let standingsSerieA = []
     for (let i = 0; i < crossLeagueStandingsArray.length; i++) {
         let standing = crossLeagueStandingsArray[i]
-        if (standing['league'] === league) {
-            standingsByLeague.push(standing)
+        if (standing['league'] === 'EPL') {
+            standingsEpl.push(standing)
+        } else if (standing['league'] === 'Bundesliga') {
+            standingsBundesliga.push(standing)
+        } else if (standing['league'] === 'La Liga') {
+            standingsLaLiga.push(standing)
+        } else if (standing['league'] === 'Ligue 1') {
+            standingsLigue1.push(standing)
+        } else if (standing['league'] === 'Serie A') {
+            standingsSerieA.push(standing)
         }
     }
-    return standingsByLeague
+    return {
+        'EPL': standingsEpl,
+        'Bundesliga': standingsBundesliga,
+        'La Liga': standingsLaLiga,
+        'Ligue 1': standingsLigue1,
+        'Serie A': standingsSerieA,
+    }
 }
