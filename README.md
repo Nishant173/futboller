@@ -57,13 +57,13 @@ if __name__ == "__main__":
 
 ## Screenshots
 #### API - League standings
-![API - League standings](screenshots/API - League standings.png)
+![API - League standings](screenshots/API-LeagueStandings.png)
 
 #### UI - Scatter chart - CrossLeague - AvgPtsVsAvgGd (With team names)
-![UI - Cross leagues scatter chart](screenshots/UI - Scatter chart - CrossLeague - AvgPtsVsAvgGd (With team names).png)
+![UI - Cross leagues scatter chart](screenshots/UI-ScatterChart-CrossLeague-AvgPtsVsAvgGd-WithTeamNames.png)
 
 #### UI - Scatter chart - CrossLeague - AvgPtsVsAvgGd (By league)
-![UI - Cross leagues scatter chart (By league)](screenshots/UI - Scatter chart - CrossLeague - AvgPtsVsAvgGd (By league).png)
+![UI - Cross leagues scatter chart (By league)](screenshots/UI-ScatterChart-CrossLeague-AvgPtsVsAvgGd-ByLeague.png)
 
 #### UI - Line chart - League - Title race
-![UI - League Title Race line chart](screenshots/UI - Line chart - League - Title race.png)
+![UI - League Title Race line chart](screenshots/UI-LineChart-League-TitleRace.png)
