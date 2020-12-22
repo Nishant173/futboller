@@ -38,7 +38,8 @@ function getCrossLeagueScatterChartDatasets(crossLeagueStandingsArray) {
 }
 
 
-export function CrossLeagueScatterChart({ dataObj }) {
+// Scatter points colored by league
+export function CrossLeagueScatterChartByLeague({ dataObj }) {
     const data = {
         datasets: getCrossLeagueScatterChartDatasets(dataObj)
     }
@@ -46,7 +47,7 @@ export function CrossLeagueScatterChart({ dataObj }) {
         title: {
             display: true,
             position: 'top',
-            text: "Cross league scatter chart (AvgPoints vs AvgGoalDifference)",
+            text: "Cross league scatter chart - By league (AvgPoints vs AvgGoalDifference)",
             fontSize: 32,
             fontColor: 'black',
         },
@@ -77,6 +78,81 @@ export function CrossLeagueScatterChart({ dataObj }) {
                     fontColor: 'black',
                 },
             }],
+        },
+    }
+
+    return (
+        <>
+            <Scatter data={data} options={options} />
+        </>
+    )
+}
+
+
+// Scatter points having team-name in tooltip
+export function CrossLeagueScatterChartAllTeams({ dataObj }) {
+    const teams = getTeamNames(dataObj)
+    const coords = getAvgPtsAndGdCoordinates(dataObj)
+    const data = {
+        labels: teams,
+        datasets: [
+            {
+                backgroundColor: '#10EC5B', // getRandomHexCode(),
+                data: coords,
+                radius: 10,
+                hoverRadius: 14,
+                borderColor: 'black',
+            },
+        ],
+    }
+    const options = {
+        title: {
+            display: true,
+            position: 'top',
+            text: "Cross league scatter chart - With team names (AvgPoints vs AvgGoalDifference)",
+            fontSize: 32,
+            fontColor: 'black',
+        },
+        scales: {
+            xAxes: [{
+                scaleLabel: {
+                    display: true,
+                    labelString: 'Avg Points',
+                    fontSize: 20,
+                    fontColor: 'black',
+                },
+                ticks: {
+                    min: 0,
+                    max: 3,
+                    fontSize: 15,
+                    fontColor: 'black',
+                },
+            }],
+            yAxes: [{
+                scaleLabel: {
+                    display: true,
+                    labelString: 'Avg Goal Difference',
+                    fontSize: 20,
+                    fontColor: 'black',
+                },
+                ticks: {
+                    fontSize: 15,
+                    fontColor: 'black',
+                },
+            }],
+        },
+        legend: {
+            display: false,
+        },
+        tooltips: {
+            callbacks: {
+               label: function(tooltipItem, data) {
+                    let teamName = data.labels[tooltipItem.index]
+                    let avgPts = tooltipItem.xLabel
+                    let avgGoalDiff = tooltipItem.yLabel
+                    return `${teamName} (AvgPoints: ${avgPts}, AvgGoalDiff: ${avgGoalDiff})`
+               }
+            }
         },
     }
 

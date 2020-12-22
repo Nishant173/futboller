@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
-import { CrossLeagueScatterChart } from './CrossLeagueCharts';
+import {
+    CrossLeagueScatterChartByLeague,
+    CrossLeagueScatterChartAllTeams,
+} from './CrossLeagueCharts';
 import { getCrossLeagueStandings } from '../api/getData';
 
 
@@ -26,7 +29,9 @@ export default function CrossLeagueStandingsView() {
             </form>
 
             <br /><br />
-            { data.length > 0 ? <CrossLeagueScatterChart dataObj={data} /> : null }
+            { data.length > 0 ? <CrossLeagueScatterChartByLeague dataObj={data} /> : null }
+            <br /><br />
+            { data.length > 0 ? <CrossLeagueScatterChartAllTeams dataObj={data} /> : null }
             <br /><br />
         </div>
     )
