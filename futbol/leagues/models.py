@@ -35,21 +35,41 @@ class LeagueMatch(models.Model):
         return dict_obj_needed
     
     @property
-    def draw(self) -> bool:
+    def is_draw(self) -> bool:
         return (self.home_goals == self.away_goals)
     
     @property
-    def home_win(self) -> bool:
+    def is_home_win(self) -> bool:
         return (self.home_goals > self.away_goals)
     
     @property
-    def away_win(self) -> bool:
+    def is_away_win(self) -> bool:
         return (self.home_goals < self.away_goals)
     
     @property
-    def one_sided(self) -> bool:
-        gd = abs(self.home_goals - self.away_goals)
-        return (gd >= 3)
+    def winner(self) -> str:
+        if self.is_draw:
+            return "None"
+        if self.is_home_win:
+            return self.home_team
+        return self.away_team
+    
+    @property
+    def loser(self) -> str:
+        if self.is_draw:
+            return "None"
+        if self.is_home_win:
+            return self.away_team
+        return self.home_team
+    
+    @property
+    def goal_difference(self) -> int:
+        return abs(self.home_goals - self.away_goals)
+    
+    @property
+    def is_one_sided(self) -> bool:
+        """Returns True if the match is one-sided (if one team wins by margin of 3 or more goals)"""
+        return (self.goal_difference >= 3)
 
 
 
