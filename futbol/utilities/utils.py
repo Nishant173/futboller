@@ -1,8 +1,31 @@
-from typing import Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, Union
 from django.db.models import QuerySet
 import numpy as np
 import pandas as pd
 import random
+
+
+def get_timetaken_fstring(num_seconds: Union[int, float],
+                          round_up: bool) -> str:
+    """Returns formatted-string of time elapsed, given the number of seconds elapsed"""
+    if round_up:
+        num_seconds = int(np.ceil(num_seconds))
+    if num_seconds < 60:
+        secs = (int(num_seconds) if int(num_seconds) == num_seconds else round(num_seconds, 3))
+        fstring_timetaken = f"{secs}secs"
+    elif 60 < num_seconds < 3600:
+        mins, secs = divmod(num_seconds, 60)
+        mins = int(mins)
+        secs = (int(secs) if int(secs) == secs else round(secs, 3))
+        fstring_timetaken = f"{mins}mins {secs}secs"
+    else:
+        hrs, secs_remainder = divmod(num_seconds, 3600)
+        mins, secs = divmod(secs_remainder, 60)
+        hrs = int(hrs)
+        mins = int(mins)
+        secs = (int(secs) if int(secs) == secs else round(secs, 3))
+        fstring_timetaken = f"{hrs}hrs {mins}mins {secs}secs"
+    return fstring_timetaken
 
 
 def string_to_int_or_float(value: str) -> Union[int, float]:
@@ -58,8 +81,9 @@ def round_off_columns(data: pd.DataFrame, mapper: Dict[str, int]):
 
 
 def drop_id_column(data: pd.DataFrame) -> pd.DataFrame:
-    """Drops the 'id' column from Pandas DataFrame"""
-    data.drop(labels=['id'], axis=1, inplace=True)
+    """Drops the 'id' column (if it exists) from Pandas DataFrame"""
+    if 'id' in data.columns.tolist():
+        data.drop(labels=['id'], axis=1, inplace=True)
     return data
 
 
@@ -124,9 +148,9 @@ def spread_array(array: List[Union[int, float]], to: int) -> List[Union[int, flo
     return array_after_spread
 
 
-def filter_list_by_offset(list_obj: List,
+def filter_list_by_offset(list_obj: List[Any],
                           offset: Optional[int] = None,
-                          limit: Optional[int] = None):
+                          limit: Optional[int] = None) -> List[Any]:
     """
     Filters list object based on `offset` and `limit`.
     Note:
@@ -147,5 +171,5 @@ def filter_list_by_offset(list_obj: List,
         limit = default_limit
     if limit > max_limit:
         limit = max_limit
-    list_obj_filtered = list_obj[offset - 1 : limit + offset - 1]
+    list_obj_filtered = list_obj[offset - 1 : offset + limit - 1]
     return list_obj_filtered
