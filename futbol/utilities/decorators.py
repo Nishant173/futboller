@@ -28,3 +28,15 @@ def slow_down(func: Callable) -> Callable:
         time.sleep(num_seconds_delayed)
         return func(*args, **kwargs)
     return wrapper_slow_down
+
+
+def repeat(num_times: int) -> Callable:
+    """Decorator that executes the decorated function `num_times` times"""
+    def repeat_decorator(func):
+        @functools.wraps(func)
+        def wrapper(*args, **kwargs):
+            for _ in range(num_times):
+                result = func(*args, **kwargs)
+            return result
+        return wrapper
+    return repeat_decorator
