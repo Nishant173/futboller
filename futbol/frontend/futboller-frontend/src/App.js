@@ -1,11 +1,12 @@
-import './App.css';
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import Navbar from './components/Navbar';
-import LeagueStandingsView from './components/LeagueStandingsView';
-import CrossLeagueStandingsView from './components/CrossLeagueStandingsView';
-import Home from './pages/Home';
+import './App.css'
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom"
+import Navbar from './components/Navbar'
+import LeagueStandingsView from './components/LeagueStandingsView'
+import CrossLeagueStandingsView from './components/CrossLeagueStandingsView'
+import Home from './pages/Home'
 
-function App() {
+
+export default function App() {
   return (
     <div className="App">
       <Router>
@@ -17,7 +18,5 @@ function App() {
         </Switch>
       </Router>
     </div>
-  );
+  )
 }
-
-export default App;

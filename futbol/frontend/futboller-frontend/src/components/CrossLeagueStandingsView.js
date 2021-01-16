@@ -1,17 +1,17 @@
-import React, { useState } from 'react';
+import React, { useState } from 'react'
 import {
     CrossLeagueScatterChartByLeague,
     CrossLeagueScatterChartAllTeams,
-} from './CrossLeagueCharts';
-import { getCrossLeagueStandings } from '../api/getApiData';
+} from './CrossLeagueCharts'
+import { getCrossLeagueStandings } from '../api/getApiData'
 
 
 export default function CrossLeagueStandingsView() {
-    const [data, setData] = useState([]);
+    const [data, setData] = useState([])
     const updateData = () => {
         getCrossLeagueStandings()
             .then(function(response) {
-                setData(response);
+                setData(response)
             })
     }
 

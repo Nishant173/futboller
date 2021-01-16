@@ -1,22 +1,22 @@
-import React, { useMemo } from 'react';
-import { useTable, useSortBy } from 'react-table';
-import './LeagueDataTable.css';
+import React, { useMemo } from 'react'
+import { useTable, useSortBy } from 'react-table'
+import './LeagueDataTable.css'
 
 
 export default function LeagueDataTable({ dataObj, columnsObj }) {
-    const data = useMemo(() => dataObj, []);
-    const columns = useMemo(() => columnsObj, []);
+    const data = useMemo(() => dataObj, [])
+    const columns = useMemo(() => columnsObj, [])
     const tableInstance = useTable({
         columns: columns,
         data: data,
-    }, useSortBy);
+    }, useSortBy)
     const {
         getTableProps,
         getTableBodyProps,
         headerGroups,
         page,
         prepareRow,
-    } = tableInstance;
+    } = tableInstance
 
     return (
         <>
@@ -55,5 +55,5 @@ export default function LeagueDataTable({ dataObj, columnsObj }) {
                 </tbody>
             </table>
         </>
-    );
+    )
 }

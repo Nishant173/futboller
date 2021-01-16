@@ -19,7 +19,7 @@ export const ColumnsLeagueTable = [
         Header: 'Goal difference',
         accessor: 'goalDifference',
     },
-];
+]
 
 
 export const ColumnsLeagueResults = [
@@ -51,7 +51,7 @@ export const ColumnsLeagueResults = [
         Header: 'Results',
         accessor: 'resultsString',
     },
-];
+]
 
 
 export const ColumnsLeagueStats = [
@@ -107,4 +107,4 @@ export const ColumnsLeagueStats = [
         Header: 'Longest unbeaten streak',
         accessor: 'longestUnbeatenStreak',
     },
-];
+]

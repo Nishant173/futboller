@@ -1,24 +1,24 @@
-import React, { useState } from 'react';
-// import LeagueDataTable from './LeagueDataTable';
+import React, { useState } from 'react'
+// import LeagueDataTable from './LeagueDataTable'
 import {
     LeaguePointsBarChart,
     LeagueGoalDifferenceBarChart,
     LeagueTitleRaceLineChart,
-} from './LeagueCharts';
-// import { ColumnsLeagueResults, ColumnsLeagueTable, ColumnsLeagueStats } from './Columns';
-import { getLeagueStandings } from '../api/getApiData';
+} from './LeagueCharts'
+// import { ColumnsLeagueResults, ColumnsLeagueTable, ColumnsLeagueStats } from './Columns'
+import { getLeagueStandings } from '../api/getApiData'
 
 
 export default function LeagueStandingsView() {
-    const [data, setData] = useState([]);
-    const [league, setLeague] = useState("");
-    const [season, setSeason] = useState("");
-    const updateLeague = event => setLeague(event.target.value);
-    const updateSeason = event => setSeason(event.target.value);
+    const [data, setData] = useState([])
+    const [league, setLeague] = useState("")
+    const [season, setSeason] = useState("")
+    const updateLeague = event => setLeague(event.target.value)
+    const updateSeason = event => setSeason(event.target.value)
     const updateData = () => {
         getLeagueStandings(league, season)
             .then(function(response) {
-                setData(response);
+                setData(response)
             })
     }
 

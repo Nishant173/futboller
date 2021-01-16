@@ -1,9 +1,9 @@
-import React from 'react';
-import { Scatter } from 'react-chartjs-2';
+import React from 'react'
+import { Scatter } from 'react-chartjs-2'
 import {
     getAvgPtsAndAvgGdCoords,
     filterStandingsByLeague,
-} from './utils';
+} from './utils'
 import { getValuesByKey } from '../jsUtils/general'
 
 

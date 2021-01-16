@@ -1,5 +1,5 @@
-import React from 'react';
-import { HorizontalBar, Line } from 'react-chartjs-2';
+import React from 'react'
+import { HorizontalBar, Line } from 'react-chartjs-2'
 import {
     generateRandomHexCode,
     ceilByClosestMultiple,
@@ -10,12 +10,12 @@ import {
 
 
 export function LeaguePointsBarChart({ dataObj }) {
-    const league = dataObj[0]['league'];
-    const season = dataObj[0]['season'];
+    const league = dataObj[0]['league']
+    const season = dataObj[0]['season']
     const teams = getValuesByKey(dataObj, "team")
     const points = getValuesByKey(dataObj, "points")
-    const xLow = 0;
-    const xHigh = ceilByClosestMultiple(dataObj[0]['points'], 10);
+    const xLow = 0
+    const xHigh = ceilByClosestMultiple(dataObj[0]['points'], 10)
     const data = {
         labels: teams,
         datasets: [
@@ -72,12 +72,12 @@ export function LeaguePointsBarChart({ dataObj }) {
 
 
 export function LeagueGoalDifferenceBarChart({ dataObj }) {
-    const league = dataObj[0]['league'];
-    const season = dataObj[0]['season'];
+    const league = dataObj[0]['league']
+    const season = dataObj[0]['season']
     const teams = getValuesByKey(dataObj, "team")
     const gds = getValuesByKey(dataObj, "goalDifference")
     const maxOfAbsGoalDiff = maxOfAbsValues(gds)
-    const xLimit = ceilByClosestMultiple(maxOfAbsGoalDiff, 10);
+    const xLimit = ceilByClosestMultiple(maxOfAbsGoalDiff, 10)
     const data = {
         labels: teams,
         datasets: [
