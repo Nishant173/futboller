@@ -43,7 +43,6 @@ INSTALLED_APPS = [
     # Custom apps
     'api.apps.ApiConfig',
     'leagues.apps.LeaguesConfig',
-    'utilities.apps.UtilitiesConfig',
 ]
 
 MIDDLEWARE = [
