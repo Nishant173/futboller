@@ -1,8 +1,9 @@
 from typing import List
 import pandas as pd
 import sqlite3
-from .utils import get_unique_teams
+
 from futbol import config
+from .utils import get_unique_teams
 
 
 def get_teams() -> List[str]:
