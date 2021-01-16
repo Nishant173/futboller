@@ -3,16 +3,12 @@ from rest_framework.response import Response
 
 from leagues import filters, queries
 from leagues.models import LeagueMatch, LeagueStandings, CrossLeagueStandings
-from py_utils.data_analysis.transform import (
-    dataframe_to_list,
-    switch_column_casing,
-)
+from py_utils.data_analysis.transform import (dataframe_to_list,
+                                              switch_column_casing)
 from py_utils.django_utils.utils import queryset_to_dataframe
 from py_utils.general.casing import sc2lcc
-from py_utils.general.utils import (
-    filter_list_by_offset,
-    listify_string_of_nums,
-)
+from py_utils.general.utils import (filter_list_by_offset,
+                                    listify_string_of_nums)
 from . import docs
 
 
