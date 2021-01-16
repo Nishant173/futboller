@@ -14,7 +14,7 @@ def django_query_counter(func: Callable) -> Callable:
         num_queries_at_end = len(connection.queries)
         num_queries = num_queries_at_end - num_queries_at_start
         print(
-            f"Number of Django queries executed by function {func._name_!r} is: {num_queries}"
+            f"Number of Django queries executed by function {func.__name__!r} is: {num_queries}"
         )
         return result
     return wrapper_django_query_counter

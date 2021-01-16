@@ -1,3 +1,4 @@
+from rest_framework import status
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 
@@ -17,19 +18,19 @@ def get_teams(request):
     teams = queries.get_teams()
     if name_contains:
         teams = filters.filter_teams_by_icontains(teams=teams, name_contains=name_contains)
-    return Response(data=teams, status=200)
+    return Response(data=teams, status=status.HTTP_200_OK)
 
 
 @api_view(['GET'])
 def get_leagues(request):
     leagues = queries.get_leagues()
-    return Response(data=leagues, status=200)
+    return Response(data=leagues, status=status.HTTP_200_OK)
 
 
 @api_view(['GET'])
 def get_seasons(request):
     seasons = queries.get_seasons()
-    return Response(data=seasons, status=200)
+    return Response(data=seasons, status=status.HTTP_200_OK)
 
 
 @api_view(['GET'])
@@ -63,7 +64,7 @@ def get_league_matches(request):
     matches = filter_list_by_offset(list_obj=matches,
                                     offset=int(offset) if offset else None,
                                     limit=int(limit) if limit else None)
-    return Response(data=matches, status=200)
+    return Response(data=matches, status=status.HTTP_200_OK)
 
 
 @api_view(['GET'])
@@ -76,7 +77,7 @@ def get_league_standings(request):
     df_standings['cumulative_goal_difference'] = df_standings['cumulative_goal_difference'].apply(listify_string_of_nums)
     df_standings = switch_column_casing(data=df_standings, func=sc2lcc)
     league_standings = dataframe_to_list(data=df_standings)
-    return Response(data=league_standings, status=200)
+    return Response(data=league_standings, status=status.HTTP_200_OK)
 
 
 @api_view(['GET'])
@@ -94,4 +95,4 @@ def get_cross_league_standings(request):
     cls = filter_list_by_offset(list_obj=cls,
                                 offset=int(offset) if offset else None,
                                 limit=int(limit) if limit else None)
-    return Response(data=cls, status=200)
+    return Response(data=cls, status=status.HTTP_200_OK)
