@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
-import LeagueDataTable from './LeagueDataTable';
+// import LeagueDataTable from './LeagueDataTable';
 import {
     LeaguePointsBarChart,
     LeagueGoalDifferenceBarChart,
     LeagueTitleRaceLineChart,
 } from './LeagueCharts';
-import { ColumnsLeagueResults, ColumnsLeagueTable, ColumnsLeagueStats } from './Columns';
-import { getLeagueStandings } from '../api/getData';
+// import { ColumnsLeagueResults, ColumnsLeagueTable, ColumnsLeagueStats } from './Columns';
+import { getLeagueStandings } from '../api/getApiData';
 
 
 export default function LeagueStandingsView() {

@@ -1,11 +1,10 @@
 import React from 'react';
 import { Scatter } from 'react-chartjs-2';
 import {
-    getTeamNames,
-    getRandomHexCode,
-    getAvgPtsAndGdCoordinates,
+    getAvgPtsAndAvgGdCoords,
     filterStandingsByLeague,
 } from './utils';
+import { getValuesByKey } from '../jsUtils/general'
 
 
 /*
@@ -27,8 +26,8 @@ function getCrossLeagueScatterChartDatasets(crossLeagueStandingsArray) {
         let league = leagueNames[i]
         datasets.push({
             label: league,
-            backgroundColor: colorByLeague[league], // getRandomHexCode(),
-            data: getAvgPtsAndGdCoordinates(standingsByLeague[league]),
+            backgroundColor: colorByLeague[league],
+            data: getAvgPtsAndAvgGdCoords(standingsByLeague[league]),
             radius: 10,
             hoverRadius: 14,
             borderColor: 'black',
@@ -91,13 +90,13 @@ export function CrossLeagueScatterChartByLeague({ dataObj }) {
 
 // Scatter points having team-name in tooltip
 export function CrossLeagueScatterChartAllTeams({ dataObj }) {
-    const teams = getTeamNames(dataObj)
-    const coords = getAvgPtsAndGdCoordinates(dataObj)
+    const teams = getValuesByKey(dataObj, "team")
+    const coords = getAvgPtsAndAvgGdCoords(dataObj)
     const data = {
         labels: teams,
         datasets: [
             {
-                backgroundColor: '#10EC5B', // getRandomHexCode(),
+                backgroundColor: '#10EC5B',
                 data: coords,
                 radius: 10,
                 hoverRadius: 14,

@@ -3,7 +3,7 @@ import {
     CrossLeagueScatterChartByLeague,
     CrossLeagueScatterChartAllTeams,
 } from './CrossLeagueCharts';
-import { getCrossLeagueStandings } from '../api/getData';
+import { getCrossLeagueStandings } from '../api/getApiData';
 
 
 export default function CrossLeagueStandingsView() {
