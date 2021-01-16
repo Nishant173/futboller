@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
-import LeagueDataTable from './LeagueDataTable';
+// import LeagueDataTable from './LeagueDataTable';
 import {
     LeaguePointsBarChart,
     LeagueGoalDifferenceBarChart,
     LeagueTitleRaceLineChart,
 } from './LeagueCharts';
-import { ColumnsLeagueResults, ColumnsLeagueTable, ColumnsLeagueStats } from './Columns';
+// import { ColumnsLeagueResults, ColumnsLeagueTable, ColumnsLeagueStats } from './Columns';
 import { getLeagueStandings } from '../api/getApiData';
 
 

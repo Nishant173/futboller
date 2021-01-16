@@ -1,24 +1,21 @@
 import React from 'react';
 import { HorizontalBar, Line } from 'react-chartjs-2';
 import {
-    getRandomHexCode,
-    ceilBy,
-    generateRangeInclusiveArray,
-    getTeamNames,
-    getPoints,
-    getGoalDifferences,
-    getMaxOfAbsGoalDiff,
-    getCumPoints,
-} from './utils';
+    generateRandomHexCode,
+    ceilByClosestMultiple,
+    arange,
+    getValuesByKey,
+    maxOfAbsValues,
+} from '../jsUtils/general'
 
 
 export function LeaguePointsBarChart({ dataObj }) {
     const league = dataObj[0]['league'];
     const season = dataObj[0]['season'];
-    const teams = getTeamNames(dataObj);
-    const points = getPoints(dataObj);
+    const teams = getValuesByKey(dataObj, "team")
+    const points = getValuesByKey(dataObj, "points")
     const xLow = 0;
-    const xHigh = ceilBy(dataObj[0]['points'], 10);
+    const xHigh = ceilByClosestMultiple(dataObj[0]['points'], 10);
     const data = {
         labels: teams,
         datasets: [
@@ -77,10 +74,10 @@ export function LeaguePointsBarChart({ dataObj }) {
 export function LeagueGoalDifferenceBarChart({ dataObj }) {
     const league = dataObj[0]['league'];
     const season = dataObj[0]['season'];
-    const teams = getTeamNames(dataObj);
-    const gds = getGoalDifferences(dataObj);
-    const maxOfAbsGoalDiff = getMaxOfAbsGoalDiff(gds);
-    const xLimit = ceilBy(maxOfAbsGoalDiff, 10);
+    const teams = getValuesByKey(dataObj, "team")
+    const gds = getValuesByKey(dataObj, "goalDifference")
+    const maxOfAbsGoalDiff = maxOfAbsValues(gds)
+    const xLimit = ceilByClosestMultiple(maxOfAbsGoalDiff, 10);
     const data = {
         labels: teams,
         datasets: [
@@ -135,11 +132,12 @@ export function LeagueGoalDifferenceBarChart({ dataObj }) {
     )
 }
 
+
 // Returns array of objects containing data to be used in the LeagueTitleRace chart's datasets
 function getLeagueTitleRaceDatasets(teamsArray, cumPointsArray) {
     let datasets = []
     for (let i = 0; i < teamsArray.length; i++) {
-        let color = getRandomHexCode()
+        let color = generateRandomHexCode()
         datasets.push({
             label: teamsArray[i],
             data: cumPointsArray[i],
@@ -152,18 +150,19 @@ function getLeagueTitleRaceDatasets(teamsArray, cumPointsArray) {
     return datasets
 }
 
+
 export function LeagueTitleRaceLineChart({ dataObj }) {
     const league = dataObj[0]['league']
     const season = dataObj[0]['season']
     const numTeamsToShow = 6
-    const teams = getTeamNames(dataObj)
-    const cumPoints = getCumPoints(dataObj)
+    const teams = getValuesByKey(dataObj, "team")
+    const cumPoints = getValuesByKey(dataObj, "cumulativePoints")
     const cumPointsForFirstTeam = dataObj[0]['cumulativePoints']
     const numMatchdays = cumPointsForFirstTeam.length - 1
     const yLow = 0
-    const yHigh = ceilBy(cumPointsForFirstTeam[numMatchdays], 10)
+    const yHigh = ceilByClosestMultiple(cumPointsForFirstTeam[numMatchdays], 10)
     const data = {
-        labels: generateRangeInclusiveArray(0, numMatchdays),
+        labels: arange(0, numMatchdays),
         datasets: getLeagueTitleRaceDatasets(teams, cumPoints).slice(0, numTeamsToShow),
     }
     const options = {
