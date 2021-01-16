@@ -1,15 +1,16 @@
-VERSION_PREFIX = "/api/v1"
+from futbol.config import API_VERSION
+
 
 ENDPOINTS = [
     {
-        "endpoint": f"{VERSION_PREFIX}/documentation/",
+        "endpoint": f"{API_VERSION}/documentation/",
         "description": "Gets API documentation",
         "parameters": [],
-        "example": f"{VERSION_PREFIX}/documentation/",
+        "example": f"{API_VERSION}/documentation/",
         "methods": ["GET"],
     },
     {
-        "endpoint": f"{VERSION_PREFIX}/teams/",
+        "endpoint": f"{API_VERSION}/leagues/teams/",
         "description": "Gets list of all teams",
         "parameters": [
             {
@@ -19,25 +20,25 @@ ENDPOINTS = [
                 "description": "Filters teams by case-insensitive search",
             },
         ],
-        "example": f"{VERSION_PREFIX}/teams/",
+        "example": f"{API_VERSION}/leagues/teams/",
         "methods": ["GET"],
     },
     {
-        "endpoint": f"{VERSION_PREFIX}/leagues/",
+        "endpoint": f"{API_VERSION}/leagues/leagues/",
         "description": "Gets list of all leagues",
         "parameters": [],
-        "example": f"{VERSION_PREFIX}/leagues/",
+        "example": f"{API_VERSION}/leagues/leagues/",
         "methods": ["GET"],
     },
     {
-        "endpoint": f"{VERSION_PREFIX}/seasons/",
+        "endpoint": f"{API_VERSION}/leagues/seasons/",
         "description": "Gets list of all seasons",
         "parameters": [],
-        "example": f"{VERSION_PREFIX}/seasons/",
+        "example": f"{API_VERSION}/leagues/seasons/",
         "methods": ["GET"],
     },
     {
-        "endpoint": f"{VERSION_PREFIX}/league-matches/",
+        "endpoint": f"{API_VERSION}/leagues/league-matches/",
         "description": "Gets list of league matches (filter parameters are allowed)",
         "parameters": [
             {
@@ -100,11 +101,11 @@ ENDPOINTS = [
                 "required": False,
             },
         ],
-        "example": f"{VERSION_PREFIX}/league-matches/?league=EPL&season=2017-18&matchup=Arsenal,Chelsea",
+        "example": f"{API_VERSION}/leagues/league-matches/?league=EPL&season=2017-18&matchup=Arsenal,Chelsea",
         "methods": ["GET"],
     },
     {
-        "endpoint": f"{VERSION_PREFIX}/league-standings/",
+        "endpoint": f"{API_VERSION}/leagues/league-standings/",
         "description": "Gets list having league-standings (based on parameters)",
         "parameters": [
             {
@@ -118,11 +119,11 @@ ENDPOINTS = [
                 "required": True,
             },
         ],
-        "example": f"{VERSION_PREFIX}/league-standings/?league=Bundesliga&season=2012-13",
+        "example": f"{API_VERSION}/leagues/league-standings/?league=Bundesliga&season=2012-13",
         "methods": ["GET"],
     },
     {
-        "endpoint": f"{VERSION_PREFIX}/cross-league-standings/",
+        "endpoint": f"{API_VERSION}/leagues/cross-league-standings/",
         "description": "Gets list having cross-league-standings",
         "parameters": [
             {
@@ -138,7 +139,7 @@ ENDPOINTS = [
                 "description": "Number of records you want to retrieve. Maximum allowed limit is 25. Default: 25",
             },
         ],
-        "example": f"{VERSION_PREFIX}/cross-league-standings/?offset=30&limit=10",
+        "example": f"{API_VERSION}/leagues/cross-league-standings/?offset=30&limit=10",
         "methods": ["GET"],
     },
 ]
