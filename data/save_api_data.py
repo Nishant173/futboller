@@ -20,21 +20,21 @@ def get_api_data(url: str) -> Union[Dict, List]:
 
 
 def save_league_names() -> None:
-    url = "http://localhost:8000/api/v1/leagues/"
+    url = "http://localhost:8000/api/v1/leagues/leagues/"
     data = get_api_data(url=url)
     save_object_as_json(obj=data, filepath=f"json/Leagues.json")
     return None
 
 
 def save_season_names() -> None:
-    url = "http://localhost:8000/api/v1/seasons/"
+    url = "http://localhost:8000/api/v1/leagues/seasons/"
     data = get_api_data(url=url)
     save_object_as_json(obj=data, filepath=f"json/Seasons.json")
     return None
 
 
 def save_team_names() -> None:
-    url = "http://localhost:8000/api/v1/teams/"
+    url = "http://localhost:8000/api/v1/leagues/teams/"
     data = get_api_data(url=url)
     save_object_as_json(obj=data, filepath=f"json/Teams.json")
     return None
@@ -48,7 +48,7 @@ def save_league_standings() -> None:
     ]
     for league in leagues:
         for season in seasons:
-            url = f"http://localhost:8000/api/v1/league-standings/?league={league}&season={season}"
+            url = f"http://localhost:8000/api/v1/leagues/league-standings/?league={league}&season={season}"
             data = get_api_data(url=url)
             save_object_as_json(obj=data,
                                 filepath=f"json/LeagueStandings - {league} ({season}).json")
@@ -60,8 +60,7 @@ def save_cross_league_standings() -> None:
     offset = 1
     limit = 20
     while True:
-        print(f"Offset: {offset}")
-        url = f"http://localhost:8000/api/v1/cross-league-standings/?offset={offset}&limit={limit}"
+        url = f"http://localhost:8000/api/v1/leagues/cross-league-standings/?offset={offset}&limit={limit}"
         temp_cls = get_api_data(url=url)
         cross_league_standings.extend(temp_cls)
         offset += limit
