@@ -6,7 +6,7 @@ import {
     LeagueTitleRaceLineChart,
 } from './LeagueCharts';
 import { ColumnsLeagueResults, ColumnsLeagueTable, ColumnsLeagueStats } from './Columns';
-import { getLeagueStandings } from '../api/getData';
+import { getLeagueStandings } from '../api/getApiData';
 
 
 export default function LeagueStandingsView() {
