@@ -1,8 +1,14 @@
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
+
 from leagues import filters, queries
 from leagues.models import LeagueMatch, LeagueStandings, CrossLeagueStandings
-from utilities import casing, utils
+from py_utils.data_analysis.transform import (dataframe_to_list,
+                                              switch_column_casing)
+from py_utils.django_utils.utils import queryset_to_dataframe
+from py_utils.general.casing import sc2lcc
+from py_utils.general.utils import (filter_list_by_offset,
+                                    listify_string_of_nums)
 from . import docs
 
 
@@ -47,7 +53,7 @@ def get_league_matches(request):
     losing_team = request.GET.get('losingTeam', default=None)
     
     qs_matches = LeagueMatch.objects.all()
-    df_matches = utils.queryset_to_dataframe(qs=qs_matches, drop_id=True)
+    df_matches = queryset_to_dataframe(qs=qs_matches, drop_id=True)
     df_matches = filters.filter_league_data(data=df_matches,
                                             team=team,
                                             league=league,
@@ -58,11 +64,11 @@ def get_league_matches(request):
                                             matchup=matchup,
                                             winning_team=winning_team,
                                             losing_team=losing_team)
-    df_matches = utils.switch_column_casing(data=df_matches, func=casing.sc2lcc)
-    matches = utils.dataframe_to_list(data=df_matches)
-    matches = utils.filter_list_by_offset(list_obj=matches,
-                                          offset=int(offset) if offset else None,
-                                          limit=int(limit) if limit else None)
+    df_matches = switch_column_casing(data=df_matches, func=sc2lcc)
+    matches = dataframe_to_list(data=df_matches)
+    matches = filter_list_by_offset(list_obj=matches,
+                                    offset=int(offset) if offset else None,
+                                    limit=int(limit) if limit else None)
     return Response(data=matches, status=200)
 
 
@@ -71,11 +77,11 @@ def get_league_standings(request):
     league = request.GET['league']
     season = request.GET['season']
     qs_standings = LeagueStandings.objects.filter(league=league) & LeagueStandings.objects.filter(season=season)
-    df_standings = utils.queryset_to_dataframe(qs=qs_standings, drop_id=True)
-    df_standings['cumulative_points'] = df_standings['cumulative_points'].apply(utils.listify_string_of_nums)
-    df_standings['cumulative_goal_difference'] = df_standings['cumulative_goal_difference'].apply(utils.listify_string_of_nums)
-    df_standings = utils.switch_column_casing(data=df_standings, func=casing.sc2lcc)
-    league_standings = utils.dataframe_to_list(data=df_standings)
+    df_standings = queryset_to_dataframe(qs=qs_standings, drop_id=True)
+    df_standings['cumulative_points'] = df_standings['cumulative_points'].apply(listify_string_of_nums)
+    df_standings['cumulative_goal_difference'] = df_standings['cumulative_goal_difference'].apply(listify_string_of_nums)
+    df_standings = switch_column_casing(data=df_standings, func=sc2lcc)
+    league_standings = dataframe_to_list(data=df_standings)
     return Response(data=league_standings, status=200)
 
 
@@ -84,14 +90,14 @@ def get_cross_league_standings(request):
     offset = request.GET.get('offset', default=None)
     limit = request.GET.get('limit', default=None)
     qs_cls = CrossLeagueStandings.objects.all()
-    df_cls = utils.queryset_to_dataframe(qs=qs_cls, drop_id=True)
-    df_cls['cumulative_points'] = df_cls['cumulative_points'].apply(utils.listify_string_of_nums)
-    df_cls['cumulative_goal_difference'] = df_cls['cumulative_goal_difference'].apply(utils.listify_string_of_nums)
-    df_cls['cumulative_points_normalized'] = df_cls['cumulative_points_normalized'].apply(utils.listify_string_of_nums)
-    df_cls['cumulative_goal_difference_normalized'] = df_cls['cumulative_goal_difference_normalized'].apply(utils.listify_string_of_nums)
-    df_cls = utils.switch_column_casing(data=df_cls, func=casing.sc2lcc)
-    cls = utils.dataframe_to_list(data=df_cls)
-    cls = utils.filter_list_by_offset(list_obj=cls,
-                                      offset=int(offset) if offset else None,
-                                      limit=int(limit) if limit else None)
+    df_cls = queryset_to_dataframe(qs=qs_cls, drop_id=True)
+    df_cls['cumulative_points'] = df_cls['cumulative_points'].apply(listify_string_of_nums)
+    df_cls['cumulative_goal_difference'] = df_cls['cumulative_goal_difference'].apply(listify_string_of_nums)
+    df_cls['cumulative_points_normalized'] = df_cls['cumulative_points_normalized'].apply(listify_string_of_nums)
+    df_cls['cumulative_goal_difference_normalized'] = df_cls['cumulative_goal_difference_normalized'].apply(listify_string_of_nums)
+    df_cls = switch_column_casing(data=df_cls, func=sc2lcc)
+    cls = dataframe_to_list(data=df_cls)
+    cls = filter_list_by_offset(list_obj=cls,
+                                offset=int(offset) if offset else None,
+                                limit=int(limit) if limit else None)
     return Response(data=cls, status=200)

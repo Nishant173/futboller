@@ -1,4 +1,5 @@
 import pandas as pd
+
 from . import filters
 from .league_standings import (get_results_string,
                                get_cumulative_points,
@@ -16,7 +17,11 @@ from .league_standings import (get_results_string,
                                add_ranking_column)
 from .models import LeagueMatch
 from .utils import get_unique_teams
-from utilities import utils
+from py_utils.data_analysis.transform import round_off_columns
+from py_utils.django_utils.utils import queryset_to_dataframe
+from py_utils.general.utils import (listify_string_of_nums,
+                                    stringify_list_of_nums,
+                                    spread_array_by_length)
 
 
 def get_cross_league_standings() -> pd.DataFrame:
@@ -31,7 +36,7 @@ def get_cross_league_standings() -> pd.DataFrame:
          'cumulative_points_normalized', 'cumulative_goal_difference_normalized']
     """
     qs_matches = LeagueMatch.objects.all()
-    data = utils.queryset_to_dataframe(qs=qs_matches, drop_id=True)
+    data = queryset_to_dataframe(qs=qs_matches, drop_id=True)
     df_cls = pd.DataFrame() # Initialize DataFrame of cross league standings
     dict_results_string = get_results_string(data=data)
     dict_cum_pts = get_cumulative_points(data=data)
@@ -64,8 +69,8 @@ def get_cross_league_standings() -> pd.DataFrame:
             'big_win_percent': routs * 100 / games_played,
             'big_loss_percent': capitulations * 100 / games_played,
             'results_string': dict_results_string[team],
-            'cumulative_points': utils.stringify_list_of_nums(array=dict_cum_pts[team]),
-            'cumulative_goal_difference': utils.stringify_list_of_nums(array=dict_cum_gd[team]),
+            'cumulative_points': stringify_list_of_nums(array=dict_cum_pts[team]),
+            'cumulative_goal_difference': stringify_list_of_nums(array=dict_cum_gd[team]),
             'longest_win_streak': get_longest_streak(results_string=dict_results_string[team], by=['W']),
             'longest_loss_streak': get_longest_streak(results_string=dict_results_string[team], by=['L']),
             'longest_draw_streak': get_longest_streak(results_string=dict_results_string[team], by=['D']),
@@ -75,29 +80,27 @@ def get_cross_league_standings() -> pd.DataFrame:
         df_cls = pd.concat(objs=[df_cls, df_temp], ignore_index=True, sort=False)
     
     spread_to = int(df_cls['games_played'].max()) + 1 # The +1 is because Points/GoalDifference is [0] initially
-    df_cls['cumulative_points'] = df_cls['cumulative_points'].apply(utils.listify_string_of_nums)
-    df_cls['cumulative_goal_difference'] = df_cls['cumulative_goal_difference'].apply(utils.listify_string_of_nums)
-    df_cls['cumulative_points_normalized'] = df_cls['cumulative_points'].apply(utils.spread_array, to=spread_to)
-    df_cls['cumulative_goal_difference_normalized'] = df_cls['cumulative_goal_difference'].apply(utils.spread_array, to=spread_to)
-    df_cls['cumulative_points'] = df_cls['cumulative_points'].apply(utils.stringify_list_of_nums)
-    df_cls['cumulative_goal_difference'] = df_cls['cumulative_goal_difference'].apply(utils.stringify_list_of_nums)
-    df_cls['cumulative_points_normalized'] = df_cls['cumulative_points_normalized'].apply(utils.stringify_list_of_nums)
-    df_cls['cumulative_goal_difference_normalized'] = df_cls['cumulative_goal_difference_normalized'].apply(utils.stringify_list_of_nums)
+    df_cls['cumulative_points'] = df_cls['cumulative_points'].apply(listify_string_of_nums)
+    df_cls['cumulative_goal_difference'] = df_cls['cumulative_goal_difference'].apply(listify_string_of_nums)
+    df_cls['cumulative_points_normalized'] = df_cls['cumulative_points'].apply(spread_array_by_length, to=spread_to)
+    df_cls['cumulative_goal_difference_normalized'] = df_cls['cumulative_goal_difference'].apply(spread_array_by_length, to=spread_to)
+    df_cls['cumulative_points'] = df_cls['cumulative_points'].apply(stringify_list_of_nums)
+    df_cls['cumulative_goal_difference'] = df_cls['cumulative_goal_difference'].apply(stringify_list_of_nums)
+    df_cls['cumulative_points_normalized'] = df_cls['cumulative_points_normalized'].apply(stringify_list_of_nums)
+    df_cls['cumulative_goal_difference_normalized'] = df_cls['cumulative_goal_difference_normalized'].apply(stringify_list_of_nums)
     df_cls = add_ranking_column(data=df_cls,
                                 rank_column_name='position',
                                 rank_by=['avg_points', 'avg_goal_difference', 'games_played'],
                                 ascending=[False, False, False])
-    df_cls = utils.round_off_columns(data=df_cls, mapper={
-        'avg_points': 4,
-        'avg_goal_difference': 4,
-        'avg_goals_scored': 3,
-        'avg_goals_allowed': 3,
-        'win_percent': 2,
-        'loss_percent': 2,
-        'draw_percent': 2,
-        'clean_sheets_percent': 2,
-        'clean_sheets_against_percent': 2,
-        'big_win_percent': 2,
-        'big_loss_percent': 2,
-    })
+    df_cls = round_off_columns(data=df_cls, columns=['avg_points', 'avg_goal_difference'], round_by=4)
+    df_cls = round_off_columns(data=df_cls, columns=['avg_goals_scored', 'avg_goals_allowed'], round_by=3)
+    df_cls = round_off_columns(
+        data=df_cls,
+        columns=[
+            'win_percent', 'loss_percent', 'draw_percent',
+            'clean_sheets_percent', 'clean_sheets_against_percent',
+            'big_win_percent', 'big_loss_percent'
+        ],
+        round_by=2,
+    )
     return df_cls

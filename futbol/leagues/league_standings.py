@@ -1,10 +1,13 @@
 from typing import Dict, List
 import numpy as np
 import pandas as pd
+
 from . import filters
 from .models import LeagueMatch
 from .utils import get_unique_teams
-from utilities import utils
+from py_utils.django_utils.utils import queryset_to_dataframe
+from py_utils.general.utils import stringify_list_of_nums
+
 pd.set_option('mode.chained_assignment', None)
 
 
@@ -306,8 +309,8 @@ def get_league_standings(data: pd.DataFrame,
             'big_wins': routs,
             'big_losses': capitulations,
             'results_string': dict_results_string[team],
-            'cumulative_points': utils.stringify_list_of_nums(array=dict_cum_pts[team]),
-            'cumulative_goal_difference': utils.stringify_list_of_nums(array=dict_cum_gd[team]),
+            'cumulative_points': stringify_list_of_nums(array=dict_cum_pts[team]),
+            'cumulative_goal_difference': stringify_list_of_nums(array=dict_cum_gd[team]),
             'longest_win_streak': get_longest_streak(results_string=dict_results_string[team], by=['W']),
             'longest_loss_streak': get_longest_streak(results_string=dict_results_string[team], by=['L']),
             'longest_draw_streak': get_longest_streak(results_string=dict_results_string[team], by=['D']),
@@ -327,7 +330,7 @@ def get_historical_league_standings() -> pd.DataFrame:
     """Gets league standings from data of matches (for all seasons and for all leagues)"""
     df_all_league_standings = pd.DataFrame()
     qs_matches = LeagueMatch.objects.all()
-    data = utils.queryset_to_dataframe(qs=qs_matches, drop_id=True)
+    data = queryset_to_dataframe(qs=qs_matches, drop_id=True)
     leagues = sorted(data['league'].unique().tolist())
     seasons = sorted(data['season'].unique().tolist())
     for league in leagues:
