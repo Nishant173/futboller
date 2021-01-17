@@ -35,16 +35,15 @@ def get_draw_count(data: pd.DataFrame, team: str) -> int:
     """Get count of draws by team (Expects DataFrame having `LeagueMatch` data)"""
     team_is_playing = (data['home_team'] == team) | (data['away_team'] == team)
     is_drawn = (data['home_goals'] == data['away_goals'])
-    data = data[team_is_playing & is_drawn]
-    draw_count = len(data)
+    draw_count = len(data[team_is_playing & is_drawn])
     return draw_count
 
 
 def get_goals_scored(data: pd.DataFrame, team: str) -> int:
     """Get count of goals scored by team (Expects DataFrame having `LeagueMatch` data)"""
-    home_goals = data[data['home_team'] == team]['home_goals'].sum()
-    away_goals = data[data['away_team'] == team]['away_goals'].sum()
-    goals_scored = home_goals + away_goals
+    home_goals_scored = data[data['home_team'] == team]['home_goals'].sum()
+    away_goals_scored = data[data['away_team'] == team]['away_goals'].sum()
+    goals_scored = home_goals_scored + away_goals_scored
     return goals_scored
 
 
@@ -78,8 +77,9 @@ def get_clean_sheets_against_count(data: pd.DataFrame, team: str) -> int:
 
 def get_rout_count(data: pd.DataFrame, team: str, goal_margin: int) -> int:
     """Get count of wins by team that are by margin >= `goal_margin` (Expects DataFrame having `LeagueMatch` data)"""
-    data['goal_margin'] = (data['home_goals'] - data['away_goals']).abs()
-    df_rout_subset = data[data['goal_margin'] >= goal_margin]
+    df_altered = data.copy(deep=True)
+    df_altered['goal_margin'] = (df_altered['home_goals'] - df_altered['away_goals']).abs()
+    df_rout_subset = df_altered[df_altered['goal_margin'] >= goal_margin]
     team_is_home = (df_rout_subset['home_team'] == team)
     team_is_away = (df_rout_subset['away_team'] == team)
     df_rout_home = df_rout_subset[team_is_home & (df_rout_subset['home_goals'] > df_rout_subset['away_goals'])]
@@ -90,8 +90,9 @@ def get_rout_count(data: pd.DataFrame, team: str, goal_margin: int) -> int:
 
 def get_capitulation_count(data: pd.DataFrame, team: str, goal_margin: int) -> int:
     """Get count of losses by team that are by margin >= `goal_margin` (Expects DataFrame having `LeagueMatch` data)"""
-    data['goal_margin'] = (data['home_goals'] - data['away_goals']).abs()
-    df_capitulation_subset = data[data['goal_margin'] >= goal_margin]
+    df_altered = data.copy(deep=True)
+    df_altered['goal_margin'] = (df_altered['home_goals'] - df_altered['away_goals']).abs()
+    df_capitulation_subset = df_altered[df_altered['goal_margin'] >= goal_margin]
     team_is_home = (df_capitulation_subset['home_team'] == team)
     team_is_away = (df_capitulation_subset['away_team'] == team)
     home_capitulation = (df_capitulation_subset['home_goals'] < df_capitulation_subset['away_goals'])
@@ -253,12 +254,12 @@ def add_ranking_column(data: pd.DataFrame,
             "Expected `rank_by` and `ascending` to be of same length,"
             f" but got lengths {len(rank_by)} and {len(ascending)} respectively"
         )
-    data.sort_values(by=rank_by, ascending=ascending, inplace=True, ignore_index=True)
-    rankings = np.arange(start=1, stop=len(data) + 1, step=1)
-    data[rank_column_name] = rankings
-    column_order = [rank_column_name] + data.drop(labels=[rank_column_name], axis=1).columns.tolist()
-    data = data.loc[:, column_order]
-    return data
+    df_ranked = data.sort_values(by=rank_by, ascending=ascending, ignore_index=True)
+    rankings = np.arange(start=1, stop=len(df_ranked) + 1, step=1)
+    df_ranked[rank_column_name] = rankings
+    column_order = [rank_column_name] + df_ranked.drop(labels=[rank_column_name], axis=1).columns.tolist()
+    df_ranked = df_ranked.loc[:, column_order]
+    return df_ranked
 
 
 def get_league_standings(data: pd.DataFrame,
@@ -277,13 +278,13 @@ def get_league_standings(data: pd.DataFrame,
                                            'league', 'season']
     """
     df_league_standings = pd.DataFrame()
-    data = filters.filter_league_matches(data=data, league=league, season=season)
-    dict_results_string = get_results_string(data=data)
-    dict_cum_pts = get_cumulative_points(data=data)
-    dict_cum_gd = get_cumulative_goal_difference(data=data)
-    teams = get_unique_teams(data=data)
+    df_by_league_season = filters.filter_league_matches(data=data, league=league, season=season)
+    dict_results_string = get_results_string(data=df_by_league_season)
+    dict_cum_pts = get_cumulative_points(data=df_by_league_season)
+    dict_cum_gd = get_cumulative_goal_difference(data=df_by_league_season)
+    teams = get_unique_teams(data=df_by_league_season)
     for team in teams:
-        df_by_team = filters.filter_by_team(data=data, team=team)
+        df_by_team = filters.filter_by_team(data=df_by_league_season, team=team)
         games_played = len(df_by_team)
         wins = get_win_count(data=df_by_team, team=team)
         losses = get_loss_count(data=df_by_team, team=team)
