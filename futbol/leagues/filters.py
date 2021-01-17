@@ -1,5 +1,7 @@
 from typing import List, Optional, Union
 import pandas as pd
+
+from py_utils.data_analysis.transform import dataframe_to_list
 # pd.set_option('mode.chained_assignment', None)
 
 
@@ -57,6 +59,26 @@ def filter_by_result(data: pd.DataFrame,
     return df_by_team
 
 
+def filter_by_goal_difference(data: pd.DataFrame,
+                              gd: Optional[int] = None,
+                              min_gd: Optional[int] = None,
+                              max_gd: Optional[int] = None) -> pd.DataFrame:
+    """Filters DataFrame having `LeagueMatch` data (based on goal difference parameters)"""
+    df_filtered = data.copy(deep=True)
+    df_filtered['gd'] = (df_filtered['home_goals'] - df_filtered['away_goals']).abs()
+    matches = dataframe_to_list(data=df_filtered)
+    if gd:
+        matches = list(filter(lambda obj: obj['gd'] == gd, matches))
+    if min_gd:
+        matches = list(filter(lambda obj: obj['gd'] >= min_gd, matches))
+    if max_gd:
+        matches = list(filter(lambda obj: obj['gd'] <= max_gd, matches))
+    df_filtered = pd.DataFrame(data=matches)
+    if not df_filtered.empty:
+        df_filtered.drop(labels=['gd'], axis=1, inplace=True)
+    return df_filtered
+
+
 def filter_league_matches(data: pd.DataFrame,
                           team: Optional[str] = None,
                           league: Optional[str] = None,
@@ -70,25 +92,23 @@ def filter_league_matches(data: pd.DataFrame,
     """Filters DataFrame having `LeagueMatch` data (based on certain parameters)"""
     if data.empty:
         return data
-    data['gd'] = (data['home_goals'] - data['away_goals']).abs()
+    df_filtered = data.copy(deep=True)
     if team:
-        data = filter_by_team(data=data, team=team)
+        df_filtered = filter_by_team(data=df_filtered, team=team)
     if league:
-        data = data.loc[(data['league'] == league), :]
+        df_filtered = df_filtered.loc[(df_filtered['league'] == league), :]
     if season:
-        data = data.loc[(data['season'] == season), :]
-    if gd:
-        data = data.loc[(data['gd'] == gd), :]
-    if min_gd:
-        data = data.loc[(data['gd'] >= min_gd), :]
-    if max_gd:
-        data = data.loc[(data['gd'] <= max_gd), :]
+        df_filtered = df_filtered.loc[(df_filtered['season'] == season), :]
+    if gd or min_gd or max_gd:
+        df_filtered = filter_by_goal_difference(data=df_filtered,
+                                                gd=gd,
+                                                min_gd=min_gd,
+                                                max_gd=max_gd)
     if matchup:
         teams = str(matchup).strip().split(',') # `matchup` can contain "Arsenal,Chelsea"
-        data = filter_by_matchup(data=data, teams=teams)
+        df_filtered = filter_by_matchup(data=df_filtered, teams=teams)
     if winning_team:
-        data = filter_by_result(data=data, team=winning_team, result='win')
+        df_filtered = filter_by_result(data=df_filtered, team=winning_team, result='win')
     if losing_team:
-        data = filter_by_result(data=data, team=losing_team, result='loss')
-    data.drop(labels=['gd'], axis=1, inplace=True)
-    return data
+        df_filtered = filter_by_result(data=df_filtered, team=losing_team, result='loss')
+    return df_filtered
