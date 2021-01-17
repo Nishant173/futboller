@@ -1,4 +1,4 @@
-from typing import Dict
+from typing import Dict, Union
 from django.db import models
 
 
@@ -19,7 +19,7 @@ class LeagueMatch(models.Model):
     def __str__(self) -> str:
         return f"{self.home_team} vs {self.away_team} ({self.league} {self.season})"
     
-    def obj_to_dict(self) -> Dict:
+    def obj_to_dict(self) -> Dict[str, Union[int, float, str]]:
         """Converts model object to dictionary, and keeps the relevant keys"""
         dict_obj = self.__dict__
         dict_obj_needed = {
@@ -115,7 +115,7 @@ class LeagueStandings(models.Model):
         return f"{self.team} - {self.league} ({self.season})"
     
     @property
-    def league_winner(self) -> bool:
+    def is_league_winner(self) -> bool:
         """Returns True if the team won their league that season; False otherwise"""
         return (self.position == 1)
 
