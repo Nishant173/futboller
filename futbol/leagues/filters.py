@@ -30,8 +30,8 @@ def filter_by_matchup(data: pd.DataFrame,
     team1, team2 = teams
     team1_vs_team2 = ((data['home_team'] == team1) & (data['away_team'] == team2))
     team2_vs_team1 = ((data['home_team'] == team2) & (data['away_team'] == team1))
-    data = data.loc[(team1_vs_team2 | team2_vs_team1), :]
-    return data
+    data_by_matchup = data.loc[(team1_vs_team2 | team2_vs_team1), :]
+    return data_by_matchup
 
 
 def filter_by_result(data: pd.DataFrame,
@@ -43,18 +43,18 @@ def filter_by_result(data: pd.DataFrame,
     """
     if result not in ['win', 'loss', 'draw']:
         raise ValueError(f"Expected one of ['win', 'loss', 'draw'] for `result`, but got {result}")
-    data = filter_by_team(data=data, team=team)
+    df_by_team = filter_by_team(data=data, team=team)
     if result == 'win':
-        home_win = ((data['home_team'] == team) & (data['home_goals'] > data['away_goals']))
-        away_win = ((data['away_team'] == team) & (data['away_goals'] > data['home_goals']))
-        data = data.loc[(home_win | away_win), :]
+        home_win = ((df_by_team['home_team'] == team) & (df_by_team['home_goals'] > df_by_team['away_goals']))
+        away_win = ((df_by_team['away_team'] == team) & (df_by_team['away_goals'] > df_by_team['home_goals']))
+        df_by_team = df_by_team.loc[(home_win | away_win), :]
     elif result == 'loss':
-        home_loss = ((data['home_team'] == team) & (data['home_goals'] < data['away_goals']))
-        away_loss = ((data['away_team'] == team) & (data['away_goals'] < data['home_goals']))
-        data = data.loc[(home_loss | away_loss), :]
+        home_loss = ((df_by_team['home_team'] == team) & (df_by_team['home_goals'] < df_by_team['away_goals']))
+        away_loss = ((df_by_team['away_team'] == team) & (df_by_team['away_goals'] < df_by_team['home_goals']))
+        df_by_team = df_by_team.loc[(home_loss | away_loss), :]
     elif result == 'draw':
-        data = data.loc[(data['home_goals'] == data['away_goals']), :]
-    return data
+        df_by_team = df_by_team.loc[(df_by_team['home_goals'] == df_by_team['away_goals']), :]
+    return df_by_team
 
 
 def filter_league_matches(data: pd.DataFrame,
