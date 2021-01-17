@@ -19,21 +19,6 @@ class LeagueMatch(models.Model):
     def __str__(self) -> str:
         return f"{self.home_team} vs {self.away_team} ({self.league} {self.season})"
     
-    def obj_to_dict(self) -> Dict[str, Union[int, float, str]]:
-        """Converts model object to dictionary, and keeps the relevant keys"""
-        dict_obj = self.__dict__
-        dict_obj_needed = {
-            'home_team': dict_obj['home_team'],
-            'away_team': dict_obj['away_team'],
-            'home_goals': dict_obj['home_goals'],
-            'away_goals': dict_obj['away_goals'],
-            'season': dict_obj['season'],
-            'date': str(dict_obj['date']),
-            'league': dict_obj['league'],
-            'country': dict_obj['country'],
-        }
-        return dict_obj_needed
-    
     @property
     def is_draw(self) -> bool:
         return (self.home_goals == self.away_goals)
