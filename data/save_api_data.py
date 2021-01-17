@@ -1,4 +1,4 @@
-from typing import Any, Dict, List, Union
+from typing import Any
 import json
 import requests
 
@@ -10,13 +10,13 @@ def save_object_as_json(obj: Any,
     return None
 
 
-def get_api_data(url: str) -> Union[Dict, List]:
+def get_api_data(url: str) -> Any:
     """Gets data (Python object) from API endpoint"""
     response = requests.get(url=url)
     if not response.ok:
         raise Exception(f"Error with response. Status code: {response.status_code}. URL: {url}")
-    result = json.loads(response.text)
-    return result
+    data = json.loads(response.text)
+    return data
 
 
 def save_league_names() -> None:
