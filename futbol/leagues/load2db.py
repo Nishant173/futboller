@@ -16,8 +16,8 @@ qs_standings = LeagueStandings.objects.all()
 qs_cls = CrossLeagueStandings.objects.all()
 
 df_matches = queryset_to_dataframe(qs=qs_matches, drop_id=True)
-df_standings = queryset_to_list(qs=qs_standings, drop_id=True)
-df_cls = queryset_to_list(qs=qs_cls, drop_id=True)
+df_standings = queryset_to_dataframe(qs=qs_standings, drop_id=True)
+df_cls = queryset_to_dataframe(qs=qs_cls, drop_id=True)
 
 # To check if the DataFrame is filled with values (there should not be any missing values)
 is_full(data=df_matches)
