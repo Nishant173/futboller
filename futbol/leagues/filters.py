@@ -14,6 +14,7 @@ def filter_teams_by_icontains(teams: Union[List[str], List],
 
 def filter_by_team(data: pd.DataFrame,
                    team: str) -> pd.DataFrame:
+    """Filters DataFrame having `LeagueMatch` data (by team playing)"""
     team_is_playing = (data['home_team'] == team) | (data['away_team'] == team)
     data_by_team = data.loc[(team_is_playing), :]
     return data_by_team
@@ -21,7 +22,7 @@ def filter_by_team(data: pd.DataFrame,
 
 def filter_by_matchup(data: pd.DataFrame,
                       teams: List[str]) -> pd.DataFrame:
-    """Filters DataFrame by matchup between given team combo (list of two teams)"""
+    """Filters DataFrame having `LeagueMatch` data (by matchup between given team combo i.e; list of two teams)"""
     if data.empty:
         return data
     if len(teams) != 2:
@@ -36,7 +37,10 @@ def filter_by_matchup(data: pd.DataFrame,
 def filter_by_result(data: pd.DataFrame,
                      team: str,
                      result: str) -> pd.DataFrame:
-    """Gets records wherein `team` gets the given `result` ['win', 'loss', 'draw']"""
+    """
+    Filters DataFrame having `LeagueMatch` data (based on result obtained by the team)
+    Options for `result`: ['win', 'loss', 'draw']
+    """
     if result not in ['win', 'loss', 'draw']:
         raise ValueError(f"Expected one of ['win', 'loss', 'draw'] for `result`, but got {result}")
     data = filter_by_team(data=data, team=team)
@@ -53,28 +57,16 @@ def filter_by_result(data: pd.DataFrame,
     return data
 
 
-def filter_by_goal_difference_0(data: pd.DataFrame,
-                                in_comparison: str) -> pd.DataFrame:
-    """
-    Handles edge cases where goal difference given is 0.
-    If `in_comparison` in ['max', 'equal'], returns all records that are draws.
-    If `in_comparison` in ['min'], returns all records.
-    """
-    if in_comparison in ['max', 'equal']:
-        data = data.loc[(data['home_goals'] == data['away_goals']), :]
-    return data
-
-
-def filter_league_data(data: pd.DataFrame,
-                       team: Optional[str] = None,
-                       league: Optional[str] = None,
-                       season: Optional[str] = None,
-                       gd: Optional[int] = None,
-                       min_gd: Optional[int] = None,
-                       max_gd: Optional[int] = None,
-                       matchup: Optional[str] = None,
-                       winning_team: Optional[str] = None,
-                       losing_team: Optional[str] = None) -> pd.DataFrame:
+def filter_league_matches(data: pd.DataFrame,
+                          team: Optional[str] = None,
+                          league: Optional[str] = None,
+                          season: Optional[str] = None,
+                          gd: Optional[int] = None,
+                          min_gd: Optional[int] = None,
+                          max_gd: Optional[int] = None,
+                          matchup: Optional[str] = None,
+                          winning_team: Optional[str] = None,
+                          losing_team: Optional[str] = None) -> pd.DataFrame:
     """Filters DataFrame having `LeagueMatch` data (based on certain parameters)"""
     if data.empty:
         return data

@@ -277,7 +277,7 @@ def get_league_standings(data: pd.DataFrame,
                                            'league', 'season']
     """
     df_league_standings = pd.DataFrame()
-    data = filters.filter_league_data(data=data, league=league, season=season)
+    data = filters.filter_league_matches(data=data, league=league, season=season)
     dict_results_string = get_results_string(data=data)
     dict_cum_pts = get_cumulative_points(data=data)
     dict_cum_gd = get_cumulative_goal_difference(data=data)

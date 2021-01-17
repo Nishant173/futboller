@@ -49,16 +49,16 @@ def get_league_matches(request):
     
     qs_matches = LeagueMatch.objects.all()
     df_matches = queryset_to_dataframe(qs=qs_matches, drop_id=True)
-    df_matches = filters.filter_league_data(data=df_matches,
-                                            team=team,
-                                            league=league,
-                                            season=season,
-                                            gd=int(gd) if gd else None,
-                                            min_gd=int(min_gd) if min_gd else None,
-                                            max_gd=int(max_gd) if max_gd else None,
-                                            matchup=matchup,
-                                            winning_team=winning_team,
-                                            losing_team=losing_team)
+    df_matches = filters.filter_league_matches(data=df_matches,
+                                               team=team,
+                                               league=league,
+                                               season=season,
+                                               gd=int(gd) if gd else None,
+                                               min_gd=int(min_gd) if min_gd else None,
+                                               max_gd=int(max_gd) if max_gd else None,
+                                               matchup=matchup,
+                                               winning_team=winning_team,
+                                               losing_team=losing_team)
     df_matches = switch_column_casing(data=df_matches, func=sc2lcc)
     matches = dataframe_to_list(data=df_matches)
     matches = filter_list_by_offset(list_obj=matches,
