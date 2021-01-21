@@ -7,7 +7,7 @@ from leagues.models import LeagueMatch, LeagueStandings, CrossLeagueStandings
 from py_utils.data_analysis.explore import is_full
 from py_utils.django_utils.utils import queryset_to_dataframe, queryset_to_list
 
-league_matches_to_db(filepath="../data/Top5LeaguesDataAll.csv")
+league_matches_to_db(filepath="../data_ingestion/formatted_csv_datasets/Top5LeaguesDataAll.csv")
 league_standings_to_db()
 cross_league_standings_to_db()
 
