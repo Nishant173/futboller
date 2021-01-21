@@ -7,7 +7,7 @@ from leagues.models import LeagueMatch, LeagueStandings, CrossLeagueStandings
 from py_utils.data_analysis.explore import is_full
 from py_utils.django_utils.utils import queryset_to_dataframe, queryset_to_list
 
-league_matches_to_db(filepath="../data/Top5LeaguesData.csv")
+league_matches_to_db(filepath="../data/Top5LeaguesDataAll.csv")
 league_standings_to_db()
 cross_league_standings_to_db()
 
@@ -18,6 +18,21 @@ qs_cls = CrossLeagueStandings.objects.all()
 df_matches = queryset_to_dataframe(qs=qs_matches, drop_id=True)
 df_standings = queryset_to_dataframe(qs=qs_standings, drop_id=True)
 df_cls = queryset_to_dataframe(qs=qs_cls, drop_id=True)
+
+# To check shapes of data
+df_matches.shape
+df_standings.shape
+df_cls.shape
+
+# To check info about data
+df_matches.info()
+df_standings.info()
+df_cls.info()
+
+# To delete data from tables
+qs_matches.delete()
+qs_standings.delete()
+qs_cls.delete()
 
 # To check if the DataFrame is filled with values (there should not be any missing values)
 is_full(data=df_matches)
