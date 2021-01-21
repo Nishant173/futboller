@@ -1,3 +1,5 @@
+# Creates dataset from raw data in the 'raw_legacy' folder
+
 from typing import List, Union
 import os
 import datetime
@@ -88,8 +90,8 @@ def concatenate_football_data(filepaths: List[str]) -> pd.DataFrame:
 
 if __name__ == "__main__":
     # Creates CSV file having match data from top 5 leagues; along with 2 CSV files having metadata
-    filenames = get_csv_filenames_in_folder(folder_path="raw/")
-    filepaths = [f"raw/{filename}" for filename in filenames]
+    filenames = get_csv_filenames_in_folder(folder_path="raw_legacy/")
+    filepaths = [f"raw_legacy/{filename}" for filename in filenames]
     data = concatenate_football_data(filepaths=filepaths)
     df_num_teams_by_season = get_num_teams_by_season(data=data)
     df_num_matches_by_season = get_num_matches_by_season(data=data)

@@ -3,6 +3,13 @@ import json
 import requests
 
 
+LEAGUE_SEASONS_AVAILABLE = [
+    "2009-10", "2010-11", "2011-12", "2012-13", "2013-14",
+    "2014-15", "2015-16", "2016-17", "2017-18", "2018-19",
+    "2019-20", "2020-21",
+]
+
+
 def save_object_as_json(obj: Any,
                         filepath: str) -> None:
     with open(file=filepath, mode='w') as fp:
@@ -42,12 +49,8 @@ def save_team_names() -> None:
 
 def save_league_standings() -> None:
     leagues = ["Bundesliga", "EPL", "La Liga", "Ligue 1", "Serie A"]
-    seasons = [
-        "2009-10", "2010-11", "2011-12", "2012-13", "2013-14",
-        "2014-15", "2015-16", "2016-17", "2017-18", "2018-19",
-    ]
     for league in leagues:
-        for season in seasons:
+        for season in LEAGUE_SEASONS_AVAILABLE:
             url = f"http://localhost:8000/api/v1/leagues/league-standings/?league={league}&season={season}"
             data = get_api_data(url=url)
             save_object_as_json(obj=data,
