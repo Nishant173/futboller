@@ -421,7 +421,7 @@
     },
     {
         "position": 5,
-        "team": "Ath Madrid",
+        "team": "Atletico Madrid",
         "gamesPlayed": 38,
         "points": 56,
         "goalDifference": 7,
@@ -946,7 +946,7 @@
     },
     {
         "position": 10,
-        "team": "Ath Bilbao",
+        "team": "Athletic Club",
         "gamesPlayed": 38,
         "points": 49,
         "goalDifference": -3,
@@ -1051,7 +1051,7 @@
     },
     {
         "position": 11,
-        "team": "Sociedad",
+        "team": "Real Sociedad",
         "gamesPlayed": 38,
         "points": 47,
         "goalDifference": -6,
@@ -1156,7 +1156,7 @@
     },
     {
         "position": 12,
-        "team": "Betis",
+        "team": "Real Betis",
         "gamesPlayed": 38,
         "points": 47,
         "goalDifference": -9,
@@ -1366,7 +1366,7 @@
     },
     {
         "position": 14,
-        "team": "Espanol",
+        "team": "Espanyol",
         "gamesPlayed": 38,
         "points": 46,
         "goalDifference": -10,

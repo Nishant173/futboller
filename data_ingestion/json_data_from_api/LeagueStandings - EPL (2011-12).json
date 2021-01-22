@@ -1,7 +1,7 @@
 [
     {
         "position": 1,
-        "team": "Man City",
+        "team": "Manchester City",
         "gamesPlayed": 38,
         "points": 89,
         "goalDifference": 64,
@@ -106,7 +106,7 @@
     },
     {
         "position": 2,
-        "team": "Man United",
+        "team": "Manchester United",
         "gamesPlayed": 38,
         "points": 89,
         "goalDifference": 56,
@@ -421,7 +421,7 @@
     },
     {
         "position": 5,
-        "team": "Newcastle",
+        "team": "Newcastle United",
         "gamesPlayed": 38,
         "points": 65,
         "goalDifference": 5,
@@ -1051,7 +1051,7 @@
     },
     {
         "position": 11,
-        "team": "West Brom",
+        "team": "West Bromwich Albion",
         "gamesPlayed": 38,
         "points": 47,
         "goalDifference": -7,
@@ -1996,7 +1996,7 @@
     },
     {
         "position": 20,
-        "team": "Wolves",
+        "team": "Wolverhampton Wanderers",
         "gamesPlayed": 38,
         "points": 25,
         "goalDifference": -42,

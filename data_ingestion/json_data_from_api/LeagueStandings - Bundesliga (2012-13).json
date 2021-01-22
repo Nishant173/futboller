@@ -98,7 +98,7 @@
     },
     {
         "position": 2,
-        "team": "Dortmund",
+        "team": "Borussia Dortmund",
         "gamesPlayed": 34,
         "points": 66,
         "goalDifference": 39,
@@ -195,7 +195,7 @@
     },
     {
         "position": 3,
-        "team": "Leverkusen",
+        "team": "Bayer Leverkusen",
         "gamesPlayed": 34,
         "points": 65,
         "goalDifference": 26,
@@ -486,7 +486,7 @@
     },
     {
         "position": 6,
-        "team": "Ein Frankfurt",
+        "team": "Eintracht Frankfurt",
         "gamesPlayed": 34,
         "points": 51,
         "goalDifference": 3,
@@ -680,7 +680,7 @@
     },
     {
         "position": 8,
-        "team": "M'gladbach",
+        "team": "Borussia M.Gladbach",
         "gamesPlayed": 34,
         "points": 47,
         "goalDifference": -4,
@@ -1068,7 +1068,7 @@
     },
     {
         "position": 12,
-        "team": "Stuttgart",
+        "team": "VfB Stuttgart",
         "gamesPlayed": 34,
         "points": 43,
         "goalDifference": -18,
@@ -1165,7 +1165,7 @@
     },
     {
         "position": 13,
-        "team": "Mainz",
+        "team": "Mainz 05",
         "gamesPlayed": 34,
         "points": 42,
         "goalDifference": -2,
@@ -1553,7 +1553,7 @@
     },
     {
         "position": 17,
-        "team": "Fortuna Dusseldorf",
+        "team": "Fortuna Duesseldorf",
         "gamesPlayed": 34,
         "points": 30,
         "goalDifference": -18,

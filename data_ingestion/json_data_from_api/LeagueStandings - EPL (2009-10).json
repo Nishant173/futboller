@@ -106,7 +106,7 @@
     },
     {
         "position": 2,
-        "team": "Man United",
+        "team": "Manchester United",
         "gamesPlayed": 38,
         "points": 85,
         "goalDifference": 58,
@@ -421,7 +421,7 @@
     },
     {
         "position": 5,
-        "team": "Man City",
+        "team": "Manchester City",
         "gamesPlayed": 38,
         "points": 67,
         "goalDifference": 28,
@@ -1471,7 +1471,7 @@
     },
     {
         "position": 15,
-        "team": "Wolves",
+        "team": "Wolverhampton Wanderers",
         "gamesPlayed": 38,
         "points": 38,
         "goalDifference": -24,

@@ -98,7 +98,7 @@
     },
     {
         "position": 2,
-        "team": "RB Leipzig",
+        "team": "RasenBallsport Leipzig",
         "gamesPlayed": 34,
         "points": 67,
         "goalDifference": 27,
@@ -195,7 +195,7 @@
     },
     {
         "position": 3,
-        "team": "Dortmund",
+        "team": "Borussia Dortmund",
         "gamesPlayed": 34,
         "points": 64,
         "goalDifference": 32,
@@ -389,7 +389,7 @@
     },
     {
         "position": 5,
-        "team": "FC Koln",
+        "team": "FC Cologne",
         "gamesPlayed": 34,
         "points": 49,
         "goalDifference": 9,
@@ -486,7 +486,7 @@
     },
     {
         "position": 6,
-        "team": "Hertha",
+        "team": "Hertha Berlin",
         "gamesPlayed": 34,
         "points": 49,
         "goalDifference": -4,
@@ -777,7 +777,7 @@
     },
     {
         "position": 9,
-        "team": "M'gladbach",
+        "team": "Borussia M.Gladbach",
         "gamesPlayed": 34,
         "points": 45,
         "goalDifference": -4,
@@ -971,7 +971,7 @@
     },
     {
         "position": 11,
-        "team": "Ein Frankfurt",
+        "team": "Eintracht Frankfurt",
         "gamesPlayed": 34,
         "points": 42,
         "goalDifference": -7,
@@ -1068,7 +1068,7 @@
     },
     {
         "position": 12,
-        "team": "Leverkusen",
+        "team": "Bayer Leverkusen",
         "gamesPlayed": 34,
         "points": 41,
         "goalDifference": -2,
@@ -1359,7 +1359,7 @@
     },
     {
         "position": 15,
-        "team": "Mainz",
+        "team": "Mainz 05",
         "gamesPlayed": 34,
         "points": 37,
         "goalDifference": -11,

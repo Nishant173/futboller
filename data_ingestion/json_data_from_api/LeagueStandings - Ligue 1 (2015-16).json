@@ -1,7 +1,7 @@
 [
     {
         "position": 1,
-        "team": "Paris SG",
+        "team": "Paris Saint Germain",
         "gamesPlayed": 38,
         "points": 96,
         "goalDifference": 83,
@@ -526,7 +526,7 @@
     },
     {
         "position": 6,
-        "team": "St Etienne",
+        "team": "Saint-Etienne",
         "gamesPlayed": 38,
         "points": 58,
         "goalDifference": 5,

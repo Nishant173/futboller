@@ -421,7 +421,7 @@
     },
     {
         "position": 5,
-        "team": "Milan",
+        "team": "AC Milan",
         "gamesPlayed": 38,
         "points": 68,
         "goalDifference": 19,
@@ -1261,7 +1261,7 @@
     },
     {
         "position": 13,
-        "team": "Spal",
+        "team": "SPAL 2013",
         "gamesPlayed": 38,
         "points": 42,
         "goalDifference": -12,
@@ -1576,7 +1576,7 @@
     },
     {
         "position": 16,
-        "team": "Parma",
+        "team": "Parma Calcio 1913",
         "gamesPlayed": 38,
         "points": 41,
         "goalDifference": -20,
