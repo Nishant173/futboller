@@ -29,3 +29,37 @@ NUM_GAMES_PER_SEASON = {
     'Ligue 1': 380,
     'Serie A': 380,   
 }
+
+
+# Used to map legacy team-names to Understat team-names
+# Has keys = legacy team-names, and values = understat team-names
+LEGACY_TO_UNDERSTAT_MAPPER = {
+    'Ath Bilbao': 'Athletic Club',
+    'Ath Madrid': 'Atletico Madrid',
+    'Betis': 'Real Betis',
+    'Celta': 'Celta Vigo',
+    'Dortmund': 'Borussia Dortmund',
+    'Ein Frankfurt': 'Eintracht Frankfurt',
+    'Espanol': 'Espanyol',
+    'FC Koln': 'FC Cologne',
+    'Fortuna Dusseldorf': 'Fortuna Duesseldorf',
+    'Hertha': 'Hertha Berlin',
+    'Huesca': 'SD Huesca',
+    'Leverkusen': 'Bayer Leverkusen',
+    "M'gladbach": 'Borussia M.Gladbach',
+    'Mainz': 'Mainz 05',
+    'Man City': 'Manchester City',
+    'Man United': 'Manchester United',
+    'Milan': 'AC Milan',
+    'Newcastle': 'Newcastle United',
+    'Paris SG': 'Paris Saint Germain',
+    'Parma': 'Parma Calcio 1913',
+    'RB Leipzig': 'RasenBallsport Leipzig',
+    'Sociedad': 'Real Sociedad',
+    'Spal': 'SPAL 2013',
+    'St Etienne': 'Saint-Etienne',
+    'Stuttgart': 'VfB Stuttgart',
+    'Valladolid': 'Real Valladolid',
+    'West Brom': 'West Bromwich Albion',
+    'Wolves': 'Wolverhampton Wanderers',
+}

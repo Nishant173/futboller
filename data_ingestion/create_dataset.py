@@ -3,9 +3,12 @@ import os
 import pandas as pd
 
 import config
-from data_validators import (get_num_teams_by_league_and_season,
-                             get_num_matches_by_league_and_season)
-from utils import get_filepaths, has_matching_column_names
+from metadata_generator import (get_num_teams_by_league_and_season,
+                                get_num_matches_by_league_and_season,
+                                get_num_unique_teams_by_league)
+from utils import (get_filepaths,
+                   has_matching_column_names,
+                   map_legacy_team_names_to_understat)
 
 
 def concatenate_legacy_data(filepaths: List[str]) -> pd.DataFrame:
@@ -61,6 +64,9 @@ if __name__ == "__main__":
             "Legacy data file and Understat data file have different column names. "
         )
     
+    # Legacy to Understat team-name mapping needs to be reviewed periodically (every season)
+    df_legacy_league_matches = map_legacy_team_names_to_understat(data=df_legacy_league_matches)
+
     # Create new CSV file with Legacy + Understat data
     df_all = pd.concat(objs=[df_legacy_league_matches, df_understat_league_matches],
                        ignore_index=True,
@@ -80,6 +86,11 @@ if __name__ == "__main__":
     df_num_matches_by_league_and_season = get_num_matches_by_league_and_season(data=df_all)
     df_num_matches_by_league_and_season.to_csv(
         path_or_buf="metadata/Top5LeaguesDataAll - NumMatchesByLeagueAndSeason.csv",
+        index=False,
+    )
+    df_num_unique_teams_by_league = get_num_unique_teams_by_league(data=df_all)
+    df_num_unique_teams_by_league.to_csv(
+        path_or_buf="metadata/Top5LeaguesDataAll - NumUniqueTeamsByLeague.csv",
         index=False,
     )
     print("Saved formatted CSV datasets as well as metadata about the same")

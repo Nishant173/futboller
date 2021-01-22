@@ -6,6 +6,8 @@ import requests
 
 import pandas as pd
 
+import config
+
 
 def save_object_as_json(obj: Any,
                         filepath: str) -> None:
@@ -59,3 +61,22 @@ def has_matching_column_names(df1: pd.DataFrame,
     cols1 = sorted(df1.columns.tolist())
     cols2 = sorted(df2.columns.tolist())
     return (cols1 == cols2)
+
+
+def map_legacy_team_if_necessary(team: str) -> str:
+    """
+    Maps legacy team-name to Understat team-name.
+    If the legacy team-name exists in the mapper dictionary, it returns the mapped Understat team-name;
+    otherwise it returns the original legacy team-name itself.
+    """
+    return config.LEGACY_TO_UNDERSTAT_MAPPER.get(team, team)
+
+
+def map_legacy_team_names_to_understat(data: pd.DataFrame) -> pd.DataFrame:
+    """
+    Takes in legacy LeagueMatch DataFrame, and maps it's team-names to Understat's team-names (for uniqueness)
+    """
+    df_altered = data.copy(deep=True)
+    df_altered['HomeTeam'] = df_altered['HomeTeam'].apply(map_legacy_team_if_necessary)
+    df_altered['AwayTeam'] = df_altered['AwayTeam'].apply(map_legacy_team_if_necessary)
+    return df_altered
