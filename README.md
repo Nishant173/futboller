@@ -13,8 +13,8 @@ Web-application that provides football data from the top 5 European leagues (API
 - Visit the API documentation at `localhost:8000/api/v1/documentation/` to learn about the available endpoints.
 - From the `futbol/frontend/futboller-frontend` directory, run `npm start` and open `localhost:3000` to interact with the UI.
 
-## Known issues
-- The names of teams obtained from Understat are different from those existing in legacy CSV files. Eg: RB Leipzig could be named RasenBallsport Leipzig. Solution: Map all the unique team names.
+## To do
+- The names of teams obtained from Understat are different from those existing in legacy CSV files. Eg: RB Leipzig (legacy CSVs) is named RasenBallsport Leipzig (on Understat). Map all the unique team names (every season) by changing the mapper dictionary in `data_ingestion/config.py`
 
 ## Looping through offset barrier
 - Use the following snippet to access all records of a resource by looping through the offset.
