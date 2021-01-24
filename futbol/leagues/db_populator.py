@@ -1,6 +1,6 @@
 '''
 # Function calls to empty/populate the tables having league related data
-from leagues.db_populater import (empty_league_related_tables,
+from leagues.db_populator import (empty_league_related_tables,
                                   populate_league_related_tables,
                                   print_table_details)
 
