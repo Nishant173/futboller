@@ -1,9 +1,10 @@
 import './App.css'
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom"
-import Navbar from './components/Navbar'
-import LeagueStandingsView from './components/LeagueStandingsView'
-import CrossLeagueStandingsView from './components/CrossLeagueStandingsView'
-import Home from './pages/Home'
+
+import Navbar from './components/navbar/Navbar'
+import Home from './containers/HomePage'
+import LeagueStandings from './containers/LeagueStandings'
+import CrossLeagueStandings from './containers/CrossLeagueStandings'
 
 
 export default function App() {
@@ -13,8 +14,8 @@ export default function App() {
         <Navbar />
         <Switch>
           <Route exact path="/" component={Home} />
-          <Route exact path="/league-standings" component={LeagueStandingsView} />
-          <Route exact path="/cross-league-standings" component={CrossLeagueStandingsView} />
+          <Route exact path="/league-standings" component={LeagueStandings} />
+          <Route exact path="/cross-league-standings" component={CrossLeagueStandings} />
         </Switch>
       </Router>
     </div>
