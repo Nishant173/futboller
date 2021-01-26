@@ -26,6 +26,11 @@ export default function Navbar() {
                                 CrossLeagueStandings
                             </Link>
                         </li>
+                        <li className="nav-item">
+                            <Link to="/cross-league-stats-by-team" className="nav-links" onClick={closeMobileMenu}>
+                                CrossLeagueStatsByTeam
+                            </Link>
+                        </li>
                     </ul>
                 </nav>
             </nav>
