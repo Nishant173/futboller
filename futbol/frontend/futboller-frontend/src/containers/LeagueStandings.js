@@ -108,7 +108,7 @@ export default function LeagueStandings() {
                         yValues={getTeamsArray(data)}
                         xLow={0}
                         xHigh={getMaxLimitCeiledBy10(getPointsArray(data))}
-                        color={'#0C7ADE'}
+                        color="#0C7ADE"
                     />
                     <br /><br />
                     <HorizontalBarChart
