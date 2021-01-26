@@ -57,7 +57,7 @@ export default function CrossLeagueStandings() {
                     />
                     <br /><br />
                     <ScatterChart
-                        title={`AvgPoints vs AvgGoalDifference`}
+                        title="AvgPoints vs AvgGoalDifference"
                         xLabel="AvgPoints"
                         yLabel="AvgGoalDifference"
                         arrayOfObjects={sliceTopTeamsForScatterChart(data)}
@@ -70,7 +70,7 @@ export default function CrossLeagueStandings() {
                     />
                     <br /><br />
                     <ScatterChart
-                        title={`AvgGoalsScored vs AvgGoalsAllowed`}
+                        title="AvgGoalsScored vs AvgGoalsAllowed"
                         xLabel="AvgGoalsScored"
                         yLabel="AvgGoalsAllowed"
                         arrayOfObjects={sliceTopTeamsForScatterChart(data)}
