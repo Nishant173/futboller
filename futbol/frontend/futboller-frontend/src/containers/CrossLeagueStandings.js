@@ -24,8 +24,8 @@ export default function CrossLeagueStandings() {
             })
     }
 
-    const numberOfTopTeamsToShowInCharts = 50
-    const getTopTeamsData = (arrayOfObjects) => arrayOfObjects.slice(0, numberOfTopTeamsToShowInCharts)
+    const numTopTeamsToShowInScatterCharts = 60
+    const sliceTopTeamsForScatterChart = (arrayOfObjects) => arrayOfObjects.slice(0, numTopTeamsToShowInScatterCharts)
     const getTeamsArray = (arrayOfObjects) => getValuesByKey(arrayOfObjects, "team")
     const getAvgPointsArray = (arrayOfObjects) => getValuesByKey(arrayOfObjects, "avgPoints")
     
@@ -60,12 +60,12 @@ export default function CrossLeagueStandings() {
                         title={`AvgPoints vs AvgGoalDifference`}
                         xLabel="AvgPoints"
                         yLabel="AvgGoalDifference"
-                        arrayOfObjects={getTopTeamsData(data)}
-                        scatterLabelsArray={getTeamsArray(getTopTeamsData(data))}
+                        arrayOfObjects={sliceTopTeamsForScatterChart(data)}
+                        scatterLabelsArray={getTeamsArray(sliceTopTeamsForScatterChart(data))}
                         xObj="avgPoints"
                         yObj="avgGoalDifference"
                         xLow={0}
-                        xHigh={ceil(max(getAvgPointsArray(getTopTeamsData(data))))}
+                        xHigh={ceil(max(getAvgPointsArray(sliceTopTeamsForScatterChart(data))))}
                         color={generateRandomHexCode()}
                     />
                     <br /><br />
@@ -73,8 +73,8 @@ export default function CrossLeagueStandings() {
                         title={`AvgGoalsScored vs AvgGoalsAllowed`}
                         xLabel="AvgGoalsScored"
                         yLabel="AvgGoalsAllowed"
-                        arrayOfObjects={getTopTeamsData(data)}
-                        scatterLabelsArray={getTeamsArray(getTopTeamsData(data))}
+                        arrayOfObjects={sliceTopTeamsForScatterChart(data)}
+                        scatterLabelsArray={getTeamsArray(sliceTopTeamsForScatterChart(data))}
                         xObj="avgGoalsScored"
                         yObj="avgGoalsAllowed"
                         color={generateRandomHexCode()}
