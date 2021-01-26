@@ -32,12 +32,12 @@ export default function LeagueStandings() {
             })
     }
 
-    const getMaxLimit = (arrayOfNumbers) => {
+    const getMaxLimitCeiledBy10 = (arrayOfNumbers) => {
         const maxOfNumbers = max(arrayOfNumbers)
         const maxLimit = ceilByClosestMultiple(maxOfNumbers, 10)
         return maxLimit
     }
-    const getMaxAbsLimit = (arrayOfNumbers) => {
+    const getMaxAbsLimitCeiledBy10 = (arrayOfNumbers) => {
         const maxOfAbsNumbers = maxOfAbsValues(arrayOfNumbers)
         const maxAbsLimit = ceilByClosestMultiple(maxOfAbsNumbers, 10)
         return maxAbsLimit
@@ -107,7 +107,7 @@ export default function LeagueStandings() {
                         xValues={getPointsArray(data)}
                         yValues={getTeamsArray(data)}
                         xLow={0}
-                        xHigh={getMaxLimit(getPointsArray(data))}
+                        xHigh={getMaxLimitCeiledBy10(getPointsArray(data))}
                         color={'#0C7ADE'}
                     />
                     <br /><br />
@@ -117,8 +117,8 @@ export default function LeagueStandings() {
                         yLabel="Team"
                         xValues={getGoalDifferencesArray(data)}
                         yValues={getTeamsArray(data)}
-                        xLow={-getMaxAbsLimit(getGoalDifferencesArray(data))}
-                        xHigh={getMaxAbsLimit(getGoalDifferencesArray(data))}
+                        xLow={-getMaxAbsLimitCeiledBy10(getGoalDifferencesArray(data))}
+                        xHigh={getMaxAbsLimitCeiledBy10(getGoalDifferencesArray(data))}
                         color="#0BEA57"
                     />
                     <br /><br />
@@ -135,7 +135,7 @@ export default function LeagueStandings() {
                         }
                         datasetsSlicer={[1, 6]} // For top 6 teams
                         yLow={0}
-                        yHigh={getMaxLimit(getPointsArray(data))}
+                        yHigh={getMaxLimitCeiledBy10(getPointsArray(data))}
                     />
                     <br /><br />
                     <MultiLineChart
@@ -161,7 +161,7 @@ export default function LeagueStandings() {
                         xObj="points"
                         yObj="goalDifference"
                         xLow={0}
-                        xHigh={getMaxLimit(getPointsArray(data))}
+                        xHigh={getMaxLimitCeiledBy10(getPointsArray(data))}
                         color={generateRandomHexCode()}
                     />
                     <br /><br />
@@ -174,9 +174,9 @@ export default function LeagueStandings() {
                         xObj="goalsScored"
                         yObj="goalsAllowed"
                         xLow={0}
-                        xHigh={getMaxLimit(getGoalsScoredArray(data))}
+                        xHigh={getMaxLimitCeiledBy10(getGoalsScoredArray(data))}
                         yLow={0}
-                        yHigh={getMaxLimit(getGoalsAllowedArray(data))}
+                        yHigh={getMaxLimitCeiledBy10(getGoalsAllowedArray(data))}
                         color={generateRandomHexCode()}
                     />
                 </>
