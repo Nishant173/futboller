@@ -336,6 +336,22 @@ export function getObjectOfValuesByKeys(arrayOfObjs, keys) {
 }
 
 
+// Adds unique field to an array of objects
+export function addUniqueField(arrayOfObjects, uniqueFieldName) {
+    const existingFields = Object.keys(arrayOfObjects[0])
+    if (existingFields.includes(uniqueFieldName)) {
+        throw `The "${uniqueFieldName}" field already exists in the given array of objects`
+    }
+    let arrayOfObjectsWithUniqueField = []
+    for (let i = 0; i < arrayOfObjects.length; i++) {
+        let obj = arrayOfObjects[i]
+        obj[uniqueFieldName] = i + 1
+        arrayOfObjectsWithUniqueField.push(obj)
+    }
+    return arrayOfObjectsWithUniqueField
+}
+
+
 // Sorts array of objects (in ascending order) based on key of objects
 export function sortArrayOfObjs(array, key) {
     const sortedArray = array.sort((tempObj1, tempObj2) => (tempObj1[key] > tempObj2[key]) ? 1 : -1)
