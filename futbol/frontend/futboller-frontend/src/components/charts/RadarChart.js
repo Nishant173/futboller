@@ -7,6 +7,8 @@ export function RadarChart({
         values,
         labels,
         color="#6897EC",
+        scaleTicksMin=undefined,
+        scaleTicksMax=undefined,
     }) {
 
     const data = {
@@ -31,6 +33,8 @@ export function RadarChart({
         scale: {
             ticks: {
                 beginAtZero: true,
+                min: scaleTicksMin,
+                max: scaleTicksMax,
             },
             gridLines: {
                 lineWidth: 3,
