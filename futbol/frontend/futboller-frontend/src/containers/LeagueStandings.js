@@ -9,6 +9,9 @@ import { HorizontalBarChart } from '../components/charts/BarChart'
 import { MultiLineChart, getMultiLineChartDatasets } from '../components/charts/LineChart'
 import { ScatterChart } from '../components/charts/ScatterChart'
 
+import LeaguesAvailable from '../Leagues.json'
+import SeasonsAvailable from '../Seasons.json'
+
 import {
     arange,
     ceilByClosestMultiple,
@@ -59,26 +62,19 @@ export default function LeagueStandings() {
             <form className="league-table-form">
                 <select name="league" onChange={updateLeague}>
                     <option>-</option>
-                    <option value="EPL">EPL</option>
-                    <option value="Bundesliga">Bundesliga</option>
-                    <option value="La Liga">La Liga</option>
-                    <option value="Ligue 1">Ligue 1</option>
-                    <option value="Serie A">Serie A</option>
+                    {
+                        LeaguesAvailable.map((LeagueAvailable) => (
+                            <option value={LeagueAvailable}>{LeagueAvailable}</option>
+                        ))
+                    }
                 </select>
                 <select name="season" onChange={updateSeason}>
                     <option>-</option>
-                    <option value="2009-10">2009-10</option>
-                    <option value="2010-11">2010-11</option>
-                    <option value="2011-12">2011-12</option>
-                    <option value="2012-13">2012-13</option>
-                    <option value="2013-14">2013-14</option>
-                    <option value="2014-15">2014-15</option>
-                    <option value="2015-16">2015-16</option>
-                    <option value="2016-17">2016-17</option>
-                    <option value="2017-18">2017-18</option>
-                    <option value="2018-19">2018-19</option>
-                    <option value="2019-20">2019-20</option>
-                    <option value="2020-21">2020-21</option>
+                    {
+                        SeasonsAvailable.map((SeasonAvailable) => (
+                            <option value={SeasonAvailable}>{SeasonAvailable}</option>
+                        ))
+                    }
                 </select>
                 <input
                     type="button"
