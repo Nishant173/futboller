@@ -197,6 +197,8 @@ export default class LeagueStandings extends React.Component {
                             yObj="goalDifference"
                             xLow={0}
                             xHigh={getMaxLimitCeiledBy10(this.state.points)}
+                            yLow={-getMaxAbsLimitCeiledBy10(this.state.goalDifferences)}
+                            yHigh={getMaxAbsLimitCeiledBy10(this.state.goalDifferences)}
                             color={generateRandomHexCode()}
                         />
                         <br /><br />
