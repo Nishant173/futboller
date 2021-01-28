@@ -8,6 +8,7 @@ export function DoughnutChart({
         title="",
         values,
         labels,
+        colors=generateRandomHexCodes(values.length),
     }) {
     
     const data = {
@@ -15,7 +16,7 @@ export function DoughnutChart({
         datasets: [
             {
                 data: values,
-                backgroundColor: generateRandomHexCodes(values.length),
+                backgroundColor: colors,
                 borderWidth: 1,
             },
         ]
