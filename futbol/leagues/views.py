@@ -8,8 +8,7 @@ from py_utils.data_analysis.transform import (dataframe_to_list,
                                               switch_column_casing)
 from py_utils.django_utils.utils import queryset_to_dataframe
 from py_utils.general.casing import sc2lcc
-from py_utils.general.utils import (filter_list_by_offset,
-                                    listify_string_of_nums)
+from py_utils.general.utils import listify_string_of_nums
 
 
 @api_view(['GET'])
@@ -61,9 +60,6 @@ def get_league_matches(request):
                                                losing_team=losing_team)
     df_matches = switch_column_casing(data=df_matches, func=sc2lcc)
     matches = dataframe_to_list(data=df_matches)
-    matches = filter_list_by_offset(list_obj=matches,
-                                    offset=int(offset) if offset else None,
-                                    limit=int(limit) if limit else None)
     return Response(data=matches, status=status.HTTP_200_OK)
 
 
@@ -92,7 +88,4 @@ def get_cross_league_standings(request):
     df_cls['cumulative_goal_difference_normalized'] = df_cls['cumulative_goal_difference_normalized'].apply(listify_string_of_nums)
     df_cls = switch_column_casing(data=df_cls, func=sc2lcc)
     cls = dataframe_to_list(data=df_cls)
-    cls = filter_list_by_offset(list_obj=cls,
-                                offset=int(offset) if offset else None,
-                                limit=int(limit) if limit else None)
     return Response(data=cls, status=status.HTTP_200_OK)
