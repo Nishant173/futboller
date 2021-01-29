@@ -1,4 +1,5 @@
 import { Line } from 'react-chartjs-2'
+import { LengthMismatchError } from '../../jsUtils/errors'
 import { generateRandomHexCode } from '../../jsUtils/general'
 
 
@@ -9,7 +10,7 @@ Each object in the array will have a `label` (usually a string) and `data` (arra
 */
 export function getMultiLineChartDatasets(lineLabelsArray, arrayOfArraysOfNumbers) {
     if (lineLabelsArray.length !== arrayOfArraysOfNumbers.length) {
-        throw `The labels array and the 2D array of numbers must be of same length`
+        throw LengthMismatchError("The labels array and the 2D array of numbers must be of same length")
     }
     let datasets = []
     for (let i = 0; i < lineLabelsArray.length; i++) {
