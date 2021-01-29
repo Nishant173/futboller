@@ -1,20 +1,23 @@
+import { KeyError } from './errors'
+
+
 export function isOdd(number) {
-    return (number % 2 == 1)
+    return (number % 2 === 1)
 }
 
 
 export function isEven(number) {
-    return (number % 2 == 0)
+    return (number % 2 === 0)
 }
 
 
 export function isPrime(number) {
     if (number < 2) {
-        throw "Numbers that are < 2 are neither prime nor composite"
+        throw RangeError("Numbers that are < 2 are neither prime nor composite")
     }
     let numFactors = 0
     for (let i = 1; i < number + 1; i++) {
-        if (number % i == 0) {
+        if (number % i === 0) {
             numFactors += 1
             if (numFactors > 2) {
                 return false
@@ -131,14 +134,14 @@ export function hasNegativeNumber(arrayOfNumbers) {
 
 
 export function arange(start, stop, step=1) {
-    if (step == 0) {
-        throw "Step cannot be 0"
+    if (step === 0) {
+        throw RangeError("Step cannot be 0")
     }
     if (start < stop && step < 0) {
-        throw "When `start` < `stop`, `step` cannot be < 0"
+        throw RangeError("When start < stop, step cannot be < 0")
     }
     if (start > stop && step > 0) {
-        throw "When `start` > `stop`, `step` cannot be > 0"
+        throw RangeError("When start > stop, step cannot be > 0")
     }
 
     let arrayOfNumbers = []
@@ -226,12 +229,12 @@ export function valueCounts(array) {
 // Gets array of `numValues` numbers that are linearly spaced between `start` and `stop` (range-inclusive)
 export function linspace(start, stop, numValues) {
     if (numValues < 1) {
-        throw "`numValues` must be >= 1"
+        throw RangeError("numValues must be >= 1")
     }
-    if (start != stop && numValues < 2) {
-        throw "When `start` != `stop`, `numValues` must be >= 2"
+    if (start !== stop && numValues < 2) {
+        throw RangeError("When start !== stop, numValues must be >= 2")
     }
-    if (start == stop) {
+    if (start === stop) {
         return [start]
     }
     const step = (stop - start) / (numValues - 1)
@@ -246,7 +249,7 @@ export function linspace(start, stop, numValues) {
 // Gets array of length `howMany` having linearly spaced values by index
 export function linspaceByIndex(array, howMany) {
     if (howMany > array.length) {
-        throw "`howMany` cannot be > length of array"
+        throw RangeError("howMany cannot be > length of array")
     }
     const linspacedIndices = linspace(0, array.length - 1, howMany).map(floor)
     let arrayLinspacedByIndex = []
@@ -260,7 +263,7 @@ export function linspaceByIndex(array, howMany) {
 export function removeUndefinedValues(array) {
     let arrayWithoutUndefinedValues = []
     for (let value of array) {
-        if (value != undefined) {
+        if (value !== undefined) {
             arrayWithoutUndefinedValues.push(value)
         }
     }
@@ -284,7 +287,7 @@ export function getValuesByKey(arrayOfObjs, key) {
     let arrayOfValuesByKey = []
     for (let i = 0; i < arrayOfObjs.length; i++) {
         let obj = arrayOfObjs[i]
-        if (obj[key] == undefined) {
+        if (obj[key] === undefined) {
             arrayOfValuesByKey.push(undefined)
         }
         else {
@@ -319,10 +322,10 @@ export function getObjectOfValuesByKeys(arrayOfObjs, keys) {
         for (let j = 0; j < keys.length; j++) {
             let key = keys[j]
             let elementToAdd = undefined
-            if (obj[key] != undefined) {
+            if (obj[key] !== undefined) {
                 elementToAdd = obj[key]
             }
-            if (i == 0) {
+            if (i === 0) {
                 objOfValuesByKey[key] = [elementToAdd]
             }
             else {
@@ -340,7 +343,7 @@ export function getObjectOfValuesByKeys(arrayOfObjs, keys) {
 export function addUniqueField(arrayOfObjects, uniqueFieldName) {
     const existingFields = Object.keys(arrayOfObjects[0])
     if (existingFields.includes(uniqueFieldName)) {
-        throw `The "${uniqueFieldName}" field already exists in the given array of objects`
+        throw KeyError(`The "${uniqueFieldName}" field already exists in the given array of objects`)
     }
     let arrayOfObjectsWithUniqueField = []
     for (let i = 0; i < arrayOfObjects.length; i++) {
