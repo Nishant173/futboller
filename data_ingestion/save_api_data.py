@@ -35,17 +35,12 @@ def save_league_standings() -> None:
 
 
 def save_cross_league_standings() -> None:
-    cross_league_standings = []
-    offset = 1
-    limit = 25
-    while True:
-        url = f"http://localhost:8000/api/v1/leagues/cross-league-standings/?offset={offset}&limit={limit}"
-        temp_cls = get_api_data(url=url)
-        cross_league_standings.extend(temp_cls)
-        offset += limit
-        if len(temp_cls) == 0:
-            break
-    save_object_as_json(obj=cross_league_standings, filepath=f"json_data_from_api/CrossLeagueStandings.json")
+    url = "http://localhost:8000/api/v1/leagues/cross-league-standings/"
+    cross_league_standings = get_api_data(url=url)
+    save_object_as_json(
+        obj=cross_league_standings,
+        filepath=f"json_data_from_api/CrossLeagueStandings.json",
+    )
     return None
 
 
