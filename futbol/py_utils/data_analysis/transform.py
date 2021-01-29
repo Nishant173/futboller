@@ -20,6 +20,22 @@ def drop_columns_if_exists(data: pd.DataFrame,
     return data_altered
 
 
+def prettify_datetime_columns(data: pd.DataFrame,
+                              columns: List[str],
+                              include_time: bool) -> pd.DataFrame:
+    """
+    Takes in Pandas DataFrame and list of datetime columns, and
+    converts the given datetime columns to a more human readable format.
+    """
+    df_altered = data.copy(deep=True)
+    formatter = "%d %b, %Y"
+    if include_time:
+        formatter = "%d %b, %Y %I:%M %p"
+    for column in columns:
+        df_altered[column] = df_altered[column].dt.strftime(formatter)
+    return df_altered
+
+
 def switch_column_casing(data: pd.DataFrame,
                          func: Callable) -> pd.DataFrame:
     """

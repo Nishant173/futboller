@@ -1,30 +1,48 @@
-from typing import Any, List, Optional, Union
+from typing import Any, Dict, List, Optional, Union
 import random
 
 import numpy as np
 
 
-def get_timetaken_fstring(num_seconds: Union[int, float],
-                          round_up: bool) -> str:
-    """Returns formatted-string of time elapsed, given the number of seconds elapsed"""
-    if round_up:
-        num_seconds = int(np.ceil(num_seconds))
+def get_timetaken_dictionary(num_seconds: Union[int, float]) -> Dict[str, Union[int, float]]:
+    hrs, mins, secs = 0, 0, 0
+    decimal_after_secs = None
+    if int(num_seconds) == num_seconds:
+        num_seconds = int(num_seconds)
+    else:
+        decimal_after_secs = num_seconds - np.floor(num_seconds)
+        num_seconds = int(np.floor(num_seconds))
     if num_seconds < 60:
-        secs = (int(num_seconds) if int(num_seconds) == num_seconds else round(num_seconds, 3))
-        fstring_timetaken = f"{secs}secs"
+        secs = num_seconds
     elif 60 <= num_seconds < 3600:
         mins, secs = divmod(num_seconds, 60)
-        mins = int(mins)
-        secs = (int(secs) if int(secs) == secs else round(secs, 3))
-        fstring_timetaken = f"{mins}mins {secs}secs"
     else:
         hrs, secs_remainder = divmod(num_seconds, 3600)
         mins, secs = divmod(secs_remainder, 60)
-        hrs = int(hrs)
-        mins = int(mins)
-        secs = (int(secs) if int(secs) == secs else round(secs, 3))
-        fstring_timetaken = f"{hrs}hrs {mins}mins {secs}secs"
-    return fstring_timetaken
+    dictionary_timetaken = {
+        "hrs": hrs,
+        "mins": mins,
+        "secs": secs + decimal_after_secs if decimal_after_secs else secs,
+    }
+    dictionary_timetaken = {key: value for key, value in dictionary_timetaken.items() if value > 0}
+    return dictionary_timetaken
+
+
+def get_timetaken_fstring(num_seconds: Union[int, float]) -> str:
+    dict_timetaken = get_timetaken_dictionary(num_seconds=num_seconds)
+    timetaken_components = [f"{value} {unit}" for unit, value in dict_timetaken.items()]
+    return " ".join(timetaken_components).strip()
+
+
+def commafy_number(number: Union[int, float]) -> str:
+    """
+    Adds commas to number for better readability.
+    >>> commafy_number(number=1738183090) # Returns "1,738,183,090"
+    >>> commafy_number(number=1738183090.90406) # Returns "1,738,183,090.90406"
+    """
+    if int(number) == number:
+        return format(int(number), ",d")
+    return format(number, ",f")
 
 
 def generate_random_hex_code() -> str:
