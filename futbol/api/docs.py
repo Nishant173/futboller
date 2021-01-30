@@ -113,8 +113,19 @@ ENDPOINTS = [
     {
         "endpoint": f"{API_VERSION}/leagues/cross-league-standings/",
         "description": "Gets list having cross-league-standings",
-        "parameters": [],
-        "example": f"{API_VERSION}/leagues/cross-league-standings/?offset=30&limit=10",
+        "parameters": [
+            {
+                "name": "team",
+                "datatype": "str",
+                "required": False,
+            },
+            {
+                "name": "league",
+                "datatype": "str",
+                "required": False,
+            },
+        ],
+        "example": f"{API_VERSION}/leagues/cross-league-standings/?league=EPL&team=Arsenal",
         "methods": ["GET"],
     },
 ]
