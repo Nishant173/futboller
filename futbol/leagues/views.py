@@ -4,6 +4,8 @@ from rest_framework.response import Response
 
 from . import filters, queries
 from .models import LeagueMatch, LeagueStandings, CrossLeagueStandings
+from .utils import get_teams_from_matchup
+from .wrangler import get_h2h_stats
 from py_utils.data_analysis.transform import (dataframe_to_list,
                                               switch_column_casing)
 from py_utils.django_utils.utils import queryset_to_dataframe
@@ -59,6 +61,20 @@ def get_league_matches(request):
     df_matches = switch_column_casing(data=df_matches, func=sc2lcc)
     matches = dataframe_to_list(data=df_matches)
     return Response(data=matches, status=status.HTTP_200_OK)
+
+
+@api_view(['GET'])
+def get_head_to_head_stats(request):
+    matchup = request.GET['matchup']
+    teams = get_teams_from_matchup(matchup=matchup)
+    qs_matches = LeagueMatch.objects.all()
+    df_matches = queryset_to_dataframe(qs=qs_matches, drop_id=True)
+    df_h2h_stats = get_h2h_stats(data=df_matches, teams=teams)
+    if df_h2h_stats.empty:
+        return Response(data=[], status=status.HTTP_200_OK)
+    df_h2h_stats = switch_column_casing(data=df_h2h_stats, func=sc2lcc)
+    h2h_stats = dataframe_to_list(data=df_h2h_stats)
+    return Response(data=h2h_stats, status=status.HTTP_200_OK)
 
 
 @api_view(['GET'])

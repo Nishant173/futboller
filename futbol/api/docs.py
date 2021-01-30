@@ -93,6 +93,19 @@ ENDPOINTS = [
         "methods": ["GET"],
     },
     {
+        "endpoint": f"{API_VERSION}/leagues/head-to-head-stats/",
+        "description": "Gets list having head-to-head-stats (based on matchup)",
+        "parameters": [
+            {
+                "name": "matchup",
+                "datatype": "str",
+                "required": True,
+            },
+        ],
+        "example": f"{API_VERSION}/leagues/head-to-head-stats/?matchup=Manchester United,Manchester City",
+        "methods": ["GET"],
+    },
+    {
         "endpoint": f"{API_VERSION}/leagues/league-standings/",
         "description": "Gets list having league-standings (based on parameters)",
         "parameters": [

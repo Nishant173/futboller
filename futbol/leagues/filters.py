@@ -1,6 +1,7 @@
 from typing import List, Optional, Union
 import pandas as pd
 
+from .utils import get_teams_from_matchup
 from py_utils.data_analysis.transform import dataframe_to_list
 # pd.set_option('mode.chained_assignment', None)
 
@@ -105,7 +106,7 @@ def filter_league_matches(data: pd.DataFrame,
                                                 min_gd=min_gd,
                                                 max_gd=max_gd)
     if matchup:
-        teams = str(matchup).strip().split(',') # `matchup` can contain "Arsenal,Chelsea"
+        teams = get_teams_from_matchup(matchup=matchup)
         df_filtered = filter_by_matchup(data=df_filtered, teams=teams)
     if winning_team:
         df_filtered = filter_by_result(data=df_filtered, team=winning_team, result='win')
