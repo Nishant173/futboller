@@ -112,3 +112,15 @@ def filter_league_matches(data: pd.DataFrame,
     if losing_team:
         df_filtered = filter_by_result(data=df_filtered, team=losing_team, result='loss')
     return df_filtered
+
+
+def filter_cross_league_standings(data: pd.DataFrame,
+                                  team: Optional[str] = None,
+                                  league: Optional[str] = None) -> pd.DataFrame:
+    """Filters DataFrame having `CrossLeagueStandings` data (based on certain parameters)"""
+    df_filtered = data.copy(deep=True)
+    if team:
+        df_filtered = df_filtered.loc[(df_filtered['team'] == team), :]
+    if league:
+        df_filtered = df_filtered.loc[(df_filtered['league'] == league), :]
+    return df_filtered

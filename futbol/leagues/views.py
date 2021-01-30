@@ -34,8 +34,6 @@ def get_seasons(request):
 
 @api_view(['GET'])
 def get_league_matches(request):
-    offset = request.GET.get('offset', default=None)
-    limit = request.GET.get('limit', default=None)
     team = request.GET.get('team', default=None)
     league = request.GET.get('league', default=None)
     season = request.GET.get('season', default=None)
@@ -78,10 +76,15 @@ def get_league_standings(request):
 
 @api_view(['GET'])
 def get_cross_league_standings(request):
-    offset = request.GET.get('offset', default=None)
-    limit = request.GET.get('limit', default=None)
+    team = request.GET.get('team', default=None)
+    league = request.GET.get('league', default=None)
     qs_cls = CrossLeagueStandings.objects.all()
     df_cls = queryset_to_dataframe(qs=qs_cls, drop_id=True)
+    df_cls = filters.filter_cross_league_standings(data=df_cls,
+                                                   team=team,
+                                                   league=league)
+    if df_cls.empty:
+        return Response(data=[], status=status.HTTP_200_OK)
     df_cls['cumulative_points'] = df_cls['cumulative_points'].apply(listify_string_of_nums)
     df_cls['cumulative_goal_difference'] = df_cls['cumulative_goal_difference'].apply(listify_string_of_nums)
     df_cls['cumulative_points_normalized'] = df_cls['cumulative_points_normalized'].apply(listify_string_of_nums)
