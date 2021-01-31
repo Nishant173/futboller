@@ -1,4 +1,7 @@
 # Links
+https://github.com/etianen/django-herokuapp
+https://www.youtube.com/watch?v=UkokhawLKDU (Heroku web-hosting for Django)
+
 https://able.bio/rhett/how-to-set-and-get-environment-variables-in-python--274rgt5
 https://stackoverflow.com/questions/19128540/django-improperlyconfigured-the-secret-key-setting-must-not-be-empty
 https://www.dataquest.io/blog/settingwithcopywarning/
