@@ -30,6 +30,15 @@ export function getLeagueMatches(objQueryParams=null) {
 }
 
 
+export function getLeagueHeadToHeadStats(objQueryParams=null) {
+    let url = `${DomainName}/${ApiVersion}/leagues/head-to-head-stats/`
+    if (objQueryParams !== null) {
+        url += objectToQueryParamsString(objQueryParams)
+    }
+    return getApiDataFromUrl(url)
+}
+
+
 export function getLeagueStandings(objQueryParams=null) {
     let url = `${DomainName}/${ApiVersion}/leagues/league-standings/`
     if (objQueryParams !== null) {
