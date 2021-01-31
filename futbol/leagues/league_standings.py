@@ -116,13 +116,13 @@ def get_results_string(data: pd.DataFrame) -> Dict[str, str]:
     }
     """
     dictionary_results = {}
-    data.sort_values(by='date', ascending=True, inplace=True, ignore_index=True)
-    teams = get_unique_teams(data=data)
+    df_altered = data.sort_values(by='date', ascending=True, ignore_index=True)
+    teams = get_unique_teams(data=df_altered)
 
     for team in teams:
-        dictionary_results[team] = "" # Initialize with empty string
+        dictionary_results[team] = ""
     
-    for row in data.itertuples():
+    for row in df_altered.itertuples():
         home_team = row.home_team
         away_team = row.away_team
         home_goals = row.home_goals
@@ -152,13 +152,13 @@ def get_cumulative_points(data: pd.DataFrame) -> Dict[str, List[int]]:
     }
     """
     dict_cum_pts = {} # Cumulative points by team
-    data.sort_values(by='date', ascending=True, inplace=True, ignore_index=True)
-    teams = get_unique_teams(data=data)
+    df_altered = data.sort_values(by='date', ascending=True, ignore_index=True)
+    teams = get_unique_teams(data=df_altered)
 
     for team in teams:
         dict_cum_pts[team] = [0]
     
-    for row in data.itertuples():
+    for row in df_altered.itertuples():
         home_team = row.home_team
         away_team = row.away_team
         home_goals = row.home_goals
@@ -190,13 +190,13 @@ def get_cumulative_goal_difference(data: pd.DataFrame) -> Dict[str, List[int]]:
     }
     """
     dict_cum_gd = {} # Cumulative goal differences by team
-    data.sort_values(by='date', ascending=True, inplace=True, ignore_index=True)
-    teams = get_unique_teams(data=data)
+    df_altered = data.sort_values(by='date', ascending=True, ignore_index=True)
+    teams = get_unique_teams(data=df_altered)
 
     for team in teams:
         dict_cum_gd[team] = [0]
     
-    for row in data.itertuples():
+    for row in df_altered.itertuples():
         home_team = row.home_team
         away_team = row.away_team
         home_goals = row.home_goals
