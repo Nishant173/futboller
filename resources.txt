@@ -1,7 +1,8 @@
 # Links
 https://github.com/etianen/django-herokuapp
 https://www.youtube.com/watch?v=UkokhawLKDU (Heroku web-hosting for Django)
-https://www.youtube.com/watch?v=Nhl_-1gvQTk
+https://www.youtube.com/watch?v=Nhl_-1gvQTk (Using Django with PostgreSQL)
+https://www.youtube.com/watch?v=gPzMRoPDrFk (CORS issue)
 
 https://able.bio/rhett/how-to-set-and-get-environment-variables-in-python--274rgt5
 https://stackoverflow.com/questions/19128540/django-improperlyconfigured-the-secret-key-setting-must-not-be-empty
