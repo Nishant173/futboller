@@ -22,6 +22,11 @@ export default function Navbar() {
                             </Link>
                         </li>
                         <li className="nav-item">
+                            <Link to="/league-h2h-stats" className="nav-links" onClick={closeMobileMenu}>
+                                LeagueH2H
+                            </Link>
+                        </li>
+                        <li className="nav-item">
                             <Link to="/cross-league-standings" className="nav-links" onClick={closeMobileMenu}>
                                 CrossLeagueStandings
                             </Link>
