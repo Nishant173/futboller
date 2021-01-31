@@ -58,7 +58,10 @@ export default class LeagueStandings extends React.Component {
     }
 
     updateData() {
-        getLeagueStandings(this.state.league, this.state.season)
+        getLeagueStandings({
+            league: this.state.league,
+            season: this.state.season,
+        })
             .then((response) => {
                 this.setState({
                     data: response,
