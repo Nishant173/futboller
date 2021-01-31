@@ -23,6 +23,7 @@ def get_h2h_stats(data: pd.DataFrame,
     """
     df_h2h_stats = pd.DataFrame()
     df_by_matchup = data.copy(deep=True)
+    df_by_matchup.sort_values(by='date', ascending=True, inplace=True, ignore_index=True)
     df_by_matchup = filters.filter_by_matchup(data=df_by_matchup, teams=teams)
     if df_by_matchup.empty:
         return pd.DataFrame()
