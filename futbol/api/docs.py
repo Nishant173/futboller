@@ -106,6 +106,19 @@ ENDPOINTS = [
         "methods": ["GET"],
     },
     {
+        "endpoint": f"{API_VERSION}/leagues/partitioned-stats/",
+        "description": "Gets list having partitioned-stats (by team). The partitions will be in ascending order of date",
+        "parameters": [
+            {
+                "name": "team",
+                "datatype": "str",
+                "required": True,
+            },
+        ],
+        "example": f"{API_VERSION}/leagues/partitioned-stats/?team=Manchester United",
+        "methods": ["GET"],
+    },
+    {
         "endpoint": f"{API_VERSION}/leagues/league-standings/",
         "description": "Gets list having league-standings (based on parameters)",
         "parameters": [

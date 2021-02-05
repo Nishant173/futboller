@@ -5,7 +5,7 @@ from rest_framework.response import Response
 from . import filters, queries
 from .models import LeagueMatch, LeagueStandings, CrossLeagueStandings
 from .utils import get_teams_from_matchup
-from .wrangler import get_h2h_stats
+from . import wrangler
 from py_utils.data_analysis.transform import (dataframe_to_list,
                                               switch_column_casing)
 from py_utils.django_utils.utils import queryset_to_dataframe
@@ -69,12 +69,25 @@ def get_head_to_head_stats(request):
     teams = get_teams_from_matchup(matchup=matchup)
     qs_matches = LeagueMatch.objects.all()
     df_matches = queryset_to_dataframe(qs=qs_matches, drop_id=True)
-    df_h2h_stats = get_h2h_stats(data=df_matches, teams=teams)
+    df_h2h_stats = wrangler.get_h2h_stats(data=df_matches, teams=teams)
     if df_h2h_stats.empty:
         return Response(data=[], status=status.HTTP_200_OK)
     df_h2h_stats = switch_column_casing(data=df_h2h_stats, func=sc2lcc)
     h2h_stats = dataframe_to_list(data=df_h2h_stats)
     return Response(data=h2h_stats, status=status.HTTP_200_OK)
+
+
+@api_view(['GET'])
+def get_partitioned_stats(request):
+    team = request.GET['team']
+    qs_matches = LeagueMatch.objects.all()
+    df_matches = queryset_to_dataframe(qs=qs_matches, drop_id=True)
+    df_partitioned_stats = wrangler.get_partitioned_stats(data=df_matches, team=team)
+    if df_partitioned_stats.empty:
+        return Response(data=[], status=status.HTTP_200_OK)
+    df_partitioned_stats = switch_column_casing(data=df_partitioned_stats, func=sc2lcc)
+    partitioned_stats = dataframe_to_list(data=df_partitioned_stats)
+    return Response(data=partitioned_stats, status=status.HTTP_200_OK)
 
 
 @api_view(['GET'])
