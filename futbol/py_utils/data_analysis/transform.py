@@ -3,6 +3,8 @@ import random
 
 import pandas as pd
 
+from py_utils.general.utils import get_indices_for_partitioning
+
 
 def dataframe_to_list(data: pd.DataFrame) -> Union[List[Dict], List]:
     if data.empty:
@@ -34,6 +36,43 @@ def prettify_datetime_columns(data: pd.DataFrame,
     for column in columns:
         df_altered[column] = df_altered[column].dt.strftime(formatter)
     return df_altered
+
+
+def add_partitioning_column(data: pd.DataFrame,
+                            num_partitions: int,
+                            column_name: str) -> pd.DataFrame:
+    """
+    Partitions a DataFrame horizontally, based on number of partitions given.
+    Returns DataFrame with an additional column containing the partition number.
+    """
+    df = data.copy(deep=True)
+    df_with_column = pd.DataFrame()
+    indices_for_partitioning = get_indices_for_partitioning(length_of_iterable=len(df),
+                                                            num_partitions=num_partitions)
+    partition_number = 0
+    for i in range(len(indices_for_partitioning) - 1):
+        partition_number += 1
+        idx_start, idx_end = indices_for_partitioning[i], indices_for_partitioning[i+1]
+        df_by_partition = df.iloc[idx_start : idx_end].copy()
+        df_by_partition[column_name] = partition_number
+        df_with_column = pd.concat(objs=[df_with_column, df_by_partition], ignore_index=True, sort=False)
+    return df_with_column
+
+
+def partition_dataframe(data: pd.DataFrame,
+                        num_partitions: int) -> List[pd.DataFrame]:
+    """
+    Partitions a DataFrame horizontally, based on number of partitions given.
+    Returns list of partitioned DataFrames.
+    """
+    list_of_dataframes = []
+    indices_for_partitioning = get_indices_for_partitioning(length_of_iterable=len(data),
+                                                            num_partitions=num_partitions)
+    for i in range(len(indices_for_partitioning) - 1):
+        idx_start, idx_end = indices_for_partitioning[i], indices_for_partitioning[i+1]
+        df_by_partition = data.iloc[idx_start : idx_end]
+        list_of_dataframes.append(df_by_partition)
+    return list_of_dataframes
 
 
 def switch_column_casing(data: pd.DataFrame,

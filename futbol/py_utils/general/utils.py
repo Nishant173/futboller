@@ -106,6 +106,25 @@ def has_positive_number(array: List[Union[int, float]]) -> bool:
     return False
 
 
+def get_indices_for_partitioning(length_of_iterable: int,
+                                 num_partitions: int) -> List[int]:
+    """Returns list of indices to partition an iterable, given the number of partitions"""
+    if num_partitions == 0:
+        raise ValueError("Number of partitions cannot be 0")
+    indices_for_partitioning = [0]
+    min_length_per_partition = int(np.floor(length_of_iterable / num_partitions))
+    num_residuals = int(length_of_iterable % num_partitions)
+    while num_residuals > 0:
+        latest_idx = indices_for_partitioning[-1]
+        length_of_partition = min_length_per_partition + 1
+        num_residuals -= 1
+        indices_for_partitioning.append(latest_idx + length_of_partition)
+    while len(indices_for_partitioning) != num_partitions + 1:
+        latest_idx = indices_for_partitioning[-1]
+        indices_for_partitioning.append(latest_idx + min_length_per_partition)
+    return indices_for_partitioning
+
+
 def linspace_by_index(array: List[Any],
                       how_many: int) -> List[Any]:
     """
