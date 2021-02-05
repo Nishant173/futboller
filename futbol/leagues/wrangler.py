@@ -1,4 +1,5 @@
 from typing import List
+import numpy as np
 import pandas as pd
 
 from . import filters
@@ -74,7 +75,7 @@ def _get_partitioned_stats(data_by_team: pd.DataFrame,
     num_unique_months = df['date'].dt.strftime("%Y-%m").nunique()
     df['date'] = df['date'].dt.strftime("%Y-%m-%d")
     df = add_partitioning_column(data=df,
-                                 num_partitions=int(num_unique_months / 3),
+                                 num_partitions=int(np.ceil(num_unique_months / 3)),
                                  column_name="partition_number")
     goal_margin = 3 # To decide BigWins / BigLosses
     df_partitioned_stats = pd.DataFrame(data={
