@@ -18,22 +18,27 @@ export default function Navbar() {
                     <ul className={click ? "nav-menu active" : "nav-menu"}>
                         <li className="nav-item">
                             <Link to="/league-standings" className="nav-links" onClick={closeMobileMenu}>
-                                LeagueStandings
+                                Standings
                             </Link>
                         </li>
                         <li className="nav-item">
                             <Link to="/league-h2h-stats" className="nav-links" onClick={closeMobileMenu}>
-                                LeagueH2H
+                                H2H
+                            </Link>
+                        </li>
+                        <li className="nav-item">
+                            <Link to="/partitioned-stats" className="nav-links" onClick={closeMobileMenu}>
+                                PartitionedStats
                             </Link>
                         </li>
                         <li className="nav-item">
                             <Link to="/cross-league-standings" className="nav-links" onClick={closeMobileMenu}>
-                                CrossLeagueStandings
+                                AcrossLeagues
                             </Link>
                         </li>
                         <li className="nav-item">
                             <Link to="/cross-league-stats-by-team" className="nav-links" onClick={closeMobileMenu}>
-                                CrossLeagueStatsByTeam
+                                AcrossLeaguesByTeam
                             </Link>
                         </li>
                     </ul>

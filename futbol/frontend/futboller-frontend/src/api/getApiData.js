@@ -39,6 +39,15 @@ export function getLeagueHeadToHeadStats(objQueryParams=null) {
 }
 
 
+export function getPartitionedStatsByTeam(objQueryParams=null) {
+    let url = `${DomainName}/${ApiVersion}/leagues/partitioned-stats/`
+    if (objQueryParams !== null) {
+        url += objectToQueryParamsString(objQueryParams)
+    }
+    return getApiDataFromUrl(url)
+}
+
+
 export function getLeagueStandings(objQueryParams=null) {
     let url = `${DomainName}/${ApiVersion}/leagues/league-standings/`
     if (objQueryParams !== null) {

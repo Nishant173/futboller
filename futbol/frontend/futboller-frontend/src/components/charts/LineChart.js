@@ -1,6 +1,6 @@
 import { Line } from 'react-chartjs-2'
 import { LengthMismatchError } from '../../jsUtils/errors'
-import { generateRandomHexCode } from '../../jsUtils/general'
+import { generateRandomHexCodes } from '../../jsUtils/general'
 
 
 /*
@@ -8,18 +8,21 @@ Takes in an array of labels, and an array of array of numbers (2D array), wherei
 Returns array of objects having data to be used in MultiLineCharts.
 Each object in the array will have a `label` (usually a string) and `data` (array of numbers corresponding to said label).
 */
-export function getMultiLineChartDatasets(lineLabelsArray, arrayOfArraysOfNumbers) {
+export function getMultiLineChartDatasets(
+        lineLabelsArray,
+        arrayOfArraysOfNumbers,
+        colors=generateRandomHexCodes(lineLabelsArray.length)
+    ) {
     if (lineLabelsArray.length !== arrayOfArraysOfNumbers.length) {
         throw LengthMismatchError("The labels array and the 2D array of numbers must be of same length")
     }
     let datasets = []
     for (let i = 0; i < lineLabelsArray.length; i++) {
-        let color = generateRandomHexCode()
         datasets.push({
             label: lineLabelsArray[i],
             data: arrayOfArraysOfNumbers[i],
-            borderColor: color,
-            backgroundColor: color,
+            borderColor: colors[i],
+            backgroundColor: colors[i],
             borderWidth: 5,
             fill: false,
         })
