@@ -22,6 +22,12 @@ https://djangostars.com/blog/rest-apis-django-development/
 Structuring Django apps
 http://danielhnyk.cz/django-rest-framework-how-to-structure-your-app/
 
+# External data sources
+- https://footballdatabase.com/league-scores-tables/germany-bundesliga-2020-21
+- https://github.com/openfootball/football.json
+- https://globalsportsarchive.com/competition/soccer/bundesliga-1963-1964/regular-season/121/
+- https://www.footballcritic.com/bundesliga/season-1968-1969/matches/3/123
+- https://rapidapi.com/api-sports/api/api-football/details
 
 # Frontend-related:
 Disable McAfee Chrome extension
