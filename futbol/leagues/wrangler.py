@@ -77,50 +77,20 @@ def _get_absolute_partitioned_stats(data_by_team: pd.DataFrame,
     df = add_partitioning_column(data=df,
                                  num_partitions=int(np.ceil(num_unique_months / 3)),
                                  column_name="partition_number")
-    big_result_goal_margin = 3 # To decide BigWins / BigLosses
     df_partitioned_stats = pd.DataFrame(data={
         'team': team,
         'games_played': df.groupby(by="partition_number").apply(len),
         'start_date': df.groupby(by="partition_number").apply(lambda dfrm: dfrm['date'].iloc[0]),
         'end_date': df.groupby(by="partition_number").apply(lambda dfrm: dfrm['date'].iloc[-1]),
-        'wins': df.groupby(by="partition_number").apply(
-            func=get_win_count,
-            team=team,
-        ).rename("wins"),
-        'losses': df.groupby(by="partition_number").apply(
-            func=get_loss_count,
-            team=team,
-        ).rename("losses"),
-        'draws': df.groupby(by="partition_number").apply(
-            func=get_draw_count,
-            team=team,
-        ).rename("draws"),
-        'goals_scored': df.groupby(by="partition_number").apply(
-            func=get_goals_scored,
-            team=team,
-        ).rename("goals_scored"),
-        'goals_allowed': df.groupby(by="partition_number").apply(
-            func=get_goals_allowed,
-            team=team,
-        ).rename("goals_allowed"),
-        'clean_sheets': df.groupby(by="partition_number").apply(
-            func=get_clean_sheet_count,
-            team=team,
-        ).rename("clean_sheets"),
-        'clean_sheets_against': df.groupby(by="partition_number").apply(
-            func=get_clean_sheets_against_count,
-            team=team,
-        ).rename("clean_sheets_against"),
-        'big_wins': df.groupby(by="partition_number").apply(
-            func=get_rout_count,
-            team=team,
-            goal_margin=big_result_goal_margin,
-        ).rename("big_wins"),
-        'big_losses': df.groupby(by="partition_number").apply(
-            func=get_capitulation_count,
-            team=team,
-            goal_margin=big_result_goal_margin,
-        ).rename("big_losses"),
+        'wins': df.groupby(by="partition_number").apply(get_win_count, team=team),
+        'losses': df.groupby(by="partition_number").apply(get_loss_count, team=team),
+        'draws': df.groupby(by="partition_number").apply(get_draw_count, team=team),
+        'goals_scored': df.groupby(by="partition_number").apply(get_goals_scored, team=team),
+        'goals_allowed': df.groupby(by="partition_number").apply(get_goals_allowed, team=team),
+        'clean_sheets': df.groupby(by="partition_number").apply(get_clean_sheet_count, team=team),
+        'clean_sheets_against': df.groupby(by="partition_number").apply(get_clean_sheets_against_count, team=team),
+        'big_wins': df.groupby(by="partition_number").apply(get_rout_count, team=team, goal_margin=3),
+        'big_losses': df.groupby(by="partition_number").apply(get_capitulation_count, team=team, goal_margin=3),
     }).reset_index()
     df_partitioned_stats['points'] = 3 * df_partitioned_stats['wins'] + df_partitioned_stats['draws']
     df_partitioned_stats['goal_difference'] = df_partitioned_stats['goals_scored'] - df_partitioned_stats['goals_allowed']
