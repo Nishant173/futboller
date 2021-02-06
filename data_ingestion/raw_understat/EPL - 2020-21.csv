@@ -31,8 +31,8 @@ Chelsea,Crystal Palace,4,0,England,EPL,2020-21,2020-10-03
 Everton,Brighton,4,2,England,EPL,2020-21,2020-10-03
 Leeds,Manchester City,1,1,England,EPL,2020-21,2020-10-03
 Newcastle United,Burnley,3,1,England,EPL,2020-21,2020-10-03
-Southampton,West Bromwich Albion,2,0,England,EPL,2020-21,2020-10-04
 Leicester,West Ham,0,3,England,EPL,2020-21,2020-10-04
+Southampton,West Bromwich Albion,2,0,England,EPL,2020-21,2020-10-04
 Arsenal,Sheffield United,2,1,England,EPL,2020-21,2020-10-04
 Wolverhampton Wanderers,Fulham,1,0,England,EPL,2020-21,2020-10-04
 Manchester United,Tottenham,1,6,England,EPL,2020-21,2020-10-04
@@ -118,9 +118,9 @@ Leicester,Brighton,3,0,England,EPL,2020-21,2020-12-13
 Arsenal,Burnley,0,1,England,EPL,2020-21,2020-12-13
 Wolverhampton Wanderers,Chelsea,2,1,England,EPL,2020-21,2020-12-15
 Manchester City,West Bromwich Albion,1,1,England,EPL,2020-21,2020-12-15
-Arsenal,Southampton,1,1,England,EPL,2020-21,2020-12-16
-Leeds,Newcastle United,5,2,England,EPL,2020-21,2020-12-16
 Leicester,Everton,0,2,England,EPL,2020-21,2020-12-16
+Leeds,Newcastle United,5,2,England,EPL,2020-21,2020-12-16
+Arsenal,Southampton,1,1,England,EPL,2020-21,2020-12-16
 Fulham,Brighton,0,0,England,EPL,2020-21,2020-12-16
 West Ham,Crystal Palace,1,1,England,EPL,2020-21,2020-12-16
 Liverpool,Tottenham,2,1,England,EPL,2020-21,2020-12-16
@@ -170,8 +170,8 @@ Manchester City,Brighton,1,0,England,EPL,2020-21,2021-01-13
 Tottenham,Fulham,1,1,England,EPL,2020-21,2021-01-13
 Arsenal,Crystal Palace,0,0,England,EPL,2020-21,2021-01-14
 Wolverhampton Wanderers,West Bromwich Albion,2,3,England,EPL,2020-21,2021-01-16
-West Ham,Burnley,1,0,England,EPL,2020-21,2021-01-16
 Leeds,Brighton,0,1,England,EPL,2020-21,2021-01-16
+West Ham,Burnley,1,0,England,EPL,2020-21,2021-01-16
 Fulham,Chelsea,0,1,England,EPL,2020-21,2021-01-16
 Leicester,Southampton,2,0,England,EPL,2020-21,2021-01-16
 Sheffield United,Tottenham,1,3,England,EPL,2020-21,2021-01-17
@@ -182,3 +182,35 @@ West Ham,West Bromwich Albion,2,1,England,EPL,2020-21,2021-01-19
 Leicester,Chelsea,2,0,England,EPL,2020-21,2021-01-19
 Manchester City,Aston Villa,2,0,England,EPL,2020-21,2021-01-20
 Fulham,Manchester United,1,2,England,EPL,2020-21,2021-01-20
+Liverpool,Burnley,0,1,England,EPL,2020-21,2021-01-21
+Aston Villa,Newcastle United,2,0,England,EPL,2020-21,2021-01-23
+Newcastle United,Leeds,1,2,England,EPL,2020-21,2021-01-26
+Crystal Palace,West Ham,2,3,England,EPL,2020-21,2021-01-26
+Southampton,Arsenal,1,3,England,EPL,2020-21,2021-01-26
+West Bromwich Albion,Manchester City,0,5,England,EPL,2020-21,2021-01-26
+Burnley,Aston Villa,3,2,England,EPL,2020-21,2021-01-27
+Chelsea,Wolverhampton Wanderers,0,0,England,EPL,2020-21,2021-01-27
+Brighton,Fulham,0,0,England,EPL,2020-21,2021-01-27
+Everton,Leicester,1,1,England,EPL,2020-21,2021-01-27
+Manchester United,Sheffield United,1,2,England,EPL,2020-21,2021-01-27
+Tottenham,Liverpool,1,3,England,EPL,2020-21,2021-01-28
+Everton,Newcastle United,0,2,England,EPL,2020-21,2021-01-30
+Crystal Palace,Wolverhampton Wanderers,1,0,England,EPL,2020-21,2021-01-30
+West Bromwich Albion,Fulham,2,2,England,EPL,2020-21,2021-01-30
+Manchester City,Sheffield United,1,0,England,EPL,2020-21,2021-01-30
+Arsenal,Manchester United,0,0,England,EPL,2020-21,2021-01-30
+Southampton,Aston Villa,0,1,England,EPL,2020-21,2021-01-30
+Chelsea,Burnley,2,0,England,EPL,2020-21,2021-01-31
+Leicester,Leeds,1,3,England,EPL,2020-21,2021-01-31
+West Ham,Liverpool,1,3,England,EPL,2020-21,2021-01-31
+Brighton,Tottenham,1,0,England,EPL,2020-21,2021-01-31
+Sheffield United,West Bromwich Albion,2,1,England,EPL,2020-21,2021-02-02
+Wolverhampton Wanderers,Arsenal,2,1,England,EPL,2020-21,2021-02-02
+Manchester United,Southampton,9,0,England,EPL,2020-21,2021-02-02
+Newcastle United,Crystal Palace,1,2,England,EPL,2020-21,2021-02-02
+Burnley,Manchester City,0,2,England,EPL,2020-21,2021-02-03
+Fulham,Leicester,0,2,England,EPL,2020-21,2021-02-03
+Leeds,Everton,1,2,England,EPL,2020-21,2021-02-03
+Liverpool,Brighton,0,1,England,EPL,2020-21,2021-02-03
+Aston Villa,West Ham,1,3,England,EPL,2020-21,2021-02-03
+Tottenham,Chelsea,0,1,England,EPL,2020-21,2021-02-04
