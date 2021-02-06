@@ -63,8 +63,8 @@ def get_h2h_stats(data: pd.DataFrame,
     return df_h2h_stats
 
 
-def _get_partitioned_stats(data_by_team: pd.DataFrame,
-                           team: str) -> pd.DataFrame:
+def _get_absolute_partitioned_stats(data_by_team: pd.DataFrame,
+                                    team: str) -> pd.DataFrame:
     """
     Helper function that calculates absolute partitioned stats by team.
     Returns DataFrame wherein each row has stats of one partition of team's matches.
@@ -77,7 +77,7 @@ def _get_partitioned_stats(data_by_team: pd.DataFrame,
     df = add_partitioning_column(data=df,
                                  num_partitions=int(np.ceil(num_unique_months / 3)),
                                  column_name="partition_number")
-    goal_margin = 3 # To decide BigWins / BigLosses
+    big_result_goal_margin = 3 # To decide BigWins / BigLosses
     df_partitioned_stats = pd.DataFrame(data={
         'team': team,
         'games_played': df.groupby(by="partition_number").apply(len),
@@ -114,12 +114,12 @@ def _get_partitioned_stats(data_by_team: pd.DataFrame,
         'big_wins': df.groupby(by="partition_number").apply(
             func=get_rout_count,
             team=team,
-            goal_margin=goal_margin,
+            goal_margin=big_result_goal_margin,
         ).rename("big_wins"),
         'big_losses': df.groupby(by="partition_number").apply(
             func=get_capitulation_count,
             team=team,
-            goal_margin=goal_margin,
+            goal_margin=big_result_goal_margin,
         ).rename("big_losses"),
     }).reset_index()
     df_partitioned_stats['points'] = 3 * df_partitioned_stats['wins'] + df_partitioned_stats['draws']
@@ -141,29 +141,21 @@ def _get_normalized_partitioned_stats(data: pd.DataFrame) -> pd.DataFrame:
     df['avg_goals_allowed'] = df['goals_allowed'] / df['games_played']
     df['avg_goal_difference'] = df['goal_difference'] / df['games_played']
     df['avg_points'] = df['points'] / df['games_played']
-    df.drop(
-        labels=[
-            'wins', 'losses', 'draws', 'big_wins', 'big_losses',
-            'clean_sheets', 'clean_sheets_against',
-            'goals_scored', 'goals_allowed', 'points', 'goal_difference',
-        ],
-        axis=1,
-        inplace=True,
-    )
-    df = round_off_columns(
-        data=df,
-        columns=[
-            'win_percent', 'loss_percent', 'draw_percent',
-            'clean_sheets_percent', 'clean_sheets_against_percent',
-            'big_wins_percent', 'big_losses_percent',
-        ],
-        round_by=2,
-    )
-    df = round_off_columns(
-        data=df,
-        columns=['avg_goals_scored', 'avg_goals_allowed', 'avg_goal_difference', 'avg_points'],
-        round_by=4,
-    )
+    df.drop(labels=[
+                'wins', 'losses', 'draws', 'big_wins', 'big_losses', 'clean_sheets', 'clean_sheets_against',
+                'goals_scored', 'goals_allowed', 'points', 'goal_difference',
+            ],
+            axis=1,
+            inplace=True)
+    df = round_off_columns(data=df,
+                           columns=[
+                               'win_percent', 'loss_percent', 'draw_percent', 'clean_sheets_percent',
+                               'clean_sheets_against_percent', 'big_wins_percent', 'big_losses_percent',
+                           ],
+                           round_by=2)
+    df = round_off_columns(data=df,
+                           columns=['avg_goals_scored', 'avg_goals_allowed', 'avg_goal_difference', 'avg_points'],
+                           round_by=4)
     return df
 
 
@@ -174,6 +166,6 @@ def get_partitioned_stats(data: pd.DataFrame,
     Returns DataFrame having normalized partitioned stats (for the given team).
     """
     df_by_team = filters.filter_by_team(data=data, team=team)
-    df_partitioned_stats = _get_partitioned_stats(data_by_team=df_by_team, team=team)
-    df_partitioned_stats = _get_normalized_partitioned_stats(data=df_partitioned_stats)
-    return df_partitioned_stats
+    df_abs_partitioned_stats = _get_absolute_partitioned_stats(data_by_team=df_by_team, team=team)
+    df_norm_partitioned_stats = _get_normalized_partitioned_stats(data=df_abs_partitioned_stats)
+    return df_norm_partitioned_stats
