@@ -17,6 +17,7 @@ export default class PartitionedStatsByTeam extends React.Component {
         this.state = {
             data: [],
             startDates: [],
+            endDates: [],
             avgPoints: [],
             avgGoalDifferences: [],
             avgGoalsScored: [],
@@ -38,6 +39,7 @@ export default class PartitionedStatsByTeam extends React.Component {
                 })
                 this.setState({
                     startDates: getValuesByKey(this.state.data, "startDate"),
+                    endDates: getValuesByKey(this.state.data, "endDate"),
                     avgPoints: getValuesByKey(this.state.data, "avgPoints"),
                     avgGoalDifferences: getValuesByKey(this.state.data, "avgGoalDifference"),
                     avgGoalsScored: getValuesByKey(this.state.data, "avgGoalsScored"),
@@ -90,7 +92,7 @@ export default class PartitionedStatsByTeam extends React.Component {
                             title={`${this.state.team} - AvgPoints over time`}
                             xLabel="Date"
                             yLabel="AvgPoints"
-                            xTicks={this.state.startDates}
+                            xTicks={this.state.endDates}
                             datasets={
                                 getMultiLineChartDatasets(
                                     ["AvgPoints over time"],
@@ -105,7 +107,7 @@ export default class PartitionedStatsByTeam extends React.Component {
                             title={`${this.state.team} - Wins/Losses/Draws over time`}
                             xLabel="Date"
                             yLabel="Win/Loss/Draw percentages over time"
-                            xTicks={this.state.startDates}
+                            xTicks={this.state.endDates}
                             datasets={
                                 getMultiLineChartDatasets(
                                     [
