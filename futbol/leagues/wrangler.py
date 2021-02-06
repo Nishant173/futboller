@@ -77,7 +77,7 @@ def _get_absolute_partitioned_stats(data_by_team: pd.DataFrame,
     df = add_partitioning_column(data=df,
                                  num_partitions=int(np.ceil(num_unique_months / 3)),
                                  column_name="partition_number")
-    df_partitioned_stats = pd.DataFrame(data={
+    df_abs_partitioned_stats = pd.DataFrame(data={
         'team': team,
         'games_played': df.groupby(by="partition_number").apply(len),
         'start_date': df.groupby(by="partition_number").apply(lambda dfrm: dfrm['date'].iloc[0]),
@@ -92,9 +92,9 @@ def _get_absolute_partitioned_stats(data_by_team: pd.DataFrame,
         'big_wins': df.groupby(by="partition_number").apply(get_rout_count, team=team, goal_margin=3),
         'big_losses': df.groupby(by="partition_number").apply(get_capitulation_count, team=team, goal_margin=3),
     }).reset_index()
-    df_partitioned_stats['points'] = 3 * df_partitioned_stats['wins'] + df_partitioned_stats['draws']
-    df_partitioned_stats['goal_difference'] = df_partitioned_stats['goals_scored'] - df_partitioned_stats['goals_allowed']
-    return df_partitioned_stats
+    df_abs_partitioned_stats['points'] = 3 * df_abs_partitioned_stats['wins'] + df_abs_partitioned_stats['draws']
+    df_abs_partitioned_stats['goal_difference'] = df_abs_partitioned_stats['goals_scored'] - df_abs_partitioned_stats['goals_allowed']
+    return df_abs_partitioned_stats
 
 
 def _get_normalized_partitioned_stats(data: pd.DataFrame) -> pd.DataFrame:
