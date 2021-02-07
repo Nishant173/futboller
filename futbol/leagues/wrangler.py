@@ -16,6 +16,7 @@ from .league_standings import (get_win_count,
                                get_longest_streak)
 from py_utils.data_analysis.transform import (
     add_partitioning_column,
+    prettify_datetime_columns,
     round_off_columns,
 )
 
@@ -63,25 +64,26 @@ def get_h2h_stats(data: pd.DataFrame,
     return df_h2h_stats
 
 
-def _get_absolute_partitioned_stats(data_by_team: pd.DataFrame,
+def _get_absolute_partitioned_stats(data: pd.DataFrame,
                                     team: str) -> pd.DataFrame:
     """
     Helper function that calculates absolute partitioned stats by team.
     Returns DataFrame wherein each row has stats of one partition of team's matches.
     """
-    df = data_by_team.copy(deep=True)
-    df['date'] = pd.to_datetime(arg=df['date'], format="%Y-%m-%d")
+    df = filters.filter_by_team(data=data, team=team)
+    date_format = "%Y-%m-%d"
+    df['date'] = pd.to_datetime(arg=df['date'], format=date_format)
     df.sort_values(by='date', ascending=True, ignore_index=True, inplace=True)
     num_unique_months = df['date'].dt.strftime("%Y-%m").nunique()
-    df['date'] = df['date'].dt.strftime("%Y-%m-%d")
+    df['date'] = df['date'].dt.strftime(date_format)
     df = add_partitioning_column(data=df,
                                  num_partitions=int(np.ceil(num_unique_months / 3)),
                                  column_name="partition_number")
     df_abs_partitioned_stats = pd.DataFrame(data={
         'team': team,
         'games_played': df.groupby(by="partition_number").apply(len),
-        'start_date': df.groupby(by="partition_number").apply(lambda dfrm: dfrm['date'].iloc[0]),
-        'end_date': df.groupby(by="partition_number").apply(lambda dfrm: dfrm['date'].iloc[-1]),
+        'start_date': df.groupby(by="partition_number").apply(lambda dframe: dframe['date'].iloc[0]),
+        'end_date': df.groupby(by="partition_number").apply(lambda dframe: dframe['date'].iloc[-1]),
         'wins': df.groupby(by="partition_number").apply(get_win_count, team=team),
         'losses': df.groupby(by="partition_number").apply(get_loss_count, team=team),
         'draws': df.groupby(by="partition_number").apply(get_draw_count, team=team),
@@ -135,7 +137,6 @@ def get_partitioned_stats(data: pd.DataFrame,
     Takes DataFrame having `LeagueMatch` data.
     Returns DataFrame having normalized partitioned stats (for the given team).
     """
-    df_by_team = filters.filter_by_team(data=data, team=team)
-    df_abs_partitioned_stats = _get_absolute_partitioned_stats(data_by_team=df_by_team, team=team)
+    df_abs_partitioned_stats = _get_absolute_partitioned_stats(data=data, team=team)
     df_norm_partitioned_stats = _get_normalized_partitioned_stats(data=df_abs_partitioned_stats)
     return df_norm_partitioned_stats
