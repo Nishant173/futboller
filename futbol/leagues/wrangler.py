@@ -131,11 +131,13 @@ def _get_normalized_partitioned_stats(data: pd.DataFrame) -> pd.DataFrame:
 
 
 def get_partitioned_stats(data: pd.DataFrame,
-                          team: str) -> pd.DataFrame:
+                          team: str,
+                          normalize: bool) -> pd.DataFrame:
     """
     Takes DataFrame having `LeagueMatch` data.
-    Returns DataFrame having normalized partitioned stats (for the given team).
+    Returns DataFrame having partitioned stats (either absolute or normalized) for the given team.
     """
-    df_abs_partitioned_stats = _get_absolute_partitioned_stats(data=data, team=team)
-    df_norm_partitioned_stats = _get_normalized_partitioned_stats(data=df_abs_partitioned_stats)
-    return df_norm_partitioned_stats
+    df_partitioned_stats = _get_absolute_partitioned_stats(data=data, team=team)
+    if normalize:
+        df_partitioned_stats = _get_normalized_partitioned_stats(data=df_partitioned_stats)
+    return df_partitioned_stats

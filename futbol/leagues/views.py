@@ -82,7 +82,7 @@ def get_partitioned_stats(request):
     team = request.GET['team']
     qs_matches = LeagueMatch.objects.all()
     df_matches = queryset_to_dataframe(qs=qs_matches, drop_id=True)
-    df_partitioned_stats = wrangler.get_partitioned_stats(data=df_matches, team=team)
+    df_partitioned_stats = wrangler.get_partitioned_stats(data=df_matches, team=team, normalize=True)
     if df_partitioned_stats.empty:
         return Response(data=[], status=status.HTTP_200_OK)
     df_partitioned_stats = switch_column_casing(data=df_partitioned_stats, func=sc2lcc)
