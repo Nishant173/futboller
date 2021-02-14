@@ -1,4 +1,4 @@
-from typing import List
+from typing import Dict, List, Union
 import numpy as np
 import pandas as pd
 
@@ -14,10 +14,18 @@ from .league_standings import (get_win_count,
                                get_capitulation_count,
                                get_results_string,
                                get_longest_streak)
+from .utils import (
+    get_goals_scored_per_match,
+    verbosify_month_group,
+)
 from py_utils.data_analysis.transform import (
     add_partitioning_column,
+    dataframe_to_list,
     round_off_columns,
 )
+
+
+GoalRelatedStatsOverTime = List[Dict[str, Union[int, float, str]]]
 
 
 def get_h2h_stats(data: pd.DataFrame,
@@ -141,3 +149,57 @@ def get_partitioned_stats(data: pd.DataFrame,
     if normalize:
         df_partitioned_stats = _get_normalized_partitioned_stats(data=df_partitioned_stats)
     return df_partitioned_stats
+
+
+def get_goal_scoring_stats(data: pd.DataFrame) -> pd.DataFrame:
+    """
+    Takes DataFrame having `LeagueMatch` data.
+    Returns DataFrame having goal-scoring stats over time (for all leagues).
+    """
+    df = data.copy(deep=True)
+    df['date'] = pd.to_datetime(arg=df['date'], format="%Y-%m-%d")
+    df['month_group'] = df['date'].dt.strftime(date_format="%Y-%m")
+    df.sort_values(by='date', ascending=True, ignore_index=True, inplace=True)
+
+    df_gss = df.groupby(by=['league', 'month_group']).apply(
+        func=get_goals_scored_per_match
+    ).rename("goals_scored_per_match").to_frame().reset_index()
+    df_gss['goals_scored_per_match'] = df_gss['goals_scored_per_match'].apply(round, args=[4])
+    df_gss['month_group_verbose'] = df_gss['month_group'].apply(verbosify_month_group)
+    df_gss.sort_values(by=['league', 'month_group'], ascending=[True, True], ignore_index=True, inplace=True)
+    return df_gss
+
+
+def get_goal_difference_stats(data: pd.DataFrame) -> pd.DataFrame:
+    """
+    Takes DataFrame having `LeagueMatch` data.
+    Returns DataFrame having goal-difference stats over time (for all leagues).
+    """
+    df = data.copy(deep=True)
+    df['goal_difference'] = abs(df['home_goals'] - df['away_goals'])
+    df['date'] = pd.to_datetime(arg=df['date'], format="%Y-%m-%d")
+    df['month_group'] = df['date'].dt.strftime(date_format="%Y-%m")
+    df.sort_values(by='date', ascending=True, ignore_index=True, inplace=True)
+
+    df_gds = df.groupby(by=['league', 'month_group']).apply(
+        func=lambda dframe: dframe['goal_difference'].mean()
+    ).rename("goal_difference_per_match").to_frame().reset_index()
+    df_gds['goal_difference_per_match'] = df_gds['goal_difference_per_match'].apply(round, args=[4])
+    df_gds['month_group_verbose'] = df_gds['month_group'].apply(verbosify_month_group)
+    df_gds.sort_values(by=['league', 'month_group'], ascending=[True, True], ignore_index=True, inplace=True)
+    return df_gds
+
+
+def reformat_goal_related_stats(data: pd.DataFrame) -> Dict[str, GoalRelatedStatsOverTime]:
+    """
+    Helper function that re-formats GoalScoringStats/GoalDifferenceStats from DataFrame format to
+    dictionary format, wherein the resulting dictionary has keys = league name, and
+    values = list of dictionaries having GoalScoringStats/GoalDifferenceStats over time.
+    """
+    dictionary_goal_related_stats = {}
+    leagues = data['league'].dropna().unique().tolist()
+    for league in leagues:
+        df_temp = data[data['league'] == league]
+        df_temp = df_temp.drop(labels=['league'], axis=1)
+        dictionary_goal_related_stats[league] = dataframe_to_list(data=df_temp)
+    return dictionary_goal_related_stats
