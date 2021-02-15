@@ -96,7 +96,7 @@ def get_goal_scoring_stats(request):
     df_matches = queryset_to_dataframe(qs=qs_matches, drop_id=True)
     df_goal_scoring_stats = wrangler.get_goal_scoring_stats(data=df_matches)
     if df_goal_scoring_stats.empty:
-        return Response(data=[], status=status.HTTP_200_OK)
+        return Response(data={}, status=status.HTTP_200_OK)
     df_goal_scoring_stats = switch_column_casing(data=df_goal_scoring_stats, func=sc2lcc)
     goal_scoring_stats = wrangler.reformat_goal_related_stats(data=df_goal_scoring_stats)
     return Response(data=goal_scoring_stats, status=status.HTTP_200_OK)
@@ -108,7 +108,7 @@ def get_goal_difference_stats(request):
     df_matches = queryset_to_dataframe(qs=qs_matches, drop_id=True)
     df_goal_difference_stats = wrangler.get_goal_difference_stats(data=df_matches)
     if df_goal_difference_stats.empty:
-        return Response(data=[], status=status.HTTP_200_OK)
+        return Response(data={}, status=status.HTTP_200_OK)
     df_goal_difference_stats = switch_column_casing(data=df_goal_difference_stats, func=sc2lcc)
     goal_difference_stats = wrangler.reformat_goal_related_stats(data=df_goal_difference_stats)
     return Response(data=goal_difference_stats, status=status.HTTP_200_OK)
