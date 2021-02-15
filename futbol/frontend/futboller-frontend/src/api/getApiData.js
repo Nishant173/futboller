@@ -13,7 +13,15 @@ function objectToQueryParamsString(obj) {
 }
 
 
-// Returns data from given API endpoint
+function addQueryParamsIfAny(url, objQueryParams=null) {
+    if (objQueryParams !== null) {
+        let urlModified = url + objectToQueryParamsString(objQueryParams)
+        return urlModified
+    }
+    return url
+}
+
+
 async function getApiDataFromUrl(url) {
     let response = await fetch(url, {
         method: "GET",
@@ -27,44 +35,34 @@ async function getApiDataFromUrl(url) {
 
 export function getLeagueMatches(objQueryParams=null) {
     let url = `${DomainName}/${ApiVersion}/leagues/league-matches/`
-    if (objQueryParams !== null) {
-        url += objectToQueryParamsString(objQueryParams)
-    }
+    url = addQueryParamsIfAny(url, objQueryParams)
     return getApiDataFromUrl(url)
 }
 
 
 export function getLeagueHeadToHeadStats(objQueryParams=null) {
     let url = `${DomainName}/${ApiVersion}/leagues/head-to-head-stats/`
-    if (objQueryParams !== null) {
-        url += objectToQueryParamsString(objQueryParams)
-    }
+    url = addQueryParamsIfAny(url, objQueryParams)
     return getApiDataFromUrl(url)
 }
 
 
 export function getPartitionedStatsByTeam(objQueryParams=null) {
     let url = `${DomainName}/${ApiVersion}/leagues/partitioned-stats/`
-    if (objQueryParams !== null) {
-        url += objectToQueryParamsString(objQueryParams)
-    }
+    url = addQueryParamsIfAny(url, objQueryParams)
     return getApiDataFromUrl(url)
 }
 
 
 export function getLeagueStandings(objQueryParams=null) {
     let url = `${DomainName}/${ApiVersion}/leagues/league-standings/`
-    if (objQueryParams !== null) {
-        url += objectToQueryParamsString(objQueryParams)
-    }
+    url = addQueryParamsIfAny(url, objQueryParams)
     return getApiDataFromUrl(url)
 }
 
 
 export function getCrossLeagueStandings(objQueryParams=null) {
     let url = `${DomainName}/${ApiVersion}/leagues/cross-league-standings/`
-    if (objQueryParams !== null) {
-        url += objectToQueryParamsString(objQueryParams)
-    }
+    url = addQueryParamsIfAny(url, objQueryParams)
     return getApiDataFromUrl(url)
 }
