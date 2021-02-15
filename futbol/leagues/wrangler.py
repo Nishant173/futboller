@@ -197,9 +197,7 @@ def reformat_goal_related_stats(data: pd.DataFrame) -> Dict[str, GoalRelatedStat
     values = list of dictionaries having GoalScoringStats/GoalDifferenceStats over time.
     """
     dictionary_goal_related_stats = {}
-    leagues = data['league'].dropna().unique().tolist()
-    for league in leagues:
-        df_temp = data[data['league'] == league]
-        df_temp = df_temp.drop(labels=['league'], axis=1)
-        dictionary_goal_related_stats[league] = dataframe_to_list(data=df_temp)
+    for league, df_by_league in data.groupby(by='league'):
+        df_by_league = df_by_league.drop(labels=['league'], axis=1)
+        dictionary_goal_related_stats[league] = dataframe_to_list(data=df_by_league)
     return dictionary_goal_related_stats
