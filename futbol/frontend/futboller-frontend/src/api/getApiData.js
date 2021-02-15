@@ -1,4 +1,4 @@
-const DomainName = "https://cors-anywhere.herokuapp.com/http://futboller-api.herokuapp.com"
+const DomainName = "http://futboller-api.herokuapp.com"
 const ApiVersion = "api/v1"
 
 
@@ -15,7 +15,11 @@ function objectToQueryParamsString(obj) {
 
 // Returns data from given API endpoint
 async function getApiDataFromUrl(url) {
-    let response = await fetch(url, { mode: "cors" })
+    let response = await fetch(url, {
+        method: "GET",
+        mode: "cors",
+        headers: { "Content-Type": "application/json" },
+    })
     let data = await response.json()
     return data
 }
