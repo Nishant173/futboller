@@ -198,6 +198,5 @@ def reformat_goal_related_stats(data: pd.DataFrame) -> Dict[str, GoalRelatedStat
     """
     dictionary_goal_related_stats = {}
     for league, df_by_league in data.groupby(by='league'):
-        df_by_league = df_by_league.drop(labels=['league'], axis=1)
         dictionary_goal_related_stats[league] = dataframe_to_list(data=df_by_league)
     return dictionary_goal_related_stats
