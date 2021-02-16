@@ -12,8 +12,8 @@ Sampdoria,Benevento,2,3,Italy,Serie A,2020-21,2020-09-26
 Inter,Fiorentina,4,3,Italy,Serie A,2020-21,2020-09-26
 Spezia,Sassuolo,1,4,Italy,Serie A,2020-21,2020-09-27
 Verona,Udinese,1,0,Italy,Serie A,2020-21,2020-09-27
-Napoli,Genoa,6,0,Italy,Serie A,2020-21,2020-09-27
 Crotone,AC Milan,0,2,Italy,Serie A,2020-21,2020-09-27
+Napoli,Genoa,6,0,Italy,Serie A,2020-21,2020-09-27
 Roma,Juventus,2,2,Italy,Serie A,2020-21,2020-09-27
 Bologna,Parma Calcio 1913,4,1,Italy,Serie A,2020-21,2020-09-28
 Benevento,Inter,2,5,Italy,Serie A,2020-21,2020-09-30
@@ -23,9 +23,9 @@ Fiorentina,Sampdoria,1,2,Italy,Serie A,2020-21,2020-10-02
 Sassuolo,Crotone,4,1,Italy,Serie A,2020-21,2020-10-03
 Udinese,Roma,0,1,Italy,Serie A,2020-21,2020-10-03
 Atalanta,Cagliari,5,2,Italy,Serie A,2020-21,2020-10-04
-Parma Calcio 1913,Verona,1,0,Italy,Serie A,2020-21,2020-10-04
 Benevento,Bologna,1,0,Italy,Serie A,2020-21,2020-10-04
 Lazio,Inter,1,1,Italy,Serie A,2020-21,2020-10-04
+Parma Calcio 1913,Verona,1,0,Italy,Serie A,2020-21,2020-10-04
 AC Milan,Spezia,3,0,Italy,Serie A,2020-21,2020-10-04
 Napoli,Atalanta,4,1,Italy,Serie A,2020-21,2020-10-17
 Inter,AC Milan,1,2,Italy,Serie A,2020-21,2020-10-17
@@ -53,8 +53,8 @@ Bologna,Cagliari,3,2,Italy,Serie A,2020-21,2020-10-31
 Udinese,AC Milan,1,2,Italy,Serie A,2020-21,2020-11-01
 Spezia,Juventus,1,4,Italy,Serie A,2020-21,2020-11-01
 Torino,Lazio,3,4,Italy,Serie A,2020-21,2020-11-01
-Napoli,Sassuolo,0,2,Italy,Serie A,2020-21,2020-11-01
 Roma,Fiorentina,2,0,Italy,Serie A,2020-21,2020-11-01
+Napoli,Sassuolo,0,2,Italy,Serie A,2020-21,2020-11-01
 Sampdoria,Genoa,1,1,Italy,Serie A,2020-21,2020-11-01
 Verona,Benevento,3,1,Italy,Serie A,2020-21,2020-11-02
 Genoa,Torino,1,2,Italy,Serie A,2020-21,2020-11-04
@@ -72,10 +72,10 @@ Crotone,Lazio,0,2,Italy,Serie A,2020-21,2020-11-21
 Spezia,Atalanta,0,0,Italy,Serie A,2020-21,2020-11-21
 Juventus,Cagliari,2,0,Italy,Serie A,2020-21,2020-11-21
 Fiorentina,Benevento,0,1,Italy,Serie A,2020-21,2020-11-22
-Verona,Sassuolo,0,2,Italy,Serie A,2020-21,2020-11-22
-Sampdoria,Bologna,1,2,Italy,Serie A,2020-21,2020-11-22
-Roma,Parma Calcio 1913,3,0,Italy,Serie A,2020-21,2020-11-22
 Inter,Torino,4,2,Italy,Serie A,2020-21,2020-11-22
+Roma,Parma Calcio 1913,3,0,Italy,Serie A,2020-21,2020-11-22
+Sampdoria,Bologna,1,2,Italy,Serie A,2020-21,2020-11-22
+Verona,Sassuolo,0,2,Italy,Serie A,2020-21,2020-11-22
 Udinese,Genoa,1,0,Italy,Serie A,2020-21,2020-11-22
 Napoli,AC Milan,1,3,Italy,Serie A,2020-21,2020-11-22
 Sassuolo,Inter,0,3,Italy,Serie A,2020-21,2020-11-28
@@ -110,51 +110,51 @@ AC Milan,Parma Calcio 1913,2,2,Italy,Serie A,2020-21,2020-12-13
 Udinese,Crotone,0,0,Italy,Serie A,2020-21,2020-12-15
 Benevento,Lazio,1,1,Italy,Serie A,2020-21,2020-12-15
 Juventus,Atalanta,1,1,Italy,Serie A,2020-21,2020-12-16
-Verona,Sampdoria,1,2,Italy,Serie A,2020-21,2020-12-16
-Spezia,Bologna,2,2,Italy,Serie A,2020-21,2020-12-16
-Parma Calcio 1913,Cagliari,0,0,Italy,Serie A,2020-21,2020-12-16
 Fiorentina,Sassuolo,1,1,Italy,Serie A,2020-21,2020-12-16
 Genoa,AC Milan,2,2,Italy,Serie A,2020-21,2020-12-16
 Inter,Napoli,1,0,Italy,Serie A,2020-21,2020-12-16
+Parma Calcio 1913,Cagliari,0,0,Italy,Serie A,2020-21,2020-12-16
+Spezia,Bologna,2,2,Italy,Serie A,2020-21,2020-12-16
+Verona,Sampdoria,1,2,Italy,Serie A,2020-21,2020-12-16
 Roma,Torino,3,1,Italy,Serie A,2020-21,2020-12-17
 Fiorentina,Verona,1,1,Italy,Serie A,2020-21,2020-12-19
 Sampdoria,Crotone,3,1,Italy,Serie A,2020-21,2020-12-19
 Parma Calcio 1913,Juventus,0,4,Italy,Serie A,2020-21,2020-12-19
 Torino,Bologna,1,1,Italy,Serie A,2020-21,2020-12-20
-Inter,Spezia,2,1,Italy,Serie A,2020-21,2020-12-20
-Sassuolo,AC Milan,1,2,Italy,Serie A,2020-21,2020-12-20
 Benevento,Genoa,2,0,Italy,Serie A,2020-21,2020-12-20
 Cagliari,Udinese,1,1,Italy,Serie A,2020-21,2020-12-20
+Inter,Spezia,2,1,Italy,Serie A,2020-21,2020-12-20
+Sassuolo,AC Milan,1,2,Italy,Serie A,2020-21,2020-12-20
 Atalanta,Roma,4,1,Italy,Serie A,2020-21,2020-12-20
 Lazio,Napoli,2,0,Italy,Serie A,2020-21,2020-12-20
 Crotone,Parma Calcio 1913,2,1,Italy,Serie A,2020-21,2020-12-22
 Juventus,Fiorentina,0,3,Italy,Serie A,2020-21,2020-12-22
 Verona,Inter,1,2,Italy,Serie A,2020-21,2020-12-23
-Spezia,Genoa,1,2,Italy,Serie A,2020-21,2020-12-23
+Udinese,Benevento,0,2,Italy,Serie A,2020-21,2020-12-23
 Sampdoria,Sassuolo,2,3,Italy,Serie A,2020-21,2020-12-23
 Roma,Cagliari,3,2,Italy,Serie A,2020-21,2020-12-23
-Udinese,Benevento,0,2,Italy,Serie A,2020-21,2020-12-23
+Spezia,Genoa,1,2,Italy,Serie A,2020-21,2020-12-23
 AC Milan,Lazio,3,2,Italy,Serie A,2020-21,2020-12-23
-Bologna,Atalanta,2,2,Italy,Serie A,2020-21,2020-12-23
 Napoli,Torino,1,1,Italy,Serie A,2020-21,2020-12-23
+Bologna,Atalanta,2,2,Italy,Serie A,2020-21,2020-12-23
 Inter,Crotone,6,2,Italy,Serie A,2020-21,2021-01-03
-Spezia,Verona,0,1,Italy,Serie A,2020-21,2021-01-03
-Roma,Sampdoria,1,0,Italy,Serie A,2020-21,2021-01-03
+Atalanta,Sassuolo,5,1,Italy,Serie A,2020-21,2021-01-03
+Cagliari,Napoli,1,4,Italy,Serie A,2020-21,2021-01-03
+Fiorentina,Bologna,0,0,Italy,Serie A,2020-21,2021-01-03
 Genoa,Lazio,1,1,Italy,Serie A,2020-21,2021-01-03
 Parma Calcio 1913,Torino,0,3,Italy,Serie A,2020-21,2021-01-03
-Cagliari,Napoli,1,4,Italy,Serie A,2020-21,2021-01-03
-Atalanta,Sassuolo,5,1,Italy,Serie A,2020-21,2021-01-03
-Fiorentina,Bologna,0,0,Italy,Serie A,2020-21,2021-01-03
+Roma,Sampdoria,1,0,Italy,Serie A,2020-21,2021-01-03
+Spezia,Verona,0,1,Italy,Serie A,2020-21,2021-01-03
 Benevento,AC Milan,0,2,Italy,Serie A,2020-21,2021-01-03
 Juventus,Udinese,4,1,Italy,Serie A,2020-21,2021-01-03
 Cagliari,Benevento,1,2,Italy,Serie A,2020-21,2021-01-06
+Atalanta,Parma Calcio 1913,3,0,Italy,Serie A,2020-21,2021-01-06
+Bologna,Udinese,2,2,Italy,Serie A,2020-21,2021-01-06
+Crotone,Roma,1,3,Italy,Serie A,2020-21,2021-01-06
+Lazio,Fiorentina,2,1,Italy,Serie A,2020-21,2021-01-06
+Sampdoria,Inter,2,1,Italy,Serie A,2020-21,2021-01-06
 Sassuolo,Genoa,2,1,Italy,Serie A,2020-21,2021-01-06
 Torino,Verona,1,1,Italy,Serie A,2020-21,2021-01-06
-Sampdoria,Inter,2,1,Italy,Serie A,2020-21,2021-01-06
-Atalanta,Parma Calcio 1913,3,0,Italy,Serie A,2020-21,2021-01-06
-Crotone,Roma,1,3,Italy,Serie A,2020-21,2021-01-06
-Bologna,Udinese,2,2,Italy,Serie A,2020-21,2021-01-06
-Lazio,Fiorentina,2,1,Italy,Serie A,2020-21,2021-01-06
 Napoli,Spezia,1,2,Italy,Serie A,2020-21,2021-01-06
 AC Milan,Juventus,1,3,Italy,Serie A,2020-21,2021-01-06
 Benevento,Atalanta,1,4,Italy,Serie A,2020-21,2021-01-09
@@ -172,8 +172,8 @@ Bologna,Verona,1,0,Italy,Serie A,2020-21,2021-01-16
 Torino,Spezia,0,0,Italy,Serie A,2020-21,2021-01-16
 Sampdoria,Udinese,2,1,Italy,Serie A,2020-21,2021-01-16
 Napoli,Fiorentina,6,0,Italy,Serie A,2020-21,2021-01-17
-Sassuolo,Parma Calcio 1913,1,1,Italy,Serie A,2020-21,2021-01-17
 Crotone,Benevento,4,1,Italy,Serie A,2020-21,2021-01-17
+Sassuolo,Parma Calcio 1913,1,1,Italy,Serie A,2020-21,2021-01-17
 Atalanta,Genoa,0,0,Italy,Serie A,2020-21,2021-01-17
 Inter,Juventus,2,0,Italy,Serie A,2020-21,2021-01-17
 Cagliari,AC Milan,0,2,Italy,Serie A,2020-21,2021-01-18
@@ -199,3 +199,22 @@ Cagliari,Sassuolo,1,1,Italy,Serie A,2020-21,2021-01-31
 Napoli,Parma Calcio 1913,2,0,Italy,Serie A,2020-21,2021-01-31
 Roma,Verona,3,1,Italy,Serie A,2020-21,2021-01-31
 Fiorentina,Inter,0,2,Italy,Serie A,2020-21,2021-02-05
+Sassuolo,Spezia,1,2,Italy,Serie A,2020-21,2021-02-06
+Atalanta,Torino,3,3,Italy,Serie A,2020-21,2021-02-06
+Juventus,Roma,2,0,Italy,Serie A,2020-21,2021-02-06
+Genoa,Napoli,2,1,Italy,Serie A,2020-21,2021-02-06
+Benevento,Sampdoria,1,1,Italy,Serie A,2020-21,2021-02-07
+AC Milan,Crotone,4,0,Italy,Serie A,2020-21,2021-02-07
+Udinese,Verona,2,0,Italy,Serie A,2020-21,2021-02-07
+Parma Calcio 1913,Bologna,0,3,Italy,Serie A,2020-21,2021-02-07
+Lazio,Cagliari,1,0,Italy,Serie A,2020-21,2021-02-07
+Bologna,Benevento,1,1,Italy,Serie A,2020-21,2021-02-12
+Torino,Genoa,0,0,Italy,Serie A,2020-21,2021-02-13
+Napoli,Juventus,1,0,Italy,Serie A,2020-21,2021-02-13
+Spezia,AC Milan,2,0,Italy,Serie A,2020-21,2021-02-13
+Roma,Udinese,3,0,Italy,Serie A,2020-21,2021-02-14
+Cagliari,Atalanta,0,1,Italy,Serie A,2020-21,2021-02-14
+Sampdoria,Fiorentina,2,1,Italy,Serie A,2020-21,2021-02-14
+Crotone,Sassuolo,1,2,Italy,Serie A,2020-21,2021-02-14
+Inter,Lazio,3,1,Italy,Serie A,2020-21,2021-02-14
+Verona,Parma Calcio 1913,2,1,Italy,Serie A,2020-21,2021-02-15
