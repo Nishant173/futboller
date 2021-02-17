@@ -119,17 +119,10 @@ ENDPOINTS = [
         "methods": ["GET"],
     },
     {
-        "endpoint": f"{API_VERSION}/leagues/goal-scoring-stats/",
-        "description": "Gets dictionary having goal scoring stats over time (by leagues). Keys = league name, and values = list of goal scoring stats over time",
+        "endpoint": f"{API_VERSION}/leagues/goal-related-stats/",
+        "description": "Gets dictionary having goal related stats over time (by leagues). Keys = league name, and values = list of goal related stats over time (for respective league)",
         "parameters": [],
-        "example": f"{API_VERSION}/leagues/goal-scoring-stats/",
-        "methods": ["GET"],
-    },
-    {
-        "endpoint": f"{API_VERSION}/leagues/goal-difference-stats/",
-        "description": "Gets dictionary having goal difference stats over time (by leagues). Keys = league name, and values = list of goal difference stats over time",
-        "parameters": [],
-        "example": f"{API_VERSION}/leagues/goal-difference-stats/",
+        "example": f"{API_VERSION}/leagues/goal-related-stats/",
         "methods": ["GET"],
     },
     {
