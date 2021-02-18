@@ -54,6 +54,12 @@ export function getPartitionedStatsByTeam(objQueryParams=null) {
 }
 
 
+export function getGoalRelatedStatsOverTime() {
+    let url = `${DomainName}/${ApiVersion}/leagues/goal-related-stats/`
+    return getApiDataFromUrl(url)
+}
+
+
 export function getLeagueStandings(objQueryParams=null) {
     let url = `${DomainName}/${ApiVersion}/leagues/league-standings/`
     url = addQueryParamsIfAny(url, objQueryParams)
