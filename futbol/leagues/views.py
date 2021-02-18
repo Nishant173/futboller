@@ -37,8 +37,13 @@ def get_seasons(request):
 @api_view(['GET'])
 def get_league_matches(request):
     team = request.GET.get('team', default=None)
+    home_team = request.GET.get('homeTeam', default=None)
+    away_team = request.GET.get('awayTeam', default=None)
     league = request.GET.get('league', default=None)
     season = request.GET.get('season', default=None)
+    start_date = request.GET.get('startDate', default=None)
+    end_date = request.GET.get('endDate', default=None)
+    month_group_verbose = request.GET.get('monthGroupVerbose', default=None)
     gd = request.GET.get('goalDifference', default=None)
     min_gd = request.GET.get('minGoalDifference', default=None)
     max_gd = request.GET.get('maxGoalDifference', default=None)
@@ -48,16 +53,23 @@ def get_league_matches(request):
     
     qs_matches = LeagueMatch.objects.all()
     df_matches = queryset_to_dataframe(qs=qs_matches, drop_id=True)
-    df_matches = filters.filter_league_matches(data=df_matches,
-                                               team=team,
-                                               league=league,
-                                               season=season,
-                                               gd=int(gd) if gd else None,
-                                               min_gd=int(min_gd) if min_gd else None,
-                                               max_gd=int(max_gd) if max_gd else None,
-                                               matchup=matchup,
-                                               winning_team=winning_team,
-                                               losing_team=losing_team)
+    df_matches = filters.filter_league_matches(
+        data=df_matches,
+        team=team,
+        home_team=home_team,
+        away_team=away_team,
+        league=league,
+        season=season,
+        start_date=start_date,
+        end_date=end_date,
+        month_group_verbose=month_group_verbose,
+        gd=int(gd) if gd else None,
+        min_gd=int(min_gd) if min_gd else None,
+        max_gd=int(max_gd) if max_gd else None,
+        matchup=matchup,
+        winning_team=winning_team,
+        losing_team=losing_team,
+    )
     df_matches = switch_column_casing(data=df_matches, func=sc2lcc)
     matches = dataframe_to_list(data=df_matches)
     return Response(data=matches, status=status.HTTP_200_OK)

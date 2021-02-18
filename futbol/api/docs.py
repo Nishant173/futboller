@@ -15,7 +15,7 @@ ENDPOINTS = [
         "parameters": [
             {
                 "name": "nameContains",
-                "datatype": "str",
+                "datatype": "string",
                 "required": False,
                 "description": "Filters teams by case-insensitive search",
             },
@@ -43,18 +43,47 @@ ENDPOINTS = [
         "parameters": [
             {
                 "name": "team",
-                "datatype": "str",
+                "datatype": "string",
+                "required": False,
+            },
+            {
+                "name": "homeTeam",
+                "datatype": "string",
+                "required": False,
+            },
+            {
+                "name": "awayTeam",
+                "datatype": "string",
                 "required": False,
             },
             {
                 "name": "league",
-                "datatype": "str",
+                "datatype": "string",
                 "required": False,
             },
             {
                 "name": "season",
-                "datatype": "str",
+                "datatype": "string",
                 "required": False,
+            },
+            {
+                "name": "startDate",
+                "datatype": "string",
+                "required": False,
+                "format": "<yyyy-mm-dd>",
+            },
+            {
+                "name": "endDate",
+                "datatype": "string",
+                "required": False,
+                "format": "<yyyy-mm-dd>",
+            },
+            {
+                "name": "monthGroupVerbose",
+                "datatype": "string",
+                "required": False,
+                "format": "<yyyy> <FullMonthName>",
+                "example": "2019 September",
             },
             {
                 "name": "goalDifference",
@@ -73,19 +102,19 @@ ENDPOINTS = [
             },
             {
                 "name": "matchup",
-                "datatype": "str",
+                "datatype": "string",
                 "required": False,
                 "description": "Filters matches by head-to-head matchup between 2 teams",
                 "format": "<team1>,<team2>",
             },
             {
                 "name": "winningTeam",
-                "datatype": "str",
+                "datatype": "string",
                 "required": False,
             },
             {
                 "name": "losingTeam",
-                "datatype": "str",
+                "datatype": "string",
                 "required": False,
             },
         ],
@@ -98,7 +127,7 @@ ENDPOINTS = [
         "parameters": [
             {
                 "name": "matchup",
-                "datatype": "str",
+                "datatype": "string",
                 "required": True,
             },
         ],
@@ -111,7 +140,7 @@ ENDPOINTS = [
         "parameters": [
             {
                 "name": "team",
-                "datatype": "str",
+                "datatype": "string",
                 "required": True,
             },
         ],
@@ -131,12 +160,12 @@ ENDPOINTS = [
         "parameters": [
             {
                 "name": "league",
-                "datatype": "str",
+                "datatype": "string",
                 "required": True,
             },
             {
                 "name": "season",
-                "datatype": "str",
+                "datatype": "string",
                 "required": True,
             },
         ],
@@ -149,12 +178,12 @@ ENDPOINTS = [
         "parameters": [
             {
                 "name": "team",
-                "datatype": "str",
+                "datatype": "string",
                 "required": False,
             },
             {
                 "name": "league",
-                "datatype": "str",
+                "datatype": "string",
                 "required": False,
             },
         ],

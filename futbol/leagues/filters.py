@@ -80,10 +80,54 @@ def filter_by_goal_difference(data: pd.DataFrame,
     return df_filtered
 
 
+def filter_by_date(data: pd.DataFrame,
+                   start_date: Optional[str] = None,
+                   end_date: Optional[str] = None) -> pd.DataFrame:
+    """
+    Filters DataFrame having `LeagueMatch` data (based on 'start_date' and 'end_date').
+    Date format: "yyyy-mm-dd"
+    """
+    if not start_date and not end_date:
+        return data
+    date_format = "%Y-%m-%d"
+    df_filtered = data.copy(deep=True)
+    df_filtered['date'] = pd.to_datetime(arg=df_filtered['date'], format=date_format)
+    if start_date:
+        df_filtered = df_filtered[df_filtered['date'] >= start_date]
+    if end_date:
+        df_filtered = df_filtered[df_filtered['date'] <= end_date]
+    if not df_filtered.empty:
+        df_filtered['date'] = df_filtered['date'].dt.strftime(date_format)
+    return df_filtered
+
+
+def filter_by_month_group_verbose(data: pd.DataFrame,
+                                  month_group_verbose: str) -> pd.DataFrame:
+    """
+    Filters DataFrame having `LeagueMatch` data (based on verbose-month-group).
+    Format for 'month_group_verbose': "<yyyy> <FullMonthName>"
+    Eg: "2018 September" or "2015 February"
+    """
+    date_format = "%Y-%m-%d"
+    df_filtered = data.copy(deep=True)
+    df_filtered['date'] = pd.to_datetime(arg=df_filtered['date'], format=date_format)
+    df_filtered['month_group_verbose'] = df_filtered['date'].dt.strftime("%Y %B")
+    df_filtered = df_filtered[df_filtered['month_group_verbose'] == month_group_verbose]
+    if not df_filtered.empty:
+        df_filtered['date'] = df_filtered['date'].dt.strftime(date_format)
+        df_filtered.drop(labels=['month_group_verbose'], axis=1, inplace=True)
+    return df_filtered
+
+
 def filter_league_matches(data: pd.DataFrame,
                           team: Optional[str] = None,
+                          home_team: Optional[str] = None,
+                          away_team: Optional[str] = None,
                           league: Optional[str] = None,
                           season: Optional[str] = None,
+                          start_date: Optional[str] = None,
+                          end_date: Optional[str] = None,
+                          month_group_verbose: Optional[str] = None,
                           gd: Optional[int] = None,
                           min_gd: Optional[int] = None,
                           max_gd: Optional[int] = None,
@@ -96,10 +140,18 @@ def filter_league_matches(data: pd.DataFrame,
     df_filtered = data.copy(deep=True)
     if team:
         df_filtered = filter_by_team(data=df_filtered, team=team)
+    if home_team:
+        df_filtered = df_filtered.loc[(df_filtered['home_team'] == home_team), :]
+    if away_team:
+        df_filtered = df_filtered.loc[(df_filtered['away_team'] == away_team), :]
     if league:
         df_filtered = df_filtered.loc[(df_filtered['league'] == league), :]
     if season:
         df_filtered = df_filtered.loc[(df_filtered['season'] == season), :]
+    if start_date or end_date:
+        df_filtered = filter_by_date(data=df_filtered, start_date=start_date, end_date=end_date)
+    if month_group_verbose:
+        df_filtered = filter_by_month_group_verbose(data=df_filtered, month_group_verbose=month_group_verbose)
     if gd or min_gd or max_gd:
         df_filtered = filter_by_goal_difference(data=df_filtered,
                                                 gd=gd,
