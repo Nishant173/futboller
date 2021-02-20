@@ -4,8 +4,10 @@ import pandas as pd
 
 
 def is_full(data: pd.DataFrame) -> bool:
-    """Returns True if there are no missing values in DataFrame"""
-    return (data.isnull().sum().sum() == 0)
+    """Returns True if there are no missing values in non-empty DataFrame"""
+    is_not_empty = (not data.empty)
+    has_no_missing_values = (data.isnull().sum().sum() == 0)
+    return (is_not_empty & has_no_missing_values)
 
 
 def describe_missing_data(data: pd.DataFrame,
