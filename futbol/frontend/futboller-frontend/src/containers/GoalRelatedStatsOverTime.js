@@ -1,12 +1,24 @@
 import React from 'react'
 import { getGoalRelatedStatsOverTime } from '../api/getApiData'
 import { MultiLineChart, getMultiLineChartDatasets } from '../components/charts/LineChart'
-import LeaguesAvailable from '../Leagues.json'
+import LEAGUE_NAMES from '../Leagues.json'
+import { LEAGUE_COLOR_MAPPER } from '../config'
 import {
     ceil,
     getValuesByKey,
     max,
 } from '../jsUtils/general'
+
+
+// Mapping verbose stat names to accessors present in the API data
+const MAPPER_STATS_AVAILABLE = {
+    "Games played": "gamesPlayed",
+    "Average goals scored": "avgGoalsScored",
+    "Average goal difference": "avgGoalDifference",
+    "One sided games (%)": "percentOneSidedGames",
+    "Games with clean sheets (%)": "percentGamesWithCleanSheets",
+}
+const STATS_AVAILABLE_VERBOSE = Object.keys(MAPPER_STATS_AVAILABLE)
 
 
 export default class GoalRelatedStatsOverTime extends React.Component {
@@ -16,8 +28,12 @@ export default class GoalRelatedStatsOverTime extends React.Component {
             goalRelatedStatsOverTime: {},
             avgGoalsScoredLimit: 0,
             avgGoalDifferenceLimit: 0,
+            leagueChoice: "",
+            statChoiceVerbose: "",
         }
         this.updateData = this.updateData.bind(this)
+        this.updateLeagueChoice = this.updateLeagueChoice.bind(this)
+        this.updateStatChoiceVerbose = this.updateStatChoiceVerbose.bind(this)
     }
 
     updateData() {
@@ -34,8 +50,8 @@ export default class GoalRelatedStatsOverTime extends React.Component {
     }
 
     updateChartAxesLimits() {
-        const maxAvgGoalsScored = this.getMaxValueOfStat(this.state.goalRelatedStatsOverTime, LeaguesAvailable, "avgGoalsScored")
-        const maxAvgGoalDifference = this.getMaxValueOfStat(this.state.goalRelatedStatsOverTime, LeaguesAvailable, "avgGoalDifference")
+        const maxAvgGoalsScored = this.getMaxValueOfStat(this.state.goalRelatedStatsOverTime, LEAGUE_NAMES, "avgGoalsScored")
+        const maxAvgGoalDifference = this.getMaxValueOfStat(this.state.goalRelatedStatsOverTime, LEAGUE_NAMES, "avgGoalDifference")
         this.setState({
             avgGoalsScoredLimit: ceil(maxAvgGoalsScored),
             avgGoalDifferenceLimit: ceil(maxAvgGoalDifference),
@@ -52,6 +68,18 @@ export default class GoalRelatedStatsOverTime extends React.Component {
         return max(arrayToConsider)
     }
 
+    updateLeagueChoice(event) {
+        this.setState({
+            leagueChoice: event.target.value,
+        })
+    }
+
+    updateStatChoiceVerbose(event) {
+        this.setState({
+            statChoiceVerbose: event.target.value,
+        })
+    }
+
     render() {
         return (
             <div>
@@ -59,6 +87,22 @@ export default class GoalRelatedStatsOverTime extends React.Component {
                 <br />
 
                 <form>
+                    <select onChange={this.updateLeagueChoice}>
+                        <option>-</option>
+                        {
+                            LEAGUE_NAMES.map((league) => (
+                                <option value={league}>{league}</option>
+                            ))
+                        }
+                    </select>
+                    <select onChange={this.updateStatChoiceVerbose}>
+                        <option>-</option>
+                        {
+                            STATS_AVAILABLE_VERBOSE.map((StatAvailableVerbose) => (
+                                <option value={StatAvailableVerbose}>{StatAvailableVerbose}</option>
+                            ))
+                        }
+                    </select>
                     <input
                         type="button"
                         value="Re-load"
@@ -67,52 +111,24 @@ export default class GoalRelatedStatsOverTime extends React.Component {
                 </form>
 
                 {
-                    Object.keys(this.state.goalRelatedStatsOverTime).length === LeaguesAvailable.length
+                    Object.keys(this.state.goalRelatedStatsOverTime).length === LEAGUE_NAMES.length
                     ?
                     <>
-                        {
-                            LeaguesAvailable.map((league) => (
-                                <>
-                                    <br /><br />
-                                    <MultiLineChart
-                                        title={`${league} - AvgGoalsPerMatch over time`}
-                                        xLabel="Date"
-                                        yLabel="AvgGoalsPerMatch"
-                                        xTicks={getValuesByKey(this.state.goalRelatedStatsOverTime[league], "monthGroupVerbose")}
-                                        datasets={
-                                            getMultiLineChartDatasets(
-                                                [`${league} - AvgGoalsPerMatch over time`],
-                                                [getValuesByKey(this.state.goalRelatedStatsOverTime[league], "avgGoalsScored")],
-                                            )
-                                        }
-                                        yLow={0}
-                                        yHigh={this.state.avgGoalsScoredLimit}
-                                    />
-                                </>
-                            ))
-                        }
-                        <hr />
-                        {
-                            LeaguesAvailable.map((league) => (
-                                <>
-                                    <br /><br />
-                                    <MultiLineChart
-                                        title={`${league} - AvgGoalDifferencePerMatch over time`}
-                                        xLabel="Date"
-                                        yLabel="AvgGoalDifferencePerMatch"
-                                        xTicks={getValuesByKey(this.state.goalRelatedStatsOverTime[league], "monthGroupVerbose")}
-                                        datasets={
-                                            getMultiLineChartDatasets(
-                                                [`${league} - AvgGoalDifferencePerMatch over time`],
-                                                [getValuesByKey(this.state.goalRelatedStatsOverTime[league], "avgGoalDifference")],
-                                            )
-                                        }
-                                        yLow={0}
-                                        yHigh={this.state.avgGoalDifferenceLimit}
-                                    />
-                                </>
-                            ))
-                        }
+                        <MultiLineChart
+                            title={`${this.state.leagueChoice} - ${this.state.statChoiceVerbose} over time`}
+                            xLabel="Date"
+                            yLabel={this.state.statChoiceVerbose}
+                            xTicks={
+                                getValuesByKey(this.state.goalRelatedStatsOverTime[this.state.leagueChoice], "monthGroupVerbose")
+                            }
+                            datasets={
+                                getMultiLineChartDatasets(
+                                    [`${this.state.statChoiceVerbose}`],
+                                    [getValuesByKey(this.state.goalRelatedStatsOverTime[this.state.leagueChoice], MAPPER_STATS_AVAILABLE[this.state.statChoiceVerbose])],
+                                    [LEAGUE_COLOR_MAPPER[this.state.leagueChoice]],
+                                )
+                            }
+                        />
                     </>
                     : null
                 }
