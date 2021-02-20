@@ -2,7 +2,11 @@ import React from 'react'
 import { getGoalRelatedStatsOverTime } from '../api/getApiData'
 import { MultiLineChart, getMultiLineChartDatasets } from '../components/charts/LineChart'
 import LeaguesAvailable from '../Leagues.json'
-import { getValuesByKey, max } from '../jsUtils/general'
+import {
+    ceil,
+    getValuesByKey,
+    max,
+} from '../jsUtils/general'
 
 
 export default class GoalRelatedStatsOverTime extends React.Component {
@@ -26,11 +30,11 @@ export default class GoalRelatedStatsOverTime extends React.Component {
     }
 
     updateChartAxesLimits() {
-        const avgGoalsScoredLimit = this.getMaxValueOfStat(this.state.goalRelatedStatsOverTime, LeaguesAvailable, "avgGoalsScored")
-        const avgGoalDifferenceLimit = this.getMaxValueOfStat(this.state.goalRelatedStatsOverTime, LeaguesAvailable, "avgGoalDifference")
+        const maxAvgGoalsScored = this.getMaxValueOfStat(this.state.goalRelatedStatsOverTime, LeaguesAvailable, "avgGoalsScored")
+        const maxAvgGoalDifference = this.getMaxValueOfStat(this.state.goalRelatedStatsOverTime, LeaguesAvailable, "avgGoalDifference")
         this.setState({
-            avgGoalsScoredLimit: avgGoalsScoredLimit,
-            avgGoalDifferenceLimit: avgGoalDifferenceLimit,
+            avgGoalsScoredLimit: ceil(maxAvgGoalsScored),
+            avgGoalDifferenceLimit: ceil(maxAvgGoalDifference),
         })
     }
 
