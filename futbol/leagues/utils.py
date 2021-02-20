@@ -25,6 +25,12 @@ def get_goals_scored_per_match(data: pd.DataFrame) -> float:
     return goals_scored_per_match
 
 
+def get_goal_difference_per_match(data: pd.DataFrame) -> float:
+    """Takes DataFrame having `LeagueMatch` data, and returns average goal difference per match"""
+    series_abs_gd = (data['home_goals'] - data['away_goals']).abs()
+    return series_abs_gd.mean()
+
+
 def get_big_results_percentage(data: pd.DataFrame, goal_margin: int) -> float:
     """
     Expects DataFrame having `LeagueMatch` data.

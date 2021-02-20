@@ -14,12 +14,6 @@ from .league_standings import (get_win_count,
                                get_capitulation_count,
                                get_results_string,
                                get_longest_streak)
-from .utils import (
-    get_goals_scored_per_match,
-    get_big_results_percentage,
-    get_clean_sheets_percentage,
-    verbosify_month_group,
-)
 from py_utils.data_analysis.transform import (
     add_partitioning_column,
     dataframe_to_list,
@@ -151,39 +145,6 @@ def get_partitioned_stats(data: pd.DataFrame,
     if normalize:
         df_partitioned_stats = _get_normalized_partitioned_stats(data=df_partitioned_stats)
     return df_partitioned_stats
-
-
-def get_goal_related_stats(data: pd.DataFrame) -> pd.DataFrame:
-    """
-    Takes DataFrame having `LeagueMatch` data.
-    Returns DataFrame having goal related stats over time (for all leagues).
-    """
-    df = data.copy(deep=True)
-    df['goal_difference'] = (df['home_goals'] - df['away_goals']).abs()
-    df['date'] = pd.to_datetime(arg=df['date'], format="%Y-%m-%d")
-    df['month_group'] = df['date'].dt.strftime(date_format="%Y-%m")
-    df.sort_values(by='date', ascending=True, ignore_index=True, inplace=True)
-    df_grs_over_time = pd.DataFrame(data={
-        'games_played': df.groupby(by=['league', 'month_group']).apply(len),
-        'avg_goals_scored': df.groupby(by=['league', 'month_group']).apply(get_goals_scored_per_match),
-        'avg_goal_difference': df.groupby(by=['league', 'month_group']).apply(
-            func=lambda dframe: dframe['goal_difference'].mean()
-        ),
-        'percent_one_sided_games': df.groupby(by=['league', 'month_group']).apply(get_big_results_percentage, goal_margin=3),
-        'percent_games_with_clean_sheets': df.groupby(by=['league', 'month_group']).apply(get_clean_sheets_percentage),
-    }).reset_index()
-    df_grs_over_time['month_group_verbose'] = df_grs_over_time['month_group'].apply(verbosify_month_group)
-    df_grs_over_time = round_off_columns(
-        data=df_grs_over_time,
-        columns=['avg_goals_scored', 'avg_goal_difference', 'percent_one_sided_games', 'percent_games_with_clean_sheets'],
-        round_by=4,
-    )
-    column_order = [
-        'league', 'month_group', 'month_group_verbose', 'games_played', 'avg_goals_scored',
-        'avg_goal_difference', 'percent_one_sided_games', 'percent_games_with_clean_sheets',
-    ]
-    df_grs_over_time = df_grs_over_time.loc[:, column_order]
-    return df_grs_over_time
 
 
 def reformat_goal_related_stats(data: pd.DataFrame) -> Dict[str, GoalRelatedStatsOverTime]:

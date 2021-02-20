@@ -3,7 +3,7 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 
 from . import filters, queries
-from .models import LeagueMatch, LeagueStandings, CrossLeagueStandings
+from .models import LeagueMatch, LeagueStandings, CrossLeagueStandings, GoalRelatedStats
 from .utils import get_teams_from_matchup
 from . import wrangler
 from py_utils.data_analysis.transform import (dataframe_to_list,
@@ -104,9 +104,8 @@ def get_partitioned_stats(request):
 
 @api_view(['GET'])
 def get_goal_related_stats(request):
-    qs_matches = LeagueMatch.objects.all()
-    df_matches = queryset_to_dataframe(qs=qs_matches, drop_id=True)
-    df_goal_related_stats = wrangler.get_goal_related_stats(data=df_matches)
+    qs_grs = GoalRelatedStats.objects.all()
+    df_goal_related_stats = queryset_to_dataframe(qs=qs_grs, drop_id=True)
     if df_goal_related_stats.empty:
         return Response(data={}, status=status.HTTP_200_OK)
     df_goal_related_stats = switch_column_casing(data=df_goal_related_stats, func=sc2lcc)

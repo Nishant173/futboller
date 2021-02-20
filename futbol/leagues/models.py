@@ -152,3 +152,39 @@ class CrossLeagueStandings(models.Model):
     
     def __str__(self) -> str:
         return f"{self.team} ({self.league})"
+
+
+class GoalRelatedStats(models.Model):
+    league = models.CharField(verbose_name="League", max_length=30, null=False, help_text="Name of league")
+    month_group = models.CharField(
+        verbose_name="Month group",
+        max_length=7,
+        null=False,
+        help_text="Month of a particular year. Format: <yyyy>-<mm>",
+    )
+    month_group_verbose = models.CharField(
+        verbose_name="Month group verbose",
+        max_length=30,
+        null=False,
+        help_text="Month of a particular year (verbosified)",
+    )
+    games_played = models.IntegerField(verbose_name="Games played", null=False)
+    avg_goals_scored = models.FloatField(verbose_name="Average goals scored", null=False)
+    avg_goal_difference = models.FloatField(verbose_name="Average goal difference", null=False)
+    percent_one_sided_games = models.FloatField(
+        verbose_name="Percentage of one sided games",
+        null=False,
+        help_text="Percentage of games wherein one team won by a margin of 'x' or more goals",
+    )
+    percent_games_with_clean_sheets = models.FloatField(
+        verbose_name="Percentage of games with clean sheets",
+        null=False,
+        help_text="Percentage of games wherein atleast one team kept a clean sheet",
+    )
+
+    class Meta:
+        verbose_name = "Goal Related Stats"
+        verbose_name_plural = "Goal Related Stats"
+    
+    def __str__(self) -> str:
+        return f"{self.league} ({self.month_group_verbose})"

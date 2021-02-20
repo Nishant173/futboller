@@ -7,6 +7,7 @@ from py_utils.general.casing import ucc2sc
 from py_utils.general.decorators import timer
 from .cross_league_standings import get_cross_league_standings
 from .league_standings import get_historical_league_standings
+from .goal_related_stats import get_goal_related_stats
 
 
 @timer
@@ -45,5 +46,18 @@ def cross_league_standings_to_db() -> None:
     data = get_cross_league_standings()
     connection = sqlite3.connect(database=config.DB_FILEPATH)
     data.to_sql(name=config.TBL_CROSS_LEAGUE_STANDINGS, con=connection, if_exists='append', index=False)
+    connection.close()
+    return None
+
+
+@timer
+def goal_related_stats_to_db() -> None:
+    """
+    Loads `GoalRelatedStats` dataset (goal-related-stats data) to the database.
+    Note: This function APPENDS to the database. Multiple function calls will create duplicates.
+    """
+    data = get_goal_related_stats()
+    connection = sqlite3.connect(database=config.DB_FILEPATH)
+    data.to_sql(name=config.TBL_GOAL_RELATED_STATS, con=connection, if_exists='append', index=False)
     connection.close()
     return None

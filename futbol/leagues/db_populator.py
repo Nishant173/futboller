@@ -10,10 +10,13 @@ print_table_details()
 '''
 
 
-from .load2db import (league_matches_to_db,
-                      league_standings_to_db,
-                      cross_league_standings_to_db)
-from .models import LeagueMatch, LeagueStandings, CrossLeagueStandings
+from .load2db import (
+    league_matches_to_db,
+    league_standings_to_db,
+    cross_league_standings_to_db,
+    goal_related_stats_to_db,
+)
+from .models import LeagueMatch, LeagueStandings, CrossLeagueStandings, GoalRelatedStats
 from py_utils.data_analysis.explore import is_full
 from py_utils.django_utils.utils import queryset_to_dataframe
 
@@ -23,10 +26,12 @@ def empty_league_related_tables() -> None:
     qs_matches = LeagueMatch.objects.all()
     qs_standings = LeagueStandings.objects.all()
     qs_cls = CrossLeagueStandings.objects.all()
+    qs_grs = GoalRelatedStats.objects.all()
     qs_matches.delete()
     qs_standings.delete()
     qs_cls.delete()
-    is_empty = ((len(qs_matches) == 0) & (len(qs_standings) == 0) & (len(qs_cls) == 0))
+    qs_grs.delete()
+    is_empty = ((len(qs_matches) == 0) & (len(qs_standings) == 0) & (len(qs_cls) == 0) & len(qs_grs) == 0)
     if not is_empty:
         raise Exception("Error. Could not empty all league related tables in the database")
     print("Sucessfully emptied all league related tables in the database")
@@ -41,14 +46,17 @@ def populate_league_related_tables() -> None:
     league_matches_to_db(filepath="../data_ingestion/formatted_csv_datasets/Top5LeaguesDataAll.csv")
     league_standings_to_db()
     cross_league_standings_to_db()
+    goal_related_stats_to_db()
 
     qs_matches = LeagueMatch.objects.all()
     qs_standings = LeagueStandings.objects.all()
     qs_cls = CrossLeagueStandings.objects.all()
+    qs_grs = GoalRelatedStats.objects.all()
     df_matches = queryset_to_dataframe(qs=qs_matches, drop_id=True)
     df_standings = queryset_to_dataframe(qs=qs_standings, drop_id=True)
     df_cls = queryset_to_dataframe(qs=qs_cls, drop_id=True)
-    is_fully_populated = (is_full(data=df_matches) & is_full(data=df_standings) & is_full(data=df_cls))
+    df_grs = queryset_to_dataframe(qs=qs_grs, drop_id=True)
+    is_fully_populated = (is_full(data=df_matches) & is_full(data=df_standings) & is_full(data=df_cls) & is_full(data=df_grs))
     if not is_fully_populated:
         raise Exception("Error. Could not fully populate all league related tables in the database")
     print("Sucessfully populated all league related tables in the database")
@@ -59,19 +67,24 @@ def print_table_details() -> None:
     qs_matches = LeagueMatch.objects.all()
     qs_standings = LeagueStandings.objects.all()
     qs_cls = CrossLeagueStandings.objects.all()
+    qs_grs = GoalRelatedStats.objects.all()
     df_matches = queryset_to_dataframe(qs=qs_matches, drop_id=True)
     df_standings = queryset_to_dataframe(qs=qs_standings, drop_id=True)
     df_cls = queryset_to_dataframe(qs=qs_cls, drop_id=True)
+    df_grs = queryset_to_dataframe(qs=qs_grs, drop_id=True)
     df_matches.info()
     df_standings.info()
     df_cls.info()
+    df_grs.info()
     print(
         f"LeagueMatches shape: {df_matches.shape}",
         f"LeagueStandings shape: {df_standings.shape}",
         f"CrossLeagueStandings shape: {df_cls.shape}",
+        f"GoalRelatedStats shape: {df_grs.shape}",
         f"LeagueMatches is full: {is_full(data=df_matches)}",
         f"LeagueStandings is full: {is_full(data=df_standings)}",
         f"CrossLeagueStandings is full: {is_full(data=df_cls)}",
+        f"GoalRelatedStats is full: {is_full(data=df_grs)}",
         sep="\n\n",
     )
     return None
