@@ -25,8 +25,12 @@ export default class GoalRelatedStatsOverTime extends React.Component {
             .then((response) => {
                 this.setState({
                     goalRelatedStatsOverTime: response,
-                }, this.updateChartAxesLimits)
+                }, this.updateOtherStateObjects)
             })
+    }
+
+    updateOtherStateObjects() {
+        this.updateChartAxesLimits()
     }
 
     updateChartAxesLimits() {
