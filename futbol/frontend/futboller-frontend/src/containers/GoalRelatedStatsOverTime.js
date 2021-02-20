@@ -26,8 +26,6 @@ export default class GoalRelatedStatsOverTime extends React.Component {
         super(props)
         this.state = {
             goalRelatedStatsOverTime: {},
-            avgGoalsScoredLimit: 0,
-            avgGoalDifferenceLimit: 0,
             leagueChoice: "",
             statChoiceVerbose: "",
         }
@@ -41,31 +39,8 @@ export default class GoalRelatedStatsOverTime extends React.Component {
             .then((response) => {
                 this.setState({
                     goalRelatedStatsOverTime: response,
-                }, this.updateOtherStateObjects)
+                })
             })
-    }
-
-    updateOtherStateObjects() {
-        this.updateChartAxesLimits()
-    }
-
-    updateChartAxesLimits() {
-        const maxAvgGoalsScored = this.getMaxValueOfStat(this.state.goalRelatedStatsOverTime, LEAGUE_NAMES, "avgGoalsScored")
-        const maxAvgGoalDifference = this.getMaxValueOfStat(this.state.goalRelatedStatsOverTime, LEAGUE_NAMES, "avgGoalDifference")
-        this.setState({
-            avgGoalsScoredLimit: ceil(maxAvgGoalsScored),
-            avgGoalDifferenceLimit: ceil(maxAvgGoalDifference),
-        })
-    }
-
-    getMaxValueOfStat(goalRelatedStats={}, leaguesSubset=[], statToCapture="") {
-        let arrayToConsider = []
-        for (let league of leaguesSubset) {
-            let goalRelatedStatsByLeague = goalRelatedStats[league]
-            let arrayToConsiderByLeague = getValuesByKey(goalRelatedStatsByLeague, statToCapture)
-            arrayToConsider.push(...arrayToConsiderByLeague)
-        }
-        return max(arrayToConsider)
     }
 
     updateLeagueChoice(event) {
@@ -79,6 +54,34 @@ export default class GoalRelatedStatsOverTime extends React.Component {
             statChoiceVerbose: event.target.value,
         })
     }
+
+    // updateChartAxesLimit() {
+    //     const absUpperLimitByStat = this.getMaxValueOfStat(
+    //         this.state.goalRelatedStatsOverTime,
+    //         LEAGUE_NAMES,
+    //         MAPPER_STATS_AVAILABLE[this.state.statChoiceVerbose],
+    //     )
+    //     this.setState({
+    //         chartAxesLimit: ceil(absUpperLimitByStat)
+    //     })
+    // }
+
+    // getMaxValueOfStat(goalRelatedStats={}, leaguesSubset=[], statToCapture="") {
+    //     let arrayToConsider = []
+    //     for (let league of leaguesSubset) {
+    //         let goalRelatedStatsByLeague = goalRelatedStats[league]
+    //         let arrayToConsiderByLeague = getValuesByKey(goalRelatedStatsByLeague, statToCapture)
+    //         arrayToConsider.push(...arrayToConsiderByLeague)
+    //     }
+    //     return max(arrayToConsider)
+    // }
+
+    // shouldComponentUpdate(nextProps, nextState) {
+    //     if (nextState === this.state) {
+    //         return false
+    //     }
+    //     return true
+    // }
 
     render() {
         return (
