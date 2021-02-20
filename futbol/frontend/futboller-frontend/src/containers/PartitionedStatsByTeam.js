@@ -1,13 +1,10 @@
 import React from 'react'
 
 import { getPartitionedStatsByTeam } from '../api/getApiData'
-
-import { GridTable } from '../components/tables/Table'
-import { ColumnsPartitionedStatsByTeam } from '../components/tables/TableColumns'
 import { MultiLineChart, getMultiLineChartDatasets } from '../components/charts/LineChart'
-
-import TeamsAvailable from '../Teams.json'
-
+import { GridTable } from '../components/tables/Table'
+import { COLUMNS_PARTITIONED_STATS_BY_TEAM } from '../components/tables/TableColumns'
+import TEAM_NAMES from '../Teams.json'
 import { getValuesByKey } from '../jsUtils/general'
 
 
@@ -67,8 +64,8 @@ export default class PartitionedStatsByTeam extends React.Component {
                     <select onChange={this.updateTeam}>
                         <option>-</option>
                         {
-                            TeamsAvailable.map((TeamAvailable) => (
-                                <option value={TeamAvailable}>{TeamAvailable}</option>
+                            TEAM_NAMES.map((team) => (
+                                <option value={team}>{team}</option>
                             ))
                         }
                     </select>
@@ -85,7 +82,7 @@ export default class PartitionedStatsByTeam extends React.Component {
                         <br /><br />
                         <GridTable
                             arrayOfObjects={this.state.data}
-                            columnsData={ColumnsPartitionedStatsByTeam}
+                            columnsData={COLUMNS_PARTITIONED_STATS_BY_TEAM}
                         />
                         <br /><br />
                         <MultiLineChart

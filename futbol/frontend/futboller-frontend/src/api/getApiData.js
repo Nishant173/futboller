@@ -1,5 +1,5 @@
-const DomainName = "http://futboller-api.herokuapp.com"
-const ApiVersion = "api/v1"
+const DOMAIN_NAME = "http://futboller-api.herokuapp.com"
+const API_VERSION = "api/v1"
 
 
 // Converts key-value pairs in an object to string used for query-params
@@ -34,41 +34,41 @@ async function getApiDataFromUrl(url) {
 
 
 export function getLeagueMatches(objQueryParams=null) {
-    let url = `${DomainName}/${ApiVersion}/leagues/league-matches/`
+    let url = `${DOMAIN_NAME}/${API_VERSION}/leagues/league-matches/`
     url = addQueryParamsIfAny(url, objQueryParams)
     return getApiDataFromUrl(url)
 }
 
 
 export function getLeagueHeadToHeadStats(objQueryParams=null) {
-    let url = `${DomainName}/${ApiVersion}/leagues/head-to-head-stats/`
+    let url = `${DOMAIN_NAME}/${API_VERSION}/leagues/head-to-head-stats/`
     url = addQueryParamsIfAny(url, objQueryParams)
     return getApiDataFromUrl(url)
 }
 
 
 export function getPartitionedStatsByTeam(objQueryParams=null) {
-    let url = `${DomainName}/${ApiVersion}/leagues/partitioned-stats/`
+    let url = `${DOMAIN_NAME}/${API_VERSION}/leagues/partitioned-stats/`
     url = addQueryParamsIfAny(url, objQueryParams)
     return getApiDataFromUrl(url)
 }
 
 
 export function getGoalRelatedStatsOverTime() {
-    let url = `${DomainName}/${ApiVersion}/leagues/goal-related-stats/`
+    let url = `${DOMAIN_NAME}/${API_VERSION}/leagues/goal-related-stats/`
     return getApiDataFromUrl(url)
 }
 
 
 export function getLeagueStandings(objQueryParams=null) {
-    let url = `${DomainName}/${ApiVersion}/leagues/league-standings/`
+    let url = `${DOMAIN_NAME}/${API_VERSION}/leagues/league-standings/`
     url = addQueryParamsIfAny(url, objQueryParams)
     return getApiDataFromUrl(url)
 }
 
 
 export function getCrossLeagueStandings(objQueryParams=null) {
-    let url = `${DomainName}/${ApiVersion}/leagues/cross-league-standings/`
+    let url = `${DOMAIN_NAME}/${API_VERSION}/leagues/cross-league-standings/`
     url = addQueryParamsIfAny(url, objQueryParams)
     return getApiDataFromUrl(url)
 }

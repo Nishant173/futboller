@@ -1,8 +1,9 @@
 import React from 'react'
+
 import { getGoalRelatedStatsOverTime } from '../api/getApiData'
 import { MultiLineChart, getMultiLineChartDatasets } from '../components/charts/LineChart'
-import LEAGUE_NAMES from '../Leagues.json'
 import { LEAGUE_COLOR_MAPPER } from '../config'
+import LEAGUE_NAMES from '../Leagues.json'
 import {
     ceil,
     getValuesByKey,

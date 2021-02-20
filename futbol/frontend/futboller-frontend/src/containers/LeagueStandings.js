@@ -1,17 +1,13 @@
 import React from 'react'
 
 import { getLeagueStandings } from '../api/getApiData'
-
-import { GridTable } from '../components/tables/Table'
-import { ColumnsLeagueTable, ColumnsLeagueStats } from '../components/tables/TableColumns'
-
 import { HorizontalBarChart } from '../components/charts/BarChart'
 import { MultiLineChart, getMultiLineChartDatasets } from '../components/charts/LineChart'
 import { ScatterChart } from '../components/charts/ScatterChart'
-
-import LeaguesAvailable from '../Leagues.json'
-import SeasonsAvailable from '../Seasons.json'
-
+import { GridTable } from '../components/tables/Table'
+import { COLUMNS_LEAGUE_TABLE, COLUMNS_LEAGUE_STATS } from '../components/tables/TableColumns'
+import LEAGUE_NAMES from '../Leagues.json'
+import SEASON_NAMES from '../Seasons.json'
 import {
     arange,
     ceilByClosestMultiple,
@@ -105,16 +101,16 @@ export default class LeagueStandings extends React.Component {
                     <select name="league" onChange={this.updateLeague}>
                         <option>-</option>
                         {
-                            LeaguesAvailable.map((LeagueAvailable) => (
-                                <option value={LeagueAvailable}>{LeagueAvailable}</option>
+                            LEAGUE_NAMES.map((league) => (
+                                <option value={league}>{league}</option>
                             ))
                         }
                     </select>
                     <select name="season" onChange={this.updateSeason}>
                         <option>-</option>
                         {
-                            SeasonsAvailable.map((SeasonAvailable) => (
-                                <option value={SeasonAvailable}>{SeasonAvailable}</option>
+                            SEASON_NAMES.map((season) => (
+                                <option value={season}>{season}</option>
                             ))
                         }
                     </select>
@@ -131,11 +127,11 @@ export default class LeagueStandings extends React.Component {
                         <br /><br />
                         <GridTable
                             arrayOfObjects={this.state.data}
-                            columnsData={ColumnsLeagueTable}
+                            columnsData={COLUMNS_LEAGUE_TABLE}
                         />
                         <GridTable
                             arrayOfObjects={this.state.data}
-                            columnsData={ColumnsLeagueStats}
+                            columnsData={COLUMNS_LEAGUE_STATS}
                         />
                         <br /><br />
                         <HorizontalBarChart

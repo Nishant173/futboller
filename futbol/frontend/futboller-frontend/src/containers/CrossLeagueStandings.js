@@ -1,12 +1,12 @@
 import React from 'react'
 
 import { getCrossLeagueStandings } from '../api/getApiData'
-
-import { GridTable } from '../components/tables/Table'
-import { ColumnsCrossLeagueTable, ColumnsCrossLeagueStats } from '../components/tables/TableColumns'
-
 import { ScatterChart } from '../components/charts/ScatterChart'
-
+import { GridTable } from '../components/tables/Table'
+import {
+    COLUMNS_CROSS_LEAGUE_TABLE,
+    COLUMNS_CROSS_LEAGUE_STATS,
+} from '../components/tables/TableColumns'
 import {
     ceil,
     generateRandomHexCode,
@@ -81,12 +81,12 @@ export default class CrossLeagueStandings extends React.Component {
                         <br /><br />
                         <GridTable
                             arrayOfObjects={this.state.data}
-                            columnsData={ColumnsCrossLeagueTable}
+                            columnsData={COLUMNS_CROSS_LEAGUE_TABLE}
                         />
                         <br /><br />
                         <GridTable
                             arrayOfObjects={this.state.data}
-                            columnsData={ColumnsCrossLeagueStats}
+                            columnsData={COLUMNS_CROSS_LEAGUE_STATS}
                         />
                         <br /><br />
                         <ScatterChart

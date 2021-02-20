@@ -1,10 +1,8 @@
 import React from 'react'
 
 import { getLeagueHeadToHeadStats } from '../api/getApiData'
-
 import { DoughnutChart } from '../components/charts/DoughnutChart'
-
-import TeamsAvailable from '../Teams.json'
+import TEAM_NAMES from '../Teams.json'
 
 
 export default class LeagueHeadToHeadStats extends React.Component {
@@ -68,16 +66,16 @@ export default class LeagueHeadToHeadStats extends React.Component {
                     <select name="team1" onChange={this.updateTeam1}>
                         <option>-</option>
                         {
-                            TeamsAvailable.map((TeamAvailable) => (
-                                <option value={TeamAvailable}>{TeamAvailable}</option>
+                            TEAM_NAMES.map((team) => (
+                                <option value={team}>{team}</option>
                             ))
                         }
                     </select>
                     <select name="team2" onChange={this.updateTeam2}>
                         <option>-</option>
                         {
-                            TeamsAvailable.map((TeamAvailable) => (
-                                <option value={TeamAvailable}>{TeamAvailable}</option>
+                            TEAM_NAMES.map((team) => (
+                                <option value={team}>{team}</option>
                             ))
                         }
                     </select>

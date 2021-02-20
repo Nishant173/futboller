@@ -1,11 +1,9 @@
 import React from 'react'
 
 import { getCrossLeagueStandings } from '../api/getApiData'
-
 import { DoughnutChart } from '../components/charts/DoughnutChart'
 import { RadarChart } from '../components/charts/RadarChart'
-
-import TeamsAvailable from '../Teams.json'
+import TEAM_NAMES from '../Teams.json'
 
 
 // // Takes array of objects having cross league standings and returns object by "team" (if team exists)
@@ -55,8 +53,8 @@ export default class CrossLeagueStatsByTeam extends React.Component {
                     <select name="cross-league-teams" onChange={this.updateTeam}>
                         <option>-</option>
                         {
-                            TeamsAvailable.map((TeamAvailable) => (
-                                <option value={TeamAvailable}>{TeamAvailable}</option>
+                            TEAM_NAMES.map((team) => (
+                                <option value={team}>{team}</option>
                             ))
                         }
                     </select>

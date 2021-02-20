@@ -1,4 +1,5 @@
 import { Line } from 'react-chartjs-2'
+
 import { LengthMismatchError } from '../../jsUtils/errors'
 import { generateRandomHexCodes } from '../../jsUtils/general'
 

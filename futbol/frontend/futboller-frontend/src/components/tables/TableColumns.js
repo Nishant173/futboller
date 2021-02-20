@@ -1,4 +1,4 @@
-export const ColumnsLeagueTable = [
+export const COLUMNS_LEAGUE_TABLE = [
     {
         field: 'position',
         headerName: 'Position',
@@ -36,7 +36,7 @@ export const ColumnsLeagueTable = [
 ]
 
 
-export const ColumnsLeagueStats = [
+export const COLUMNS_LEAGUE_STATS = [
     {
         field: 'position',
         headerName: 'Position',
@@ -87,7 +87,7 @@ export const ColumnsLeagueStats = [
 ]
 
 
-export const ColumnsCrossLeagueTable = [
+export const COLUMNS_CROSS_LEAGUE_TABLE = [
     {
         field: 'position',
         headerName: 'Position',
@@ -120,7 +120,7 @@ export const ColumnsCrossLeagueTable = [
 ]
 
 
-export const ColumnsCrossLeagueStats = [
+export const COLUMNS_CROSS_LEAGUE_STATS = [
     {
         field: 'position',
         headerName: 'Position',
@@ -171,7 +171,7 @@ export const ColumnsCrossLeagueStats = [
 ]
 
 
-export const ColumnsPartitionedStatsByTeam = [
+export const COLUMNS_PARTITIONED_STATS_BY_TEAM = [
     {
         field: 'partitionNumber',
         headerName: 'Partition',
