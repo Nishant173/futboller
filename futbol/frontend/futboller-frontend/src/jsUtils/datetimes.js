@@ -68,7 +68,7 @@ export function getDatePropertiesObj(dateObj) {
 
 // Adds '0' prefix if stringified number given is single digit number
 function addZeroPrefixIfSingleDigit(stringifiedNumber) {
-    if (stringifiedNumber.length == 1) {
+    if (stringifiedNumber.length === 1) {
         return `0${stringifiedNumber}`
     }
     return stringifiedNumber
@@ -88,7 +88,7 @@ export function dateObjToCleanString(dateObj, includeTime=true) {
             amOrPm = "PM"
             hours -= 12
         }
-        if (hours == 0) {
+        if (hours === 0) {
             hours = 12
         }
         hours = addZeroPrefixIfSingleDigit(hours.toString())
