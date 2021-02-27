@@ -58,9 +58,7 @@ export default class GoalRelatedStatsOverTime extends React.Component {
             }
             else {
                 low = 0
-                high = ceil(
-                    this.getMaxValueOfStat(this.state.goalRelatedStatsOverTime, LEAGUE_NAMES, statAccessor)
-                )
+                high = ceil(this.getMaxValueOfStat(this.state.goalRelatedStatsOverTime, LEAGUE_NAMES, statAccessor))
             }
             objChartAxesLimits[statAccessor] = {
                 low: low,
@@ -95,7 +93,9 @@ export default class GoalRelatedStatsOverTime extends React.Component {
     }
 
     render() {
-        const chartAxesAreAvailable = Object.keys(this.state.chartAxesLimits).length === STATS_AVAILABLE_VERBOSE.length && STATS_AVAILABLE_VERBOSE.includes(this.state.statChoiceVerbose)
+        const axesLimitsAreAvailable = Object.keys(this.state.chartAxesLimits).length === STATS_AVAILABLE_VERBOSE.length
+        const statChoiceIsAvailable = STATS_AVAILABLE_VERBOSE.includes(this.state.statChoiceVerbose)
+        const chartAxesAndStatChoiceExists = axesLimitsAreAvailable && statChoiceIsAvailable
         
         return (
             <div>
@@ -145,12 +145,12 @@ export default class GoalRelatedStatsOverTime extends React.Component {
                                 )
                             }
                             yLow={
-                                chartAxesAreAvailable ?
+                                chartAxesAndStatChoiceExists ?
                                     this.state.chartAxesLimits[MAPPER_STATS_AVAILABLE[this.state.statChoiceVerbose]]['low']
                                     : undefined
                             }
                             yHigh={
-                                chartAxesAreAvailable ?
+                                chartAxesAndStatChoiceExists ?
                                     this.state.chartAxesLimits[MAPPER_STATS_AVAILABLE[this.state.statChoiceVerbose]]['high']
                                     : undefined
                             }
