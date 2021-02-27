@@ -21,6 +21,10 @@ const MAPPER_STATS_AVAILABLE = {
 }
 const STAT_ACCESSORS_WITH_PERCENTAGES = ['percentOneSidedGames', 'percentGamesWithCleanSheets']
 const STATS_AVAILABLE_VERBOSE = Object.keys(MAPPER_STATS_AVAILABLE)
+const DEFAULTS = {
+    league: LEAGUE_NAMES[0],
+    statNameVerbose: STATS_AVAILABLE_VERBOSE[2],
+}
 
 
 export default class GoalRelatedStatsOverTime extends React.Component {
@@ -35,6 +39,13 @@ export default class GoalRelatedStatsOverTime extends React.Component {
         this.updateData = this.updateData.bind(this)
         this.updateLeagueChoice = this.updateLeagueChoice.bind(this)
         this.updateStatChoiceVerbose = this.updateStatChoiceVerbose.bind(this)
+    }
+
+    componentDidMount() {
+        this.setState({
+            leagueChoice: DEFAULTS.league,
+            statChoiceVerbose: DEFAULTS.statNameVerbose,
+        }, this.updateData)
     }
 
     updateData() {
@@ -104,26 +115,29 @@ export default class GoalRelatedStatsOverTime extends React.Component {
 
                 <form>
                     <select onChange={this.updateLeagueChoice}>
-                        <option>-</option>
                         {
                             LEAGUE_NAMES.map((league) => (
-                                <option value={league}>{league}</option>
+                                <option
+                                    selected={league === DEFAULTS.league ? true : false}
+                                    value={league}
+                                >
+                                    {league}
+                                </option>
                             ))
                         }
                     </select>
                     <select onChange={this.updateStatChoiceVerbose}>
-                        <option>-</option>
                         {
                             STATS_AVAILABLE_VERBOSE.map((StatAvailableVerbose) => (
-                                <option value={StatAvailableVerbose}>{StatAvailableVerbose}</option>
+                                <option
+                                    selected={StatAvailableVerbose === DEFAULTS.statNameVerbose ? true : false}
+                                    value={StatAvailableVerbose}
+                                >
+                                    {StatAvailableVerbose}
+                                </option>
                             ))
                         }
                     </select>
-                    <input
-                        type="button"
-                        value="Re-load"
-                        onClick={this.updateData}
-                    />
                 </form>
 
                 {
