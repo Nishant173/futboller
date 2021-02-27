@@ -42,10 +42,7 @@ export default class GoalRelatedStatsOverTime extends React.Component {
     }
 
     componentDidMount() {
-        this.setState({
-            leagueChoice: DEFAULTS.league,
-            statChoiceVerbose: DEFAULTS.statNameVerbose,
-        }, this.updateData)
+        this.updateData()
     }
 
     updateData() {
