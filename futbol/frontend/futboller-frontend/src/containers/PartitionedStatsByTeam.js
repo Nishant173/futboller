@@ -8,6 +8,11 @@ import TEAM_NAMES from '../Teams.json'
 import { getValuesByKey } from '../jsUtils/general'
 
 
+const DEFAULTS = {
+    team: TEAM_NAMES[0],
+}
+
+
 export default class PartitionedStatsByTeam extends React.Component {
     constructor(props) {
         super(props)
@@ -22,10 +27,15 @@ export default class PartitionedStatsByTeam extends React.Component {
             winPercentages: [],
             lossPercentages: [],
             drawPercentages: [],
-            team: "",
+            team: DEFAULTS.team,
         }
         this.updateData = this.updateData.bind(this)
+        this.updateWrangledData = this.updateWrangledData.bind(this)
         this.updateTeam = this.updateTeam.bind(this)
+    }
+
+    componentDidMount() {
+        this.updateData()
     }
 
     updateData() {
@@ -33,19 +43,22 @@ export default class PartitionedStatsByTeam extends React.Component {
             .then((response) => {
                 this.setState({
                     data: response,
-                })
-                this.setState({
-                    startDates: getValuesByKey(this.state.data, "startDate"),
-                    endDates: getValuesByKey(this.state.data, "endDate"),
-                    avgPoints: getValuesByKey(this.state.data, "avgPoints"),
-                    avgGoalDifferences: getValuesByKey(this.state.data, "avgGoalDifference"),
-                    avgGoalsScored: getValuesByKey(this.state.data, "avgGoalsScored"),
-                    avgGoalsAllowed: getValuesByKey(this.state.data, "avgGoalsAllowed"),
-                    winPercentages: getValuesByKey(this.state.data, "winPercent"),
-                    lossPercentages: getValuesByKey(this.state.data, "lossPercent"),
-                    drawPercentages: getValuesByKey(this.state.data, "drawPercent"),
-                })
+                }, this.updateWrangledData)
             })
+    }
+
+    updateWrangledData() {
+        this.setState({
+            startDates: getValuesByKey(this.state.data, "startDate"),
+            endDates: getValuesByKey(this.state.data, "endDate"),
+            avgPoints: getValuesByKey(this.state.data, "avgPoints"),
+            avgGoalDifferences: getValuesByKey(this.state.data, "avgGoalDifference"),
+            avgGoalsScored: getValuesByKey(this.state.data, "avgGoalsScored"),
+            avgGoalsAllowed: getValuesByKey(this.state.data, "avgGoalsAllowed"),
+            winPercentages: getValuesByKey(this.state.data, "winPercent"),
+            lossPercentages: getValuesByKey(this.state.data, "lossPercent"),
+            drawPercentages: getValuesByKey(this.state.data, "drawPercent"),
+        })
     }
 
     updateTeam(event) {
@@ -62,10 +75,14 @@ export default class PartitionedStatsByTeam extends React.Component {
 
                 <form>
                     <select onChange={this.updateTeam}>
-                        <option>-</option>
                         {
                             TEAM_NAMES.map((team) => (
-                                <option value={team}>{team}</option>
+                                <option
+                                    selected={team === DEFAULTS.team ? true : false}
+                                    value={team}
+                                >
+                                    {team}
+                                </option>
                             ))
                         }
                     </select>
@@ -86,7 +103,7 @@ export default class PartitionedStatsByTeam extends React.Component {
                         />
                         <br /><br />
                         <MultiLineChart
-                            title={`${this.state.team} - AvgPoints over time`}
+                            title={`${this.state.data[0].team} - AvgPoints over time`}
                             xLabel="Date"
                             yLabel="AvgPoints"
                             xTicks={this.state.endDates}
@@ -101,7 +118,7 @@ export default class PartitionedStatsByTeam extends React.Component {
                         />
                         <br /><br />
                         <MultiLineChart
-                            title={`${this.state.team} - Wins/Losses/Draws over time`}
+                            title={`${this.state.data[0].team} - Wins/Losses/Draws over time`}
                             xLabel="Date"
                             yLabel="Win/Loss/Draw percentages over time"
                             xTicks={this.state.endDates}

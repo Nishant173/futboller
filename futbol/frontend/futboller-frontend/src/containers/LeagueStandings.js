@@ -18,6 +18,12 @@ import {
 } from '../jsUtils/general'
 
 
+const DEFAULTS = {
+    league: "EPL",
+    season: "2015-16",
+}
+
+
 function getMaxLimitCeiledBy10(arrayOfNumbers) {
     const maxOfNumbers = max(arrayOfNumbers)
     const maxLimit = ceilByClosestMultiple(maxOfNumbers, 10)
@@ -37,8 +43,8 @@ export default class LeagueStandings extends React.Component {
         super(props)
         this.state = {
             data: [],
-            league: "",
-            season: "",
+            league: DEFAULTS.league,
+            season: DEFAULTS.season,
             teams: [],
             points: [],
             goalDifferences: [],
@@ -53,6 +59,10 @@ export default class LeagueStandings extends React.Component {
         this.updateWrangledData = this.updateWrangledData.bind(this)
     }
 
+    componentDidMount() {
+        this.updateData()
+    }
+
     updateData() {
         getLeagueStandings({
             league: this.state.league,
@@ -61,8 +71,7 @@ export default class LeagueStandings extends React.Component {
             .then((response) => {
                 this.setState({
                     data: response,
-                })
-                this.updateWrangledData()
+                }, this.updateWrangledData)
             })
     }
 
@@ -99,18 +108,26 @@ export default class LeagueStandings extends React.Component {
                 <h3>Enter league and season</h3>
                 <form className="league-table-form">
                     <select name="league" onChange={this.updateLeague}>
-                        <option>-</option>
                         {
                             LEAGUE_NAMES.map((league) => (
-                                <option value={league}>{league}</option>
+                                <option
+                                    selected={league === DEFAULTS.league ? true : false}
+                                    value={league}
+                                >
+                                    {league}
+                                </option>
                             ))
                         }
                     </select>
                     <select name="season" onChange={this.updateSeason}>
-                        <option>-</option>
                         {
                             SEASON_NAMES.map((season) => (
-                                <option value={season}>{season}</option>
+                                <option
+                                    selected={season === DEFAULTS.season ? true : false}
+                                    value={season}
+                                >
+                                    {season}
+                                </option>
                             ))
                         }
                     </select>
@@ -135,7 +152,7 @@ export default class LeagueStandings extends React.Component {
                         />
                         <br /><br />
                         <HorizontalBarChart
-                            title={`Points chart - ${this.state.league} (${this.state.season})`}
+                            title={`Points chart - ${this.state.data[0].league} (${this.state.data[0].season})`}
                             xLabel={"Points"}
                             yLabel={"Team"}
                             xValues={this.state.points}
@@ -146,7 +163,7 @@ export default class LeagueStandings extends React.Component {
                         />
                         <br /><br />
                         <HorizontalBarChart
-                            title={`Goal difference chart - ${this.state.league} (${this.state.season})`}
+                            title={`Goal difference chart - ${this.state.data[0].league} (${this.state.data[0].season})`}
                             xLabel="GoalDifference"
                             yLabel="Team"
                             xValues={this.state.goalDifferences}
@@ -157,7 +174,7 @@ export default class LeagueStandings extends React.Component {
                         />
                         <br /><br />
                         <MultiLineChart
-                            title={`Cumulative Points chart - ${this.state.league} (${this.state.season})`}
+                            title={`Cumulative Points chart - ${this.state.data[0].league} (${this.state.data[0].season})`}
                             xLabel="Matchday"
                             yLabel="Points (Cumulative)"
                             xTicks={arange(0, this.state.data[0]['cumulativePoints'].length - 1)}
@@ -173,7 +190,7 @@ export default class LeagueStandings extends React.Component {
                         />
                         <br /><br />
                         <MultiLineChart
-                            title={`Cumulative GoalDifference chart - ${this.state.league} (${this.state.season})`}
+                            title={`Cumulative GoalDifference chart - ${this.state.data[0].league} (${this.state.data[0].season})`}
                             xLabel="Matchday"
                             yLabel="GoalDifference (Cumulative)"
                             xTicks={arange(0, this.state.data[0]['cumulativeGoalDifference'].length - 1)}
@@ -187,7 +204,7 @@ export default class LeagueStandings extends React.Component {
                         />
                         <br /><br />
                         <ScatterChart
-                            title={`Points vs GoalDifference - ${this.state.league} (${this.state.season})`}
+                            title={`Points vs GoalDifference - ${this.state.data[0].league} (${this.state.data[0].season})`}
                             xLabel="Points"
                             yLabel="GoalDifference"
                             arrayOfObjects={this.state.data}
@@ -202,7 +219,7 @@ export default class LeagueStandings extends React.Component {
                         />
                         <br /><br />
                         <ScatterChart
-                            title={`GoalsScored vs GoalsAllowed - ${this.state.league} (${this.state.season})`}
+                            title={`GoalsScored vs GoalsAllowed - ${this.state.data[0].league} (${this.state.data[0].season})`}
                             xLabel="GoalsScored"
                             yLabel="GoalsAllowed"
                             arrayOfObjects={this.state.data}

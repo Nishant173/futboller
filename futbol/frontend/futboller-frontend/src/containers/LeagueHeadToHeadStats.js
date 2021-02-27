@@ -5,6 +5,12 @@ import { DoughnutChart } from '../components/charts/DoughnutChart'
 import TEAM_NAMES from '../Teams.json'
 
 
+const DEFAULTS = {
+    team1: "AC Milan",
+    team2: "Inter",
+}
+
+
 export default class LeagueHeadToHeadStats extends React.Component {
     constructor(props) {
         super(props)
@@ -12,12 +18,17 @@ export default class LeagueHeadToHeadStats extends React.Component {
             data: [],
             dataOfTeam1: {},
             dataOfTeam2: {},
-            team1: "",
-            team2: "",
+            team1: DEFAULTS.team1,
+            team2: DEFAULTS.team2,
         }
         this.updateData = this.updateData.bind(this)
+        this.updateDataByTeam = this.updateDataByTeam.bind(this)
         this.updateTeam1 = this.updateTeam1.bind(this)
         this.updateTeam2 = this.updateTeam2.bind(this)
+    }
+
+    componentDidMount() {
+        this.updateData()
     }
 
     updateData() {
@@ -27,20 +38,23 @@ export default class LeagueHeadToHeadStats extends React.Component {
             .then((response) => {
                 this.setState({
                     data: response,
-                })
-                if (response.length === 2) {
-                    this.setState({
-                        dataOfTeam1: response[0],
-                        dataOfTeam2: response[1],
-                    })
-                }
-                else {
-                    this.setState({
-                        dataOfTeam1: {},
-                        dataOfTeam2: {},
-                    })
-                }
+                }, this.updateDataByTeam)
             })
+    }
+
+    updateDataByTeam() {
+        if (this.state.data.length === 2) {
+            this.setState({
+                dataOfTeam1: this.state.data[0],
+                dataOfTeam2: this.state.data[1],
+            })
+        }
+        else {
+            this.setState({
+                dataOfTeam1: {},
+                dataOfTeam2: {},
+            })
+        }
     }
 
     updateTeam1(event) {
@@ -64,18 +78,26 @@ export default class LeagueHeadToHeadStats extends React.Component {
                 <h3>Enter matchup</h3>
                 <form>
                     <select name="team1" onChange={this.updateTeam1}>
-                        <option>-</option>
                         {
                             TEAM_NAMES.map((team) => (
-                                <option value={team}>{team}</option>
+                                <option
+                                    selected={team === DEFAULTS.team1 ? true : false}
+                                    value={team}
+                                >
+                                    {team}
+                                </option>
                             ))
                         }
                     </select>
                     <select name="team2" onChange={this.updateTeam2}>
-                        <option>-</option>
                         {
                             TEAM_NAMES.map((team) => (
-                                <option value={team}>{team}</option>
+                                <option
+                                    selected={team === DEFAULTS.team2 ? true : false}
+                                    value={team}
+                                >
+                                    {team}
+                                </option>
                             ))
                         }
                     </select>
@@ -91,7 +113,7 @@ export default class LeagueHeadToHeadStats extends React.Component {
                     <>
                         <br /><br />
                         <DoughnutChart
-                            title={`Head-to-head stats - ${this.state.team1} vs ${this.state.team2}`}
+                            title={`Head-to-head stats - ${this.state.dataOfTeam1.team} vs ${this.state.dataOfTeam2.team}`}
                             values={
                                 [
                                     this.state.dataOfTeam1["wins"],
