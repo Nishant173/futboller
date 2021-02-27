@@ -29,8 +29,10 @@ export default class CrossLeagueStandings extends React.Component {
         }
         this.updateData = this.updateData.bind(this)
         this.updateWrangledData = this.updateWrangledData.bind(this)
-        this.sliceByPosition = this.sliceByPosition.bind(this)
-        this.sliceTop80 = this.sliceTop80.bind(this)
+    }
+
+    componentDidMount() {
+        this.updateData()
     }
 
     updateData() {
@@ -38,8 +40,7 @@ export default class CrossLeagueStandings extends React.Component {
             .then((response) => {
                 this.setState({
                     data: response,
-                })
-                this.updateWrangledData()
+                }, this.updateWrangledData)
             })
     }
 
@@ -66,14 +67,6 @@ export default class CrossLeagueStandings extends React.Component {
             <div>
                 <h1>Cross League Standings - Top 5 Leagues</h1>
                 <br />
-
-                <form className="cross-league-table-form">
-                    <input
-                        type="button"
-                        value="Re-load"
-                        onClick={this.updateData}
-                    />
-                </form>
 
                 {
                     this.state.data.length > 0 ? 

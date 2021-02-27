@@ -6,6 +6,11 @@ import { RadarChart } from '../components/charts/RadarChart'
 import TEAM_NAMES from '../Teams.json'
 
 
+const DEFAULTS = {
+    teamSelected: TEAM_NAMES[0],
+}
+
+
 // // Takes array of objects having cross league standings and returns object by "team" (if team exists)
 // function filterCrossLeagueStandingsByTeam(standings, team) {
 //     for (let standing of standings) {
@@ -22,10 +27,14 @@ export default class CrossLeagueStatsByTeam extends React.Component {
         super(props)
         this.state = {
             data: {},
-            team: "",
+            team: DEFAULTS.teamSelected,
         }
         this.updateData = this.updateData.bind(this)
         this.updateTeam = this.updateTeam.bind(this)
+    }
+
+    componentDidMount() {
+        this.updateData()
     }
 
     updateData() {
@@ -51,10 +60,14 @@ export default class CrossLeagueStatsByTeam extends React.Component {
 
                 <form className="cross-league-stats-form">
                     <select name="cross-league-teams" onChange={this.updateTeam}>
-                        <option>-</option>
                         {
                             TEAM_NAMES.map((team) => (
-                                <option value={team}>{team}</option>
+                                <option
+                                    selected={team === DEFAULTS.teamSelected ? true : false}
+                                    value={team}
+                                >
+                                    {team}
+                                </option>
                             ))
                         }
                     </select>
@@ -70,7 +83,7 @@ export default class CrossLeagueStatsByTeam extends React.Component {
                     <>
                         <br /><br />
                         <RadarChart
-                            title={`${this.state.team} - CrossLeagueStats - AvgStats`}
+                            title={`${this.state.data.team} - CrossLeagueStats - AvgStats`}
                             values={
                                 [
                                     this.state.data["avgPoints"],
@@ -89,7 +102,7 @@ export default class CrossLeagueStatsByTeam extends React.Component {
                         />
                         <br /><br />
                         <DoughnutChart
-                            title={`${this.state.team} - CrossLeagueStats - Wins/Losses/Draws`}
+                            title={`${this.state.data.team} - CrossLeagueStats - Wins/Losses/Draws`}
                             values={
                                 [
                                     this.state.data["winPercent"],

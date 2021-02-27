@@ -33,8 +33,8 @@ export default class GoalRelatedStatsOverTime extends React.Component {
         this.state = {
             goalRelatedStatsOverTime: {},
             chartAxesLimits: {},
-            leagueChoice: "",
-            statChoiceVerbose: "",
+            leagueChoice: DEFAULTS.league,
+            statChoiceVerbose: DEFAULTS.statNameVerbose,
         }
         this.updateData = this.updateData.bind(this)
         this.updateLeagueChoice = this.updateLeagueChoice.bind(this)
