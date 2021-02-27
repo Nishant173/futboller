@@ -19,6 +19,7 @@ const MAPPER_STATS_AVAILABLE = {
     "One sided games (%)": "percentOneSidedGames",
     "Games with clean sheets (%)": "percentGamesWithCleanSheets",
 }
+const STAT_ACCESSORS_WITH_PERCENTAGES = ['percentOneSidedGames', 'percentGamesWithCleanSheets']
 const STATS_AVAILABLE_VERBOSE = Object.keys(MAPPER_STATS_AVAILABLE)
 
 
@@ -27,6 +28,7 @@ export default class GoalRelatedStatsOverTime extends React.Component {
         super(props)
         this.state = {
             goalRelatedStatsOverTime: {},
+            chartAxesLimits: {},
             leagueChoice: "",
             statChoiceVerbose: "",
         }
@@ -40,8 +42,34 @@ export default class GoalRelatedStatsOverTime extends React.Component {
             .then((response) => {
                 this.setState({
                     goalRelatedStatsOverTime: response,
-                })
+                }, this.updateChartAxesLimits)
             })
+    }
+
+    updateChartAxesLimits() {
+        let objChartAxesLimits = {} // Keys = stat accessor, and values = object having 'low' and 'high' limits
+        for (let statNameVerbose of STATS_AVAILABLE_VERBOSE) {
+            let statAccessor = MAPPER_STATS_AVAILABLE[statNameVerbose]
+            let low = -1
+            let high = -1
+            if (STAT_ACCESSORS_WITH_PERCENTAGES.includes(statAccessor)) {
+                low = 0
+                high = 100
+            }
+            else {
+                low = 0
+                high = ceil(
+                    this.getMaxValueOfStat(this.state.goalRelatedStatsOverTime, LEAGUE_NAMES, statAccessor)
+                )
+            }
+            objChartAxesLimits[statAccessor] = {
+                low: low,
+                high: high,
+            }
+        }
+        this.setState({
+            chartAxesLimits: objChartAxesLimits
+        })
     }
 
     updateLeagueChoice(event) {
@@ -56,33 +84,15 @@ export default class GoalRelatedStatsOverTime extends React.Component {
         })
     }
 
-    // updateChartAxesLimit() {
-    //     const absUpperLimitByStat = this.getMaxValueOfStat(
-    //         this.state.goalRelatedStatsOverTime,
-    //         LEAGUE_NAMES,
-    //         MAPPER_STATS_AVAILABLE[this.state.statChoiceVerbose],
-    //     )
-    //     this.setState({
-    //         chartAxesLimit: ceil(absUpperLimitByStat)
-    //     })
-    // }
-
-    // getMaxValueOfStat(goalRelatedStats={}, leaguesSubset=[], statToCapture="") {
-    //     let arrayToConsider = []
-    //     for (let league of leaguesSubset) {
-    //         let goalRelatedStatsByLeague = goalRelatedStats[league]
-    //         let arrayToConsiderByLeague = getValuesByKey(goalRelatedStatsByLeague, statToCapture)
-    //         arrayToConsider.push(...arrayToConsiderByLeague)
-    //     }
-    //     return max(arrayToConsider)
-    // }
-
-    // shouldComponentUpdate(nextProps, nextState) {
-    //     if (nextState === this.state) {
-    //         return false
-    //     }
-    //     return true
-    // }
+    getMaxValueOfStat(goalRelatedStats={}, leaguesSubset=[], statToCapture="") {
+        let arrayToConsider = []
+        for (let league of leaguesSubset) {
+            let goalRelatedStatsByLeague = goalRelatedStats[league]
+            let arrayToConsiderByLeague = getValuesByKey(goalRelatedStatsByLeague, statToCapture)
+            arrayToConsider.push(...arrayToConsiderByLeague)
+        }
+        return max(arrayToConsider)
+    }
 
     render() {
         return (
@@ -131,6 +141,16 @@ export default class GoalRelatedStatsOverTime extends React.Component {
                                     [getValuesByKey(this.state.goalRelatedStatsOverTime[this.state.leagueChoice], MAPPER_STATS_AVAILABLE[this.state.statChoiceVerbose])],
                                     [LEAGUE_COLOR_MAPPER[this.state.leagueChoice]],
                                 )
+                            }
+                            yLow={
+                                STATS_AVAILABLE_VERBOSE.includes(this.state.statChoiceVerbose) && Object.keys(this.state.chartAxesLimits).length === STATS_AVAILABLE_VERBOSE.length ?
+                                    this.state.chartAxesLimits[MAPPER_STATS_AVAILABLE[this.state.statChoiceVerbose]]['low']
+                                    : undefined
+                            }
+                            yHigh={
+                                STATS_AVAILABLE_VERBOSE.includes(this.state.statChoiceVerbose) && Object.keys(this.state.chartAxesLimits).length === STATS_AVAILABLE_VERBOSE.length ?
+                                    this.state.chartAxesLimits[MAPPER_STATS_AVAILABLE[this.state.statChoiceVerbose]]['high']
+                                    : undefined
                             }
                         />
                     </>
