@@ -34,6 +34,16 @@ def save_league_standings() -> None:
     return None
 
 
+def save_goal_related_stats() -> None:
+    url = "http://localhost:8000/api/v1/leagues/goal-related-stats/"
+    goal_related_stats = get_api_data(url=url)
+    save_object_as_json(
+        obj=goal_related_stats,
+        filepath=f"json_data_from_api/GoalRelatedStats.json",
+    )
+    return None
+
+
 def save_cross_league_standings() -> None:
     url = "http://localhost:8000/api/v1/leagues/cross-league-standings/"
     cross_league_standings = get_api_data(url=url)
@@ -49,5 +59,6 @@ if __name__ == "__main__":
     save_season_names()
     save_team_names()
     save_league_standings()
+    save_goal_related_stats()
     save_cross_league_standings()
     print("Saved data from API")
