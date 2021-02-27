@@ -95,6 +95,8 @@ export default class GoalRelatedStatsOverTime extends React.Component {
     }
 
     render() {
+        const chartAxesAreAvailable = Object.keys(this.state.chartAxesLimits).length === STATS_AVAILABLE_VERBOSE.length && STATS_AVAILABLE_VERBOSE.includes(this.state.statChoiceVerbose)
+        
         return (
             <div>
                 <h1>Goal related stats over time (by leagues) - Top 5 Leagues</h1>
@@ -143,12 +145,12 @@ export default class GoalRelatedStatsOverTime extends React.Component {
                                 )
                             }
                             yLow={
-                                STATS_AVAILABLE_VERBOSE.includes(this.state.statChoiceVerbose) && Object.keys(this.state.chartAxesLimits).length === STATS_AVAILABLE_VERBOSE.length ?
+                                chartAxesAreAvailable ?
                                     this.state.chartAxesLimits[MAPPER_STATS_AVAILABLE[this.state.statChoiceVerbose]]['low']
                                     : undefined
                             }
                             yHigh={
-                                STATS_AVAILABLE_VERBOSE.includes(this.state.statChoiceVerbose) && Object.keys(this.state.chartAxesLimits).length === STATS_AVAILABLE_VERBOSE.length ?
+                                chartAxesAreAvailable ?
                                     this.state.chartAxesLimits[MAPPER_STATS_AVAILABLE[this.state.statChoiceVerbose]]['high']
                                     : undefined
                             }
