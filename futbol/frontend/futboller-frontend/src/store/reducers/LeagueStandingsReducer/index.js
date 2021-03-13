@@ -1,7 +1,7 @@
 import { handleActions } from "redux-actions"
 import { API_STATUS } from "./../../../config"
 
-const LeagueStandingsDataReducer = {
+const LeagueStandingsReducer = {
     LeagueStandingsData: [],
     LeagueStandingsDataApiStatus: "<null>",
 }
@@ -31,7 +31,7 @@ const reducer = handleActions(
             }
         },
     },
-    LeagueStandingsDataReducer
+    LeagueStandingsReducer
 )
 
 export default reducer
