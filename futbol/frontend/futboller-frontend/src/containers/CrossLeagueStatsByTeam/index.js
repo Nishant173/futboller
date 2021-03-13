@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import * as CrossLeagueStandingsActions from '../../store/actions/CrossLeagueStandingsActions'
 import { DoughnutChart } from '../../components/charts/DoughnutChart'
 import { RadarChart } from '../../components/charts/RadarChart'
+import { Loader } from '../../components/loaders/Loader'
 import TEAM_NAMES from '../../Teams.json'
 
 
@@ -64,6 +65,12 @@ class CrossLeagueStatsByTeam extends React.Component {
                         onClick={this.updateData}
                     />
                 </form>
+
+                {
+                    CLSDataApiStatus === 'initiated' ?
+                    <Loader />
+                    : null
+                }
 
                 {
                    dataIsAvailable ?

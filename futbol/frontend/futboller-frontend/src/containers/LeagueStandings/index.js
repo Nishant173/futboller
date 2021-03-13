@@ -5,8 +5,8 @@ import * as LeagueStandingsActions from '../../store/actions/LeagueStandingsActi
 import { HorizontalBarChart } from '../../components/charts/BarChart'
 import { MultiLineChart, getMultiLineChartDatasets } from '../../components/charts/LineChart'
 import { ScatterChart } from '../../components/charts/ScatterChart'
+import { Loader } from '../../components/loaders/Loader'
 import { GridTable } from '../../components/tables/Table'
-import { COLUMNS_LEAGUE_TABLE, COLUMNS_LEAGUE_STATS } from '../../components/tables/TableColumns'
 import LEAGUE_NAMES from '../../Leagues.json'
 import SEASON_NAMES from '../../Seasons.json'
 import {
@@ -17,6 +17,7 @@ import {
     max,
     maxOfAbsValues,
 } from '../../jsUtils/general'
+import { COLUMNS_LEAGUE_TABLE, COLUMNS_LEAGUE_STATS } from './tableColumns'
 
 
 const DEFAULTS = {
@@ -138,6 +139,12 @@ class LeagueStandings extends React.Component {
                         onClick={this.updateData}
                     />
                 </form>
+
+                {
+                    LeagueStandingsDataApiStatus === 'initiated' ?
+                    <Loader />
+                    : null
+                }
 
                 {
                     dataIsAvailable ?

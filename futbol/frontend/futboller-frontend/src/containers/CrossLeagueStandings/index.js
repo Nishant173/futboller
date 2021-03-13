@@ -3,11 +3,8 @@ import { connect } from 'react-redux'
 
 import * as CrossLeagueStandingsActions from '../../store/actions/CrossLeagueStandingsActions'
 import { ScatterChart } from '../../components/charts/ScatterChart'
+import { Loader } from '../../components/loaders/Loader'
 import { GridTable } from '../../components/tables/Table'
-import {
-    COLUMNS_CROSS_LEAGUE_TABLE,
-    COLUMNS_CROSS_LEAGUE_STATS,
-} from '../../components/tables/TableColumns'
 import {
     ceil,
     generateRandomHexCode,
@@ -15,6 +12,7 @@ import {
     max,
     maxOfAbsValues,
 } from '../../jsUtils/general'
+import { COLUMNS_CROSS_LEAGUE_TABLE, COLUMNS_CROSS_LEAGUE_STATS } from './tableColumns'
 
 
 function sliceByPosition(array, start, stop) {
@@ -72,6 +70,12 @@ class CrossLeagueStandings extends React.Component {
             <div>
                 <h1>Cross League Standings - Top 5 Leagues</h1>
                 <br />
+
+                {
+                    CLSDataApiStatus === 'initiated' ?
+                    <Loader />
+                    : null
+                }
 
                 {
                     dataIsAvailable ?

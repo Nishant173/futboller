@@ -3,10 +3,11 @@ import { connect } from 'react-redux'
 
 import * as PartitionedStatsActions from '../../store/actions/PartitionedStatsActions'
 import { MultiLineChart, getMultiLineChartDatasets } from '../../components/charts/LineChart'
+import { Loader } from '../../components/loaders/Loader'
 import { GridTable } from '../../components/tables/Table'
-import { COLUMNS_PARTITIONED_STATS_BY_TEAM } from '../../components/tables/TableColumns'
 import TEAM_NAMES from '../../Teams.json'
 import { getValuesByKey } from '../../jsUtils/general'
+import { COLUMNS_PARTITIONED_STATS_BY_TEAM } from './tableColumns'
 
 
 const DEFAULTS = {
@@ -93,6 +94,12 @@ class PartitionedStatsByTeam extends React.Component {
                         onClick={this.updateData}
                     />
                 </form>
+
+                {
+                    PartitionedStatsApiStatus === 'initiated' ?
+                    <Loader />
+                    : null
+                }
 
                 {
                     dataIsAvailable ?

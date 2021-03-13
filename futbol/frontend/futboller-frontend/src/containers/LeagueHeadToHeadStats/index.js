@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 
 import * as HeadToHeadStatsActions from '../../store/actions/HeadToHeadStatsActions'
 import { DoughnutChart } from '../../components/charts/DoughnutChart'
+import { Loader } from '../../components/loaders/Loader'
 import TEAM_NAMES from '../../Teams.json'
 
 
@@ -113,6 +114,12 @@ class LeagueHeadToHeadStats extends React.Component {
                         onClick={this.updateData}
                     />
                 </form>
+
+                {
+                    H2HStatsDataApiStatus === 'initiated' ?
+                    <Loader />
+                    : null
+                }
 
                 {
                     dataIsAvailable ?

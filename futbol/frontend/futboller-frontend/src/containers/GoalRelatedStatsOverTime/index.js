@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 
 import * as GoalRelatedStatsActions from '../../store/actions/GoalRelatedStatsActions'
 import { MultiLineChart, getMultiLineChartDatasets } from '../../components/charts/LineChart'
+import { Loader } from '../../components/loaders/Loader'
 import { LEAGUE_COLOR_MAPPER } from '../../config'
 import LEAGUE_NAMES from '../../Leagues.json'
 import {
@@ -141,6 +142,12 @@ class GoalRelatedStatsOverTime extends React.Component {
                         }
                     </select>
                 </form>
+
+                {
+                    GRSDataApiStatus === 'initiated' ?
+                    <Loader />
+                    : null
+                }
 
                 {
                     dataIsAvailable ?
