@@ -50,6 +50,7 @@ class LeagueStandings extends React.Component {
         this.updateLeague = this.updateLeague.bind(this)
         this.updateSeason = this.updateSeason.bind(this)
         this.updateData = this.updateData.bind(this)
+        this.updateWrangledData = this.updateWrangledData.bind(this)
     }
 
     updateLeague(event) {
@@ -69,6 +70,21 @@ class LeagueStandings extends React.Component {
         this.props.getLeagueStandingsData(league, season)
     }
 
+    updateWrangledData() {
+        const { LeagueStandingsData } = this.props
+        this.setState({
+            wrangledDataObj: {
+                teams: getValuesByKey(LeagueStandingsData, "team"),
+                points: getValuesByKey(LeagueStandingsData, "points"),
+                goalDifferences: getValuesByKey(LeagueStandingsData, "goalDifference"),
+                goalsScored: getValuesByKey(LeagueStandingsData, "goalsScored"),
+                goalsAllowed: getValuesByKey(LeagueStandingsData, "goalsAllowed"),
+                cumulativePoints: getValuesByKey(LeagueStandingsData, "cumulativePoints"),
+                cumulativeGoalDifferences: getValuesByKey(LeagueStandingsData, "cumulativeGoalDifference"),
+            },
+        })
+    }
+
     componentDidMount() {
         this.updateData()
     }
@@ -76,17 +92,7 @@ class LeagueStandings extends React.Component {
     componentDidUpdate(prevProps, prevState, snapshot) {
         const { LeagueStandingsData } = this.props
         if (prevProps.LeagueStandingsData !== LeagueStandingsData && LeagueStandingsData.length > 0) {
-            this.setState({
-                wrangledDataObj: {
-                    teams: getValuesByKey(LeagueStandingsData, "team"),
-                    points: getValuesByKey(LeagueStandingsData, "points"),
-                    goalDifferences: getValuesByKey(LeagueStandingsData, "goalDifference"),
-                    goalsScored: getValuesByKey(LeagueStandingsData, "goalsScored"),
-                    goalsAllowed: getValuesByKey(LeagueStandingsData, "goalsAllowed"),
-                    cumulativePoints: getValuesByKey(LeagueStandingsData, "cumulativePoints"),
-                    cumulativeGoalDifferences: getValuesByKey(LeagueStandingsData, "cumulativeGoalDifference"),
-                },
-            })
+            this.updateWrangledData()
         }
     }
 
@@ -238,8 +244,8 @@ class LeagueStandings extends React.Component {
 
 const mapStateToProps = (state) => {
     return {
-        LeagueStandingsData: state.LeagueStandingsDataReducer.LeagueStandingsData,
-        LeagueStandingsDataApiStatus: state.LeagueStandingsDataReducer.LeagueStandingsDataApiStatus,
+        LeagueStandingsData: state.LeagueStandingsReducer.LeagueStandingsData,
+        LeagueStandingsDataApiStatus: state.LeagueStandingsReducer.LeagueStandingsDataApiStatus,
     }
 }
 
