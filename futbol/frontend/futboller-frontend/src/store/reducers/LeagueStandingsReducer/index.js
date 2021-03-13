@@ -23,7 +23,7 @@ const reducer = handleActions(
                 LeagueStandingsDataApiStatus: API_STATUS.success,
             }
         },
-        GET_LEAGUE_STANDINGS_ERROR: (state) => {
+        GET_LEAGUE_STANDINGS_ERROR: (state, actions) => {
             return {
                 ...state,
                 LeagueStandingsData: [],
