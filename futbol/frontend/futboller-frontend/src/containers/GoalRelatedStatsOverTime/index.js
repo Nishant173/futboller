@@ -1,14 +1,16 @@
 import React from 'react'
+import { connect } from 'react-redux'
 
-import { getGoalRelatedStatsOverTime } from '../api/getApiData'
-import { MultiLineChart, getMultiLineChartDatasets } from '../components/charts/LineChart'
-import { LEAGUE_COLOR_MAPPER } from '../config'
-import LEAGUE_NAMES from '../Leagues.json'
+import * as GoalRelatedStatsActions from '../../store/actions/GoalRelatedStatsActions'
+import { MultiLineChart, getMultiLineChartDatasets } from '../../components/charts/LineChart'
+import { Loader } from '../../components/loaders/Loader'
+import { LEAGUE_COLOR_MAPPER } from '../../config'
+import LEAGUE_NAMES from '../../Leagues.json'
 import {
     ceil,
     getValuesByKey,
     max,
-} from '../jsUtils/general'
+} from '../../jsUtils/general'
 
 
 // Mapping verbose stat names to accessors present in the API data
@@ -27,55 +29,16 @@ const DEFAULTS = {
 }
 
 
-export default class GoalRelatedStatsOverTime extends React.Component {
+class GoalRelatedStatsOverTime extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            goalRelatedStatsOverTime: {},
-            chartAxesLimits: {},
             leagueChoice: DEFAULTS.league,
             statChoiceVerbose: DEFAULTS.statNameVerbose,
+            chartAxesLimits: {},
         }
-        this.updateData = this.updateData.bind(this)
         this.updateLeagueChoice = this.updateLeagueChoice.bind(this)
         this.updateStatChoiceVerbose = this.updateStatChoiceVerbose.bind(this)
-    }
-
-    componentDidMount() {
-        this.updateData()
-    }
-
-    updateData() {
-        getGoalRelatedStatsOverTime()
-            .then((response) => {
-                this.setState({
-                    goalRelatedStatsOverTime: response,
-                }, this.updateChartAxesLimits)
-            })
-    }
-
-    updateChartAxesLimits() {
-        let objChartAxesLimits = {} // Keys = stat accessor, and values = object having 'low' and 'high' limits
-        for (let statNameVerbose of STATS_AVAILABLE_VERBOSE) {
-            let statAccessor = MAPPER_STATS_AVAILABLE[statNameVerbose]
-            let low = -1
-            let high = -1
-            if (STAT_ACCESSORS_WITH_PERCENTAGES.includes(statAccessor)) {
-                low = 0
-                high = 100
-            }
-            else {
-                low = 0
-                high = ceil(this.getMaxValueOfStat(this.state.goalRelatedStatsOverTime, LEAGUE_NAMES, statAccessor))
-            }
-            objChartAxesLimits[statAccessor] = {
-                low: low,
-                high: high,
-            }
-        }
-        this.setState({
-            chartAxesLimits: objChartAxesLimits
-        })
     }
 
     updateLeagueChoice(event) {
@@ -90,6 +53,46 @@ export default class GoalRelatedStatsOverTime extends React.Component {
         })
     }
 
+    updateData() {
+        this.props.getGoalRelatedStatsData()
+    }
+
+    componentDidMount() {
+        this.updateData()
+    }
+
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        const { GRSData } = this.props
+        if (prevProps.GRSData !== GRSData && Object.keys(GRSData).length === LEAGUE_NAMES.length) {
+            this.updateChartAxesLimits()
+        }
+    }
+
+    updateChartAxesLimits() {
+        const { GRSData } = this.props
+        let objChartAxesLimits = {} // Keys = stat accessor, and values = object having 'low' and 'high' limits
+        for (let statNameVerbose of STATS_AVAILABLE_VERBOSE) {
+            let statAccessor = MAPPER_STATS_AVAILABLE[statNameVerbose]
+            let low = -1
+            let high = -1
+            if (STAT_ACCESSORS_WITH_PERCENTAGES.includes(statAccessor)) {
+                low = 0
+                high = 100
+            }
+            else {
+                low = 0
+                high = ceil(this.getMaxValueOfStat(GRSData, LEAGUE_NAMES, statAccessor))
+            }
+            objChartAxesLimits[statAccessor] = {
+                low: low,
+                high: high,
+            }
+        }
+        this.setState({
+            chartAxesLimits: objChartAxesLimits
+        })
+    }
+
     getMaxValueOfStat(goalRelatedStats={}, leaguesSubset=[], statToCapture="") {
         let arrayToConsider = []
         for (let league of leaguesSubset) {
@@ -101,10 +104,13 @@ export default class GoalRelatedStatsOverTime extends React.Component {
     }
 
     render() {
+        const { GRSData, GRSDataApiStatus } = this.props
+        const { leagueChoice, statChoiceVerbose } = this.state
         const axesLimitsAreAvailable = Object.keys(this.state.chartAxesLimits).length === STATS_AVAILABLE_VERBOSE.length
-        const statChoiceIsAvailable = STATS_AVAILABLE_VERBOSE.includes(this.state.statChoiceVerbose)
+        const statChoiceIsAvailable = STATS_AVAILABLE_VERBOSE.includes(statChoiceVerbose)
         const chartAxesAndStatChoiceExists = axesLimitsAreAvailable && statChoiceIsAvailable
-        
+        const dataIsAvailable = (Object.keys(GRSData).length === LEAGUE_NAMES.length)
+
         return (
             <div>
                 <h1>Goal related stats over time (by leagues) - Top 5 Leagues</h1>
@@ -138,31 +144,36 @@ export default class GoalRelatedStatsOverTime extends React.Component {
                 </form>
 
                 {
-                    Object.keys(this.state.goalRelatedStatsOverTime).length === LEAGUE_NAMES.length
-                    ?
+                    GRSDataApiStatus === 'initiated' ?
+                    <Loader />
+                    : null
+                }
+
+                {
+                    dataIsAvailable ?
                     <>
                         <MultiLineChart
-                            title={`${this.state.leagueChoice} - ${this.state.statChoiceVerbose} over time`}
+                            title={`${leagueChoice} - ${statChoiceVerbose} over time`}
                             xLabel="Date"
-                            yLabel={this.state.statChoiceVerbose}
+                            yLabel={statChoiceVerbose}
                             xTicks={
-                                getValuesByKey(this.state.goalRelatedStatsOverTime[this.state.leagueChoice], "monthGroupVerbose")
+                                getValuesByKey(GRSData[leagueChoice], "monthGroupVerbose")
                             }
                             datasets={
                                 getMultiLineChartDatasets(
-                                    [`${this.state.statChoiceVerbose}`],
-                                    [getValuesByKey(this.state.goalRelatedStatsOverTime[this.state.leagueChoice], MAPPER_STATS_AVAILABLE[this.state.statChoiceVerbose])],
-                                    [LEAGUE_COLOR_MAPPER[this.state.leagueChoice]],
+                                    [`${statChoiceVerbose}`],
+                                    [getValuesByKey(GRSData[leagueChoice], MAPPER_STATS_AVAILABLE[statChoiceVerbose])],
+                                    [LEAGUE_COLOR_MAPPER[leagueChoice]],
                                 )
                             }
                             yLow={
                                 chartAxesAndStatChoiceExists ?
-                                    this.state.chartAxesLimits[MAPPER_STATS_AVAILABLE[this.state.statChoiceVerbose]]['low']
+                                    this.state.chartAxesLimits[MAPPER_STATS_AVAILABLE[statChoiceVerbose]]['low']
                                     : undefined
                             }
                             yHigh={
                                 chartAxesAndStatChoiceExists ?
-                                    this.state.chartAxesLimits[MAPPER_STATS_AVAILABLE[this.state.statChoiceVerbose]]['high']
+                                    this.state.chartAxesLimits[MAPPER_STATS_AVAILABLE[statChoiceVerbose]]['high']
                                     : undefined
                             }
                         />
@@ -173,3 +184,21 @@ export default class GoalRelatedStatsOverTime extends React.Component {
         )
     }
 }
+
+
+const mapStateToProps = (state) => {
+    return {
+        GRSData: state.GoalRelatedStatsReducer.GRSData,
+        GRSDataApiStatus: state.GoalRelatedStatsReducer.GRSDataApiStatus,
+    }
+}
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        getGoalRelatedStatsData: () => {
+            dispatch(GoalRelatedStatsActions.getGoalRelatedStatsData())
+        },
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(GoalRelatedStatsOverTime)

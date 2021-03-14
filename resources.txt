@@ -39,6 +39,7 @@ npm i react-table
 npm install --save react-chartjs-2
 npm start
 
+https://www.creative-tim.com/product/light-bootstrap-dashboard-pro-react/?partner=93321
 https://pypi.org/project/django-cors-headers/
 https://stackoverflow.com/questions/44661671/chart-js-scatter-chart-displaying-label-specific-to-point-in-tooltip
 https://apexcharts.com/react-chart-demos/scatter-charts/
