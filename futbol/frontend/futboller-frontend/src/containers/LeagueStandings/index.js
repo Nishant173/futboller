@@ -7,6 +7,7 @@ import { MultiLineChart, getMultiLineChartDatasets } from '../../components/char
 import { ScatterChart } from '../../components/charts/ScatterChart'
 import { Loader } from '../../components/loaders/Loader'
 import { GridTable } from '../../components/tables/Table'
+import { ExportToExcel } from '../../components/tableExporters'
 import LEAGUE_NAMES from '../../Leagues.json'
 import SEASON_NAMES from '../../Seasons.json'
 import {
@@ -17,7 +18,11 @@ import {
     max,
     maxOfAbsValues,
 } from '../../jsUtils/general'
-import { COLUMNS_LEAGUE_TABLE, COLUMNS_LEAGUE_STATS } from './tableColumns'
+import {
+    COLUMNS_LEAGUE_TABLE,
+    COLUMNS_LEAGUE_STATS,
+    COLUMNS_EXCEL_LEAGUE_DATA,
+} from './tableColumns'
 
 
 const DEFAULTS = {
@@ -102,6 +107,13 @@ class LeagueStandings extends React.Component {
         const { LeagueStandingsData, LeagueStandingsDataApiStatus } = this.props
         const dataIsAvailable = (LeagueStandingsData.length > 0 && Object.keys(wrangledDataObj).length > 0)
         
+        // Filenames for Excel exports
+        let filenameLeagueData = new Date().toISOString()
+        if (dataIsAvailable) {
+            const leagueAndSeason = `${LeagueStandingsData[0]['league']} (${LeagueStandingsData[0]['season']})`
+            filenameLeagueData = `League Statistics - ${leagueAndSeason}`
+        }
+        
         return (
             <div>
                 <h1>League Standings - Top 5 Leagues</h1>
@@ -150,6 +162,14 @@ class LeagueStandings extends React.Component {
                     dataIsAvailable ?
                     <>
                         <br /><br />
+                        <ExportToExcel
+                            filenameWithoutExtension={filenameLeagueData}
+                            sheetName={filenameLeagueData}
+                            data={LeagueStandingsData}
+                            columnInfo={COLUMNS_EXCEL_LEAGUE_DATA}
+                            columnLabelAccessor="headerName"
+                            columnValueAccessor="field"
+                        />
                         <GridTable
                             arrayOfObjects={LeagueStandingsData}
                             columnsData={COLUMNS_LEAGUE_TABLE}

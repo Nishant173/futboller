@@ -85,3 +85,6 @@ export const COLUMNS_LEAGUE_STATS = [
         width: 150,
     },
 ]
+
+
+export const COLUMNS_EXCEL_LEAGUE_DATA = COLUMNS_LEAGUE_TABLE.concat(COLUMNS_LEAGUE_STATS.slice(2))
