@@ -1,4 +1,7 @@
 import React from 'react'
+
+import Card from '@material-ui/core/Card'
+import Paper from '@material-ui/core/Paper'
 import { makeStyles } from '@material-ui/core/styles'
 import Table from '@material-ui/core/Table'
 import TableBody from '@material-ui/core/TableBody'
@@ -6,8 +9,8 @@ import TableCell from '@material-ui/core/TableCell'
 import TableContainer from '@material-ui/core/TableContainer'
 import TableHead from '@material-ui/core/TableHead'
 import TableRow from '@material-ui/core/TableRow'
-import Paper from '@material-ui/core/Paper'
 import { DataGrid } from '@material-ui/data-grid'
+import DataTable from 'react-data-table-component'
 
 import { addUniqueField } from '../../jsUtils/general'
 
@@ -66,5 +69,34 @@ export function GridTable({ title="", arrayOfObjects, columnsData, pageSize=5 })
                 pageSize={pageSize}
             />
         </div>
+    )
+}
+
+
+export function DataTableComponent({
+        title="",
+        arrayOfObjects=[],
+        columns=[],
+        defaultSortField="",
+        pagination=true,
+    }) {
+    
+    const existingFields = Object.keys(arrayOfObjects[0])
+    if (!existingFields.includes("id")) {
+        arrayOfObjects = addUniqueField(arrayOfObjects, "id")
+    }
+    
+    return (
+        <Card>
+            <DataTable
+                title={title}
+                data={arrayOfObjects}
+                columns={columns}
+                defaultSortField={defaultSortField === "" ? undefined : defaultSortField}
+                pagination={pagination}
+                paginationPerPage={5}
+                paginationRowsPerPageOptions={[5, 10, 15, 20, 50, 100]}
+            />
+        </Card>
     )
 }

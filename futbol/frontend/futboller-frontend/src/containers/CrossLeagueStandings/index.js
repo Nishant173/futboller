@@ -4,7 +4,8 @@ import { connect } from 'react-redux'
 import * as CrossLeagueStandingsActions from '../../store/actions/CrossLeagueStandingsActions'
 import { ScatterChart } from '../../components/charts/ScatterChart'
 import { Loader } from '../../components/loaders/Loader'
-import { GridTable } from '../../components/tables/Table'
+import { DataTableComponent } from '../../components/tables/Table'
+import { ExportToExcel } from '../../components/tableExporters'
 import {
     ceil,
     generateRandomHexCode,
@@ -12,7 +13,7 @@ import {
     max,
     maxOfAbsValues,
 } from '../../jsUtils/general'
-import { COLUMNS_CROSS_LEAGUE_TABLE, COLUMNS_CROSS_LEAGUE_STATS } from './tableColumns'
+import { COLUMNS_CROSS_LEAGUE_TABLE } from './tableColumns'
 
 
 function sliceByPosition(array, start, stop) {
@@ -81,14 +82,20 @@ class CrossLeagueStandings extends React.Component {
                     dataIsAvailable ?
                     <>
                         <br /><br />
-                        <GridTable
-                            arrayOfObjects={CLSData}
-                            columnsData={COLUMNS_CROSS_LEAGUE_TABLE}
+                        <ExportToExcel
+                            filenameWithoutExtension="Cross League Standings"
+                            sheetName="Cross League Standings"
+                            data={CLSData}
+                            columnInfo={COLUMNS_CROSS_LEAGUE_TABLE}
+                            columnLabelAccessor="name"
+                            columnValueAccessor="selector"
                         />
-                        <br /><br />
-                        <GridTable
+                        <DataTableComponent 
+                            title="Cross League Standings"
                             arrayOfObjects={CLSData}
-                            columnsData={COLUMNS_CROSS_LEAGUE_STATS}
+                            columns={COLUMNS_CROSS_LEAGUE_TABLE}
+                            defaultSortField="position"
+                            pagination={true}
                         />
                         <br /><br />
                         <ScatterChart

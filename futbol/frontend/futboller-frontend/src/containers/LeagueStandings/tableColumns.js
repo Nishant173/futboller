@@ -1,90 +1,69 @@
 export const COLUMNS_LEAGUE_TABLE = [
     {
-        field: 'position',
-        headerName: 'Position',
-        type: 'number',
-        width: 150,
+        selector: 'position',
+        name: 'Position',
+        sortable: true,
+        right: true,
     },
     {
-        field: 'team',
-        headerName: 'Team',
-        width: 200,
+        selector: 'team',
+        name: 'Team',
+        sortable: true,
+        left: true,
+        width: 'auto',
     },
     {
-        field: 'gamesPlayed',
-        headerName: 'GamesPlayed',
-        type: 'number',
-        width: 150,
+        selector: 'gamesPlayed',
+        name: 'GamesPlayed',
+        sortable: true,
+        right: true,
     },
     {
-        field: 'points',
-        headerName: 'Points',
-        type: 'number',
-        width: 150,
+        selector: 'points',
+        name: 'Points',
+        sortable: true,
+        right: true,
     },
     {
-        field: 'goalDifference',
-        headerName: 'GoalDifference',
-        type: 'number',
-        width: 150,
+        selector: 'goalDifference',
+        name: 'GoalDifference',
+        sortable: true,
+        right: true,
     },
     {
-        field: 'resultsString',
-        headerName: 'Results',
-        width: 500,
+        selector: 'goalsScored',
+        name: 'GoalsScored',
+        sortable: true,
+        right: true,
+    },
+    {
+        selector: 'goalsAllowed',
+        name: 'GoalsAllowed',
+        sortable: true,
+        right: true,
+    },
+    {
+        selector: 'cleanSheets',
+        name: 'CleanSheetsFor',
+        sortable: true,
+        right: true,
+    },
+    {
+        selector: 'cleanSheetsAgainst',
+        name: 'CleanSheetsAgainst',
+        sortable: true,
+        right: true,
+    },
+    {
+        selector: 'bigWins',
+        name: 'BigWins',
+        sortable: true,
+        right: true,
+    },
+    {
+        selector: 'bigLosses',
+        name: 'BigLosses',
+        sortable: true,
+        right: true,
     },
 ]
-
-
-export const COLUMNS_LEAGUE_STATS = [
-    {
-        field: 'position',
-        headerName: 'Position',
-        type: 'number',
-        width: 150,
-    },
-    {
-        field: 'team',
-        headerName: 'Team',
-        width: 200,
-    },
-    {
-        field: 'goalsScored',
-        headerName: 'GoalsScored',
-        type: 'number',
-        width: 150,
-    },
-    {
-        field: 'goalsAllowed',
-        headerName: 'GoalsAllowed',
-        type: 'number',
-        width: 150,
-    },
-    {
-        field: 'cleanSheets',
-        headerName: 'CleanSheetsFor',
-        type: 'number',
-        width: 200,
-    },
-    {
-        field: 'cleanSheetsAgainst',
-        headerName: 'CleanSheetsAgainst',
-        type: 'number',
-        width: 200,
-    },
-    {
-        field: 'bigWins',
-        headerName: 'BigWins',
-        type: 'number',
-        width: 150,
-    },
-    {
-        field: 'bigLosses',
-        headerName: 'BigLosses',
-        type: 'number',
-        width: 150,
-    },
-]
-
-
-export const COLUMNS_EXCEL_LEAGUE_DATA = COLUMNS_LEAGUE_TABLE.concat(COLUMNS_LEAGUE_STATS.slice(2))

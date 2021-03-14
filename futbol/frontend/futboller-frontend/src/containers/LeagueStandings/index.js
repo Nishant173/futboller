@@ -6,7 +6,7 @@ import { HorizontalBarChart } from '../../components/charts/BarChart'
 import { MultiLineChart, getMultiLineChartDatasets } from '../../components/charts/LineChart'
 import { ScatterChart } from '../../components/charts/ScatterChart'
 import { Loader } from '../../components/loaders/Loader'
-import { GridTable } from '../../components/tables/Table'
+import { DataTableComponent } from '../../components/tables/Table'
 import { ExportToExcel } from '../../components/tableExporters'
 import LEAGUE_NAMES from '../../Leagues.json'
 import SEASON_NAMES from '../../Seasons.json'
@@ -18,11 +18,7 @@ import {
     max,
     maxOfAbsValues,
 } from '../../jsUtils/general'
-import {
-    COLUMNS_LEAGUE_TABLE,
-    COLUMNS_LEAGUE_STATS,
-    COLUMNS_EXCEL_LEAGUE_DATA,
-} from './tableColumns'
+import { COLUMNS_LEAGUE_TABLE } from './tableColumns'
 
 
 const DEFAULTS = {
@@ -107,11 +103,10 @@ class LeagueStandings extends React.Component {
         const { LeagueStandingsData, LeagueStandingsDataApiStatus } = this.props
         const dataIsAvailable = (LeagueStandingsData.length > 0 && Object.keys(wrangledDataObj).length > 0)
         
-        // Filenames for Excel exports
-        let filenameLeagueData = new Date().toISOString()
+        let titleLeagueStandingsData = ""
         if (dataIsAvailable) {
             const leagueAndSeason = `${LeagueStandingsData[0]['league']} (${LeagueStandingsData[0]['season']})`
-            filenameLeagueData = `League Statistics - ${leagueAndSeason}`
+            titleLeagueStandingsData = `League Standings - ${leagueAndSeason}`
         }
         
         return (
@@ -163,20 +158,19 @@ class LeagueStandings extends React.Component {
                     <>
                         <br /><br />
                         <ExportToExcel
-                            filenameWithoutExtension={filenameLeagueData}
-                            sheetName={filenameLeagueData}
+                            filenameWithoutExtension={titleLeagueStandingsData}
+                            sheetName={titleLeagueStandingsData}
                             data={LeagueStandingsData}
-                            columnInfo={COLUMNS_EXCEL_LEAGUE_DATA}
-                            columnLabelAccessor="headerName"
-                            columnValueAccessor="field"
+                            columnInfo={COLUMNS_LEAGUE_TABLE}
+                            columnLabelAccessor="name"
+                            columnValueAccessor="selector"
                         />
-                        <GridTable
+                        <DataTableComponent
+                            title={titleLeagueStandingsData}
                             arrayOfObjects={LeagueStandingsData}
-                            columnsData={COLUMNS_LEAGUE_TABLE}
-                        />
-                        <GridTable
-                            arrayOfObjects={LeagueStandingsData}
-                            columnsData={COLUMNS_LEAGUE_STATS}
+                            columns={COLUMNS_LEAGUE_TABLE}
+                            defaultSortField="position"
+                            pagination={true}
                         />
                         <br /><br />
                         <HorizontalBarChart
