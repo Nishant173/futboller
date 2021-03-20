@@ -3,6 +3,7 @@ import CrossLeagueStandingsReducer from './store/reducers/CrossLeagueStandingsRe
 import GoalRelatedStatsReducer from './store/reducers/GoalRelatedStatsReducer'
 import HeadToHeadStatsReducer from './store/reducers/HeadToHeadStatsReducer'
 import PartitionedStatsReducer from './store/reducers/PartitionedStatsReducer'
+import GeneralStatsReducer from './store/reducers/GeneralStatsReducer'
 
 const combinedReducers = {
     LeagueStandingsReducer: LeagueStandingsReducer,
@@ -10,6 +11,7 @@ const combinedReducers = {
     GoalRelatedStatsReducer: GoalRelatedStatsReducer,
     HeadToHeadStatsReducer: HeadToHeadStatsReducer,
     PartitionedStatsReducer: PartitionedStatsReducer,
+    GeneralStatsReducer: GeneralStatsReducer,
 }
 
 export default combinedReducers
