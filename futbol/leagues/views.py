@@ -14,6 +14,29 @@ from py_utils.general.utils import listify_string_of_nums
 
 
 @api_view(['GET'])
+def get_general_stats(request):
+    """Gets general overall statistics from leagues data"""
+    num_league_matches_in_db = queries.get_league_matches_count()
+    dict_date_limits_of_matches = queries.get_date_limits_of_league_matches()
+    dict_num_unique_teams_by_league = queries.get_num_unique_teams_by_league()
+    dict_grs_by_league = queries.get_goal_related_stats_by_league()
+    dict_current_season_league_leaders = queries.get_current_season_league_leaders()
+    dictionary_general_stats = {
+        'num_league_matches_in_db': num_league_matches_in_db,
+        'date_of_first_collected_record': dict_date_limits_of_matches['first_available_date'],
+        'date_of_last_collected_record': dict_date_limits_of_matches['last_available_date'],
+        'num_unique_teams_by_league': dict_num_unique_teams_by_league,
+        'avg_goals_scored_by_league': dict_grs_by_league['avg_goals_scored'],
+        'avg_goal_difference_by_league': dict_grs_by_league['avg_goal_difference'],
+        'current_season_league_leaders': dict_current_season_league_leaders,
+    }
+    dictionary_general_stats_camel_cased = {}
+    for key, value in dictionary_general_stats.items():
+        dictionary_general_stats_camel_cased[sc2lcc(string=key)] = value
+    return Response(data=dictionary_general_stats_camel_cased, status=status.HTTP_200_OK)
+
+
+@api_view(['GET'])
 def get_teams(request):
     name_contains = request.GET.get('nameContains', default=None)
     teams = queries.get_teams()

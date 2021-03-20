@@ -1,9 +1,14 @@
-from typing import List, Union
+from typing import Dict, List, Union
+import datetime
 import pandas as pd
 import sqlite3
 
 from futbol import config
-from .utils import get_unique_teams
+from .utils import (
+    date_to_season,
+    get_unique_teams,
+    prettify_date_string,
+)
 
 
 def _get_data_from_sqlite(query: str) -> Union[pd.DataFrame, pd.Series]:
@@ -12,6 +17,93 @@ def _get_data_from_sqlite(query: str) -> Union[pd.DataFrame, pd.Series]:
     df = pd.read_sql(sql=query, con=connection)
     connection.close()
     return df
+
+
+def get_num_unique_teams_by_league() -> Dict[str, int]:
+    query = f"""
+    SELECT team, league
+    FROM {config.TBL_CROSS_LEAGUE_STANDINGS}
+    """
+    df = _get_data_from_sqlite(query=query)
+    dict_num_unique_teams_by_league = df.groupby(by='league').apply(len).rename('num_unique_teams').to_frame().to_dict()['num_unique_teams']
+    return dict_num_unique_teams_by_league
+
+
+def get_goal_related_stats_by_league() -> Dict[str, Dict[str, Union[int, float]]]:
+    """
+    Returns dictionary having keys: ['avg_goals_scored', 'avg_goal_difference'].
+    Values will be dictionary of the respective goal-related-stat (by league).
+    """
+    query = f"""
+    SELECT league, home_goals, away_goals
+    FROM {config.TBL_LEAGUE_MATCHES}
+    """
+    df = _get_data_from_sqlite(query=query)
+    df['total_goals'] = df['home_goals'] + df['away_goals']
+    df['goal_difference'] = (df['home_goals'] - df['away_goals']).abs()
+
+    dict_obj = {}
+    dict_avg_goals_scored = {}
+    dict_avg_goal_difference = {}
+    for league, df_by_league in df.groupby(by='league'):
+        dict_avg_goals_scored[league] = round(df_by_league['total_goals'].mean(), 3)
+        dict_avg_goal_difference[league] = round(df_by_league['goal_difference'].mean(), 3)
+    dict_obj['avg_goals_scored'] = dict_avg_goals_scored
+    dict_obj['avg_goal_difference'] = dict_avg_goal_difference
+    return dict_obj
+
+
+def get_current_season_league_leaders() -> Dict[str, str]:
+    """Returns dictionary having keys = league names, and values = league leaders"""
+    current_season = date_to_season(date=datetime.datetime.now())
+    query = f"""
+    SELECT team, league
+    FROM {config.TBL_LEAGUE_STANDINGS}
+    WHERE position = 1
+    AND season = '{current_season}'
+    """
+    df = _get_data_from_sqlite(query=query)
+    if df.empty:
+        dict_with_nan = {
+            'Bundesliga': 'NA',
+            'EPL': 'NA',
+            'La Liga': 'NA',
+            'Ligue 1': 'NA',
+            'Serie A': 'NA',
+        }
+        return dict_with_nan
+    return df.set_index('league').to_dict()['team']
+
+
+def get_league_matches_count() -> int:
+    query = f"""
+    SELECT COUNT(*) AS num_league_matches_in_db
+    FROM {config.TBL_LEAGUE_MATCHES}
+    """
+    df = _get_data_from_sqlite(query=query)
+    if df.empty:
+        return 0
+    return df['num_league_matches_in_db'].iloc[0]
+
+
+def get_date_limits_of_league_matches() -> Dict[str, str]:
+    """Returns dictionary having keys: ['first_available_date', 'last_available_date']"""
+    query = f"""
+    SELECT MIN(date) AS first_available_date,
+           MAX(date) AS last_available_date
+    FROM {config.TBL_LEAGUE_MATCHES}
+    """
+    df = _get_data_from_sqlite(query=query)
+    if df.empty:
+        dict_with_nan = {
+            'first_available_date': 'NA',
+            'last_available_date': 'NA',
+        }
+        return dict_with_nan
+    dict_obj = df.iloc[0].to_dict()
+    dict_obj['first_available_date'] = prettify_date_string(date_string=dict_obj['first_available_date'])
+    dict_obj['last_available_date'] = prettify_date_string(date_string=dict_obj['last_available_date'])
+    return dict_obj
 
 
 def get_teams() -> List[str]:

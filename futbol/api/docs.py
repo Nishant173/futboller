@@ -38,6 +38,13 @@ ENDPOINTS = [
         "methods": ["GET"],
     },
     {
+        "endpoint": f"{API_VERSION}/leagues/general-stats/",
+        "description": "Gets dictionary having certain general stats",
+        "parameters": [],
+        "example": f"{API_VERSION}/leagues/general-stats/",
+        "methods": ["GET"],
+    },
+    {
         "endpoint": f"{API_VERSION}/leagues/league-matches/",
         "description": "Gets list of league matches (filter parameters are allowed)",
         "parameters": [
