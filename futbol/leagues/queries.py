@@ -19,6 +19,19 @@ def _get_data_from_sqlite(query: str) -> Union[pd.DataFrame, pd.Series]:
     return df
 
 
+def get_cross_league_standings() -> pd.DataFrame:
+    """Returns DataFrame of subset of columns of Cross League Standings data"""
+    query = f"""
+    SELECT position, team, league, games_played, avg_points, avg_goal_difference,
+           win_percent, loss_percent, draw_percent, avg_goals_scored, avg_goals_allowed,
+           clean_sheets_percent, big_win_percent, big_loss_percent,
+           longest_win_streak, longest_loss_streak, longest_draw_streak, longest_unbeaten_streak
+    FROM {config.TBL_CROSS_LEAGUE_STANDINGS}
+    """
+    df = _get_data_from_sqlite(query=query)
+    return df
+
+
 def get_num_unique_teams_by_league() -> Dict[str, int]:
     query = f"""
     SELECT team, league
