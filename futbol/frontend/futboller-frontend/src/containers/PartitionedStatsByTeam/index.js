@@ -1,18 +1,25 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import { Button, Dropdown, Menu } from 'antd'
+import { SelectOutlined } from '@ant-design/icons'
 
 import * as PartitionedStatsActions from '../../store/actions/PartitionedStatsActions'
 import { MultiLineChart, getMultiLineChartDatasets } from '../../components/charts/LineChart'
 import { Loader } from '../../components/loaders/Loader'
 import { DataTableComponent } from '../../components/tables/Table'
 import { ExportToExcel } from '../../components/tableExporters'
-import TEAM_NAMES from '../../Teams.json'
 import { getValuesByKey } from '../../jsUtils/general'
+import { CONTAINER_STYLES, EXCEL_EXPORTER_STYLES } from '../../config'
 import { COLUMNS_PARTITIONED_STATS_BY_TEAM } from './tableColumns'
 
+import LEAGUE_NAMES from '../../Leagues.json'
+import TEAM_NAMES_BY_LEAGUE from '../../TeamsByLeague.json'
+
+
+const { SubMenu } = Menu
 
 const DEFAULTS = {
-    team: TEAM_NAMES[0],
+    team: 'Bayern Munich',
 }
 
 
@@ -30,7 +37,7 @@ class PartitionedStatsByTeam extends React.Component {
 
     updateTeam(event) {
         this.setState({
-            team: event.target.value,
+            team: event.key,
         })
     }
 
@@ -76,30 +83,40 @@ class PartitionedStatsByTeam extends React.Component {
             titlePartitionedStats = `Partitioned stats over time - ${PartitionedStats[0].team}`
         }
         
+        const teamsMenu = (
+            <Menu>
+                {
+                    LEAGUE_NAMES.map((league) => (
+                        <SubMenu title={league}>
+                            {
+                                TEAM_NAMES_BY_LEAGUE[league].map((team) => (
+                                    <Menu.Item key={team} onClick={this.updateTeam}>
+                                        <p>
+                                            { team }
+                                            &nbsp;
+                                            { this.state.team === team ? <SelectOutlined /> : null }
+                                        </p>
+                                    </Menu.Item>
+                                ))
+                            }
+                        </SubMenu>
+                    ))
+                }
+            </Menu>
+        )
+        
         return (
-            <div>
-                <h1>Partitioned Stats By Team - Top 5 Leagues</h1>
+            <div style={CONTAINER_STYLES}>
+                <h1>Partitioned Stats (by team) - Top 5 Leagues</h1>
                 <br />
 
-                <form>
-                    <select onChange={this.updateTeam}>
-                        {
-                            TEAM_NAMES.map((team) => (
-                                <option
-                                    selected={team === DEFAULTS.team ? true : false}
-                                    value={team}
-                                >
-                                    {team}
-                                </option>
-                            ))
-                        }
-                    </select>
-                    <input
-                        type="button"
-                        value="Update"
-                        onClick={this.updateData}
-                    />
-                </form>
+                <Dropdown overlay={teamsMenu}>
+                    <Button>{this.state.team}</Button>
+                </Dropdown>
+                &nbsp;&nbsp;
+                <Button type="primary" onClick={this.updateData} disabled={false}>
+                    Fetch data
+                </Button>
 
                 {
                     PartitionedStatsApiStatus === 'initiated' ?
@@ -111,14 +128,16 @@ class PartitionedStatsByTeam extends React.Component {
                     dataIsAvailable ?
                     <>
                         <br /><br />
-                        <ExportToExcel
-                            filenameWithoutExtension={titlePartitionedStats}
-                            sheetName={titlePartitionedStats}
-                            data={PartitionedStats}
-                            columnInfo={COLUMNS_PARTITIONED_STATS_BY_TEAM}
-                            columnLabelAccessor="name"
-                            columnValueAccessor="selector"
-                        />
+                        <div style={EXCEL_EXPORTER_STYLES}>
+                            <ExportToExcel
+                                filenameWithoutExtension={titlePartitionedStats}
+                                sheetName={titlePartitionedStats}
+                                data={PartitionedStats}
+                                columnInfo={COLUMNS_PARTITIONED_STATS_BY_TEAM}
+                                columnLabelAccessor="name"
+                                columnValueAccessor="selector"
+                            />
+                        </div>
                         <DataTableComponent 
                             title={titlePartitionedStats}
                             arrayOfObjects={PartitionedStats}

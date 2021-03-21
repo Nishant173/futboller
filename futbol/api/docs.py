@@ -24,6 +24,13 @@ ENDPOINTS = [
         "methods": ["GET"],
     },
     {
+        "endpoint": f"{API_VERSION}/leagues/teams-by-league/",
+        "description": "Gets dictionary having teams by league. Keys = league names, and values = list of teams for respective league",
+        "parameters": [],
+        "example": f"{API_VERSION}/leagues/teams-by-league/",
+        "methods": ["GET"],
+    },
+    {
         "endpoint": f"{API_VERSION}/leagues/leagues/",
         "description": "Gets list of all leagues",
         "parameters": [],
@@ -35,6 +42,13 @@ ENDPOINTS = [
         "description": "Gets list of all seasons",
         "parameters": [],
         "example": f"{API_VERSION}/leagues/seasons/",
+        "methods": ["GET"],
+    },
+    {
+        "endpoint": f"{API_VERSION}/leagues/general-stats/",
+        "description": "Gets dictionary having certain general stats",
+        "parameters": [],
+        "example": f"{API_VERSION}/leagues/general-stats/",
         "methods": ["GET"],
     },
     {

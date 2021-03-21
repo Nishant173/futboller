@@ -14,12 +14,41 @@ from py_utils.general.utils import listify_string_of_nums
 
 
 @api_view(['GET'])
+def get_general_stats(request):
+    """Gets general overall statistics from leagues data"""
+    num_league_matches_in_db = queries.get_league_matches_count()
+    dict_date_limits_of_matches = queries.get_date_limits_of_league_matches()
+    dict_num_unique_teams_by_league = queries.get_num_unique_teams_by_league()
+    dict_grs_by_league = queries.get_goal_related_stats_by_league()
+    dict_current_season_league_leaders = queries.get_current_season_league_leaders()
+    dictionary_general_stats = {
+        'num_league_matches_in_db': num_league_matches_in_db,
+        'date_of_first_collected_record': dict_date_limits_of_matches['first_available_date'],
+        'date_of_last_collected_record': dict_date_limits_of_matches['last_available_date'],
+        'num_unique_teams_by_league': dict_num_unique_teams_by_league,
+        'avg_goals_scored_by_league': dict_grs_by_league['avg_goals_scored'],
+        'avg_goal_difference_by_league': dict_grs_by_league['avg_goal_difference'],
+        'current_season_league_leaders': dict_current_season_league_leaders,
+    }
+    dictionary_general_stats_camel_cased = {}
+    for key, value in dictionary_general_stats.items():
+        dictionary_general_stats_camel_cased[sc2lcc(string=key)] = value
+    return Response(data=dictionary_general_stats_camel_cased, status=status.HTTP_200_OK)
+
+
+@api_view(['GET'])
 def get_teams(request):
     name_contains = request.GET.get('nameContains', default=None)
     teams = queries.get_teams()
     if name_contains:
         teams = filters.filter_teams_by_icontains(teams=teams, name_contains=name_contains)
     return Response(data=teams, status=status.HTTP_200_OK)
+
+
+@api_view(['GET'])
+def get_teams_by_league(request):
+    dictionary_teams_by_league = queries.get_teams_by_league()
+    return Response(data=dictionary_teams_by_league, status=status.HTTP_200_OK)
 
 
 @api_view(['GET'])
@@ -130,17 +159,12 @@ def get_league_standings(request):
 def get_cross_league_standings(request):
     team = request.GET.get('team', default=None)
     league = request.GET.get('league', default=None)
-    qs_cls = CrossLeagueStandings.objects.all()
-    df_cls = queryset_to_dataframe(qs=qs_cls, drop_id=True)
+    df_cls = queries.get_cross_league_standings()
     df_cls = filters.filter_cross_league_standings(data=df_cls,
                                                    team=team,
                                                    league=league)
     if df_cls.empty:
         return Response(data=[], status=status.HTTP_200_OK)
-    df_cls['cumulative_points'] = df_cls['cumulative_points'].apply(listify_string_of_nums)
-    df_cls['cumulative_goal_difference'] = df_cls['cumulative_goal_difference'].apply(listify_string_of_nums)
-    df_cls['cumulative_points_normalized'] = df_cls['cumulative_points_normalized'].apply(listify_string_of_nums)
-    df_cls['cumulative_goal_difference_normalized'] = df_cls['cumulative_goal_difference_normalized'].apply(listify_string_of_nums)
     df_cls = switch_column_casing(data=df_cls, func=sc2lcc)
     cls = dataframe_to_list(data=df_cls)
     return Response(data=cls, status=status.HTTP_200_OK)

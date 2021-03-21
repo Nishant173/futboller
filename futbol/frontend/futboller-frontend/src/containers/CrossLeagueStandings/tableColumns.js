@@ -49,12 +49,6 @@ export const COLUMNS_CROSS_LEAGUE_TABLE = [
         right: true,
     },
     {
-        selector: 'cleanSheetsAgainstPercent',
-        name: 'CleanSheetsAgainstPercent',
-        sortable: true,
-        right: true,
-    },
-    {
         selector: 'bigWinPercent',
         name: 'BigWinPercent',
         sortable: true,

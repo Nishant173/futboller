@@ -1,11 +1,20 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import { Button, Dropdown, Menu, Row, Col } from 'antd'
+import { SelectOutlined } from '@ant-design/icons'
 
 import * as HeadToHeadStatsActions from '../../store/actions/HeadToHeadStatsActions'
+import { DataTableComponent } from '../../components/tables/Table'
 import { DoughnutChart } from '../../components/charts/DoughnutChart'
 import { Loader } from '../../components/loaders/Loader'
-import TEAM_NAMES from '../../Teams.json'
+import LEAGUE_NAMES from '../../Leagues.json'
+import TEAM_NAMES_BY_LEAGUE from '../../TeamsByLeague.json'
+import { CONTAINER_STYLES } from '../../config'
+import { COLUMNS_H2H_STATS } from './tableColumns'
+import { ExportToExcel } from '../../components/tableExporters'
 
+
+const { SubMenu } = Menu
 
 const DEFAULTS = {
     team1: "AC Milan",
@@ -30,13 +39,13 @@ class LeagueHeadToHeadStats extends React.Component {
 
     updateTeam1(event) {
         this.setState({
-            team1: event.target.value,
+            team1: event.key,
         })
     }
 
     updateTeam2(event) {
         this.setState({
-            team2: event.target.value,
+            team2: event.key,
         })
     }
 
@@ -76,44 +85,50 @@ class LeagueHeadToHeadStats extends React.Component {
         const { dataOfTeam1, dataOfTeam2 } = this.state
         const { H2HStatsData, H2HStatsDataApiStatus } = this.props
         const dataIsAvailable = (H2HStatsData.length === 2)
+        let title = "Head-to-head stats"
+        if (dataIsAvailable) {
+            title += ` (${H2HStatsData[0]['team']} vs ${H2HStatsData[1]['team']})`
+        }
+
+        const teamsMenu = (onClickFunction) => (
+            <Menu>
+                {
+                    LEAGUE_NAMES.map((league) => (
+                        <SubMenu title={league}>
+                            {
+                                TEAM_NAMES_BY_LEAGUE[league].map((team) => (
+                                    <Menu.Item key={team} onClick={onClickFunction}>
+                                        <p>
+                                            { team }
+                                            &nbsp;
+                                            { this.state.team === team ? <SelectOutlined /> : null }
+                                        </p>
+                                    </Menu.Item>
+                                ))
+                            }
+                        </SubMenu>
+                    ))
+                }
+            </Menu>
+        )
 
         return (
-            <div>
+            <div style={CONTAINER_STYLES}>
                 <h1>League head-to-head stats - Top 5 Leagues</h1>
                 <br />
 
                 <h3>Enter matchup</h3>
-                <form>
-                    <select name="team1" onChange={this.updateTeam1}>
-                        {
-                            TEAM_NAMES.map((team) => (
-                                <option
-                                    selected={team === DEFAULTS.team1 ? true : false}
-                                    value={team}
-                                >
-                                    {team}
-                                </option>
-                            ))
-                        }
-                    </select>
-                    <select name="team2" onChange={this.updateTeam2}>
-                        {
-                            TEAM_NAMES.map((team) => (
-                                <option
-                                    selected={team === DEFAULTS.team2 ? true : false}
-                                    value={team}
-                                >
-                                    {team}
-                                </option>
-                            ))
-                        }
-                    </select>
-                    <input
-                        type="button"
-                        value="Update"
-                        onClick={this.updateData}
-                    />
-                </form>
+                <Dropdown overlay={teamsMenu(this.updateTeam1)}>
+                    <Button>{this.state.team1}</Button>
+                </Dropdown>
+                &nbsp;&nbsp;
+                <Dropdown overlay={teamsMenu(this.updateTeam2)}>
+                    <Button>{this.state.team2}</Button>
+                </Dropdown>
+                &nbsp;&nbsp;
+                <Button type="primary" onClick={this.updateData} disabled={false}>
+                    Fetch data
+                </Button>
 
                 {
                     H2HStatsDataApiStatus === 'initiated' ?
@@ -125,24 +140,47 @@ class LeagueHeadToHeadStats extends React.Component {
                     dataIsAvailable ?
                     <>
                         <br /><br />
-                        <DoughnutChart
-                            title={`Head-to-head stats - ${dataOfTeam1['team']} vs ${dataOfTeam2['team']}`}
-                            values={
-                                [
-                                    dataOfTeam1["wins"],
-                                    dataOfTeam1["draws"],
-                                    dataOfTeam2["wins"],
-                                ]
-                            }
-                            labels={
-                                [
-                                    `${dataOfTeam1["team"]} wins`,
-                                    `Draws`,
-                                    `${dataOfTeam2["team"]} wins`,
-                                ]
-                            }
-                            colors={ ["#7AA2EC", "#403636", "#47C014"] }
-                        />
+                        <Row>
+                            <Col span={15} style={{marginTop: '3%'}}>
+                                <div style={{marginLeft: '80%'}}>
+                                    <ExportToExcel
+                                        filenameWithoutExtension={title}
+                                        sheetName={title}
+                                        data={H2HStatsData}
+                                        columnInfo={COLUMNS_H2H_STATS}
+                                        columnLabelAccessor="name"
+                                        columnValueAccessor="selector"
+                                    />
+                                </div>
+                                <DataTableComponent
+                                    title={title}
+                                    arrayOfObjects={H2HStatsData}
+                                    columns={COLUMNS_H2H_STATS}
+                                    defaultSortField="team"
+                                    pagination={false}
+                                />
+                            </Col>
+                            <Col span={9}>
+                                <DoughnutChart
+                                    title={title}
+                                    values={
+                                        [
+                                            dataOfTeam1["wins"],
+                                            dataOfTeam1["draws"],
+                                            dataOfTeam2["wins"],
+                                        ]
+                                    }
+                                    labels={
+                                        [
+                                            `${dataOfTeam1["team"]} wins`,
+                                            `Draws`,
+                                            `${dataOfTeam2["team"]} wins`,
+                                        ]
+                                    }
+                                    colors={ ["#7AA2EC", "#403636", "#47C014"] }
+                                />
+                            </Col>
+                        </Row>
                     </>
                     : null
                 }

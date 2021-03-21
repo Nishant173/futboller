@@ -99,3 +99,30 @@ export function dateObjToCleanString(dateObj, includeTime=true) {
     }
     return `${theDateString}`
 }
+
+
+// Returns date string of format: "yyyy-mm-dd"
+export function momentObjToString(momentObj) {
+    let dateObj = new Date(momentObj)
+    let yyyy = `${dateObj.getFullYear()}`
+    let mm = `${dateObj.getMonth() + 1}`
+    let dd = `${dateObj.getDate()}`
+    if (mm.length === 1) {
+      mm = '0' + mm
+    }
+    if (dd.length === 1) {
+      dd = '0' + dd
+    }
+    return `${yyyy}-${mm}-${dd}`
+}
+
+
+// Returns month group string of format: "<year> <fullMonthName>"
+export function momentObjToMonthGroupVerbose(momentObj) {
+    let dateObj = new Date(momentObj)
+    const year = `${dateObj.getFullYear()}`
+    const monthNumber = dateObj.getMonth() + 1
+    const monthNumberToName = getMonthMapper()
+    const monthName = monthNumberToName[monthNumber]
+    return `${year} ${monthName}`
+}

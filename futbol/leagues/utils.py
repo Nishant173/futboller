@@ -1,5 +1,27 @@
 from typing import List
+import datetime
 import pandas as pd
+
+
+def prettify_date_string(date_string: str) -> str:
+    """Takes date string of format "yyyy-mm-dd" and prettifies it"""
+    year, month, day = date_string.split('-')
+    dt_obj = datetime.datetime(year=int(year), month=int(month), day=int(day))
+    date_string_prettified = dt_obj.strftime("%d %B, %Y")
+    return date_string_prettified
+
+
+def date_to_season(date: datetime.datetime) -> str:
+    """
+    Converts date object into string that identifies the football-season associated to said date.
+    Warning: Does not take COVID-19 into consideration.
+    """
+    year, month = date.year, date.month
+    if month >= 7:
+        season = f"{year}-{str(year + 1)[2:]}"
+    else:
+        season = f"{year-1}-{str(year)[2:]}"
+    return season
 
 
 def get_unique_teams(data: pd.DataFrame) -> List[str]:

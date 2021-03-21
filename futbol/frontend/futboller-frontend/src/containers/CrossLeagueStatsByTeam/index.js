@@ -1,15 +1,21 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import { Button, Dropdown, Menu, Row, Col } from 'antd'
+import { SelectOutlined } from '@ant-design/icons'
 
 import * as CrossLeagueStandingsActions from '../../store/actions/CrossLeagueStandingsActions'
 import { DoughnutChart } from '../../components/charts/DoughnutChart'
 import { RadarChart } from '../../components/charts/RadarChart'
 import { Loader } from '../../components/loaders/Loader'
-import TEAM_NAMES from '../../Teams.json'
+import LEAGUE_NAMES from '../../Leagues.json'
+import TEAM_NAMES_BY_LEAGUE from '../../TeamsByLeague.json'
+import { CONTAINER_STYLES } from '../../config'
 
+
+const { SubMenu } = Menu
 
 const DEFAULTS = {
-    teamSelected: TEAM_NAMES[0],
+    teamSelected: 'Bayern Munich',
 }
 
 
@@ -25,8 +31,8 @@ class CrossLeagueStatsByTeam extends React.Component {
 
     updateTeam(event) {
         this.setState({
-            team: event.target.value,
-        })
+            team: event.key,
+        }, this.updateData)
     }
 
     updateData() {
@@ -41,31 +47,37 @@ class CrossLeagueStatsByTeam extends React.Component {
         const { CLSDataByTeam, CLSDataApiStatus } = this.props
         const dataIsAvailable = (Object.keys(CLSDataByTeam).length > 0)
 
+        const teamsMenu = (
+            <Menu>
+                {
+                    LEAGUE_NAMES.map((league) => (
+                        <SubMenu title={league}>
+                            {
+                                TEAM_NAMES_BY_LEAGUE[league].map((team) => (
+                                    <Menu.Item key={team} onClick={this.updateTeam}>
+                                        <p>
+                                            { team }
+                                            &nbsp;
+                                            { this.state.team === team ? <SelectOutlined /> : null }
+                                        </p>
+                                    </Menu.Item>
+                                ))
+                            }
+                        </SubMenu>
+                    ))
+                }
+            </Menu>
+        )
+
         return (
-            <div>
-                <h1>Cross League Stats By Team - Top 5 Leagues</h1>
+            <div style={CONTAINER_STYLES}>
+                <h1>Cross League Stats (by team) - Top 5 Leagues</h1>
                 <br />
 
-                <form>
-                    <select name="cross-league-teams" onChange={this.updateTeam}>
-                        {
-                            TEAM_NAMES.map((team) => (
-                                <option
-                                    selected={team === DEFAULTS.teamSelected ? true : false}
-                                    value={team}
-                                >
-                                    {team}
-                                </option>
-                            ))
-                        }
-                    </select>
-                    <input
-                        type="button"
-                        value="Update"
-                        onClick={this.updateData}
-                    />
-                </form>
-
+                <Dropdown overlay={teamsMenu}>
+                    <Button>{this.state.team}</Button>
+                </Dropdown>
+                
                 {
                     CLSDataApiStatus === 'initiated' ?
                     <Loader />
@@ -76,37 +88,42 @@ class CrossLeagueStatsByTeam extends React.Component {
                    dataIsAvailable ?
                     <>
                         <br /><br />
-                        <RadarChart
-                            title={`${CLSDataByTeam['team']} - CrossLeagueStats - AvgStats`}
-                            values={
-                                [
-                                    CLSDataByTeam["avgPoints"],
-                                    CLSDataByTeam["avgGoalsScored"],
-                                    CLSDataByTeam["winPercent"] / 100,
-                                    CLSDataByTeam["bigWinPercent"] / 100,
-                                    CLSDataByTeam["cleanSheetsPercent"] / 100,
-                                ]
-                            }
-                            labels={ ["AvgPoints", "AvgGoalsScored", "WinRatio", "BigWinRatio", "CleanSheetRatio"] }
-                            color="#6897EC"
-                            scaleTicksMin={0}
-                            scaleTicksMax={
-                                CLSDataByTeam["avgGoalsScored"] > 3 ? CLSDataByTeam["avgGoalsScored"] + 0.2 : 3
-                            }
-                        />
-                        <br /><br />
-                        <DoughnutChart
-                            title={`${CLSDataByTeam.team} - CrossLeagueStats - Wins/Losses/Draws`}
-                            values={
-                                [
-                                    CLSDataByTeam["winPercent"],
-                                    CLSDataByTeam["lossPercent"],
-                                    CLSDataByTeam["drawPercent"],
-                                ]
-                            }
-                            labels={ ["WinPercent", "LossPercent", "DrawPercent"] }
-                            colors={ ["green", "red", "grey"] }
-                        />
+                        <Row>
+                            <Col span={12}>
+                                <RadarChart
+                                    title="Average Stats"
+                                    values={
+                                        [
+                                            CLSDataByTeam["avgPoints"],
+                                            CLSDataByTeam["avgGoalsScored"],
+                                            CLSDataByTeam["winPercent"] / 100,
+                                            CLSDataByTeam["bigWinPercent"] / 100,
+                                            CLSDataByTeam["cleanSheetsPercent"] / 100,
+                                        ]
+                                    }
+                                    labels={ ["AvgPoints", "AvgGoalsScored", "WinRatio", "BigWinRatio", "CleanSheetRatio"] }
+                                    color="#6897EC"
+                                    scaleTicksMin={0}
+                                    scaleTicksMax={
+                                        CLSDataByTeam["avgGoalsScored"] > 3 ? CLSDataByTeam["avgGoalsScored"] + 0.2 : 3
+                                    }
+                                />
+                            </Col>
+                            <Col span={12}>
+                                <DoughnutChart
+                                    title="Wins/Losses/Draws"
+                                    values={
+                                        [
+                                            CLSDataByTeam["winPercent"],
+                                            CLSDataByTeam["lossPercent"],
+                                            CLSDataByTeam["drawPercent"],
+                                        ]
+                                    }
+                                    labels={ ["WinPercent", "LossPercent", "DrawPercent"] }
+                                    colors={ ["green", "red", "grey"] }
+                                />
+                            </Col>
+                        </Row>
                     </>
                     : null
                 }
