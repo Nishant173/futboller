@@ -1,6 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { Card, Statistic, Row, Col } from 'antd'
+import { FlagOutlined } from '@ant-design/icons'
 
 import * as GeneralStatsActions from '../../store/actions/GeneralStatsActions'
 import { Loader } from '../../components/loaders/Loader'
@@ -49,7 +50,7 @@ class Home extends React.Component {
                             </Col>
                         </Row>
                         <br />
-                        <h3>Number of teams over the years</h3>
+                        <h3>Number of teams (over the years)</h3>
                         <Row>
                             <Col span={4}>
                                 <Statistic title="Bundesliga" value={numUniqueTeamsByLeague['Bundesliga']} />
@@ -68,7 +69,7 @@ class Home extends React.Component {
                             </Col>
                         </Row>
                         <br />
-                        <h3>Goals scored per game</h3>
+                        <h3>Goals scored per game (over the years)</h3>
                         <Row>
                             <Col span={4}>
                                 <Statistic title="Bundesliga" value={avgGoalsScoredByLeague['Bundesliga']} />
@@ -87,7 +88,7 @@ class Home extends React.Component {
                             </Col>
                         </Row>
                         <br />
-                        <h3>Goal difference per game</h3>
+                        <h3>Goal difference per game (over the years)</h3>
                         <Row>
                             <Col span={4}>
                                 <Statistic title="Bundesliga" value={avgGoalDifferenceByLeague['Bundesliga']} />
@@ -106,7 +107,7 @@ class Home extends React.Component {
                             </Col>
                         </Row>
                         <br />
-                        <h3>Current season's league leader</h3>
+                        <h3>Current season's league leaders <FlagOutlined /></h3>
                         <Row style={{alignItems: 'center'}}>
                             <Col span={4}>
                                 <Statistic title="Bundesliga" value={currentSeasonLeagueLeaders['Bundesliga']} />

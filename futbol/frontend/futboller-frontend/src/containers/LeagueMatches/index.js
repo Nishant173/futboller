@@ -205,7 +205,12 @@ class LeagueMatches extends React.Component {
                 }
 
                 {
-                    LeagueMatchesDataApiStatus === 'success' && LeagueMatchesData.length === 0 ? "No data available" : null
+                    LeagueMatchesDataApiStatus === 'success' && LeagueMatchesData.length === 0 ?
+                    <>
+                        <br /><br />
+                        <h3>No data available</h3>
+                    </>
+                    : null
                 }
 
                 {
