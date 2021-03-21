@@ -1,15 +1,20 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import { Button, Dropdown, Menu } from 'antd'
+import { SelectOutlined } from '@ant-design/icons'
 
 import * as CrossLeagueStandingsActions from '../../store/actions/CrossLeagueStandingsActions'
 import { DoughnutChart } from '../../components/charts/DoughnutChart'
 import { RadarChart } from '../../components/charts/RadarChart'
 import { Loader } from '../../components/loaders/Loader'
-import TEAM_NAMES from '../../Teams.json'
+import LEAGUE_NAMES from '../../Leagues.json'
+import TEAM_NAMES_BY_LEAGUE from '../../TeamsByLeague.json'
 
+
+const { SubMenu } = Menu
 
 const DEFAULTS = {
-    teamSelected: TEAM_NAMES[0],
+    teamSelected: 'Bayern Munich',
 }
 
 
@@ -25,7 +30,7 @@ class CrossLeagueStatsByTeam extends React.Component {
 
     updateTeam(event) {
         this.setState({
-            team: event.target.value,
+            team: event.key,
         })
     }
 
@@ -41,31 +46,41 @@ class CrossLeagueStatsByTeam extends React.Component {
         const { CLSDataByTeam, CLSDataApiStatus } = this.props
         const dataIsAvailable = (Object.keys(CLSDataByTeam).length > 0)
 
+        const teamsMenu = (
+            <Menu>
+                {
+                    LEAGUE_NAMES.map((league) => (
+                        <SubMenu title={league}>
+                            {
+                                TEAM_NAMES_BY_LEAGUE[league].map((team) => (
+                                    <Menu.Item key={team} onClick={this.updateTeam}>
+                                        <p>
+                                            { team }
+                                            &nbsp;
+                                            { this.state.team === team ? <SelectOutlined /> : null }
+                                        </p>
+                                    </Menu.Item>
+                                ))
+                            }
+                        </SubMenu>
+                    ))
+                }
+            </Menu>
+        )
+
         return (
             <div>
                 <h1>Cross League Stats By Team - Top 5 Leagues</h1>
                 <br />
 
-                <form>
-                    <select name="cross-league-teams" onChange={this.updateTeam}>
-                        {
-                            TEAM_NAMES.map((team) => (
-                                <option
-                                    selected={team === DEFAULTS.teamSelected ? true : false}
-                                    value={team}
-                                >
-                                    {team}
-                                </option>
-                            ))
-                        }
-                    </select>
-                    <input
-                        type="button"
-                        value="Update"
-                        onClick={this.updateData}
-                    />
-                </form>
-
+                <Dropdown overlay={teamsMenu}>
+                    <Button>{this.state.team}</Button>
+                </Dropdown>
+                &nbsp;&nbsp;
+                <Button type="primary" onClick={this.updateData} disabled={false}>
+                    Fetch data
+                </Button>
+                
                 {
                     CLSDataApiStatus === 'initiated' ?
                     <Loader />

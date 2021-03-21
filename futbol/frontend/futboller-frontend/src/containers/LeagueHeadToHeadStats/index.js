@@ -1,11 +1,16 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import { Button, Dropdown, Menu } from 'antd'
+import { SelectOutlined } from '@ant-design/icons'
 
 import * as HeadToHeadStatsActions from '../../store/actions/HeadToHeadStatsActions'
 import { DoughnutChart } from '../../components/charts/DoughnutChart'
 import { Loader } from '../../components/loaders/Loader'
-import TEAM_NAMES from '../../Teams.json'
+import LEAGUE_NAMES from '../../Leagues.json'
+import TEAM_NAMES_BY_LEAGUE from '../../TeamsByLeague.json'
 
+
+const { SubMenu } = Menu
 
 const DEFAULTS = {
     team1: "AC Milan",
@@ -30,13 +35,13 @@ class LeagueHeadToHeadStats extends React.Component {
 
     updateTeam1(event) {
         this.setState({
-            team1: event.target.value,
+            team1: event.key,
         })
     }
 
     updateTeam2(event) {
         this.setState({
-            team2: event.target.value,
+            team2: event.key,
         })
     }
 
@@ -77,43 +82,45 @@ class LeagueHeadToHeadStats extends React.Component {
         const { H2HStatsData, H2HStatsDataApiStatus } = this.props
         const dataIsAvailable = (H2HStatsData.length === 2)
 
+        const teamsMenu = (onClickFunction) => (
+            <Menu>
+                {
+                    LEAGUE_NAMES.map((league) => (
+                        <SubMenu title={league}>
+                            {
+                                TEAM_NAMES_BY_LEAGUE[league].map((team) => (
+                                    <Menu.Item key={team} onClick={onClickFunction}>
+                                        <p>
+                                            { team }
+                                            &nbsp;
+                                            { this.state.team === team ? <SelectOutlined /> : null }
+                                        </p>
+                                    </Menu.Item>
+                                ))
+                            }
+                        </SubMenu>
+                    ))
+                }
+            </Menu>
+        )
+
         return (
             <div>
                 <h1>League head-to-head stats - Top 5 Leagues</h1>
                 <br />
 
                 <h3>Enter matchup</h3>
-                <form>
-                    <select name="team1" onChange={this.updateTeam1}>
-                        {
-                            TEAM_NAMES.map((team) => (
-                                <option
-                                    selected={team === DEFAULTS.team1 ? true : false}
-                                    value={team}
-                                >
-                                    {team}
-                                </option>
-                            ))
-                        }
-                    </select>
-                    <select name="team2" onChange={this.updateTeam2}>
-                        {
-                            TEAM_NAMES.map((team) => (
-                                <option
-                                    selected={team === DEFAULTS.team2 ? true : false}
-                                    value={team}
-                                >
-                                    {team}
-                                </option>
-                            ))
-                        }
-                    </select>
-                    <input
-                        type="button"
-                        value="Update"
-                        onClick={this.updateData}
-                    />
-                </form>
+                <Dropdown overlay={teamsMenu(this.updateTeam1)}>
+                    <Button>{this.state.team1}</Button>
+                </Dropdown>
+                &nbsp;&nbsp;
+                <Dropdown overlay={teamsMenu(this.updateTeam2)}>
+                    <Button>{this.state.team2}</Button>
+                </Dropdown>
+                &nbsp;&nbsp;
+                <Button type="primary" onClick={this.updateData} disabled={false}>
+                    Fetch data
+                </Button>
 
                 {
                     H2HStatsDataApiStatus === 'initiated' ?

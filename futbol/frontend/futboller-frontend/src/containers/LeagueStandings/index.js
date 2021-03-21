@@ -1,5 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import { Button, Dropdown, Menu } from 'antd'
+import { SelectOutlined } from '@ant-design/icons'
 
 import * as LeagueStandingsActions from '../../store/actions/LeagueStandingsActions'
 import { HorizontalBarChart } from '../../components/charts/BarChart'
@@ -57,13 +59,13 @@ class LeagueStandings extends React.Component {
 
     updateLeague(event) {
         this.setState({
-            league: event.target.value,
+            league: event.key,
         })
     }
 
     updateSeason(event) {
         this.setState({
-            season: event.target.value,
+            season: event.key,
         })
     }
 
@@ -108,6 +110,37 @@ class LeagueStandings extends React.Component {
             const leagueAndSeason = `${LeagueStandingsData[0]['league']} (${LeagueStandingsData[0]['season']})`
             titleLeagueStandingsData = `League Standings - ${leagueAndSeason}`
         }
+
+        const leaguesMenu = (
+            <Menu>
+                {
+                    LEAGUE_NAMES.map((league) => (
+                        <Menu.Item key={league} onClick={this.updateLeague}>
+                            <p>
+                                { league }
+                                &nbsp;
+                                { this.state.league === league ? <SelectOutlined /> : null }
+                            </p>
+                        </Menu.Item>
+                    ))
+                }
+            </Menu>
+        )
+        const seasonsMenu = (
+            <Menu>
+                {
+                    SEASON_NAMES.reverse().map((season) => (
+                        <Menu.Item key={season} onClick={this.updateSeason}>
+                            <p>
+                                { season }
+                                &nbsp;
+                                { this.state.season === season ? <SelectOutlined /> : null }
+                            </p>
+                        </Menu.Item>
+                    ))
+                }
+            </Menu>
+        )
         
         return (
             <div>
@@ -115,37 +148,17 @@ class LeagueStandings extends React.Component {
                 <br />
 
                 <h3>Enter league and season</h3>
-                <form>
-                    <select name="league" onChange={this.updateLeague}>
-                        {
-                            LEAGUE_NAMES.map((league) => (
-                                <option
-                                    selected={league === DEFAULTS.league ? true : false}
-                                    value={league}
-                                >
-                                    {league}
-                                </option>
-                            ))
-                        }
-                    </select>
-                    <select name="season" onChange={this.updateSeason}>
-                        {
-                            SEASON_NAMES.map((season) => (
-                                <option
-                                    selected={season === DEFAULTS.season ? true : false}
-                                    value={season}
-                                >
-                                    {season}
-                                </option>
-                            ))
-                        }
-                    </select>
-                    <input
-                        type="button"
-                        value="Update"
-                        onClick={this.updateData}
-                    />
-                </form>
+                <Dropdown overlay={leaguesMenu}>
+                    <Button>{this.state.league}</Button>
+                </Dropdown>
+                &nbsp;&nbsp;
+                <Dropdown overlay={seasonsMenu}>
+                    <Button>{this.state.season}</Button>
+                </Dropdown>
+                &nbsp;&nbsp;
+                <Button type="primary" onClick={this.updateData} disabled={false}>
+                    Fetch data
+                </Button>
 
                 {
                     LeagueStandingsDataApiStatus === 'initiated' ?

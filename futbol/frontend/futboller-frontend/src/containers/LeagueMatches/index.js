@@ -55,13 +55,13 @@ class LeagueMatches extends React.Component {
     }
 
     updateDateRange(dateRange) {
-        const value = [ ...dateRange ]
-        const startDate = value[0]
-        const endDate = value[1]
-        this.setState({
-            startDate: momentObjToString(startDate),
-            endDate: momentObjToString(endDate),
-        })
+        if (dateRange !== null) {
+            const [startDate, endDate] = [ ...dateRange ]
+            this.setState({
+                startDate: momentObjToString(startDate),
+                endDate: momentObjToString(endDate),
+            })
+        }
     }
 
     updateMonthGroupVerbose(monthGroupDateObj) {
@@ -179,15 +179,15 @@ class LeagueMatches extends React.Component {
                 <RangePicker onChange={this.updateDateRange} />
                 &nbsp;&nbsp;
                 <Dropdown overlay={leaguesMenu}>
-                    <Button>League</Button>
+                    <Button>{this.state.league === "" ? "League" : this.state.league}</Button>
                 </Dropdown>
                 &nbsp;&nbsp;
                 <Dropdown overlay={seasonsMenu}>
-                    <Button>Season</Button>
+                    <Button>{this.state.season === "" ? "Season" : this.state.season}</Button>
                 </Dropdown>
                 &nbsp;&nbsp;
                 <Dropdown overlay={teamsMenu}>
-                    <Button>Team</Button>
+                    <Button>{this.state.team === "" ? "Team" : this.state.team}</Button>
                 </Dropdown>
                 &nbsp;&nbsp;
                 <DatePicker picker="month" onChange={this.updateMonthGroupVerbose} />

@@ -1,5 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import { Button, Dropdown, Menu } from 'antd'
+import { SelectOutlined } from '@ant-design/icons'
 
 import * as GoalRelatedStatsActions from '../../store/actions/GoalRelatedStatsActions'
 import { MultiLineChart, getMultiLineChartDatasets } from '../../components/charts/LineChart'
@@ -43,13 +45,13 @@ class GoalRelatedStatsOverTime extends React.Component {
 
     updateLeagueChoice(event) {
         this.setState({
-            leagueChoice: event.target.value,
+            leagueChoice: event.key,
         })
     }
 
     updateStatChoiceVerbose(event) {
         this.setState({
-            statChoiceVerbose: event.target.value,
+            statChoiceVerbose: event.key,
         })
     }
 
@@ -111,37 +113,49 @@ class GoalRelatedStatsOverTime extends React.Component {
         const chartAxesAndStatChoiceExists = axesLimitsAreAvailable && statChoiceIsAvailable
         const dataIsAvailable = (Object.keys(GRSData).length === LEAGUE_NAMES.length)
 
+        const leaguesMenu = (
+            <Menu>
+                {
+                    LEAGUE_NAMES.map((league) => (
+                        <Menu.Item key={league} onClick={this.updateLeagueChoice}>
+                            <p>
+                                { league }
+                                &nbsp;
+                                { this.state.leagueChoice === league ? <SelectOutlined /> : null }
+                            </p>
+                        </Menu.Item>
+                    ))
+                }
+            </Menu>
+        )
+        const statsMenu = (
+            <Menu>
+                {
+                    STATS_AVAILABLE_VERBOSE.map((statAvailableVerbose) => (
+                        <Menu.Item key={statAvailableVerbose} onClick={this.updateStatChoiceVerbose}>
+                            <p>
+                                { statAvailableVerbose }
+                                &nbsp;
+                                { this.state.statChoiceVerbose === statAvailableVerbose ? <SelectOutlined /> : null }
+                            </p>
+                        </Menu.Item>
+                    ))
+                }
+            </Menu>
+        )
+
         return (
             <div>
-                <h1>Goal related stats over time (by leagues) - Top 5 Leagues</h1>
+                <h1>Goal related stats (over time) - Top 5 Leagues</h1>
                 <br />
 
-                <form>
-                    <select onChange={this.updateLeagueChoice}>
-                        {
-                            LEAGUE_NAMES.map((league) => (
-                                <option
-                                    selected={league === DEFAULTS.league ? true : false}
-                                    value={league}
-                                >
-                                    {league}
-                                </option>
-                            ))
-                        }
-                    </select>
-                    <select onChange={this.updateStatChoiceVerbose}>
-                        {
-                            STATS_AVAILABLE_VERBOSE.map((StatAvailableVerbose) => (
-                                <option
-                                    selected={StatAvailableVerbose === DEFAULTS.statNameVerbose ? true : false}
-                                    value={StatAvailableVerbose}
-                                >
-                                    {StatAvailableVerbose}
-                                </option>
-                            ))
-                        }
-                    </select>
-                </form>
+                <Dropdown overlay={leaguesMenu}>
+                    <Button>{this.state.leagueChoice}</Button>
+                </Dropdown>
+                &nbsp;&nbsp;
+                <Dropdown overlay={statsMenu}>
+                    <Button>{this.state.statChoiceVerbose}</Button>
+                </Dropdown>
 
                 {
                     GRSDataApiStatus === 'initiated' ?
