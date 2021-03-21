@@ -6,6 +6,7 @@ import 'antd/dist/antd.css'
 
 import { SITE_NAME } from './../../config'
 import Home from './../../containers/HomePage'
+import LeagueMatches from './../../containers/LeagueMatches'
 import LeagueStandings from './../../containers/LeagueStandings'
 import LeagueHeadToHeadStats from './../../containers/LeagueHeadToHeadStats'
 import PartitionedStatsByTeam from './../../containers/PartitionedStatsByTeam'
@@ -49,6 +50,11 @@ export default class Navbar extends React.Component {
 
                     <SubMenu onClick={this.updateSelectedPage} key="submenu-leagues" title="Leagues">
                         <Menu.ItemGroup onClick={this.updateSelectedPage} title="By league">
+                            <Menu.Item onClick={this.updateSelectedPage} key="league-matches">
+                                <Link key="league-matches" to="/league-matches">
+                                    League Matches
+                                </Link>
+                            </Menu.Item>
                             <Menu.Item onClick={this.updateSelectedPage} key="league-standings">
                                 <Link key="league-standings" to="/league-standings">
                                     League Standings
@@ -88,6 +94,7 @@ export default class Navbar extends React.Component {
 
                 <Switch>
                     <Route exact={true} path="/" component={Home} />
+                    <Route exact={true} path="/league-matches" component={LeagueMatches} />
                     <Route exact={true} path="/league-standings" component={LeagueStandings} />
                     <Route exact={true} path="/league-h2h-stats" component={LeagueHeadToHeadStats} />
                     <Route exact={true} path="/partitioned-stats" component={PartitionedStatsByTeam} />
