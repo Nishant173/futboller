@@ -106,6 +106,29 @@ def get_date_limits_of_league_matches() -> Dict[str, str]:
     return dict_obj
 
 
+def get_teams_by_league() -> Dict[str, List[str]]:
+    """Returns dictionary having keys = league names, and values = list of teams for the respective league"""
+    query = f"""
+    SELECT team, league
+    FROM {config.TBL_CROSS_LEAGUE_STANDINGS}
+    """
+    df = _get_data_from_sqlite(query=query)
+    if df.empty:
+        dict_obj = {
+            'Bundesliga': [],
+            'EPL': [],
+            'La Liga': [],
+            'Ligue 1': [],
+            'Serie A': [],
+        }
+        return dict_obj
+    
+    dict_teams_by_league = {}
+    for league, df_by_league in df.groupby(by='league'):
+        dict_teams_by_league[league] = df_by_league['team'].sort_values(ascending=True).unique().tolist()
+    return dict_teams_by_league
+
+
 def get_teams() -> List[str]:
     """Returns list of teams from `leagues_leaguematch` table"""
     query = f"""

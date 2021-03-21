@@ -46,6 +46,12 @@ def get_teams(request):
 
 
 @api_view(['GET'])
+def get_teams_by_league(request):
+    dictionary_teams_by_league = queries.get_teams_by_league()
+    return Response(data=dictionary_teams_by_league, status=status.HTTP_200_OK)
+
+
+@api_view(['GET'])
 def get_leagues(request):
     leagues = queries.get_leagues()
     return Response(data=leagues, status=status.HTTP_200_OK)
