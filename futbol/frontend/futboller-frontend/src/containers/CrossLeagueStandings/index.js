@@ -82,7 +82,6 @@ class CrossLeagueStandings extends React.Component {
                 {
                     dataIsAvailable ?
                     <>
-                        <br /><br />
                         <div style={EXCEL_EXPORTER_STYLES}>
                             <ExportToExcel
                                 filenameWithoutExtension="Cross League Standings"

@@ -10,7 +10,7 @@ export const COLUMNS_CROSS_LEAGUE_TABLE = [
         name: 'Team',
         sortable: true,
         left: true,
-        width: 'auto',
+        width: 'fixed',
     },
     {
         selector: 'gamesPlayed',

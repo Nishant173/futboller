@@ -10,7 +10,7 @@ export const COLUMNS_PARTITIONED_STATS_BY_TEAM = [
         name: 'Team',
         sortable: true,
         left: true,
-        // width: 'auto',
+        width: 'fixed',
     },
     {
         selector: 'gamesPlayed',

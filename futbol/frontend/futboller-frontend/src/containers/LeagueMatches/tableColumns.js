@@ -4,14 +4,14 @@ export const COLUMNS_LEAGUE_MATCHES = [
         name: 'HomeTeam',
         sortable: true,
         left: true,
-        width: 'auto',
+        width: 'fixed',
     },
     {
         selector: 'awayTeam',
         name: 'AwayTeam',
         sortable: true,
         left: true,
-        width: 'auto',
+        width: 'fixed',
     },
     {
         selector: 'homeGoals',
