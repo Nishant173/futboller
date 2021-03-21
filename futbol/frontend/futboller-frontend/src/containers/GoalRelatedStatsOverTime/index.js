@@ -6,7 +6,10 @@ import { SelectOutlined } from '@ant-design/icons'
 import * as GoalRelatedStatsActions from '../../store/actions/GoalRelatedStatsActions'
 import { MultiLineChart, getMultiLineChartDatasets } from '../../components/charts/LineChart'
 import { Loader } from '../../components/loaders/Loader'
-import { LEAGUE_COLOR_MAPPER } from '../../config'
+import {
+    LEAGUE_COLOR_MAPPER,
+    CONTAINER_STYLES,
+} from '../../config'
 import LEAGUE_NAMES from '../../Leagues.json'
 import {
     ceil,
@@ -145,7 +148,7 @@ class GoalRelatedStatsOverTime extends React.Component {
         )
 
         return (
-            <div>
+            <div style={CONTAINER_STYLES}>
                 <h1>Goal related stats (over time) - Top 5 Leagues</h1>
                 <br />
 

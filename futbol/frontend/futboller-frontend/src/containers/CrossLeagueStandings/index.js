@@ -14,6 +14,7 @@ import {
     maxOfAbsValues,
 } from '../../jsUtils/general'
 import { COLUMNS_CROSS_LEAGUE_TABLE } from './tableColumns'
+import { CONTAINER_STYLES, EXCEL_EXPORTER_STYLES } from '../../config'
 
 
 function sliceByPosition(array, start, stop) {
@@ -68,7 +69,7 @@ class CrossLeagueStandings extends React.Component {
         const dataIsAvailable = (CLSData.length > 0 && Object.keys(wrangledDataObj).length > 0)
 
         return (
-            <div>
+            <div style={CONTAINER_STYLES}>
                 <h1>Cross League Standings - Top 5 Leagues</h1>
                 <br />
 
@@ -82,14 +83,16 @@ class CrossLeagueStandings extends React.Component {
                     dataIsAvailable ?
                     <>
                         <br /><br />
-                        <ExportToExcel
-                            filenameWithoutExtension="Cross League Standings"
-                            sheetName="Cross League Standings"
-                            data={CLSData}
-                            columnInfo={COLUMNS_CROSS_LEAGUE_TABLE}
-                            columnLabelAccessor="name"
-                            columnValueAccessor="selector"
-                        />
+                        <div style={EXCEL_EXPORTER_STYLES}>
+                            <ExportToExcel
+                                filenameWithoutExtension="Cross League Standings"
+                                sheetName="Cross League Standings"
+                                data={CLSData}
+                                columnInfo={COLUMNS_CROSS_LEAGUE_TABLE}
+                                columnLabelAccessor="name"
+                                columnValueAccessor="selector"
+                            />
+                        </div>
                         <DataTableComponent 
                             title="Cross League Standings"
                             arrayOfObjects={CLSData}

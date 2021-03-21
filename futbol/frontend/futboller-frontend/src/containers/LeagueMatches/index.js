@@ -8,6 +8,7 @@ import { DataTableComponent } from '../../components/tables/Table'
 import { ExportToExcel } from '../../components/tableExporters'
 import { Loader } from '../../components/loaders/Loader'
 import { COLUMNS_LEAGUE_MATCHES } from './tableColumns'
+import { CONTAINER_STYLES, EXCEL_EXPORTER_STYLES } from '../../config'
 
 import {
     momentObjToString,
@@ -172,7 +173,7 @@ class LeagueMatches extends React.Component {
         )
 
         return (
-            <div>
+            <div style={CONTAINER_STYLES}>
                 <h1>League Matches - Top 5 Leagues</h1>
                 <br />
 
@@ -217,14 +218,16 @@ class LeagueMatches extends React.Component {
                     dataIsAvailable ?
                     <>
                         <br /><br />
-                        <ExportToExcel
-                            filenameWithoutExtension={titleLeagueMatchesData}
-                            sheetName={titleLeagueMatchesData}
-                            data={LeagueMatchesData}
-                            columnInfo={COLUMNS_LEAGUE_MATCHES}
-                            columnLabelAccessor="name"
-                            columnValueAccessor="selector"
-                        />
+                        <div style={EXCEL_EXPORTER_STYLES}>
+                            <ExportToExcel
+                                filenameWithoutExtension={titleLeagueMatchesData}
+                                sheetName={titleLeagueMatchesData}
+                                data={LeagueMatchesData}
+                                columnInfo={COLUMNS_LEAGUE_MATCHES}
+                                columnLabelAccessor="name"
+                                columnValueAccessor="selector"
+                            />
+                        </div>
                         <DataTableComponent
                             title={titleLeagueMatchesData}
                             arrayOfObjects={LeagueMatchesData}

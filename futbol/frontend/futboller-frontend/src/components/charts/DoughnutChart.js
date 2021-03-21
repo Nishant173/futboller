@@ -9,6 +9,8 @@ export function DoughnutChart({
         values,
         labels,
         colors=generateRandomHexCodes(values.length),
+        height=undefined,
+        width=undefined,
     }) {
     
     const data = {
@@ -34,7 +36,7 @@ export function DoughnutChart({
     return (
         <>
             <h2>{title}</h2>
-            <Doughnut data={data} options={options} />
+            <Doughnut data={data} options={options} height={height} width={width} />
         </>
     )
 }

@@ -9,6 +9,7 @@ import { Loader } from '../../components/loaders/Loader'
 import { DataTableComponent } from '../../components/tables/Table'
 import { ExportToExcel } from '../../components/tableExporters'
 import { getValuesByKey } from '../../jsUtils/general'
+import { CONTAINER_STYLES, EXCEL_EXPORTER_STYLES } from '../../config'
 import { COLUMNS_PARTITIONED_STATS_BY_TEAM } from './tableColumns'
 
 import LEAGUE_NAMES from '../../Leagues.json'
@@ -105,8 +106,8 @@ class PartitionedStatsByTeam extends React.Component {
         )
         
         return (
-            <div>
-                <h1>Partitioned Stats By Team - Top 5 Leagues</h1>
+            <div style={CONTAINER_STYLES}>
+                <h1>Partitioned Stats (by team) - Top 5 Leagues</h1>
                 <br />
 
                 <Dropdown overlay={teamsMenu}>
@@ -127,14 +128,16 @@ class PartitionedStatsByTeam extends React.Component {
                     dataIsAvailable ?
                     <>
                         <br /><br />
-                        <ExportToExcel
-                            filenameWithoutExtension={titlePartitionedStats}
-                            sheetName={titlePartitionedStats}
-                            data={PartitionedStats}
-                            columnInfo={COLUMNS_PARTITIONED_STATS_BY_TEAM}
-                            columnLabelAccessor="name"
-                            columnValueAccessor="selector"
-                        />
+                        <div style={EXCEL_EXPORTER_STYLES}>
+                            <ExportToExcel
+                                filenameWithoutExtension={titlePartitionedStats}
+                                sheetName={titlePartitionedStats}
+                                data={PartitionedStats}
+                                columnInfo={COLUMNS_PARTITIONED_STATS_BY_TEAM}
+                                columnLabelAccessor="name"
+                                columnValueAccessor="selector"
+                            />
+                        </div>
                         <DataTableComponent 
                             title={titlePartitionedStats}
                             arrayOfObjects={PartitionedStats}

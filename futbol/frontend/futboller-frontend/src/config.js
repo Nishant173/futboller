@@ -16,3 +16,12 @@ export const LEAGUE_COLOR_MAPPER = {
     "Ligue 1": "#A309CC",
     "Serie A": "#EFF214",
 }
+
+export const CONTAINER_STYLES = {
+    paddingLeft: '5%',
+    paddingRight: '5%',
+}
+
+export const EXCEL_EXPORTER_STYLES = {
+    marginLeft: '90%',
+}

@@ -1,5 +1,6 @@
 import React from 'react'
 import ReactExport from 'react-export-excel'
+import { Button } from 'antd'
 import { DownloadOutlined } from '@ant-design/icons'
 
 const ExcelFile = ReactExport.ExcelFile
@@ -7,22 +8,22 @@ const ExcelSheet = ReactExport.ExcelFile.ExcelSheet
 const ExcelColumn = ReactExport.ExcelFile.ExcelColumn
 
 
-function DownloadIcon() {
-    return (
-        <DownloadOutlined
-            className="download-btn nc-icon nc-settings-gear-65 x2 icon_color"
-            style={
-                {
-                    fontSize: 31,
-                    color: "#83868d",
-                    marginRight: "5px",
-                    marginLeft: "9px",
-                    cursor: "pointer",
-                }
-            }
-        />
-    )
-}
+// function DownloadIcon() {
+//     return (
+//         <DownloadOutlined
+//             className="download-btn nc-icon nc-settings-gear-65 x2 icon_color"
+//             style={
+//                 {
+//                     fontSize: 31,
+//                     color: "#83868d",
+//                     marginRight: "5px",
+//                     marginLeft: "9px",
+//                     cursor: "pointer",
+//                 }
+//             }
+//         />
+//     )
+// }
 
 
 export function ExportToExcel({
@@ -35,7 +36,11 @@ export function ExportToExcel({
     }) {
     return (
         <ExcelFile
-            element={<DownloadIcon />}
+            element={
+                <Button type="primary">
+                    Download <DownloadOutlined />
+                </Button>
+            }
             filename={filenameWithoutExtension}
             fileExtension="xlsx"
         >

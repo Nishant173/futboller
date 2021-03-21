@@ -10,6 +10,7 @@ import { ScatterChart } from '../../components/charts/ScatterChart'
 import { Loader } from '../../components/loaders/Loader'
 import { DataTableComponent } from '../../components/tables/Table'
 import { ExportToExcel } from '../../components/tableExporters'
+import { CONTAINER_STYLES, EXCEL_EXPORTER_STYLES } from '../../config'
 import LEAGUE_NAMES from '../../Leagues.json'
 import SEASON_NAMES from '../../Seasons.json'
 import {
@@ -143,7 +144,7 @@ class LeagueStandings extends React.Component {
         )
         
         return (
-            <div>
+            <div style={CONTAINER_STYLES}>
                 <h1>League Standings - Top 5 Leagues</h1>
                 <br />
 
@@ -170,14 +171,16 @@ class LeagueStandings extends React.Component {
                     dataIsAvailable ?
                     <>
                         <br /><br />
-                        <ExportToExcel
-                            filenameWithoutExtension={titleLeagueStandingsData}
-                            sheetName={titleLeagueStandingsData}
-                            data={LeagueStandingsData}
-                            columnInfo={COLUMNS_LEAGUE_TABLE}
-                            columnLabelAccessor="name"
-                            columnValueAccessor="selector"
-                        />
+                        <div style={EXCEL_EXPORTER_STYLES}>
+                            <ExportToExcel
+                                filenameWithoutExtension={titleLeagueStandingsData}
+                                sheetName={titleLeagueStandingsData}
+                                data={LeagueStandingsData}
+                                columnInfo={COLUMNS_LEAGUE_TABLE}
+                                columnLabelAccessor="name"
+                                columnValueAccessor="selector"
+                            />
+                        </div>
                         <DataTableComponent
                             title={titleLeagueStandingsData}
                             arrayOfObjects={LeagueStandingsData}

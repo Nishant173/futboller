@@ -1,13 +1,17 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { Button, Dropdown, Menu } from 'antd'
+import { Button, Dropdown, Menu, Row, Col } from 'antd'
 import { SelectOutlined } from '@ant-design/icons'
 
 import * as HeadToHeadStatsActions from '../../store/actions/HeadToHeadStatsActions'
+import { DataTableComponent } from '../../components/tables/Table'
 import { DoughnutChart } from '../../components/charts/DoughnutChart'
 import { Loader } from '../../components/loaders/Loader'
 import LEAGUE_NAMES from '../../Leagues.json'
 import TEAM_NAMES_BY_LEAGUE from '../../TeamsByLeague.json'
+import { CONTAINER_STYLES } from '../../config'
+import { COLUMNS_H2H_STATS } from './tableColumns'
+import { ExportToExcel } from '../../components/tableExporters'
 
 
 const { SubMenu } = Menu
@@ -81,6 +85,10 @@ class LeagueHeadToHeadStats extends React.Component {
         const { dataOfTeam1, dataOfTeam2 } = this.state
         const { H2HStatsData, H2HStatsDataApiStatus } = this.props
         const dataIsAvailable = (H2HStatsData.length === 2)
+        let title = "Head-to-head stats"
+        if (dataIsAvailable) {
+            title += ` (${H2HStatsData[0]['team']} vs ${H2HStatsData[1]['team']})`
+        }
 
         const teamsMenu = (onClickFunction) => (
             <Menu>
@@ -105,7 +113,7 @@ class LeagueHeadToHeadStats extends React.Component {
         )
 
         return (
-            <div>
+            <div style={CONTAINER_STYLES}>
                 <h1>League head-to-head stats - Top 5 Leagues</h1>
                 <br />
 
@@ -132,24 +140,47 @@ class LeagueHeadToHeadStats extends React.Component {
                     dataIsAvailable ?
                     <>
                         <br /><br />
-                        <DoughnutChart
-                            title={`Head-to-head stats - ${dataOfTeam1['team']} vs ${dataOfTeam2['team']}`}
-                            values={
-                                [
-                                    dataOfTeam1["wins"],
-                                    dataOfTeam1["draws"],
-                                    dataOfTeam2["wins"],
-                                ]
-                            }
-                            labels={
-                                [
-                                    `${dataOfTeam1["team"]} wins`,
-                                    `Draws`,
-                                    `${dataOfTeam2["team"]} wins`,
-                                ]
-                            }
-                            colors={ ["#7AA2EC", "#403636", "#47C014"] }
-                        />
+                        <Row>
+                            <Col span={15} style={{marginTop: '3%'}}>
+                                <div style={{marginLeft: '80%'}}>
+                                    <ExportToExcel
+                                        filenameWithoutExtension={title}
+                                        sheetName={title}
+                                        data={H2HStatsData}
+                                        columnInfo={COLUMNS_H2H_STATS}
+                                        columnLabelAccessor="name"
+                                        columnValueAccessor="selector"
+                                    />
+                                </div>
+                                <DataTableComponent
+                                    title={title}
+                                    arrayOfObjects={H2HStatsData}
+                                    columns={COLUMNS_H2H_STATS}
+                                    defaultSortField="team"
+                                    pagination={false}
+                                />
+                            </Col>
+                            <Col span={9}>
+                                <DoughnutChart
+                                    title={title}
+                                    values={
+                                        [
+                                            dataOfTeam1["wins"],
+                                            dataOfTeam1["draws"],
+                                            dataOfTeam2["wins"],
+                                        ]
+                                    }
+                                    labels={
+                                        [
+                                            `${dataOfTeam1["team"]} wins`,
+                                            `Draws`,
+                                            `${dataOfTeam2["team"]} wins`,
+                                        ]
+                                    }
+                                    colors={ ["#7AA2EC", "#403636", "#47C014"] }
+                                />
+                            </Col>
+                        </Row>
                     </>
                     : null
                 }
