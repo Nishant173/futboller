@@ -1,13 +1,39 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { Card, Statistic, Row, Col } from 'antd'
-import { FlagOutlined } from '@ant-design/icons'
+import { Card, Statistic, Row, Col, Button, Dropdown, Menu } from 'antd'
+import { FlagOutlined, SelectOutlined } from '@ant-design/icons'
 
 import * as GeneralStatsActions from '../../store/actions/GeneralStatsActions'
+import { MultiLineChart, getMultiLineChartDatasets } from '../../components/charts/LineChart'
+import { DataTableComponent } from '../../components/tables/Table'
+import { ExportToExcel } from '../../components/tableExporters'
 import { Loader } from '../../components/loaders/Loader'
+import { CONTAINER_STYLES, EXCEL_EXPORTER_STYLES } from '../../config'
+import { COLUMNS_LEAGUE_TABLE } from '../LeagueStandings/tableColumns'
+import LEAGUE_NAMES from '../../Leagues.json'
+import { arange, getValuesByKey } from '../../jsUtils/general'
+import { getMaxLimitCeiledBy10 } from '../LeagueStandings'
+
+
+const DEFAULTS = {
+    league: 'EPL',
+}
 
 
 class Home extends React.Component {
+    constructor(props) {
+        super(props)
+        this.state = {
+            league: DEFAULTS.league, // League selected to show current season's league standings
+        }
+        this.updateLeague = this.updateLeague.bind(this)
+    }
+
+    updateLeague(event) {
+        this.setState({
+            league: event.key,
+        })
+    }
     
     updateData() {
         this.props.getGeneralStatsData()
@@ -24,19 +50,39 @@ class Home extends React.Component {
         let avgGoalsScoredByLeague = {}
         let avgGoalDifferenceByLeague = {}
         let currentSeasonLeagueLeaders = {}
+        let currentSeasonLeagueStandings = {}
+        let titleCurrentSeasonLeagueStandings = ""
         if (dataIsAvailable) {
             numUniqueTeamsByLeague = GeneralStatsData['numUniqueTeamsByLeague']
             avgGoalsScoredByLeague = GeneralStatsData['avgGoalsScoredByLeague']
             avgGoalDifferenceByLeague = GeneralStatsData['avgGoalDifferenceByLeague']
             currentSeasonLeagueLeaders = GeneralStatsData['currentSeasonLeagueLeaders']
+            currentSeasonLeagueStandings = GeneralStatsData['currentSeasonLeagueStandings']
+            titleCurrentSeasonLeagueStandings = `Current season's league standings - ${this.state.league}`
         }
+
+        const leaguesMenu = (
+            <Menu>
+                {
+                    LEAGUE_NAMES.map((league) => (
+                        <Menu.Item key={league} onClick={this.updateLeague}>
+                            <p>
+                                { league }
+                                &nbsp;
+                                { this.state.league === league ? <SelectOutlined /> : null }
+                            </p>
+                        </Menu.Item>
+                    ))
+                }
+            </Menu>
+        )
 
         return (
             <Card>
                 { GeneralStatsDataApiStatus === 'initiated' ? <Loader /> : null }
                 {
                     dataIsAvailable ?
-                    <>
+                    <div style={CONTAINER_STYLES}>
                         <h3>General stats</h3>
                         <Row>
                             <Col span={8}>
@@ -125,7 +171,54 @@ class Home extends React.Component {
                                 <Statistic title="Serie A" value={currentSeasonLeagueLeaders['Serie A']} />
                             </Col>
                         </Row>
-                    </>
+
+                        <br /><br /><br /><br /><br />
+
+                        <Dropdown overlay={leaguesMenu}>
+                            <Button>{this.state.league === "" ? "League" : this.state.league}</Button>
+                        </Dropdown>
+                        <div style={EXCEL_EXPORTER_STYLES}>
+                            <ExportToExcel
+                                filenameWithoutExtension={titleCurrentSeasonLeagueStandings}
+                                sheetName={titleCurrentSeasonLeagueStandings}
+                                data={currentSeasonLeagueStandings[this.state.league]}
+                                columnInfo={COLUMNS_LEAGUE_TABLE}
+                                columnLabelAccessor="name"
+                                columnValueAccessor="selector"
+                            />
+                        </div>
+                        <DataTableComponent
+                            title={titleCurrentSeasonLeagueStandings}
+                            arrayOfObjects={currentSeasonLeagueStandings[this.state.league]}
+                            columns={COLUMNS_LEAGUE_TABLE}
+                            defaultSortField="position"
+                            pagination={true}
+                        />
+
+                        <br /><br /><br /><br /><br />
+                        
+                        <MultiLineChart
+                            title={`Title race - ${this.state.league}`}
+                            xLabel="Matchday"
+                            yLabel="Points (Cumulative)"
+                            xTicks={
+                                arange(0, currentSeasonLeagueStandings[this.state.league][0]['cumulativePoints'].length - 1)
+                            }
+                            datasets={
+                                getMultiLineChartDatasets(
+                                    getValuesByKey(currentSeasonLeagueStandings[this.state.league], 'team'),
+                                    getValuesByKey(currentSeasonLeagueStandings[this.state.league], 'cumulativePoints'),
+                                )
+                            }
+                            datasetsSlicer={[1, 8]} // For top 8 teams
+                            yLow={0}
+                            yHigh={
+                                getMaxLimitCeiledBy10(
+                                    getValuesByKey(currentSeasonLeagueStandings[this.state.league], 'points')
+                                )
+                            }
+                        />
+                    </div>
                     : null
                 }
             </Card>

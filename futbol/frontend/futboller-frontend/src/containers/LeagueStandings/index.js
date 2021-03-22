@@ -30,14 +30,14 @@ const DEFAULTS = {
 }
 
 
-function getMaxLimitCeiledBy10(arrayOfNumbers) {
+export function getMaxLimitCeiledBy10(arrayOfNumbers) {
     const maxOfNumbers = max(arrayOfNumbers)
     const maxLimit = ceilByClosestMultiple(maxOfNumbers, 10)
     return maxLimit
 }
 
 
-function getMaxAbsLimitCeiledBy10(arrayOfNumbers) {
+export function getMaxAbsLimitCeiledBy10(arrayOfNumbers) {
     const maxOfAbsNumbers = maxOfAbsValues(arrayOfNumbers)
     const maxAbsLimit = ceilByClosestMultiple(maxOfAbsNumbers, 10)
     return maxAbsLimit

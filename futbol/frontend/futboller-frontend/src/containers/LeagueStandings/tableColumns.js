@@ -11,6 +11,7 @@ export const COLUMNS_LEAGUE_TABLE = [
         sortable: true,
         left: true,
         width: 'fixed',
+        grow: 1.6,
     },
     {
         selector: 'gamesPlayed',
