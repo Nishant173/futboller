@@ -21,6 +21,13 @@ def get_general_stats(request):
     dict_num_unique_teams_by_league = queries.get_num_unique_teams_by_league()
     dict_grs_by_league = queries.get_goal_related_stats_by_league()
     dict_current_season_league_leaders = queries.get_current_season_league_leaders()
+    # Current season's league standings
+    df_csls = queries.get_current_season_league_standings()
+    df_csls['cumulative_points'] = df_csls['cumulative_points'].apply(listify_string_of_nums)
+    df_csls['cumulative_goal_difference'] = df_csls['cumulative_goal_difference'].apply(listify_string_of_nums)
+    df_csls = switch_column_casing(data=df_csls, func=sc2lcc)
+    dict_csls = wrangler.reformat_current_season_league_standings(data=df_csls)
+    
     dictionary_general_stats = {
         'num_league_matches_in_db': num_league_matches_in_db,
         'date_of_first_collected_record': dict_date_limits_of_matches['first_available_date'],
@@ -29,6 +36,7 @@ def get_general_stats(request):
         'avg_goals_scored_by_league': dict_grs_by_league['avg_goals_scored'],
         'avg_goal_difference_by_league': dict_grs_by_league['avg_goal_difference'],
         'current_season_league_leaders': dict_current_season_league_leaders,
+        'current_season_league_standings': dict_csls,
     }
     dictionary_general_stats_camel_cased = {}
     for key, value in dictionary_general_stats.items():

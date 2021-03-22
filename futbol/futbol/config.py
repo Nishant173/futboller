@@ -9,3 +9,4 @@ TBL_LEAGUE_MATCHES = "leagues_leaguematch"
 TBL_LEAGUE_STANDINGS = "leagues_leaguestandings"
 TBL_CROSS_LEAGUE_STANDINGS = "leagues_crossleaguestandings"
 TBL_GOAL_RELATED_STATS = "leagues_goalrelatedstats"
+CURRENT_SEASON = '2020-21'

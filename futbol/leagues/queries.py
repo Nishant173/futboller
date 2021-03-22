@@ -1,14 +1,13 @@
 from typing import Dict, List, Union
-import datetime
 import pandas as pd
 import sqlite3
 
 from futbol import config
 from .utils import (
-    date_to_season,
     get_unique_teams,
     prettify_date_string,
 )
+from py_utils.data_analysis.transform import drop_columns_if_exists
 
 
 def _get_data_from_sqlite(query: str) -> Union[pd.DataFrame, pd.Series]:
@@ -16,6 +15,18 @@ def _get_data_from_sqlite(query: str) -> Union[pd.DataFrame, pd.Series]:
     connection = sqlite3.connect(database=config.DB_FILEPATH)
     df = pd.read_sql(sql=query, con=connection)
     connection.close()
+    return df
+
+
+def get_current_season_league_standings() -> pd.DataFrame:
+    """Returns DataFrame of current season's league standings (for all leagues)"""
+    query = f"""
+    SELECT *
+    FROM {config.TBL_LEAGUE_STANDINGS}
+    WHERE season = '{config.CURRENT_SEASON}'
+    """
+    df = _get_data_from_sqlite(query=query)
+    df = drop_columns_if_exists(data=df, columns=['id'])
     return df
 
 
@@ -68,12 +79,11 @@ def get_goal_related_stats_by_league() -> Dict[str, Dict[str, Union[int, float]]
 
 def get_current_season_league_leaders() -> Dict[str, str]:
     """Returns dictionary having keys = league names, and values = league leaders"""
-    current_season = date_to_season(date=datetime.datetime.now())
     query = f"""
     SELECT team, league
     FROM {config.TBL_LEAGUE_STANDINGS}
     WHERE position = 1
-    AND season = '{current_season}'
+    AND season = '{config.CURRENT_SEASON}'
     """
     df = _get_data_from_sqlite(query=query)
     if df.empty:

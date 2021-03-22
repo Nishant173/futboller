@@ -157,3 +157,16 @@ def reformat_goal_related_stats(data: pd.DataFrame) -> Dict[str, GoalRelatedStat
     for league, df_by_league in data.groupby(by='league'):
         dictionary_goal_related_stats[league] = dataframe_to_list(data=df_by_league)
     return dictionary_goal_related_stats
+
+
+def reformat_current_season_league_standings(data: pd.DataFrame) -> Dict[str, List]:
+    """
+    Takes DataFrame of current season's league standings (for all leagues).
+    Returns dictionary having keys = league names, and values = list of current season's league standings
+    for the respective league.
+    """
+    dict_current_season_league_standings = {}
+    for league, df_temp in data.groupby(by='league'):
+        df_by_league = df_temp.sort_values(by='position', ascending=True, ignore_index=True)
+        dict_current_season_league_standings[league] = dataframe_to_list(data=df_by_league)
+    return dict_current_season_league_standings
