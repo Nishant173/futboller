@@ -8,11 +8,16 @@ import { MultiLineChart, getMultiLineChartDatasets } from '../../components/char
 import { DataTableComponent } from '../../components/tables/Table'
 import { ExportToExcel } from '../../components/tableExporters'
 import { Loader } from '../../components/loaders/Loader'
-import { CONTAINER_STYLES, EXCEL_EXPORTER_STYLES } from '../../config'
 import { COLUMNS_LEAGUE_TABLE } from '../LeagueStandings/tableColumns'
 import LEAGUE_NAMES from '../../Leagues.json'
 import { arange, getValuesByKey, max } from '../../jsUtils/general'
 import { getMaxLimitCeiledBy10 } from '../LeagueStandings'
+import {
+    CONTAINER_STYLES,
+    CURRENT_SEASON,
+    EXCEL_EXPORTER_STYLES,
+    LEAGUE_COLOR_MAPPER,
+} from '../../config'
 
 
 const DEFAULTS = {
@@ -82,6 +87,7 @@ class Home extends React.Component {
         let avgGoalDifferenceByLeague = {}
         let currentSeasonLeagueLeaders = {}
         let currentSeasonLeagueStandings = {}
+        let currentSeasonBestPerformers = {}
         let titleCurrentSeasonLeagueStandings = ""
         if (dataIsAvailable) {
             numUniqueTeamsByLeague = GeneralStatsData['numUniqueTeamsByLeague']
@@ -89,6 +95,7 @@ class Home extends React.Component {
             avgGoalDifferenceByLeague = GeneralStatsData['avgGoalDifferenceByLeague']
             currentSeasonLeagueLeaders = GeneralStatsData['currentSeasonLeagueLeaders']
             currentSeasonLeagueStandings = GeneralStatsData['currentSeasonLeagueStandings']
+            currentSeasonBestPerformers = GeneralStatsData['currentSeasonBestPerformers']
             titleCurrentSeasonLeagueStandings = `Current season's league standings - ${this.state.league}`
         }
 
@@ -184,7 +191,7 @@ class Home extends React.Component {
                             </Col>
                         </Row>
                         <br />
-                        <h3>Current season's league leaders <FlagOutlined /></h3>
+                        <h3>Current season's league leaders ({CURRENT_SEASON}) <FlagOutlined /></h3>
                         <Row style={{alignItems: 'center'}}>
                             <Col span={4}>
                                 <Statistic title="Bundesliga" value={currentSeasonLeagueLeaders['Bundesliga']} />
@@ -202,6 +209,48 @@ class Home extends React.Component {
                                 <Statistic title="Serie A" value={currentSeasonLeagueLeaders['Serie A']} />
                             </Col>
                         </Row>
+
+                        <br /><br /><br /><br /><br /><br />
+
+                        <hr />
+                        {
+                            LEAGUE_NAMES.map((league) => (
+                                <>
+                                    <h3>{league} ({CURRENT_SEASON})</h3>
+                                    <Row style={{alignItems: 'center'}}>
+                                        <Col span={8}>
+                                            <Statistic
+                                                title="Best GSPG"
+                                                value={
+                                                    `${currentSeasonBestPerformers[league]['BestAvgGoalsScored']['team']} (${currentSeasonBestPerformers[league]['BestAvgGoalsScored']['reading']})`
+                                                }
+                                                valueStyle={{color: LEAGUE_COLOR_MAPPER[league]}}
+                                            />
+                                        </Col>
+                                        <Col span={8}>
+                                            <Statistic
+                                                title="Best GAPG"
+                                                value={
+                                                    `${currentSeasonBestPerformers[league]['BestAvgGoalsAllowed']['team']} (${currentSeasonBestPerformers[league]['BestAvgGoalsAllowed']['reading']})`
+                                                }
+                                                valueStyle={{color: LEAGUE_COLOR_MAPPER[league]}}
+                                            />
+                                        </Col>
+                                        <Col span={8}>
+                                            <Statistic
+                                                title="Best clean-sheet-ratio"
+                                                value={
+                                                    `${currentSeasonBestPerformers[league]['BestCleanSheetPercent']['team']} (${currentSeasonBestPerformers[league]['BestCleanSheetPercent']['reading']}%)`
+                                                }
+                                                valueStyle={{color: LEAGUE_COLOR_MAPPER[league]}}
+                                            />
+                                        </Col>
+                                    </Row>
+                                    <br />
+                                    <hr />
+                                </>
+                            ))
+                        }
 
                         <br /><br /><br /><br /><br />
 

@@ -1,5 +1,6 @@
 export const SITE_NAME = "Futboller"
 export const CURRENT_YEAR = new Date().getFullYear()
+export const CURRENT_SEASON = '2020-21'
 export const API_URL = "http://futboller-api.herokuapp.com/api/v1"
 
 export const API_STATUS = {
@@ -14,7 +15,7 @@ export const LEAGUE_COLOR_MAPPER = {
     "EPL": "#2712CF",
     "La Liga": "#E30E28",
     "Ligue 1": "#A309CC",
-    "Serie A": "#EFF214",
+    "Serie A": "#F30B97",
 }
 
 export const CONTAINER_STYLES = {
