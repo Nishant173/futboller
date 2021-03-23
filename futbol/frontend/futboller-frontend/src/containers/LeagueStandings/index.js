@@ -79,6 +79,7 @@ class LeagueStandings extends React.Component {
         const { LeagueStandingsData } = this.props
         this.setState({
             wrangledDataObj: {
+                maxGamesPlayed: max(getValuesByKey(LeagueStandingsData, "gamesPlayed")),
                 teams: getValuesByKey(LeagueStandingsData, "team"),
                 points: getValuesByKey(LeagueStandingsData, "points"),
                 goalDifferences: getValuesByKey(LeagueStandingsData, "goalDifference"),
@@ -215,7 +216,7 @@ class LeagueStandings extends React.Component {
                             title={`Cumulative Points chart - ${LeagueStandingsData[0].league} (${LeagueStandingsData[0].season})`}
                             xLabel="Matchday"
                             yLabel="Points (Cumulative)"
-                            xTicks={arange(0, LeagueStandingsData[0]['cumulativePoints'].length - 1)}
+                            xTicks={arange(0, wrangledDataObj['maxGamesPlayed'])}
                             datasets={
                                 getMultiLineChartDatasets(
                                     wrangledDataObj['teams'],
@@ -231,7 +232,7 @@ class LeagueStandings extends React.Component {
                             title={`Cumulative GoalDifference chart - ${LeagueStandingsData[0].league} (${LeagueStandingsData[0].season})`}
                             xLabel="Matchday"
                             yLabel="GoalDifference (Cumulative)"
-                            xTicks={arange(0, LeagueStandingsData[0]['cumulativeGoalDifference'].length - 1)}
+                            xTicks={arange(0, wrangledDataObj['maxGamesPlayed'])}
                             datasets={
                                 getMultiLineChartDatasets(
                                     wrangledDataObj['teams'],

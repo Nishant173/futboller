@@ -11,7 +11,7 @@ import { Loader } from '../../components/loaders/Loader'
 import { CONTAINER_STYLES, EXCEL_EXPORTER_STYLES } from '../../config'
 import { COLUMNS_LEAGUE_TABLE } from '../LeagueStandings/tableColumns'
 import LEAGUE_NAMES from '../../Leagues.json'
-import { arange, getValuesByKey } from '../../jsUtils/general'
+import { arange, getValuesByKey, max } from '../../jsUtils/general'
 import { getMaxLimitCeiledBy10 } from '../LeagueStandings'
 
 
@@ -25,14 +25,37 @@ class Home extends React.Component {
         super(props)
         this.state = {
             league: DEFAULTS.league, // League selected to show current season's league standings
+            wrangledDataObj: {},
         }
         this.updateLeague = this.updateLeague.bind(this)
+        this.updateWrangledData = this.updateWrangledData.bind(this)
     }
 
     updateLeague(event) {
         this.setState({
             league: event.key,
         })
+    }
+    
+    updateWrangledData() {
+        const { GeneralStatsData } = this.props
+        if (Object.keys(GeneralStatsData).includes('currentSeasonLeagueStandings')) {
+            const currentSeasonLeagueStandings = GeneralStatsData['currentSeasonLeagueStandings']
+            const leagues = Object.keys(currentSeasonLeagueStandings)
+            let wrangledDataObj = {}
+            for (let league of leagues) {
+                wrangledDataObj[league] = {
+                    maxGamesPlayed: max(getValuesByKey(currentSeasonLeagueStandings[league], "gamesPlayed")),
+                    teams: getValuesByKey(currentSeasonLeagueStandings[league], "team"),
+                    points: getValuesByKey(currentSeasonLeagueStandings[league], "points"),
+                    cumulativePoints: getValuesByKey(currentSeasonLeagueStandings[league], "cumulativePoints"),
+                    cumulativeGoalDifferences: getValuesByKey(currentSeasonLeagueStandings[league], "cumulativeGoalDifference"),
+                }
+            }
+            this.setState({
+                wrangledDataObj: wrangledDataObj,
+            })
+        }
     }
     
     updateData() {
@@ -43,9 +66,17 @@ class Home extends React.Component {
         this.updateData()
     }
 
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        const { GeneralStatsData } = this.props
+        if (prevProps.GeneralStatsData !== GeneralStatsData && Object.keys(GeneralStatsData).length > 0) {
+            this.updateWrangledData()
+        }
+    }
+
     render() {
+        const { wrangledDataObj } = this.state
         const { GeneralStatsData, GeneralStatsDataApiStatus } = this.props
-        const dataIsAvailable = (Object.keys(GeneralStatsData).length > 0)
+        const dataIsAvailable = (Object.keys(GeneralStatsData).length > 0 && Object.keys(wrangledDataObj).length > 0)
         let numUniqueTeamsByLeague = {}
         let avgGoalsScoredByLeague = {}
         let avgGoalDifferenceByLeague = {}
@@ -198,25 +229,43 @@ class Home extends React.Component {
                         <br /><br /><br /><br /><br />
                         
                         <MultiLineChart
-                            title={`Title race - ${this.state.league}`}
+                            title={`Title Race - ${this.state.league}`}
                             xLabel="Matchday"
                             yLabel="Points (Cumulative)"
                             xTicks={
-                                arange(0, currentSeasonLeagueStandings[this.state.league][0]['cumulativePoints'].length - 1)
+                                arange(0, wrangledDataObj[this.state.league]['maxGamesPlayed'])
                             }
                             datasets={
                                 getMultiLineChartDatasets(
-                                    getValuesByKey(currentSeasonLeagueStandings[this.state.league], 'team'),
-                                    getValuesByKey(currentSeasonLeagueStandings[this.state.league], 'cumulativePoints'),
+                                    wrangledDataObj[this.state.league]['teams'],
+                                    wrangledDataObj[this.state.league]['cumulativePoints'],
                                 )
                             }
                             datasetsSlicer={[1, 8]} // For top 8 teams
                             yLow={0}
                             yHigh={
                                 getMaxLimitCeiledBy10(
-                                    getValuesByKey(currentSeasonLeagueStandings[this.state.league], 'points')
+                                    wrangledDataObj[this.state.league]['points']
                                 )
                             }
+                        />
+
+                        <br /><br /><br /><br /><br />
+                        
+                        <MultiLineChart
+                            title={`Cumulative Goal Difference - ${this.state.league}`}
+                            xLabel="Matchday"
+                            yLabel="Goal Difference (Cumulative)"
+                            xTicks={
+                                arange(0, wrangledDataObj[this.state.league]['maxGamesPlayed'])
+                            }
+                            datasets={
+                                getMultiLineChartDatasets(
+                                    wrangledDataObj[this.state.league]['teams'],
+                                    wrangledDataObj[this.state.league]['cumulativeGoalDifferences'],
+                                )
+                            }
+                            datasetsSlicer={[1, 8]} // For top 8 teams
                         />
                     </div>
                     : null
