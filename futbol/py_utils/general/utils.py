@@ -60,6 +60,13 @@ def generate_random_hex_codes(how_many: int) -> List[str]:
     return random_hex_codes
 
 
+def integerify_if_possible(number: Union[int, float]) -> Union[int, float]:
+    """Converts whole numbers represented as floats to integers"""
+    if int(number) == number:
+        return int(number)
+    return number
+
+
 def string_to_int_or_float(value: str) -> Union[int, float]:
     """Converts stringified number to either int or float"""
     value = float(value)
