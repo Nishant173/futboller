@@ -1,3 +1,6 @@
+import { RESULT_STRING_COLOR_MAPPER } from './../../config'
+
+
 export const COLUMNS_LEAGUE_TABLE = [
     {
         selector: 'position',
@@ -12,6 +15,35 @@ export const COLUMNS_LEAGUE_TABLE = [
         left: true,
         width: 'fixed',
         grow: 1.6,
+    },
+    {
+        selector: 'resultsString',
+        name: 'Form',
+        sortable: false,
+        left: true,
+        width: '140px',
+        cell: row => (
+            <div>
+                {
+                    row['resultsString'].slice(-5).split('').map((resultString) => (
+                        <>
+                            <span
+                                style={
+                                    {
+                                        'backgroundColor': RESULT_STRING_COLOR_MAPPER[resultString],
+                                        'display': 'inline-block',
+                                        'height': '15px',
+                                        'width': '15px',
+                                        'borderRadius': '50%',
+                                    }
+                                }
+                            />
+                            &nbsp;
+                        </>
+                    ))
+                }
+            </div>
+        ),
     },
     {
         selector: 'gamesPlayed',

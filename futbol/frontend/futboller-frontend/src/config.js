@@ -9,6 +9,12 @@ export const API_STATUS = {
     error: "error",
 }
 
+export const RESULT_STRING_COLOR_MAPPER = {
+    "W": "green",
+    "L": "red",
+    "D": "grey",
+}
+
 export const LEAGUE_COLOR_MAPPER = {
     "Bundesliga": "#12BF24",
     "EPL": "#2712CF",
