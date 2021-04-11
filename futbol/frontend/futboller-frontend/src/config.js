@@ -1,6 +1,5 @@
 export const SITE_NAME = "Futboller"
 export const CURRENT_YEAR = new Date().getFullYear()
-export const CURRENT_SEASON = '2020-21'
 export const API_URL = "http://futboller-api.herokuapp.com/api/v1"
 
 export const API_STATUS = {

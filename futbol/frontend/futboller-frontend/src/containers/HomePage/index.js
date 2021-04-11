@@ -14,7 +14,6 @@ import { arange, getValuesByKey, max } from '../../jsUtils/general'
 import { getMaxLimitCeiledBy10 } from '../LeagueStandings'
 import {
     CONTAINER_STYLES,
-    CURRENT_SEASON,
     EXCEL_EXPORTER_STYLES,
     LEAGUE_COLOR_MAPPER,
 } from '../../config'
@@ -85,6 +84,7 @@ class Home extends React.Component {
         let numUniqueTeamsByLeague = {}
         let avgGoalsScoredByLeague = {}
         let avgGoalDifferenceByLeague = {}
+        let currentSeason = ""
         let currentSeasonLeagueLeaders = {}
         let currentSeasonLeagueStandings = {}
         let currentSeasonBestPerformers = {}
@@ -93,6 +93,7 @@ class Home extends React.Component {
             numUniqueTeamsByLeague = GeneralStatsData['numUniqueTeamsByLeague']
             avgGoalsScoredByLeague = GeneralStatsData['avgGoalsScoredByLeague']
             avgGoalDifferenceByLeague = GeneralStatsData['avgGoalDifferenceByLeague']
+            currentSeason = GeneralStatsData['currentSeason']
             currentSeasonLeagueLeaders = GeneralStatsData['currentSeasonLeagueLeaders']
             currentSeasonLeagueStandings = GeneralStatsData['currentSeasonLeagueStandings']
             currentSeasonBestPerformers = GeneralStatsData['currentSeasonBestPerformers']
@@ -191,7 +192,7 @@ class Home extends React.Component {
                             </Col>
                         </Row>
                         <br />
-                        <h3>Current season's league leaders ({CURRENT_SEASON}) <FlagOutlined /></h3>
+                        <h3>Current season's league leaders ({currentSeason}) <FlagOutlined /></h3>
                         <Row style={{alignItems: 'center'}}>
                             <Col span={4}>
                                 <Statistic title="Bundesliga" value={currentSeasonLeagueLeaders['Bundesliga']} />
@@ -216,7 +217,7 @@ class Home extends React.Component {
                         {
                             LEAGUE_NAMES.map((league) => (
                                 <>
-                                    <h3>{league} ({CURRENT_SEASON})</h3>
+                                    <h3>{league} ({currentSeason})</h3>
                                     <Row style={{alignItems: 'center'}}>
                                         <Col span={8}>
                                             <Statistic
