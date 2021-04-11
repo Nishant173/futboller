@@ -33,30 +33,30 @@ Lyon,Nimes,0,0,France,Ligue 1,2020-21,2020-09-18
 Lens,Bordeaux,2,1,France,Ligue 1,2020-21,2020-09-19
 Rennes,Monaco,2,1,France,Ligue 1,2020-21,2020-09-19
 Nice,Paris Saint Germain,0,3,France,Ligue 1,2020-21,2020-09-20
-Montpellier,Angers,4,1,France,Ligue 1,2020-21,2020-09-20
-Brest,Lorient,3,2,France,Ligue 1,2020-21,2020-09-20
 Strasbourg,Dijon,1,0,France,Ligue 1,2020-21,2020-09-20
 Metz,Reims,2,1,France,Ligue 1,2020-21,2020-09-20
+Montpellier,Angers,4,1,France,Ligue 1,2020-21,2020-09-20
+Brest,Lorient,3,2,France,Ligue 1,2020-21,2020-09-20
 Nantes,Saint-Etienne,2,2,France,Ligue 1,2020-21,2020-09-20
 Marseille,Lille,1,1,France,Ligue 1,2020-21,2020-09-20
 Lille,Nantes,2,0,France,Ligue 1,2020-21,2020-09-25
 Saint-Etienne,Rennes,0,3,France,Ligue 1,2020-21,2020-09-26
 Marseille,Metz,1,1,France,Ligue 1,2020-21,2020-09-26
 Bordeaux,Nice,0,0,France,Ligue 1,2020-21,2020-09-27
-Nimes,Lens,1,1,France,Ligue 1,2020-21,2020-09-27
-Monaco,Strasbourg,3,2,France,Ligue 1,2020-21,2020-09-27
 Dijon,Montpellier,2,2,France,Ligue 1,2020-21,2020-09-27
 Angers,Brest,3,2,France,Ligue 1,2020-21,2020-09-27
+Monaco,Strasbourg,3,2,France,Ligue 1,2020-21,2020-09-27
+Nimes,Lens,1,1,France,Ligue 1,2020-21,2020-09-27
 Lorient,Lyon,1,1,France,Ligue 1,2020-21,2020-09-27
 Reims,Paris Saint Germain,0,2,France,Ligue 1,2020-21,2020-09-27
 Paris Saint Germain,Angers,6,1,France,Ligue 1,2020-21,2020-10-02
 Lens,Saint-Etienne,2,0,France,Ligue 1,2020-21,2020-10-03
 Nice,Nantes,2,1,France,Ligue 1,2020-21,2020-10-03
 Montpellier,Nimes,0,1,France,Ligue 1,2020-21,2020-10-04
-Strasbourg,Lille,0,3,France,Ligue 1,2020-21,2020-10-04
 Brest,Monaco,1,0,France,Ligue 1,2020-21,2020-10-04
-Bordeaux,Dijon,3,0,France,Ligue 1,2020-21,2020-10-04
+Strasbourg,Lille,0,3,France,Ligue 1,2020-21,2020-10-04
 Metz,Lorient,3,1,France,Ligue 1,2020-21,2020-10-04
+Bordeaux,Dijon,3,0,France,Ligue 1,2020-21,2020-10-04
 Rennes,Reims,2,2,France,Ligue 1,2020-21,2020-10-04
 Lyon,Marseille,1,1,France,Ligue 1,2020-21,2020-10-04
 Dijon,Rennes,1,1,France,Ligue 1,2020-21,2020-10-16
@@ -64,46 +64,46 @@ Nimes,Paris Saint Germain,0,4,France,Ligue 1,2020-21,2020-10-16
 Reims,Lorient,1,3,France,Ligue 1,2020-21,2020-10-17
 Marseille,Bordeaux,3,1,France,Ligue 1,2020-21,2020-10-17
 Strasbourg,Lyon,2,3,France,Ligue 1,2020-21,2020-10-18
-Angers,Metz,1,1,France,Ligue 1,2020-21,2020-10-18
-Monaco,Montpellier,1,1,France,Ligue 1,2020-21,2020-10-18
 Nantes,Brest,3,1,France,Ligue 1,2020-21,2020-10-18
+Monaco,Montpellier,1,1,France,Ligue 1,2020-21,2020-10-18
+Angers,Metz,1,1,France,Ligue 1,2020-21,2020-10-18
 Saint-Etienne,Nice,1,3,France,Ligue 1,2020-21,2020-10-18
 Lille,Lens,4,0,France,Ligue 1,2020-21,2020-10-18
 Rennes,Angers,1,2,France,Ligue 1,2020-21,2020-10-23
 Lorient,Marseille,0,1,France,Ligue 1,2020-21,2020-10-24
 Paris Saint Germain,Dijon,4,0,France,Ligue 1,2020-21,2020-10-24
-Brest,Strasbourg,0,3,France,Ligue 1,2020-21,2020-10-25
 Montpellier,Reims,0,4,France,Ligue 1,2020-21,2020-10-25
-Metz,Saint-Etienne,2,0,France,Ligue 1,2020-21,2020-10-25
 Bordeaux,Nimes,2,0,France,Ligue 1,2020-21,2020-10-25
+Metz,Saint-Etienne,2,0,France,Ligue 1,2020-21,2020-10-25
+Brest,Strasbourg,0,3,France,Ligue 1,2020-21,2020-10-25
 Nice,Lille,1,1,France,Ligue 1,2020-21,2020-10-25
 Lyon,Monaco,4,1,France,Ligue 1,2020-21,2020-10-25
 Rennes,Brest,2,1,France,Ligue 1,2020-21,2020-10-31
 Nantes,Paris Saint Germain,0,3,France,Ligue 1,2020-21,2020-10-31
 Saint-Etienne,Montpellier,0,1,France,Ligue 1,2020-21,2020-11-01
-Reims,Strasbourg,2,1,France,Ligue 1,2020-21,2020-11-01
-Nimes,Metz,0,1,France,Ligue 1,2020-21,2020-11-01
 Angers,Nice,0,3,France,Ligue 1,2020-21,2020-11-01
 Dijon,Lorient,0,0,France,Ligue 1,2020-21,2020-11-01
+Nimes,Metz,0,1,France,Ligue 1,2020-21,2020-11-01
+Reims,Strasbourg,2,1,France,Ligue 1,2020-21,2020-11-01
 Monaco,Bordeaux,4,0,France,Ligue 1,2020-21,2020-11-01
 Lille,Lyon,1,1,France,Ligue 1,2020-21,2020-11-01
 Strasbourg,Marseille,0,1,France,Ligue 1,2020-21,2020-11-06
 Bordeaux,Montpellier,0,2,France,Ligue 1,2020-21,2020-11-07
 Paris Saint Germain,Rennes,3,0,France,Ligue 1,2020-21,2020-11-07
 Brest,Lille,3,2,France,Ligue 1,2020-21,2020-11-08
-Lorient,Nantes,0,2,France,Ligue 1,2020-21,2020-11-08
-Lens,Reims,4,4,France,Ligue 1,2020-21,2020-11-08
 Nimes,Angers,1,5,France,Ligue 1,2020-21,2020-11-08
 Metz,Dijon,1,1,France,Ligue 1,2020-21,2020-11-08
+Lens,Reims,4,4,France,Ligue 1,2020-21,2020-11-08
+Lorient,Nantes,0,2,France,Ligue 1,2020-21,2020-11-08
 Nice,Monaco,1,2,France,Ligue 1,2020-21,2020-11-08
 Lyon,Saint-Etienne,2,1,France,Ligue 1,2020-21,2020-11-08
 Rennes,Bordeaux,0,1,France,Ligue 1,2020-21,2020-11-20
 Monaco,Paris Saint Germain,3,2,France,Ligue 1,2020-21,2020-11-20
 Brest,Saint-Etienne,4,1,France,Ligue 1,2020-21,2020-11-21
 Nantes,Metz,1,1,France,Ligue 1,2020-21,2020-11-22
+Dijon,Lens,0,1,France,Ligue 1,2020-21,2020-11-22
 Montpellier,Strasbourg,4,3,France,Ligue 1,2020-21,2020-11-22
 Reims,Nimes,0,1,France,Ligue 1,2020-21,2020-11-22
-Dijon,Lens,0,1,France,Ligue 1,2020-21,2020-11-22
 Angers,Lyon,0,1,France,Ligue 1,2020-21,2020-11-22
 Lille,Lorient,4,0,France,Ligue 1,2020-21,2020-11-22
 Lens,Nantes,1,1,France,Ligue 1,2020-21,2020-11-25
@@ -111,10 +111,10 @@ Strasbourg,Rennes,1,1,France,Ligue 1,2020-21,2020-11-27
 Marseille,Nantes,3,1,France,Ligue 1,2020-21,2020-11-28
 Paris Saint Germain,Bordeaux,2,2,France,Ligue 1,2020-21,2020-11-28
 Lyon,Reims,3,0,France,Ligue 1,2020-21,2020-11-29
-Metz,Brest,0,2,France,Ligue 1,2020-21,2020-11-29
-Monaco,Nimes,3,0,France,Ligue 1,2020-21,2020-11-29
 Lens,Angers,1,3,France,Ligue 1,2020-21,2020-11-29
 Lorient,Montpellier,0,1,France,Ligue 1,2020-21,2020-11-29
+Monaco,Nimes,3,0,France,Ligue 1,2020-21,2020-11-29
+Metz,Brest,0,2,France,Ligue 1,2020-21,2020-11-29
 Nice,Dijon,1,3,France,Ligue 1,2020-21,2020-11-29
 Saint-Etienne,Lille,1,1,France,Ligue 1,2020-21,2020-11-29
 Nimes,Marseille,0,2,France,Ligue 1,2020-21,2020-12-04
@@ -142,18 +142,18 @@ Dijon,Lille,0,2,France,Ligue 1,2020-21,2020-12-16
 Montpellier,Metz,0,2,France,Ligue 1,2020-21,2020-12-16
 Nimes,Nice,0,2,France,Ligue 1,2020-21,2020-12-16
 Reims,Nantes,3,2,France,Ligue 1,2020-21,2020-12-16
-Monaco,Lens,0,3,France,Ligue 1,2020-21,2020-12-16
-Lyon,Brest,2,2,France,Ligue 1,2020-21,2020-12-16
 Paris Saint Germain,Lorient,2,0,France,Ligue 1,2020-21,2020-12-16
+Lyon,Brest,2,2,France,Ligue 1,2020-21,2020-12-16
+Monaco,Lens,0,3,France,Ligue 1,2020-21,2020-12-16
 Rennes,Marseille,2,1,France,Ligue 1,2020-21,2020-12-16
 Bordeaux,Saint-Etienne,1,2,France,Ligue 1,2020-21,2020-12-16
 Metz,Lens,2,0,France,Ligue 1,2020-21,2020-12-19
 Marseille,Reims,1,1,France,Ligue 1,2020-21,2020-12-19
 Nice,Lyon,1,4,France,Ligue 1,2020-21,2020-12-19
 Brest,Montpellier,2,2,France,Ligue 1,2020-21,2020-12-20
+Strasbourg,Bordeaux,0,2,France,Ligue 1,2020-21,2020-12-20
 Dijon,Monaco,0,1,France,Ligue 1,2020-21,2020-12-20
 Nantes,Angers,1,1,France,Ligue 1,2020-21,2020-12-20
-Strasbourg,Bordeaux,0,2,France,Ligue 1,2020-21,2020-12-20
 Saint-Etienne,Nimes,2,2,France,Ligue 1,2020-21,2020-12-20
 Lorient,Rennes,0,3,France,Ligue 1,2020-21,2020-12-20
 Lille,Paris Saint Germain,0,0,France,Ligue 1,2020-21,2020-12-20
@@ -172,28 +172,28 @@ Metz,Bordeaux,0,0,France,Ligue 1,2020-21,2021-01-06
 Nantes,Rennes,0,0,France,Ligue 1,2020-21,2021-01-06
 Strasbourg,Nimes,5,0,France,Ligue 1,2020-21,2021-01-06
 Brest,Nice,2,0,France,Ligue 1,2020-21,2021-01-06
-Lille,Angers,1,2,France,Ligue 1,2020-21,2021-01-06
-Lyon,Lens,3,2,France,Ligue 1,2020-21,2021-01-06
-Marseille,Montpellier,3,1,France,Ligue 1,2020-21,2021-01-06
-Reims,Dijon,0,0,France,Ligue 1,2020-21,2021-01-06
 Saint-Etienne,Paris Saint Germain,1,1,France,Ligue 1,2020-21,2021-01-06
-Rennes,Lyon,2,2,France,Ligue 1,2020-21,2021-01-09
-Paris Saint Germain,Brest,3,0,France,Ligue 1,2020-21,2021-01-09
+Reims,Dijon,0,0,France,Ligue 1,2020-21,2021-01-06
+Lyon,Lens,3,2,France,Ligue 1,2020-21,2021-01-06
+Lille,Angers,1,2,France,Ligue 1,2020-21,2021-01-06
+Marseille,Montpellier,3,1,France,Ligue 1,2020-21,2021-01-06
 Nimes,Lille,0,1,France,Ligue 1,2020-21,2021-01-09
-Montpellier,Nantes,1,1,France,Ligue 1,2020-21,2021-01-09
-Reims,Saint-Etienne,3,1,France,Ligue 1,2020-21,2021-01-09
-Metz,Nice,1,1,France,Ligue 1,2020-21,2021-01-09
 Bordeaux,Lorient,2,1,France,Ligue 1,2020-21,2021-01-09
-Monaco,Angers,3,0,France,Ligue 1,2020-21,2021-01-09
-Lens,Strasbourg,0,1,France,Ligue 1,2020-21,2021-01-09
 Dijon,Marseille,0,0,France,Ligue 1,2020-21,2021-01-09
+Lens,Strasbourg,0,1,France,Ligue 1,2020-21,2021-01-09
+Metz,Nice,1,1,France,Ligue 1,2020-21,2021-01-09
+Monaco,Angers,3,0,France,Ligue 1,2020-21,2021-01-09
+Montpellier,Nantes,1,1,France,Ligue 1,2020-21,2021-01-09
+Paris Saint Germain,Brest,3,0,France,Ligue 1,2020-21,2021-01-09
+Reims,Saint-Etienne,3,1,France,Ligue 1,2020-21,2021-01-09
+Rennes,Lyon,2,2,France,Ligue 1,2020-21,2021-01-09
 Montpellier,Monaco,2,3,France,Ligue 1,2020-21,2021-01-15
 Marseille,Nimes,1,2,France,Ligue 1,2020-21,2021-01-16
 Angers,Paris Saint Germain,0,1,France,Ligue 1,2020-21,2021-01-16
 Brest,Rennes,1,2,France,Ligue 1,2020-21,2021-01-17
+Nice,Bordeaux,0,3,France,Ligue 1,2020-21,2021-01-17
 Strasbourg,Saint-Etienne,1,0,France,Ligue 1,2020-21,2021-01-17
 Nantes,Lens,1,1,France,Ligue 1,2020-21,2021-01-17
-Nice,Bordeaux,0,3,France,Ligue 1,2020-21,2021-01-17
 Lille,Reims,2,1,France,Ligue 1,2020-21,2021-01-17
 Lyon,Metz,0,1,France,Ligue 1,2020-21,2021-01-17
 Marseille,Lens,0,1,France,Ligue 1,2020-21,2021-01-20
@@ -210,10 +210,10 @@ Lorient,Dijon,3,2,France,Ligue 1,2020-21,2021-01-27
 Lyon,Bordeaux,2,1,France,Ligue 1,2020-21,2021-01-29
 Montpellier,Lens,1,2,France,Ligue 1,2020-21,2021-01-30
 Nice,Saint-Etienne,0,1,France,Ligue 1,2020-21,2021-01-31
-Lorient,Paris Saint Germain,3,2,France,Ligue 1,2020-21,2021-01-31
 Strasbourg,Reims,0,1,France,Ligue 1,2020-21,2021-01-31
 Brest,Metz,2,4,France,Ligue 1,2020-21,2021-01-31
 Angers,Nimes,3,1,France,Ligue 1,2020-21,2021-01-31
+Lorient,Paris Saint Germain,3,2,France,Ligue 1,2020-21,2021-01-31
 Lille,Dijon,1,0,France,Ligue 1,2020-21,2021-01-31
 Nantes,Monaco,1,2,France,Ligue 1,2020-21,2021-01-31
 Bordeaux,Lille,0,3,France,Ligue 1,2020-21,2021-02-03
@@ -221,17 +221,17 @@ Metz,Montpellier,1,1,France,Ligue 1,2020-21,2021-02-03
 Reims,Angers,0,0,France,Ligue 1,2020-21,2021-02-03
 Rennes,Lorient,1,1,France,Ligue 1,2020-21,2021-02-03
 Strasbourg,Brest,2,2,France,Ligue 1,2020-21,2021-02-03
-Saint-Etienne,Nantes,1,1,France,Ligue 1,2020-21,2021-02-03
-Paris Saint Germain,Nimes,3,0,France,Ligue 1,2020-21,2021-02-03
-Monaco,Nice,2,1,France,Ligue 1,2020-21,2021-02-03
-Lens,Marseille,2,2,France,Ligue 1,2020-21,2021-02-03
 Dijon,Lyon,0,1,France,Ligue 1,2020-21,2021-02-03
+Lens,Marseille,2,2,France,Ligue 1,2020-21,2021-02-03
+Monaco,Nice,2,1,France,Ligue 1,2020-21,2021-02-03
+Paris Saint Germain,Nimes,3,0,France,Ligue 1,2020-21,2021-02-03
+Saint-Etienne,Nantes,1,1,France,Ligue 1,2020-21,2021-02-03
 Lorient,Reims,1,0,France,Ligue 1,2020-21,2021-02-06
 Lyon,Strasbourg,3,0,France,Ligue 1,2020-21,2021-02-06
 Lens,Rennes,0,0,France,Ligue 1,2020-21,2021-02-06
 Brest,Bordeaux,2,1,France,Ligue 1,2020-21,2021-02-07
-Saint-Etienne,Metz,1,0,France,Ligue 1,2020-21,2021-02-07
 Nimes,Monaco,3,4,France,Ligue 1,2020-21,2021-02-07
+Saint-Etienne,Metz,1,0,France,Ligue 1,2020-21,2021-02-07
 Montpellier,Dijon,4,2,France,Ligue 1,2020-21,2021-02-07
 Nice,Angers,3,0,France,Ligue 1,2020-21,2021-02-07
 Nantes,Lille,0,2,France,Ligue 1,2020-21,2021-02-07
@@ -251,10 +251,10 @@ Brest,Lyon,2,3,France,Ligue 1,2020-21,2021-02-19
 Saint-Etienne,Reims,1,1,France,Ligue 1,2020-21,2021-02-20
 Nantes,Marseille,1,1,France,Ligue 1,2020-21,2021-02-20
 Montpellier,Rennes,2,1,France,Ligue 1,2020-21,2021-02-21
-Strasbourg,Angers,0,0,France,Ligue 1,2020-21,2021-02-21
-Nimes,Bordeaux,2,0,France,Ligue 1,2020-21,2021-02-21
 Lens,Dijon,2,1,France,Ligue 1,2020-21,2021-02-21
 Nice,Metz,1,2,France,Ligue 1,2020-21,2021-02-21
+Nimes,Bordeaux,2,0,France,Ligue 1,2020-21,2021-02-21
+Strasbourg,Angers,0,0,France,Ligue 1,2020-21,2021-02-21
 Lorient,Lille,1,4,France,Ligue 1,2020-21,2021-02-21
 Paris Saint Germain,Monaco,0,2,France,Ligue 1,2020-21,2021-02-21
 Nimes,Lorient,1,0,France,Ligue 1,2020-21,2021-02-24
@@ -269,10 +269,10 @@ Reims,Montpellier,0,0,France,Ligue 1,2020-21,2021-02-28
 Lille,Strasbourg,1,1,France,Ligue 1,2020-21,2021-02-28
 Marseille,Lyon,1,1,France,Ligue 1,2020-21,2021-02-28
 Saint-Etienne,Lens,2,3,France,Ligue 1,2020-21,2021-03-03
-Nice,Nimes,2,1,France,Ligue 1,2020-21,2021-03-03
 Metz,Angers,0,1,France,Ligue 1,2020-21,2021-03-03
-Lyon,Rennes,1,0,France,Ligue 1,2020-21,2021-03-03
+Nice,Nimes,2,1,France,Ligue 1,2020-21,2021-03-03
 Brest,Dijon,3,1,France,Ligue 1,2020-21,2021-03-03
+Lyon,Rennes,1,0,France,Ligue 1,2020-21,2021-03-03
 Bordeaux,Paris Saint Germain,0,1,France,Ligue 1,2020-21,2021-03-03
 Lille,Marseille,2,0,France,Ligue 1,2020-21,2021-03-03
 Montpellier,Lorient,1,1,France,Ligue 1,2020-21,2021-03-03
@@ -299,3 +299,16 @@ Dijon,Reims,0,1,France,Ligue 1,2020-21,2021-03-21
 Brest,Angers,0,0,France,Ligue 1,2020-21,2021-03-21
 Lille,Nimes,1,2,France,Ligue 1,2020-21,2021-03-21
 Lyon,Paris Saint Germain,2,4,France,Ligue 1,2020-21,2021-03-21
+Monaco,Metz,4,0,France,Ligue 1,2020-21,2021-04-03
+Paris Saint Germain,Lille,0,1,France,Ligue 1,2020-21,2021-04-03
+Lens,Lyon,1,1,France,Ligue 1,2020-21,2021-04-03
+Angers,Montpellier,1,1,France,Ligue 1,2020-21,2021-04-04
+Reims,Rennes,2,2,France,Ligue 1,2020-21,2021-04-04
+Bordeaux,Strasbourg,2,3,France,Ligue 1,2020-21,2021-04-04
+Lorient,Brest,1,0,France,Ligue 1,2020-21,2021-04-04
+Nantes,Nice,1,2,France,Ligue 1,2020-21,2021-04-04
+Nimes,Saint-Etienne,0,2,France,Ligue 1,2020-21,2021-04-04
+Marseille,Dijon,2,0,France,Ligue 1,2020-21,2021-04-04
+Metz,Lille,0,2,France,Ligue 1,2020-21,2021-04-09
+Strasbourg,Paris Saint Germain,1,4,France,Ligue 1,2020-21,2021-04-10
+Montpellier,Marseille,3,3,France,Ligue 1,2020-21,2021-04-10
