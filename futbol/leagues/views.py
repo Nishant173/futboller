@@ -2,6 +2,7 @@ from rest_framework import status
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 
+from futbol import config
 from . import filters, queries
 from .models import LeagueMatch, LeagueStandings, CrossLeagueStandings, GoalRelatedStats
 from .utils import get_teams_from_matchup
@@ -37,6 +38,7 @@ def get_general_stats(request):
         'num_unique_teams_by_league': dict_num_unique_teams_by_league,
         'avg_goals_scored_by_league': dict_grs_by_league['avg_goals_scored'],
         'avg_goal_difference_by_league': dict_grs_by_league['avg_goal_difference'],
+        'current_season': config.CURRENT_SEASON,
         'current_season_league_leaders': dict_current_season_league_leaders,
         'current_season_league_standings': dict_csls,
         'current_season_best_performers': dict_csbp,
