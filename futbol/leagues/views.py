@@ -26,10 +26,10 @@ def get_general_stats(request):
     df_csls = queries.get_current_season_league_standings()
     df_csls['cumulative_points'] = df_csls['cumulative_points'].apply(listify_string_of_nums)
     df_csls['cumulative_goal_difference'] = df_csls['cumulative_goal_difference'].apply(listify_string_of_nums)
-    df_csbp = wrangler.get_current_season_best_performers(data=df_csls)
-    dict_csbp = wrangler.reformat_current_season_best_performers(data=df_csbp)
+    df_csbp = wrangler.get_best_performers(data=df_csls, season=config.CURRENT_SEASON)
+    dict_csbp = wrangler.reformat_best_performers(data=df_csbp)
     df_csls = switch_column_casing(data=df_csls, func=sc2lcc)
-    dict_csls = wrangler.reformat_current_season_league_standings(data=df_csls)
+    dict_csls = wrangler.reformat_league_standings(data=df_csls)
     
     dictionary_general_stats = {
         'num_league_matches_in_db': num_league_matches_in_db,

@@ -1,4 +1,4 @@
-from typing import Dict, List, Union
+from typing import Any, Dict, List, Union
 import numpy as np
 import pandas as pd
 
@@ -148,71 +148,89 @@ def get_partitioned_stats(data: pd.DataFrame,
     return df_partitioned_stats
 
 
-def get_current_season_best_performers_by_league(data: pd.DataFrame, league: str) -> pd.DataFrame:
+def _get_best_performers_by_league(data: pd.DataFrame, league: str) -> pd.DataFrame:
     df = data.copy(deep=True)
+    df = df[df['league'] == league]
     df['avg_goals_scored'] = (df['goals_scored'] / df['games_played']).apply(round, args=[3])
     df['avg_goals_allowed'] = (df['goals_allowed'] / df['games_played']).apply(round, args=[3])
     df['clean_sheet_percent'] = (df['clean_sheets'] * 100 / df['games_played']).apply(round, args=[2])
-    df_best_attack = df.sort_values(by='avg_goals_scored', ascending=False).head(1)
-    df_best_defence = df.sort_values(by='avg_goals_allowed', ascending=True).head(1)
-    df_best_clean_sheet_pct = df.sort_values(by='clean_sheet_percent', ascending=False).head(1)
+    df['big_win_percent'] = (df['big_wins'] * 100 / df['games_played']).apply(round, args=[2])
+    best_gspg = df['avg_goals_scored'].max()
+    best_gapg = df['avg_goals_allowed'].min()
+    best_cs_pct = df['clean_sheet_percent'].max()
+    best_big_win_percent = df['big_win_percent'].max()
+    df_best_attack = df[df['avg_goals_scored'] == best_gspg]
+    df_best_defence = df[df['avg_goals_allowed'] == best_gapg]
+    df_best_clean_sheet_pct = df[df['clean_sheet_percent'] == best_cs_pct]
+    df_best_big_win_percent = df[df['big_win_percent'] == best_big_win_percent]
     df_best_performers_by_league = pd.DataFrame(data={
         'league': league,
-        'team': [
-            df_best_attack['team'].iloc[0],
-            df_best_defence['team'].iloc[0],
-            df_best_clean_sheet_pct['team'].iloc[0],
+        'teams': [
+            df_best_attack['team'].tolist(),
+            df_best_defence['team'].tolist(),
+            df_best_clean_sheet_pct['team'].tolist(),
+            df_best_big_win_percent['team'].tolist(),
         ],
         'stat_name': [
-            'BestAvgGoalsScored',
-            'BestAvgGoalsAllowed',
-            'BestCleanSheetPercent',
+            'bestAvgGoalsScored',
+            'bestAvgGoalsAllowed',
+            'bestCleanSheetPercent',
+            'bestBigWinPercent',
         ],
         'stat_reading': [
-            integerify_if_possible(number=df_best_attack['avg_goals_scored'].iloc[0]),
-            integerify_if_possible(number=df_best_defence['avg_goals_allowed'].iloc[0]),
-            integerify_if_possible(number=df_best_clean_sheet_pct['clean_sheet_percent'].iloc[0]),
+            integerify_if_possible(number=best_gspg),
+            integerify_if_possible(number=best_gapg),
+            integerify_if_possible(number=best_cs_pct),
+            integerify_if_possible(number=best_big_win_percent),
         ],
     })
     return df_best_performers_by_league
 
 
-def get_current_season_best_performers(data: pd.DataFrame) -> pd.DataFrame:
+def get_best_performers(data: pd.DataFrame, season: str) -> pd.DataFrame:
     """
-    Takes in DataFrame of current season's league standings (for all leagues).
-    Returns DataFrame having the current season's best performers (for all leagues).
-    Columns returned: ['league', 'team', 'stat_name', 'stat_reading']
+    Takes in DataFrame of league standings for one season (for all leagues).
+    Returns DataFrame having the best performers for given season (for all leagues).
+    Columns returned: ['league', 'teams', 'stat_name', 'stat_reading']
     """
     df = data.copy(deep=True)
-    df_csbp = pd.DataFrame()
+    df = df[df['season'] == season]
+    df_best_perf = pd.DataFrame()
     for league, df_by_league in df.groupby(by='league'):
-        df_csbp_by_league = get_current_season_best_performers_by_league(
+        df_best_perf_by_league = _get_best_performers_by_league(
             data=df_by_league,
             league=league,
         )
-        df_csbp = pd.concat(objs=[df_csbp, df_csbp_by_league], ignore_index=True, sort=False)
-    return df_csbp
+        df_best_perf = pd.concat(objs=[df_best_perf, df_best_perf_by_league], ignore_index=True, sort=False)
+    return df_best_perf
 
 
-def reformat_current_season_best_performers(data: pd.DataFrame) -> Dict[str, Dict[str, Dict[str, Union[int, float, str]]]]:
-    """Takes DataFrame having the current season's best performers (for all leagues), and re-formats it (by league)"""
-    dict_current_season_best_performers = {}
+def reformat_best_performers(data: pd.DataFrame) -> Any:
+    """
+    Takes DataFrame having the best performers for one season (for all leagues), and re-formats it (by league).
+    Returns nested dictionary object.
+    """
+    dict_best_performers = {}
     for league, df_temp in data.groupby(by='league'):
-        dict_current_season_best_performers[league] = {
-            'BestAvgGoalsScored': {
-                'team': df_temp[df_temp['stat_name'] == 'BestAvgGoalsScored']['team'].iloc[0],
-                'reading': df_temp[df_temp['stat_name'] == 'BestAvgGoalsScored']['stat_reading'].iloc[0],
+        dict_best_performers[league] = {
+            'bestAvgGoalsScored': {
+                'teams': df_temp[df_temp['stat_name'] == 'bestAvgGoalsScored']['teams'],
+                'reading': df_temp[df_temp['stat_name'] == 'bestAvgGoalsScored']['stat_reading'].iloc[0],
             },
-            'BestAvgGoalsAllowed': {
-                'team': df_temp[df_temp['stat_name'] == 'BestAvgGoalsAllowed']['team'].iloc[0],
-                'reading': df_temp[df_temp['stat_name'] == 'BestAvgGoalsAllowed']['stat_reading'].iloc[0],
+            'bestAvgGoalsAllowed': {
+                'teams': df_temp[df_temp['stat_name'] == 'bestAvgGoalsAllowed']['teams'],
+                'reading': df_temp[df_temp['stat_name'] == 'bestAvgGoalsAllowed']['stat_reading'].iloc[0],
             },
-            'BestCleanSheetPercent': {
-                'team': df_temp[df_temp['stat_name'] == 'BestCleanSheetPercent']['team'].iloc[0],
-                'reading': df_temp[df_temp['stat_name'] == 'BestCleanSheetPercent']['stat_reading'].iloc[0],
+            'bestCleanSheetPercent': {
+                'teams': df_temp[df_temp['stat_name'] == 'bestCleanSheetPercent']['teams'],
+                'reading': df_temp[df_temp['stat_name'] == 'bestCleanSheetPercent']['stat_reading'].iloc[0],
+            },
+            'bestBigWinPercent': {
+                'teams': df_temp[df_temp['stat_name'] == 'bestBigWinPercent']['teams'],
+                'reading': df_temp[df_temp['stat_name'] == 'bestBigWinPercent']['stat_reading'].iloc[0],
             },
         }
-    return dict_current_season_best_performers
+    return dict_best_performers
 
 
 def reformat_goal_related_stats(data: pd.DataFrame) -> Dict[str, GoalRelatedStatsOverTime]:
@@ -227,14 +245,14 @@ def reformat_goal_related_stats(data: pd.DataFrame) -> Dict[str, GoalRelatedStat
     return dictionary_goal_related_stats
 
 
-def reformat_current_season_league_standings(data: pd.DataFrame) -> Dict[str, List]:
+def reformat_league_standings(data: pd.DataFrame) -> Dict[str, List]:
     """
-    Takes DataFrame of current season's league standings (for all leagues).
-    Returns dictionary having keys = league names, and values = list of current season's league standings
+    Takes DataFrame of league standings for one season (for all leagues).
+    Returns dictionary having keys = league names, and values = list of given season's league standings
     for the respective league.
     """
-    dict_current_season_league_standings = {}
+    dict_league_standings = {}
     for league, df_temp in data.groupby(by='league'):
         df_by_league = df_temp.sort_values(by='position', ascending=True, ignore_index=True)
-        dict_current_season_league_standings[league] = dataframe_to_list(data=df_by_league)
-    return dict_current_season_league_standings
+        dict_league_standings[league] = dataframe_to_list(data=df_by_league)
+    return dict_league_standings
