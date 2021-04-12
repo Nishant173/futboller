@@ -13,7 +13,7 @@ export const COLUMNS_LEAGUE_TABLE = [
         name: 'Team',
         sortable: true,
         left: true,
-        width: 'fixed',
+        width: '200px',
         grow: 1.6,
     },
     {
@@ -23,7 +23,7 @@ export const COLUMNS_LEAGUE_TABLE = [
         left: true,
         width: '140px',
         cell: row => (
-            <div>
+            <div style={{marginTop: '5%'}}>
                 {
                     row['resultsString'].slice(-5).split('').map((resultString) => (
                         <>
@@ -50,53 +50,111 @@ export const COLUMNS_LEAGUE_TABLE = [
         name: 'GamesPlayed',
         sortable: true,
         right: true,
+        width: '100px',
     },
     {
         selector: 'points',
         name: 'Points',
         sortable: true,
         right: true,
+        width: '100px',
     },
     {
         selector: 'goalDifference',
         name: 'GoalDifference',
         sortable: true,
         right: true,
+        width: '150px',
+    },
+    {
+        selector: 'wins',
+        name: 'Wins',
+        sortable: true,
+        right: true,
+        width: '100px',
+    },
+    {
+        selector: 'losses',
+        name: 'Losses',
+        sortable: true,
+        right: true,
+        width: '100px',
+    },
+    {
+        selector: 'draws',
+        name: 'Draws',
+        sortable: true,
+        right: true,
+        width: '100px',
     },
     {
         selector: 'goalsScored',
         name: 'GoalsScored',
         sortable: true,
         right: true,
+        width: '100px',
     },
     {
         selector: 'goalsAllowed',
         name: 'GoalsAllowed',
         sortable: true,
         right: true,
+        width: '100px',
     },
     {
         selector: 'cleanSheets',
         name: 'CleanSheetsFor',
         sortable: true,
         right: true,
+        width: '100px',
     },
     {
         selector: 'cleanSheetsAgainst',
         name: 'CleanSheetsAgainst',
         sortable: true,
         right: true,
+        width: '150px',
     },
     {
         selector: 'bigWins',
         name: 'BigWins',
         sortable: true,
         right: true,
+        width: '100px',
     },
     {
         selector: 'bigLosses',
         name: 'BigLosses',
         sortable: true,
         right: true,
+        width: '100px',
+    },
+    {
+        selector: 'longestUnbeatenStreak',
+        name: 'LongestUnbeatenStreak',
+        sortable: true,
+        right: true,
+        width: '150px',
+    },
+    {
+        selector: 'longestWinStreak',
+        name: 'LongestWinStreak',
+        sortable: true,
+        right: true,
+        width: '150px',
+    },
+    {
+        selector: 'longestLossStreak',
+        name: 'LongestLossStreak',
+        sortable: true,
+        right: true,
+        width: '150px',
+    },
+    {
+        selector: 'longestDrawStreak',
+        name: 'LongestDrawStreak',
+        sortable: true,
+        right: true,
+        width: '150px',
     },
 ]
