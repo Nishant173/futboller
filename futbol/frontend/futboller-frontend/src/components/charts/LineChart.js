@@ -52,7 +52,7 @@ export function MultiLineChart({
         title: {
             display: true,
             text: title,
-            fontSize: 32,
+            fontSize: 24,
             fontColor: 'black',
         },
         scales: {

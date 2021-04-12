@@ -47,7 +47,7 @@ export function ScatterChart({
             display: true,
             position: 'top',
             text: title,
-            fontSize: 32,
+            fontSize: 24,
             fontColor: 'black',
         },
         scales: {

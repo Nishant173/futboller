@@ -27,7 +27,7 @@ export function RadarChart({
         title: {
             display: true,
             text: title,
-            fontSize: 26,
+            fontSize: 24,
             fontColor: 'black',
         },
         scale: {

@@ -35,7 +35,9 @@ export function DoughnutChart({
 
     return (
         <>
-            <h2>{title}</h2>
+            <h2 style={{fontSize: 24, fontColor: 'black'}}>
+                { title }
+            </h2>
             <Doughnut data={data} options={options} height={height} width={width} />
         </>
     )

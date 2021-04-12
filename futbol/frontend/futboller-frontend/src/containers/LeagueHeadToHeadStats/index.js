@@ -137,7 +137,7 @@ class LeagueHeadToHeadStats extends React.Component {
                 }
 
                 {
-                    dataIsAvailable ?
+                    dataIsAvailable && H2HStatsDataApiStatus !== 'initiated' ?
                     <>
                         <br /><br />
                         <Row>
@@ -183,6 +183,11 @@ class LeagueHeadToHeadStats extends React.Component {
                         </Row>
                     </>
                     : null
+                }
+                {
+                    !dataIsAvailable && H2HStatsDataApiStatus !== 'initiated' ?
+                        <h2 style={{marginTop: '5%'}}>No Data Available</h2>
+                        : null
                 }
             </div>
         )

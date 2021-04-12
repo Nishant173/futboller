@@ -30,7 +30,7 @@ const DEFAULTS = {
     monthGroupVerbose: '',
     league: 'EPL',
     season: '2020-21',
-    team: '',
+    team: 'Chelsea',
 }
 
 
@@ -177,8 +177,6 @@ class LeagueMatches extends React.Component {
                 <h1>League Matches - Top 5 Leagues</h1>
                 <br />
 
-                <RangePicker onChange={this.updateDateRange} />
-                &nbsp;&nbsp;
                 <Dropdown overlay={leaguesMenu}>
                     <Button>{this.state.league === "" ? "League" : this.state.league}</Button>
                 </Dropdown>
@@ -190,6 +188,8 @@ class LeagueMatches extends React.Component {
                 <Dropdown overlay={teamsMenu}>
                     <Button>{this.state.team === "" ? "Team" : this.state.team}</Button>
                 </Dropdown>
+                &nbsp;&nbsp;
+                <RangePicker onChange={this.updateDateRange} />
                 &nbsp;&nbsp;
                 <DatePicker picker="month" onChange={this.updateMonthGroupVerbose} />
                 &nbsp;&nbsp;
