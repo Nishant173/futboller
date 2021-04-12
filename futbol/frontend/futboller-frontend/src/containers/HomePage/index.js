@@ -19,6 +19,21 @@ import {
 } from '../../config'
 
 
+function arrayToCleanString(arrayObj) {
+    const commaSeparatedStringOfItems = arrayObj.join(',')
+    let prettifiedStringOfItems = ""
+    for (let char of commaSeparatedStringOfItems) {
+        if (char === ',') {
+            prettifiedStringOfItems += ', '
+        }
+        else {
+            prettifiedStringOfItems += char
+        }
+    }
+    return prettifiedStringOfItems
+}
+
+
 const DEFAULTS = {
     league: 'EPL',
 }
@@ -97,7 +112,7 @@ class Home extends React.Component {
             currentSeasonLeagueLeaders = GeneralStatsData['currentSeasonLeagueLeaders']
             currentSeasonLeagueStandings = GeneralStatsData['currentSeasonLeagueStandings']
             currentSeasonBestPerformers = GeneralStatsData['currentSeasonBestPerformers']
-            titleCurrentSeasonLeagueStandings = `Current season's league standings - ${this.state.league}`
+            titleCurrentSeasonLeagueStandings = `League Standings (${currentSeason}) - ${this.state.league}`
         }
 
         const leaguesMenu = (
@@ -219,31 +234,48 @@ class Home extends React.Component {
                                 <>
                                     <h3>{league} ({currentSeason})</h3>
                                     <Row style={{alignItems: 'center'}}>
-                                        <Col span={8}>
+                                        <Col span={6}>
                                             <Statistic
-                                                title="Best GSPG"
+                                                title={`Best GSPG (${currentSeasonBestPerformers[league]['bestAvgGoalsScored']['reading']})`}
                                                 value={
-                                                    `${currentSeasonBestPerformers[league]['BestAvgGoalsScored']['team']} (${currentSeasonBestPerformers[league]['BestAvgGoalsScored']['reading']})`
+                                                    arrayToCleanString(
+                                                        currentSeasonBestPerformers[league]['bestAvgGoalsScored']['teams']
+                                                    )
                                                 }
-                                                valueStyle={{color: LEAGUE_COLOR_MAPPER[league]}}
+                                                valueStyle={{color: LEAGUE_COLOR_MAPPER[league], fontSize: 22}}
                                             />
                                         </Col>
-                                        <Col span={8}>
+                                        <Col span={6}>
                                             <Statistic
-                                                title="Best GAPG"
+                                                title={`Best GAPG (${currentSeasonBestPerformers[league]['bestAvgGoalsAllowed']['reading']})`}
                                                 value={
-                                                    `${currentSeasonBestPerformers[league]['BestAvgGoalsAllowed']['team']} (${currentSeasonBestPerformers[league]['BestAvgGoalsAllowed']['reading']})`
+                                                    arrayToCleanString(
+                                                        currentSeasonBestPerformers[league]['bestAvgGoalsAllowed']['teams']
+                                                    )
                                                 }
-                                                valueStyle={{color: LEAGUE_COLOR_MAPPER[league]}}
+                                                valueStyle={{color: LEAGUE_COLOR_MAPPER[league], fontSize: 22}}
                                             />
                                         </Col>
-                                        <Col span={8}>
+                                        <Col span={6}>
                                             <Statistic
-                                                title="Best clean-sheet-ratio"
+                                                title={`Best clean-sheet-ratio (${currentSeasonBestPerformers[league]['bestCleanSheetPercent']['reading']}%)`}
                                                 value={
-                                                    `${currentSeasonBestPerformers[league]['BestCleanSheetPercent']['team']} (${currentSeasonBestPerformers[league]['BestCleanSheetPercent']['reading']}%)`
+                                                    arrayToCleanString(
+                                                        currentSeasonBestPerformers[league]['bestCleanSheetPercent']['teams']
+                                                    )
                                                 }
-                                                valueStyle={{color: LEAGUE_COLOR_MAPPER[league]}}
+                                                valueStyle={{color: LEAGUE_COLOR_MAPPER[league], fontSize: 22}}
+                                            />
+                                        </Col>
+                                        <Col span={6}>
+                                            <Statistic
+                                                title={`Best big-win-ratio (${currentSeasonBestPerformers[league]['bestBigWinPercent']['reading']}%)`}
+                                                value={
+                                                    arrayToCleanString(
+                                                        currentSeasonBestPerformers[league]['bestBigWinPercent']['teams']
+                                                    )
+                                                }
+                                                valueStyle={{color: LEAGUE_COLOR_MAPPER[league], fontSize: 22}}
                                             />
                                         </Col>
                                     </Row>
@@ -279,7 +311,7 @@ class Home extends React.Component {
                         <br /><br /><br /><br /><br />
                         
                         <MultiLineChart
-                            title={`Title Race - ${this.state.league}`}
+                            title={`Title Race (${currentSeason}) - ${this.state.league}`}
                             xLabel="Matchday"
                             yLabel="Points (Cumulative)"
                             xTicks={
@@ -303,7 +335,7 @@ class Home extends React.Component {
                         <br /><br /><br /><br /><br />
                         
                         <MultiLineChart
-                            title={`Cumulative Goal Difference - ${this.state.league}`}
+                            title={`Cumulative Goal Difference (${currentSeason}) - ${this.state.league}`}
                             xLabel="Matchday"
                             yLabel="Goal Difference (Cumulative)"
                             xTicks={
