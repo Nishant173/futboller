@@ -148,6 +148,54 @@ def get_partitioned_stats(data: pd.DataFrame,
     return df_partitioned_stats
 
 
+def _calc_goal_difference(data: pd.DataFrame, team: str):
+    """
+    Takes in `LeagueMatch` data of one team, along with name of said team.
+    Returns list of goal differences from point-of-view of the given team.
+    """
+    df = data.copy(deep=True)
+    list_gds = []
+    for row in df.itertuples():
+        if row.home_team == team:
+            list_gds.append(row.home_goals - row.away_goals)
+        elif row.away_team == team:
+            list_gds.append(row.away_goals - row.home_goals)
+    return list_gds
+
+
+def _calc_result_from_goal_difference(goal_difference: int) -> str:
+    if goal_difference > 0:
+        return 'W'
+    if goal_difference < 0:
+        return 'L'
+    return 'D'
+
+
+def get_results_timeline(data: pd.DataFrame, team: str, season: str) -> pd.DataFrame:
+    """
+    Takes in `LeagueMatch` data of one team during one season.
+    Returns DataFrame having results timeline for the same.
+    """
+    df = data.copy(deep=True)
+    if df.empty:
+        return pd.DataFrame()
+    df['goal_difference'] = _calc_goal_difference(data=df, team=team)
+    df['result'] = list(map(
+        _calc_result_from_goal_difference, df['goal_difference'].tolist()
+    ))
+    df_results_timeline = pd.DataFrame(data={
+        'team': team,
+        'season': season,
+        'league': df['league'].iloc[0],
+        'match': df['home_team'] + ' vs ' + df['away_team'],
+        'score': df['home_goals'].astype(str) + '-' + df['away_goals'].astype(str),
+        'goal_difference': df['goal_difference'],
+        'result': df['result'],
+        'date': df['date'],
+    })
+    return df_results_timeline
+
+
 def _get_best_performers_by_league(data: pd.DataFrame, league: str) -> pd.DataFrame:
     df = data.copy(deep=True)
     df = df[df['league'] == league]

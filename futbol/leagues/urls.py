@@ -8,6 +8,7 @@ urlpatterns = [
     path(route='leagues/', view=views.get_leagues, name='leagues'),
     path(route='seasons/', view=views.get_seasons, name='seasons'),
     path(route='general-stats/', view=views.get_general_stats, name='general-stats'),
+    path(route='results-timeline/', view=views.get_results_timeline, name='results-timeline'),
     path(route='league-matches/', view=views.get_league_matches, name='league-matches'),
     path(route='head-to-head-stats/', view=views.get_head_to_head_stats, name='head-to-head-stats'),
     path(route='partitioned-stats/', view=views.get_partitioned_stats, name='partitioned-stats'),

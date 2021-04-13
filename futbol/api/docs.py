@@ -52,6 +52,24 @@ ENDPOINTS = [
         "methods": ["GET"],
     },
     {
+        "endpoint": f"{API_VERSION}/leagues/results-timeline/",
+        "description": "Gets list of results of given team (for given season)",
+        "parameters": [
+            {
+                "name": "team",
+                "datatype": "string",
+                "required": True,
+            },
+            {
+                "name": "season",
+                "datatype": "string",
+                "required": True,
+            },
+        ],
+        "example": f"{API_VERSION}/leagues/results-timeline/?team=Bayern Munich&season=2018-19",
+        "methods": ["GET"],
+    },
+    {
         "endpoint": f"{API_VERSION}/leagues/league-matches/",
         "description": "Gets list of league matches (filter parameters are allowed)",
         "parameters": [
