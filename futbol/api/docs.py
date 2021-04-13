@@ -53,7 +53,7 @@ ENDPOINTS = [
     },
     {
         "endpoint": f"{API_VERSION}/leagues/results-timeline/",
-        "description": "Gets list of results of given team (for given season)",
+        "description": "Gets list of results of given team (for the given timeline)",
         "parameters": [
             {
                 "name": "team",
