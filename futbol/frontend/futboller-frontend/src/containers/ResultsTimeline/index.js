@@ -141,7 +141,7 @@ class ResultsTimeline extends React.Component {
         const seasonsMenu = (
             <Menu>
                 {
-                    SEASON_NAMES.reverse().map((season) => (
+                    SEASON_NAMES.map((season) => (
                         <Menu.Item key={season} onClick={this.updateSeason}>
                             <p>
                                 { season }
