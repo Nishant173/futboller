@@ -41,6 +41,7 @@ export function MultiLineChart({
         datasetsSlicer=[], // Array of 2 integers, indicating positions to slice `datasets` array
         yLow=undefined,
         yHigh=undefined,
+        height=125,
     }) {
     
     datasets = datasets.slice(datasetsSlicer[0] - 1, datasetsSlicer[1])
@@ -87,7 +88,7 @@ export function MultiLineChart({
 
     return (
         <>
-            <Line data={data} options={options} />
+            <Line data={data} options={options} height={height} />
         </>
     )
 }

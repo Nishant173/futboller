@@ -9,6 +9,7 @@ export function RadarChart({
         color="#6897EC",
         scaleTicksMin=undefined,
         scaleTicksMax=undefined,
+        height=undefined, // Must be a number
     }) {
 
     const data = {
@@ -48,7 +49,7 @@ export function RadarChart({
 
     return (
         <>
-            <Radar data={data} options={options} />
+            <Radar data={data} options={options} height={height} />
         </>
     )
 }

@@ -11,6 +11,7 @@ export function HorizontalBarChart({
         xLow,
         xHigh,
         color="#167DEE",
+        height=140,
     }) {
     
     const data = {
@@ -62,7 +63,7 @@ export function HorizontalBarChart({
 
     return (
         <>
-            <HorizontalBar data={data} options={options} />
+            <HorizontalBar data={data} options={options} height={height} />
         </>
     )
 }

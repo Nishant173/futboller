@@ -27,6 +27,7 @@ export function ScatterChart({
         yLow=undefined,
         yHigh=undefined,
         color="#10EC5B",
+        height=125,
     }) {
     
     const coords = getCartesianCoordinates(arrayOfObjects, xObj, yObj)
@@ -97,7 +98,7 @@ export function ScatterChart({
 
     return (
         <>
-            <Scatter data={data} options={options} />
+            <Scatter data={data} options={options} height={height} />
         </>
     )
 }
