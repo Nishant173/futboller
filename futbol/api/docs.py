@@ -63,7 +63,26 @@ ENDPOINTS = [
             {
                 "name": "season",
                 "datatype": "string",
-                "required": True,
+                "required": False,
+            },
+            {
+                "name": "startDate",
+                "datatype": "string",
+                "required": False,
+                "format": "<yyyy-mm-dd>",
+            },
+            {
+                "name": "endDate",
+                "datatype": "string",
+                "required": False,
+                "format": "<yyyy-mm-dd>",
+            },
+            {
+                "name": "monthGroupVerbose",
+                "datatype": "string",
+                "required": False,
+                "format": "<yyyy> <FullMonthName>",
+                "example": "2019 September",
             },
         ],
         "example": f"{API_VERSION}/leagues/results-timeline/?team=Bayern Munich&season=2018-19",

@@ -148,7 +148,7 @@ def get_partitioned_stats(data: pd.DataFrame,
     return df_partitioned_stats
 
 
-def _calc_goal_difference(data: pd.DataFrame, team: str):
+def _get_goal_differences(data: pd.DataFrame, team: str):
     """
     Takes in `LeagueMatch` data of one team, along with name of said team.
     Returns list of goal differences from point-of-view of the given team.
@@ -163,7 +163,7 @@ def _calc_goal_difference(data: pd.DataFrame, team: str):
     return list_gds
 
 
-def _calc_result_from_goal_difference(goal_difference: int) -> str:
+def _get_result_from_goal_difference(goal_difference: int) -> str:
     if goal_difference > 0:
         return 'W'
     if goal_difference < 0:
@@ -171,26 +171,25 @@ def _calc_result_from_goal_difference(goal_difference: int) -> str:
     return 'D'
 
 
-def get_results_timeline(data: pd.DataFrame, team: str, season: str) -> pd.DataFrame:
+def get_results_timeline(data: pd.DataFrame, team: str) -> pd.DataFrame:
     """
-    Takes in `LeagueMatch` data of one team during one season.
-    Returns DataFrame having results timeline for the same.
+    Takes in `LeagueMatch` data of one team.
+    Returns DataFrame having results timeline for given team.
     """
     df = data.copy(deep=True)
     if df.empty:
         return pd.DataFrame()
-    df['goal_difference'] = _calc_goal_difference(data=df, team=team)
-    df['result'] = list(map(
-        _calc_result_from_goal_difference, df['goal_difference'].tolist()
-    ))
+    gds = _get_goal_differences(data=df, team=team)
+    results = list(map(_get_result_from_goal_difference, gds))
     df_results_timeline = pd.DataFrame(data={
-        'team': team,
-        'season': season,
+        'team_of_interest': team,
         'league': df['league'].iloc[0],
-        'match': df['home_team'] + ' vs ' + df['away_team'],
-        'score': df['home_goals'].astype(str) + '-' + df['away_goals'].astype(str),
-        'goal_difference': df['goal_difference'],
-        'result': df['result'],
+        'home_team': df['home_team'],
+        'away_team': df['away_team'],
+        'home_goals': df['home_goals'],
+        'away_goals': df['away_goals'],
+        'goal_difference': gds,
+        'result': results,
         'date': df['date'],
     })
     return df_results_timeline

@@ -52,11 +52,21 @@ def get_general_stats(request):
 @api_view(['GET'])
 def get_results_timeline(request):
     team = request.GET['team']
-    season = request.GET['season']
+    season = request.GET.get('season', default=None)
+    start_date = request.GET.get('startDate', default=None)
+    end_date = request.GET.get('endDate', default=None)
+    month_group_verbose = request.GET.get('monthGroupVerbose', default=None)
     qs_matches = LeagueMatch.objects.all()
     df_matches = queryset_to_dataframe(qs=qs_matches, drop_id=True)
-    df_matches = filters.filter_league_matches(data=df_matches, team=team, season=season)
-    df_results_timeline = wrangler.get_results_timeline(data=df_matches, team=team, season=season)
+    df_matches = filters.filter_league_matches(
+        data=df_matches,
+        team=team,
+        season=season,
+        start_date=start_date,
+        end_date=end_date,
+        month_group_verbose=month_group_verbose,
+    )
+    df_results_timeline = wrangler.get_results_timeline(data=df_matches, team=team)
     df_results_timeline = switch_column_casing(data=df_results_timeline, func=sc2lcc)
     results_timeline = dataframe_to_list(data=df_results_timeline)
     return Response(data=results_timeline, status=status.HTTP_200_OK)
