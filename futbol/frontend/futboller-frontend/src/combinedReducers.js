@@ -5,6 +5,7 @@ import GoalRelatedStatsReducer from './store/reducers/GoalRelatedStatsReducer'
 import HeadToHeadStatsReducer from './store/reducers/HeadToHeadStatsReducer'
 import PartitionedStatsReducer from './store/reducers/PartitionedStatsReducer'
 import GeneralStatsReducer from './store/reducers/GeneralStatsReducer'
+import ResultsTimelineReducer from './store/reducers/ResultsTimelineReducer'
 
 const combinedReducers = {
     LeagueStandingsReducer: LeagueStandingsReducer,
@@ -14,6 +15,7 @@ const combinedReducers = {
     HeadToHeadStatsReducer: HeadToHeadStatsReducer,
     PartitionedStatsReducer: PartitionedStatsReducer,
     GeneralStatsReducer: GeneralStatsReducer,
+    ResultsTimelineReducer: ResultsTimelineReducer,
 }
 
 export default combinedReducers

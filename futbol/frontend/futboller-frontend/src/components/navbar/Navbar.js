@@ -13,6 +13,7 @@ import PartitionedStatsByTeam from './../../containers/PartitionedStatsByTeam'
 import GoalRelatedStatsOverTime from './../../containers/GoalRelatedStatsOverTime'
 import CrossLeagueStandings from './../../containers/CrossLeagueStandings'
 import CrossLeagueStatsByTeam from './../../containers/CrossLeagueStatsByTeam'
+import ResultsTimeline from './../../containers/ResultsTimeline'
 
 
 const { SubMenu } = Menu
@@ -75,6 +76,11 @@ export default class Navbar extends React.Component {
                                     Goal Related Stats
                                 </Link>
                             </Menu.Item>
+                            <Menu.Item onClick={this.updateSelectedPage} key="results-timeline">
+                                <Link key="results-timeline" to="/results-timeline">
+                                    Results Timeline (by team)
+                                </Link>
+                            </Menu.Item>
                         </Menu.ItemGroup>
 
                         <Menu.ItemGroup onClick={this.updateSelectedPage} title="Across leagues">
@@ -99,6 +105,7 @@ export default class Navbar extends React.Component {
                     <Route exact={true} path="/league-h2h-stats" component={LeagueHeadToHeadStats} />
                     <Route exact={true} path="/partitioned-stats" component={PartitionedStatsByTeam} />
                     <Route exact={true} path="/goal-related-stats" component={GoalRelatedStatsOverTime} />
+                    <Route exact={true} path="/results-timeline" component={ResultsTimeline} />
                     <Route exact={true} path="/cross-league-standings" component={CrossLeagueStandings} />
                     <Route exact={true} path="/cross-league-stats-by-team" component={CrossLeagueStatsByTeam} />
                 </Switch>
