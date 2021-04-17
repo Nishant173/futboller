@@ -3,6 +3,26 @@ import datetime
 import pandas as pd
 
 
+def sort_by_date_string_column(data: pd.DataFrame,
+                               date_string_column: str,
+                               date_format: str,
+                               ascending: bool) -> pd.DataFrame:
+    """
+    Takes DataFrame having a date column in string format, and sorts it by said column.
+    >>> df = sort_by_date_string_column(
+        data=df,
+        date_string_column="date",
+        date_format="%Y-%m-%d",
+        ascending=True,
+    )
+    """
+    df = data.copy(deep=True)
+    df[date_string_column] = pd.to_datetime(arg=df[date_string_column], format=date_format)
+    df.sort_values(by=[date_string_column], ascending=ascending, ignore_index=True, inplace=True)
+    df[date_string_column] = df[date_string_column].dt.strftime(date_format)
+    return df
+
+
 def prettify_date_string(date_string: str) -> str:
     """Takes date string of format "yyyy-mm-dd" and prettifies it"""
     year, month, day = date_string.split('-')

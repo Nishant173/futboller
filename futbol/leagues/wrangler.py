@@ -14,6 +14,7 @@ from .league_standings import (get_win_count,
                                get_capitulation_count,
                                get_results_string,
                                get_longest_streak)
+from .utils import sort_by_date_string_column
 from py_utils.data_analysis.transform import (
     add_partitioning_column,
     dataframe_to_list,
@@ -192,6 +193,12 @@ def get_results_timeline(data: pd.DataFrame, team: str) -> pd.DataFrame:
         'result': results,
         'date': df['date'],
     })
+    df_results_timeline = sort_by_date_string_column(
+        data=df_results_timeline,
+        date_string_column="date",
+        date_format="%Y-%m-%d",
+        ascending=True,
+    )
     return df_results_timeline
 
 
