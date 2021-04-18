@@ -3375,11 +3375,11 @@ Borussia Dortmund,Borussia M.Gladbach,3,0,2020-21,2020-09-19,Bundesliga,Germany
 RasenBallsport Leipzig,Mainz 05,3,1,2020-21,2020-09-20,Bundesliga,Germany
 Wolfsburg,Bayer Leverkusen,0,0,2020-21,2020-09-20,Bundesliga,Germany
 Hertha Berlin,Eintracht Frankfurt,1,3,2020-21,2020-09-25,Bundesliga,Germany
-Borussia M.Gladbach,Union Berlin,1,1,2020-21,2020-09-26,Bundesliga,Germany
-Arminia Bielefeld,FC Cologne,1,0,2020-21,2020-09-26,Bundesliga,Germany
-Bayer Leverkusen,RasenBallsport Leipzig,1,1,2020-21,2020-09-26,Bundesliga,Germany
 Mainz 05,VfB Stuttgart,1,4,2020-21,2020-09-26,Bundesliga,Germany
 Augsburg,Borussia Dortmund,2,0,2020-21,2020-09-26,Bundesliga,Germany
+Arminia Bielefeld,FC Cologne,1,0,2020-21,2020-09-26,Bundesliga,Germany
+Borussia M.Gladbach,Union Berlin,1,1,2020-21,2020-09-26,Bundesliga,Germany
+Bayer Leverkusen,RasenBallsport Leipzig,1,1,2020-21,2020-09-26,Bundesliga,Germany
 Schalke 04,Werder Bremen,1,3,2020-21,2020-09-26,Bundesliga,Germany
 Hoffenheim,Bayern Munich,4,1,2020-21,2020-09-27,Bundesliga,Germany
 Freiburg,Wolfsburg,1,1,2020-21,2020-09-27,Bundesliga,Germany
@@ -3392,11 +3392,11 @@ Eintracht Frankfurt,Hoffenheim,2,1,2020-21,2020-10-03,Bundesliga,Germany
 RasenBallsport Leipzig,Schalke 04,4,0,2020-21,2020-10-03,Bundesliga,Germany
 Wolfsburg,Augsburg,0,0,2020-21,2020-10-04,Bundesliga,Germany
 Bayern Munich,Hertha Berlin,4,3,2020-21,2020-10-04,Bundesliga,Germany
-Mainz 05,Bayer Leverkusen,0,1,2020-21,2020-10-17,Bundesliga,Germany
-Hertha Berlin,VfB Stuttgart,0,2,2020-21,2020-10-17,Bundesliga,Germany
-Augsburg,RasenBallsport Leipzig,0,2,2020-21,2020-10-17,Bundesliga,Germany
 Hoffenheim,Borussia Dortmund,0,1,2020-21,2020-10-17,Bundesliga,Germany
 Freiburg,Werder Bremen,1,1,2020-21,2020-10-17,Bundesliga,Germany
+Hertha Berlin,VfB Stuttgart,0,2,2020-21,2020-10-17,Bundesliga,Germany
+Augsburg,RasenBallsport Leipzig,0,2,2020-21,2020-10-17,Bundesliga,Germany
+Mainz 05,Bayer Leverkusen,0,1,2020-21,2020-10-17,Bundesliga,Germany
 Arminia Bielefeld,Bayern Munich,1,4,2020-21,2020-10-17,Bundesliga,Germany
 Borussia M.Gladbach,Wolfsburg,1,1,2020-21,2020-10-17,Bundesliga,Germany
 FC Cologne,Eintracht Frankfurt,1,1,2020-21,2020-10-18,Bundesliga,Germany
@@ -3411,56 +3411,56 @@ Wolfsburg,Arminia Bielefeld,2,1,2020-21,2020-10-25,Bundesliga,Germany
 Werder Bremen,Hoffenheim,1,1,2020-21,2020-10-25,Bundesliga,Germany
 Bayer Leverkusen,Augsburg,3,1,2020-21,2020-10-26,Bundesliga,Germany
 Schalke 04,VfB Stuttgart,1,1,2020-21,2020-10-30,Bundesliga,Germany
+Eintracht Frankfurt,Werder Bremen,1,1,2020-21,2020-10-31,Bundesliga,Germany
+Arminia Bielefeld,Borussia Dortmund,0,2,2020-21,2020-10-31,Bundesliga,Germany
 FC Cologne,Bayern Munich,1,2,2020-21,2020-10-31,Bundesliga,Germany
 Augsburg,Mainz 05,3,1,2020-21,2020-10-31,Bundesliga,Germany
-Arminia Bielefeld,Borussia Dortmund,0,2,2020-21,2020-10-31,Bundesliga,Germany
-Eintracht Frankfurt,Werder Bremen,1,1,2020-21,2020-10-31,Bundesliga,Germany
 Borussia M.Gladbach,RasenBallsport Leipzig,1,0,2020-21,2020-10-31,Bundesliga,Germany
 Freiburg,Bayer Leverkusen,2,4,2020-21,2020-11-01,Bundesliga,Germany
 Hertha Berlin,Wolfsburg,1,1,2020-21,2020-11-01,Bundesliga,Germany
 Hoffenheim,Union Berlin,1,3,2020-21,2020-11-02,Bundesliga,Germany
 Werder Bremen,FC Cologne,1,1,2020-21,2020-11-06,Bundesliga,Germany
-Mainz 05,Schalke 04,2,2,2020-21,2020-11-07,Bundesliga,Germany
-Union Berlin,Arminia Bielefeld,5,0,2020-21,2020-11-07,Bundesliga,Germany
-Augsburg,Hertha Berlin,0,3,2020-21,2020-11-07,Bundesliga,Germany
-VfB Stuttgart,Eintracht Frankfurt,2,2,2020-21,2020-11-07,Bundesliga,Germany
 RasenBallsport Leipzig,Freiburg,3,0,2020-21,2020-11-07,Bundesliga,Germany
+VfB Stuttgart,Eintracht Frankfurt,2,2,2020-21,2020-11-07,Bundesliga,Germany
+Union Berlin,Arminia Bielefeld,5,0,2020-21,2020-11-07,Bundesliga,Germany
+Mainz 05,Schalke 04,2,2,2020-21,2020-11-07,Bundesliga,Germany
+Augsburg,Hertha Berlin,0,3,2020-21,2020-11-07,Bundesliga,Germany
 Borussia Dortmund,Bayern Munich,2,3,2020-21,2020-11-07,Bundesliga,Germany
 Wolfsburg,Hoffenheim,2,1,2020-21,2020-11-08,Bundesliga,Germany
 Bayer Leverkusen,Borussia M.Gladbach,4,3,2020-21,2020-11-08,Bundesliga,Germany
-Bayern Munich,Werder Bremen,1,1,2020-21,2020-11-21,Bundesliga,Germany
+Arminia Bielefeld,Bayer Leverkusen,1,2,2020-21,2020-11-21,Bundesliga,Germany
+Schalke 04,Wolfsburg,0,2,2020-21,2020-11-21,Bundesliga,Germany
 Borussia M.Gladbach,Augsburg,1,1,2020-21,2020-11-21,Bundesliga,Germany
 Hoffenheim,VfB Stuttgart,3,3,2020-21,2020-11-21,Bundesliga,Germany
-Schalke 04,Wolfsburg,0,2,2020-21,2020-11-21,Bundesliga,Germany
-Arminia Bielefeld,Bayer Leverkusen,1,2,2020-21,2020-11-21,Bundesliga,Germany
+Bayern Munich,Werder Bremen,1,1,2020-21,2020-11-21,Bundesliga,Germany
 Eintracht Frankfurt,RasenBallsport Leipzig,1,1,2020-21,2020-11-21,Bundesliga,Germany
 Hertha Berlin,Borussia Dortmund,2,5,2020-21,2020-11-21,Bundesliga,Germany
 Freiburg,Mainz 05,1,3,2020-21,2020-11-22,Bundesliga,Germany
 FC Cologne,Union Berlin,1,2,2020-21,2020-11-22,Bundesliga,Germany
 Wolfsburg,Werder Bremen,5,3,2020-21,2020-11-27,Bundesliga,Germany
-Augsburg,Freiburg,1,1,2020-21,2020-11-28,Bundesliga,Germany
-Union Berlin,Eintracht Frankfurt,3,3,2020-21,2020-11-28,Bundesliga,Germany
-VfB Stuttgart,Bayern Munich,1,3,2020-21,2020-11-28,Bundesliga,Germany
 Borussia Dortmund,FC Cologne,1,2,2020-21,2020-11-28,Bundesliga,Germany
 RasenBallsport Leipzig,Arminia Bielefeld,2,1,2020-21,2020-11-28,Bundesliga,Germany
+Union Berlin,Eintracht Frankfurt,3,3,2020-21,2020-11-28,Bundesliga,Germany
+Augsburg,Freiburg,1,1,2020-21,2020-11-28,Bundesliga,Germany
+VfB Stuttgart,Bayern Munich,1,3,2020-21,2020-11-28,Bundesliga,Germany
 Borussia M.Gladbach,Schalke 04,4,1,2020-21,2020-11-28,Bundesliga,Germany
 Bayer Leverkusen,Hertha Berlin,0,0,2020-21,2020-11-29,Bundesliga,Germany
 Mainz 05,Hoffenheim,1,1,2020-21,2020-11-29,Bundesliga,Germany
 Hertha Berlin,Union Berlin,3,1,2020-21,2020-12-04,Bundesliga,Germany
-Arminia Bielefeld,Mainz 05,2,1,2020-21,2020-12-05,Bundesliga,Germany
-FC Cologne,Wolfsburg,2,2,2020-21,2020-12-05,Bundesliga,Germany
 Freiburg,Borussia M.Gladbach,2,2,2020-21,2020-12-05,Bundesliga,Germany
 Eintracht Frankfurt,Borussia Dortmund,1,1,2020-21,2020-12-05,Bundesliga,Germany
+FC Cologne,Wolfsburg,2,2,2020-21,2020-12-05,Bundesliga,Germany
+Arminia Bielefeld,Mainz 05,2,1,2020-21,2020-12-05,Bundesliga,Germany
 Bayern Munich,RasenBallsport Leipzig,3,3,2020-21,2020-12-05,Bundesliga,Germany
 Werder Bremen,VfB Stuttgart,1,2,2020-21,2020-12-06,Bundesliga,Germany
 Schalke 04,Bayer Leverkusen,0,3,2020-21,2020-12-06,Bundesliga,Germany
 Hoffenheim,Augsburg,3,1,2020-21,2020-12-07,Bundesliga,Germany
 Wolfsburg,Eintracht Frankfurt,2,1,2020-21,2020-12-11,Bundesliga,Germany
-Mainz 05,FC Cologne,0,1,2020-21,2020-12-12,Bundesliga,Germany
-Freiburg,Arminia Bielefeld,2,0,2020-21,2020-12-12,Bundesliga,Germany
-RasenBallsport Leipzig,Werder Bremen,2,0,2020-21,2020-12-12,Bundesliga,Germany
 Borussia Dortmund,VfB Stuttgart,1,5,2020-21,2020-12-12,Bundesliga,Germany
+RasenBallsport Leipzig,Werder Bremen,2,0,2020-21,2020-12-12,Bundesliga,Germany
 Borussia M.Gladbach,Hertha Berlin,1,1,2020-21,2020-12-12,Bundesliga,Germany
+Freiburg,Arminia Bielefeld,2,0,2020-21,2020-12-12,Bundesliga,Germany
+Mainz 05,FC Cologne,0,1,2020-21,2020-12-12,Bundesliga,Germany
 Union Berlin,Bayern Munich,1,1,2020-21,2020-12-12,Bundesliga,Germany
 Augsburg,Schalke 04,2,2,2020-21,2020-12-13,Bundesliga,Germany
 Bayer Leverkusen,Hoffenheim,4,1,2020-21,2020-12-13,Bundesliga,Germany
@@ -3469,16 +3469,16 @@ Hertha Berlin,Mainz 05,0,0,2020-21,2020-12-15,Bundesliga,Germany
 Werder Bremen,Borussia Dortmund,1,2,2020-21,2020-12-15,Bundesliga,Germany
 VfB Stuttgart,Union Berlin,2,2,2020-21,2020-12-15,Bundesliga,Germany
 Schalke 04,Freiburg,0,2,2020-21,2020-12-16,Bundesliga,Germany
-Hoffenheim,RasenBallsport Leipzig,0,1,2020-21,2020-12-16,Bundesliga,Germany
 FC Cologne,Bayer Leverkusen,0,4,2020-21,2020-12-16,Bundesliga,Germany
 Arminia Bielefeld,Augsburg,0,1,2020-21,2020-12-16,Bundesliga,Germany
 Bayern Munich,Wolfsburg,2,1,2020-21,2020-12-16,Bundesliga,Germany
+Hoffenheim,RasenBallsport Leipzig,0,1,2020-21,2020-12-16,Bundesliga,Germany
 Union Berlin,Borussia Dortmund,2,1,2020-21,2020-12-18,Bundesliga,Germany
-RasenBallsport Leipzig,FC Cologne,0,0,2020-21,2020-12-19,Bundesliga,Germany
-Borussia M.Gladbach,Hoffenheim,1,2,2020-21,2020-12-19,Bundesliga,Germany
+Augsburg,Eintracht Frankfurt,0,2,2020-21,2020-12-19,Bundesliga,Germany
 Schalke 04,Arminia Bielefeld,0,1,2020-21,2020-12-19,Bundesliga,Germany
 Mainz 05,Werder Bremen,0,1,2020-21,2020-12-19,Bundesliga,Germany
-Augsburg,Eintracht Frankfurt,0,2,2020-21,2020-12-19,Bundesliga,Germany
+RasenBallsport Leipzig,FC Cologne,0,0,2020-21,2020-12-19,Bundesliga,Germany
+Borussia M.Gladbach,Hoffenheim,1,2,2020-21,2020-12-19,Bundesliga,Germany
 Bayer Leverkusen,Bayern Munich,1,2,2020-21,2020-12-19,Bundesliga,Germany
 Freiburg,Hertha Berlin,4,1,2020-21,2020-12-20,Bundesliga,Germany
 Wolfsburg,VfB Stuttgart,1,0,2020-21,2020-12-20,Bundesliga,Germany
@@ -3492,38 +3492,38 @@ VfB Stuttgart,RasenBallsport Leipzig,0,1,2020-21,2021-01-02,Bundesliga,Germany
 Borussia Dortmund,Wolfsburg,2,0,2020-21,2021-01-03,Bundesliga,Germany
 Bayern Munich,Mainz 05,5,2,2020-21,2021-01-03,Bundesliga,Germany
 Borussia M.Gladbach,Bayern Munich,3,2,2020-21,2021-01-08,Bundesliga,Germany
-Bayer Leverkusen,Werder Bremen,1,1,2020-21,2021-01-09,Bundesliga,Germany
-Freiburg,FC Cologne,5,0,2020-21,2021-01-09,Bundesliga,Germany
-Union Berlin,Wolfsburg,2,2,2020-21,2021-01-09,Bundesliga,Germany
-Schalke 04,Hoffenheim,4,0,2020-21,2021-01-09,Bundesliga,Germany
 Mainz 05,Eintracht Frankfurt,0,2,2020-21,2021-01-09,Bundesliga,Germany
+Schalke 04,Hoffenheim,4,0,2020-21,2021-01-09,Bundesliga,Germany
+Union Berlin,Wolfsburg,2,2,2020-21,2021-01-09,Bundesliga,Germany
+Freiburg,FC Cologne,5,0,2020-21,2021-01-09,Bundesliga,Germany
+Bayer Leverkusen,Werder Bremen,1,1,2020-21,2021-01-09,Bundesliga,Germany
 RasenBallsport Leipzig,Borussia Dortmund,1,3,2020-21,2021-01-09,Bundesliga,Germany
 Augsburg,VfB Stuttgart,1,4,2020-21,2021-01-10,Bundesliga,Germany
 Arminia Bielefeld,Hertha Berlin,1,0,2020-21,2021-01-10,Bundesliga,Germany
 Union Berlin,Bayer Leverkusen,1,0,2020-21,2021-01-15,Bundesliga,Germany
-FC Cologne,Hertha Berlin,0,0,2020-21,2021-01-16,Bundesliga,Germany
-Wolfsburg,RasenBallsport Leipzig,2,2,2020-21,2021-01-16,Bundesliga,Germany
-Werder Bremen,Augsburg,2,0,2020-21,2021-01-16,Bundesliga,Germany
 Borussia Dortmund,Mainz 05,1,1,2020-21,2021-01-16,Bundesliga,Germany
 Hoffenheim,Arminia Bielefeld,0,0,2020-21,2021-01-16,Bundesliga,Germany
+Wolfsburg,RasenBallsport Leipzig,2,2,2020-21,2021-01-16,Bundesliga,Germany
+FC Cologne,Hertha Berlin,0,0,2020-21,2021-01-16,Bundesliga,Germany
+Werder Bremen,Augsburg,2,0,2020-21,2021-01-16,Bundesliga,Germany
 VfB Stuttgart,Borussia M.Gladbach,2,2,2020-21,2021-01-16,Bundesliga,Germany
 Bayern Munich,Freiburg,2,1,2020-21,2021-01-17,Bundesliga,Germany
 Eintracht Frankfurt,Schalke 04,3,1,2020-21,2021-01-17,Bundesliga,Germany
 Borussia M.Gladbach,Werder Bremen,1,0,2020-21,2021-01-19,Bundesliga,Germany
-Hertha Berlin,Hoffenheim,0,3,2020-21,2021-01-19,Bundesliga,Germany
 Mainz 05,Wolfsburg,0,2,2020-21,2021-01-19,Bundesliga,Germany
 Bayer Leverkusen,Borussia Dortmund,2,1,2020-21,2021-01-19,Bundesliga,Germany
+Hertha Berlin,Hoffenheim,0,3,2020-21,2021-01-19,Bundesliga,Germany
 Schalke 04,FC Cologne,1,2,2020-21,2021-01-20,Bundesliga,Germany
 RasenBallsport Leipzig,Union Berlin,1,0,2020-21,2021-01-20,Bundesliga,Germany
 Freiburg,Eintracht Frankfurt,2,2,2020-21,2021-01-20,Bundesliga,Germany
 Augsburg,Bayern Munich,0,1,2020-21,2021-01-20,Bundesliga,Germany
 Arminia Bielefeld,VfB Stuttgart,3,0,2020-21,2021-01-20,Bundesliga,Germany
 Borussia M.Gladbach,Borussia Dortmund,4,2,2020-21,2021-01-22,Bundesliga,Germany
-Arminia Bielefeld,Eintracht Frankfurt,1,5,2020-21,2021-01-23,Bundesliga,Germany
-Augsburg,Union Berlin,2,1,2020-21,2021-01-23,Bundesliga,Germany
-Freiburg,VfB Stuttgart,2,1,2020-21,2021-01-23,Bundesliga,Germany
 Bayer Leverkusen,Wolfsburg,0,1,2020-21,2021-01-23,Bundesliga,Germany
+Freiburg,VfB Stuttgart,2,1,2020-21,2021-01-23,Bundesliga,Germany
 Mainz 05,RasenBallsport Leipzig,3,2,2020-21,2021-01-23,Bundesliga,Germany
+Augsburg,Union Berlin,2,1,2020-21,2021-01-23,Bundesliga,Germany
+Arminia Bielefeld,Eintracht Frankfurt,1,5,2020-21,2021-01-23,Bundesliga,Germany
 Hertha Berlin,Werder Bremen,1,4,2020-21,2021-01-23,Bundesliga,Germany
 Schalke 04,Bayern Munich,0,4,2020-21,2021-01-24,Bundesliga,Germany
 Hoffenheim,FC Cologne,3,0,2020-21,2021-01-24,Bundesliga,Germany
@@ -3572,11 +3572,11 @@ Union Berlin,Hoffenheim,1,1,2020-21,2021-02-28,Bundesliga,Germany
 Mainz 05,Augsburg,0,1,2020-21,2021-02-28,Bundesliga,Germany
 Bayer Leverkusen,Freiburg,1,2,2020-21,2021-02-28,Bundesliga,Germany
 Schalke 04,Mainz 05,0,0,2020-21,2021-03-05,Bundesliga,Germany
+Freiburg,RasenBallsport Leipzig,0,3,2020-21,2021-03-06,Bundesliga,Germany
+Hoffenheim,Wolfsburg,2,1,2020-21,2021-03-06,Bundesliga,Germany
+Eintracht Frankfurt,VfB Stuttgart,1,1,2020-21,2021-03-06,Bundesliga,Germany
 Hertha Berlin,Augsburg,2,1,2020-21,2021-03-06,Bundesliga,Germany
 Borussia M.Gladbach,Bayer Leverkusen,0,1,2020-21,2021-03-06,Bundesliga,Germany
-Hoffenheim,Wolfsburg,2,1,2020-21,2021-03-06,Bundesliga,Germany
-Freiburg,RasenBallsport Leipzig,0,3,2020-21,2021-03-06,Bundesliga,Germany
-Eintracht Frankfurt,VfB Stuttgart,1,1,2020-21,2021-03-06,Bundesliga,Germany
 Bayern Munich,Borussia Dortmund,4,2,2020-21,2021-03-06,Bundesliga,Germany
 FC Cologne,Werder Bremen,1,1,2020-21,2021-03-07,Bundesliga,Germany
 Arminia Bielefeld,Union Berlin,0,0,2020-21,2021-03-07,Bundesliga,Germany
@@ -3584,36 +3584,47 @@ Arminia Bielefeld,Werder Bremen,0,2,2020-21,2021-03-10,Bundesliga,Germany
 Augsburg,Borussia M.Gladbach,3,1,2020-21,2021-03-12,Bundesliga,Germany
 Werder Bremen,Bayern Munich,1,3,2020-21,2021-03-13,Bundesliga,Germany
 Mainz 05,Freiburg,1,0,2020-21,2021-03-13,Bundesliga,Germany
-Wolfsburg,Schalke 04,5,0,2020-21,2021-03-13,Bundesliga,Germany
 Union Berlin,FC Cologne,2,1,2020-21,2021-03-13,Bundesliga,Germany
+Wolfsburg,Schalke 04,5,0,2020-21,2021-03-13,Bundesliga,Germany
 Borussia Dortmund,Hertha Berlin,2,0,2020-21,2021-03-13,Bundesliga,Germany
 Bayer Leverkusen,Arminia Bielefeld,1,2,2020-21,2021-03-14,Bundesliga,Germany
 RasenBallsport Leipzig,Eintracht Frankfurt,1,1,2020-21,2021-03-14,Bundesliga,Germany
 VfB Stuttgart,Hoffenheim,2,0,2020-21,2021-03-14,Bundesliga,Germany
 Arminia Bielefeld,RasenBallsport Leipzig,0,1,2020-21,2021-03-19,Bundesliga,Germany
-Bayern Munich,VfB Stuttgart,4,0,2020-21,2021-03-20,Bundesliga,Germany
-Eintracht Frankfurt,Union Berlin,5,2,2020-21,2021-03-20,Bundesliga,Germany
-FC Cologne,Borussia Dortmund,2,2,2020-21,2021-03-20,Bundesliga,Germany
 Werder Bremen,Wolfsburg,1,2,2020-21,2021-03-20,Bundesliga,Germany
+FC Cologne,Borussia Dortmund,2,2,2020-21,2021-03-20,Bundesliga,Germany
+Eintracht Frankfurt,Union Berlin,5,2,2020-21,2021-03-20,Bundesliga,Germany
+Bayern Munich,VfB Stuttgart,4,0,2020-21,2021-03-20,Bundesliga,Germany
 Schalke 04,Borussia M.Gladbach,0,3,2020-21,2021-03-20,Bundesliga,Germany
 Hoffenheim,Mainz 05,1,2,2020-21,2021-03-21,Bundesliga,Germany
 Hertha Berlin,Bayer Leverkusen,3,0,2020-21,2021-03-21,Bundesliga,Germany
 Freiburg,Augsburg,2,0,2020-21,2021-03-21,Bundesliga,Germany
 Augsburg,Hoffenheim,2,1,2020-21,2021-04-03,Bundesliga,Germany
+Wolfsburg,FC Cologne,1,0,2020-21,2021-04-03,Bundesliga,Germany
 Mainz 05,Arminia Bielefeld,1,1,2020-21,2021-04-03,Bundesliga,Germany
 Borussia Dortmund,Eintracht Frankfurt,1,2,2020-21,2021-04-03,Bundesliga,Germany
 Bayer Leverkusen,Schalke 04,2,1,2020-21,2021-04-03,Bundesliga,Germany
-Wolfsburg,FC Cologne,1,0,2020-21,2021-04-03,Bundesliga,Germany
 RasenBallsport Leipzig,Bayern Munich,0,1,2020-21,2021-04-03,Bundesliga,Germany
 Borussia M.Gladbach,Freiburg,2,1,2020-21,2021-04-03,Bundesliga,Germany
 VfB Stuttgart,Werder Bremen,1,0,2020-21,2021-04-04,Bundesliga,Germany
 Union Berlin,Hertha Berlin,1,1,2020-21,2021-04-04,Bundesliga,Germany
 Arminia Bielefeld,Freiburg,1,0,2020-21,2021-04-09,Bundesliga,Germany
-Hertha Berlin,Borussia M.Gladbach,2,2,2020-21,2021-04-10,Bundesliga,Germany
 Werder Bremen,RasenBallsport Leipzig,1,4,2020-21,2021-04-10,Bundesliga,Germany
+Hertha Berlin,Borussia M.Gladbach,2,2,2020-21,2021-04-10,Bundesliga,Germany
 Bayern Munich,Union Berlin,1,1,2020-21,2021-04-10,Bundesliga,Germany
 Eintracht Frankfurt,Wolfsburg,4,3,2020-21,2021-04-10,Bundesliga,Germany
 VfB Stuttgart,Borussia Dortmund,2,3,2020-21,2021-04-10,Bundesliga,Germany
+Schalke 04,Augsburg,1,0,2020-21,2021-04-11,Bundesliga,Germany
+FC Cologne,Mainz 05,2,3,2020-21,2021-04-11,Bundesliga,Germany
+Hoffenheim,Bayer Leverkusen,0,0,2020-21,2021-04-12,Bundesliga,Germany
+RasenBallsport Leipzig,Hoffenheim,0,0,2020-21,2021-04-16,Bundesliga,Germany
+Borussia M.Gladbach,Eintracht Frankfurt,4,0,2020-21,2021-04-17,Bundesliga,Germany
+Wolfsburg,Bayern Munich,2,3,2020-21,2021-04-17,Bundesliga,Germany
+Freiburg,Schalke 04,4,0,2020-21,2021-04-17,Bundesliga,Germany
+Union Berlin,VfB Stuttgart,2,1,2020-21,2021-04-17,Bundesliga,Germany
+Augsburg,Arminia Bielefeld,0,0,2020-21,2021-04-17,Bundesliga,Germany
+Bayer Leverkusen,FC Cologne,3,0,2020-21,2021-04-17,Bundesliga,Germany
+Borussia Dortmund,Werder Bremen,4,1,2020-21,2021-04-18,Bundesliga,Germany
 Everton,Arsenal,1,6,2009-10,2009-08-15,EPL,England
 Aston Villa,Wigan,0,2,2009-10,2009-08-15,EPL,England
 Blackburn,Manchester City,0,2,2009-10,2009-08-15,EPL,England
@@ -7913,9 +7924,9 @@ Leicester,Brighton,3,0,2020-21,2020-12-13,EPL,England
 Arsenal,Burnley,0,1,2020-21,2020-12-13,EPL,England
 Wolverhampton Wanderers,Chelsea,2,1,2020-21,2020-12-15,EPL,England
 Manchester City,West Bromwich Albion,1,1,2020-21,2020-12-15,EPL,England
+Arsenal,Southampton,1,1,2020-21,2020-12-16,EPL,England
 Leeds,Newcastle United,5,2,2020-21,2020-12-16,EPL,England
 Leicester,Everton,0,2,2020-21,2020-12-16,EPL,England
-Arsenal,Southampton,1,1,2020-21,2020-12-16,EPL,England
 Fulham,Brighton,0,0,2020-21,2020-12-16,EPL,England
 West Ham,Crystal Palace,1,1,2020-21,2020-12-16,EPL,England
 Liverpool,Tottenham,2,1,2020-21,2020-12-16,EPL,England
@@ -7943,10 +7954,10 @@ Liverpool,West Bromwich Albion,1,1,2020-21,2020-12-27,EPL,England
 Wolverhampton Wanderers,Tottenham,1,1,2020-21,2020-12-27,EPL,England
 Crystal Palace,Leicester,1,1,2020-21,2020-12-28,EPL,England
 Chelsea,Aston Villa,1,1,2020-21,2020-12-28,EPL,England
-West Bromwich Albion,Leeds,0,5,2020-21,2020-12-29,EPL,England
-Southampton,West Ham,0,0,2020-21,2020-12-29,EPL,England
-Burnley,Sheffield United,1,0,2020-21,2020-12-29,EPL,England
 Brighton,Arsenal,0,1,2020-21,2020-12-29,EPL,England
+Burnley,Sheffield United,1,0,2020-21,2020-12-29,EPL,England
+Southampton,West Ham,0,0,2020-21,2020-12-29,EPL,England
+West Bromwich Albion,Leeds,0,5,2020-21,2020-12-29,EPL,England
 Manchester United,Wolverhampton Wanderers,1,0,2020-21,2020-12-29,EPL,England
 Newcastle United,Liverpool,0,0,2020-21,2020-12-30,EPL,England
 Everton,West Ham,0,1,2020-21,2021-01-01,EPL,England
@@ -7991,8 +8002,8 @@ Manchester United,Sheffield United,1,2,2020-21,2021-01-27,EPL,England
 Tottenham,Liverpool,1,3,2020-21,2021-01-28,EPL,England
 Everton,Newcastle United,0,2,2020-21,2021-01-30,EPL,England
 Manchester City,Sheffield United,1,0,2020-21,2021-01-30,EPL,England
-West Bromwich Albion,Fulham,2,2,2020-21,2021-01-30,EPL,England
 Crystal Palace,Wolverhampton Wanderers,1,0,2020-21,2021-01-30,EPL,England
+West Bromwich Albion,Fulham,2,2,2020-21,2021-01-30,EPL,England
 Arsenal,Manchester United,0,0,2020-21,2021-01-30,EPL,England
 Southampton,Aston Villa,0,1,2020-21,2021-01-30,EPL,England
 Chelsea,Burnley,2,0,2020-21,2021-01-31,EPL,England
@@ -8010,8 +8021,8 @@ Aston Villa,West Ham,1,3,2020-21,2021-02-03,EPL,England
 Liverpool,Brighton,0,1,2020-21,2021-02-03,EPL,England
 Tottenham,Chelsea,0,1,2020-21,2021-02-04,EPL,England
 Aston Villa,Arsenal,1,0,2020-21,2021-02-06,EPL,England
-Burnley,Brighton,1,1,2020-21,2021-02-06,EPL,England
 Newcastle United,Southampton,3,2,2020-21,2021-02-06,EPL,England
+Burnley,Brighton,1,1,2020-21,2021-02-06,EPL,England
 Fulham,West Ham,0,0,2020-21,2021-02-06,EPL,England
 Manchester United,Everton,3,3,2020-21,2021-02-06,EPL,England
 Tottenham,West Bromwich Albion,2,0,2020-21,2021-02-07,EPL,England
@@ -8098,6 +8109,17 @@ Fulham,Wolverhampton Wanderers,0,1,2020-21,2021-04-09,EPL,England
 Manchester City,Leeds,1,2,2020-21,2021-04-10,EPL,England
 Liverpool,Aston Villa,2,1,2020-21,2021-04-10,EPL,England
 Crystal Palace,Chelsea,1,4,2020-21,2021-04-10,EPL,England
+Burnley,Newcastle United,1,2,2020-21,2021-04-11,EPL,England
+West Ham,Leicester,3,2,2020-21,2021-04-11,EPL,England
+Tottenham,Manchester United,1,3,2020-21,2021-04-11,EPL,England
+Sheffield United,Arsenal,0,3,2020-21,2021-04-11,EPL,England
+West Bromwich Albion,Southampton,3,0,2020-21,2021-04-12,EPL,England
+Brighton,Everton,0,0,2020-21,2021-04-12,EPL,England
+Everton,Tottenham,2,2,2020-21,2021-04-16,EPL,England
+Newcastle United,West Ham,3,2,2020-21,2021-04-17,EPL,England
+Wolverhampton Wanderers,Sheffield United,1,0,2020-21,2021-04-17,EPL,England
+Arsenal,Fulham,1,1,2020-21,2021-04-18,EPL,England
+Manchester United,Burnley,3,1,2020-21,2021-04-18,EPL,England
 Real Madrid,La Coruna,3,2,2009-10,2009-08-29,La Liga,Spain
 Zaragoza,Tenerife,1,0,2009-10,2009-08-29,La Liga,Spain
 Malaga,Atletico Madrid,3,0,2009-10,2009-08-30,La Liga,Spain
@@ -12406,8 +12428,8 @@ Barcelona,Real Sociedad,2,1,2020-21,2020-12-16,La Liga,Spain
 Athletic Club,SD Huesca,2,0,2020-21,2020-12-18,La Liga,Spain
 Atletico Madrid,Elche,3,1,2020-21,2020-12-19,La Liga,Spain
 Barcelona,Valencia,2,2,2020-21,2020-12-19,La Liga,Spain
-Osasuna,Villarreal,1,3,2020-21,2020-12-19,La Liga,Spain
 Levante,Real Sociedad,2,1,2020-21,2020-12-19,La Liga,Spain
+Osasuna,Villarreal,1,3,2020-21,2020-12-19,La Liga,Spain
 Sevilla,Real Valladolid,1,1,2020-21,2020-12-19,La Liga,Spain
 Celta Vigo,Alaves,2,0,2020-21,2020-12-20,La Liga,Spain
 Granada,Real Betis,2,0,2020-21,2020-12-20,La Liga,Spain
@@ -12415,21 +12437,21 @@ Cadiz,Getafe,0,2,2020-21,2020-12-20,La Liga,Spain
 Eibar,Real Madrid,1,3,2020-21,2020-12-20,La Liga,Spain
 Elche,Osasuna,2,2,2020-21,2020-12-22,La Liga,Spain
 Valencia,Sevilla,0,1,2020-21,2020-12-22,La Liga,Spain
-Real Sociedad,Atletico Madrid,0,2,2020-21,2020-12-22,La Liga,Spain
 SD Huesca,Levante,1,1,2020-21,2020-12-22,La Liga,Spain
-Villarreal,Athletic Club,1,1,2020-21,2020-12-22,La Liga,Spain
+Real Sociedad,Atletico Madrid,0,2,2020-21,2020-12-22,La Liga,Spain
 Real Valladolid,Barcelona,0,3,2020-21,2020-12-22,La Liga,Spain
+Villarreal,Athletic Club,1,1,2020-21,2020-12-22,La Liga,Spain
 Getafe,Celta Vigo,1,1,2020-21,2020-12-23,La Liga,Spain
 Real Madrid,Granada,2,0,2020-21,2020-12-23,La Liga,Spain
 Alaves,Eibar,2,1,2020-21,2020-12-23,La Liga,Spain
 Real Betis,Cadiz,1,0,2020-21,2020-12-23,La Liga,Spain
-Sevilla,Villarreal,2,0,2020-21,2020-12-29,La Liga,Spain
 Barcelona,Eibar,1,1,2020-21,2020-12-29,La Liga,Spain
+Sevilla,Villarreal,2,0,2020-21,2020-12-29,La Liga,Spain
 Cadiz,Real Valladolid,0,0,2020-21,2020-12-29,La Liga,Spain
 Levante,Real Betis,4,3,2020-21,2020-12-29,La Liga,Spain
 Granada,Valencia,2,1,2020-21,2020-12-30,La Liga,Spain
-Atletico Madrid,Getafe,1,0,2020-21,2020-12-30,La Liga,Spain
 Celta Vigo,SD Huesca,2,1,2020-21,2020-12-30,La Liga,Spain
+Atletico Madrid,Getafe,1,0,2020-21,2020-12-30,La Liga,Spain
 Elche,Real Madrid,1,1,2020-21,2020-12-30,La Liga,Spain
 Athletic Club,Real Sociedad,0,1,2020-21,2020-12-31,La Liga,Spain
 Osasuna,Alaves,1,1,2020-21,2020-12-31,La Liga,Spain
@@ -12455,8 +12477,8 @@ Elche,Getafe,1,3,2020-21,2021-01-11,La Liga,Spain
 SD Huesca,Real Betis,0,2,2020-21,2021-01-11,La Liga,Spain
 Granada,Osasuna,2,0,2020-21,2021-01-12,La Liga,Spain
 Atletico Madrid,Sevilla,2,0,2020-21,2021-01-12,La Liga,Spain
-Cadiz,Levante,2,2,2020-21,2021-01-19,La Liga,Spain
 Real Valladolid,Elche,2,2,2020-21,2021-01-19,La Liga,Spain
+Cadiz,Levante,2,2,2020-21,2021-01-19,La Liga,Spain
 Alaves,Sevilla,1,2,2020-21,2021-01-19,La Liga,Spain
 Getafe,SD Huesca,1,0,2020-21,2021-01-20,La Liga,Spain
 Real Betis,Celta Vigo,2,1,2020-21,2021-01-20,La Liga,Spain
@@ -12554,8 +12576,8 @@ Celta Vigo,Real Madrid,1,3,2020-21,2021-03-20,La Liga,Spain
 SD Huesca,Osasuna,0,0,2020-21,2021-03-20,La Liga,Spain
 Real Valladolid,Sevilla,1,1,2020-21,2021-03-20,La Liga,Spain
 Getafe,Elche,1,1,2020-21,2021-03-21,La Liga,Spain
-Villarreal,Cadiz,2,1,2020-21,2021-03-21,La Liga,Spain
 Valencia,Granada,2,1,2020-21,2021-03-21,La Liga,Spain
+Villarreal,Cadiz,2,1,2020-21,2021-03-21,La Liga,Spain
 Atletico Madrid,Alaves,1,0,2020-21,2021-03-21,La Liga,Spain
 Real Sociedad,Barcelona,1,6,2020-21,2021-03-21,La Liga,Spain
 Levante,SD Huesca,0,2,2020-21,2021-04-02,La Liga,Spain
@@ -12573,6 +12595,15 @@ Getafe,Cadiz,0,1,2020-21,2021-04-10,La Liga,Spain
 Athletic Club,Alaves,0,0,2020-21,2021-04-10,La Liga,Spain
 Eibar,Levante,0,1,2020-21,2021-04-10,La Liga,Spain
 Real Madrid,Barcelona,2,1,2020-21,2021-04-10,La Liga,Spain
+Villarreal,Osasuna,1,2,2020-21,2021-04-11,La Liga,Spain
+Valencia,Real Sociedad,2,2,2020-21,2021-04-11,La Liga,Spain
+Real Valladolid,Granada,1,2,2020-21,2021-04-11,La Liga,Spain
+Real Betis,Atletico Madrid,1,1,2020-21,2021-04-11,La Liga,Spain
+Celta Vigo,Sevilla,3,4,2020-21,2021-04-12,La Liga,Spain
+Osasuna,Elche,2,0,2020-21,2021-04-18,La Liga,Spain
+Real Sociedad,Sevilla,1,2,2020-21,2021-04-18,La Liga,Spain
+Alaves,SD Huesca,1,0,2020-21,2021-04-18,La Liga,Spain
+Atletico Madrid,Eibar,5,0,2020-21,2021-04-18,La Liga,Spain
 Montpellier,Paris Saint Germain,1,1,2009-10,2009-08-08,Ligue 1,France
 Auxerre,Sochaux,0,1,2009-10,2009-08-08,Ligue 1,France
 Grenoble,Marseille,0,2,2009-10,2009-08-08,Ligue 1,France
@@ -16706,10 +16737,10 @@ Paris Saint Germain,Angers,6,1,2020-21,2020-10-02,Ligue 1,France
 Lens,Saint-Etienne,2,0,2020-21,2020-10-03,Ligue 1,France
 Nice,Nantes,2,1,2020-21,2020-10-03,Ligue 1,France
 Montpellier,Nimes,0,1,2020-21,2020-10-04,Ligue 1,France
-Brest,Monaco,1,0,2020-21,2020-10-04,Ligue 1,France
-Strasbourg,Lille,0,3,2020-21,2020-10-04,Ligue 1,France
 Metz,Lorient,3,1,2020-21,2020-10-04,Ligue 1,France
 Bordeaux,Dijon,3,0,2020-21,2020-10-04,Ligue 1,France
+Brest,Monaco,1,0,2020-21,2020-10-04,Ligue 1,France
+Strasbourg,Lille,0,3,2020-21,2020-10-04,Ligue 1,France
 Rennes,Reims,2,2,2020-21,2020-10-04,Ligue 1,France
 Lyon,Marseille,1,1,2020-21,2020-10-04,Ligue 1,France
 Dijon,Rennes,1,1,2020-21,2020-10-16,Ligue 1,France
@@ -16717,46 +16748,46 @@ Nimes,Paris Saint Germain,0,4,2020-21,2020-10-16,Ligue 1,France
 Reims,Lorient,1,3,2020-21,2020-10-17,Ligue 1,France
 Marseille,Bordeaux,3,1,2020-21,2020-10-17,Ligue 1,France
 Strasbourg,Lyon,2,3,2020-21,2020-10-18,Ligue 1,France
-Nantes,Brest,3,1,2020-21,2020-10-18,Ligue 1,France
-Monaco,Montpellier,1,1,2020-21,2020-10-18,Ligue 1,France
 Angers,Metz,1,1,2020-21,2020-10-18,Ligue 1,France
+Monaco,Montpellier,1,1,2020-21,2020-10-18,Ligue 1,France
+Nantes,Brest,3,1,2020-21,2020-10-18,Ligue 1,France
 Saint-Etienne,Nice,1,3,2020-21,2020-10-18,Ligue 1,France
 Lille,Lens,4,0,2020-21,2020-10-18,Ligue 1,France
 Rennes,Angers,1,2,2020-21,2020-10-23,Ligue 1,France
 Lorient,Marseille,0,1,2020-21,2020-10-24,Ligue 1,France
 Paris Saint Germain,Dijon,4,0,2020-21,2020-10-24,Ligue 1,France
+Brest,Strasbourg,0,3,2020-21,2020-10-25,Ligue 1,France
 Montpellier,Reims,0,4,2020-21,2020-10-25,Ligue 1,France
 Bordeaux,Nimes,2,0,2020-21,2020-10-25,Ligue 1,France
 Metz,Saint-Etienne,2,0,2020-21,2020-10-25,Ligue 1,France
-Brest,Strasbourg,0,3,2020-21,2020-10-25,Ligue 1,France
 Nice,Lille,1,1,2020-21,2020-10-25,Ligue 1,France
 Lyon,Monaco,4,1,2020-21,2020-10-25,Ligue 1,France
 Rennes,Brest,2,1,2020-21,2020-10-31,Ligue 1,France
 Nantes,Paris Saint Germain,0,3,2020-21,2020-10-31,Ligue 1,France
 Saint-Etienne,Montpellier,0,1,2020-21,2020-11-01,Ligue 1,France
+Reims,Strasbourg,2,1,2020-21,2020-11-01,Ligue 1,France
+Nimes,Metz,0,1,2020-21,2020-11-01,Ligue 1,France
 Angers,Nice,0,3,2020-21,2020-11-01,Ligue 1,France
 Dijon,Lorient,0,0,2020-21,2020-11-01,Ligue 1,France
-Nimes,Metz,0,1,2020-21,2020-11-01,Ligue 1,France
-Reims,Strasbourg,2,1,2020-21,2020-11-01,Ligue 1,France
 Monaco,Bordeaux,4,0,2020-21,2020-11-01,Ligue 1,France
 Lille,Lyon,1,1,2020-21,2020-11-01,Ligue 1,France
 Strasbourg,Marseille,0,1,2020-21,2020-11-06,Ligue 1,France
 Bordeaux,Montpellier,0,2,2020-21,2020-11-07,Ligue 1,France
 Paris Saint Germain,Rennes,3,0,2020-21,2020-11-07,Ligue 1,France
 Brest,Lille,3,2,2020-21,2020-11-08,Ligue 1,France
-Nimes,Angers,1,5,2020-21,2020-11-08,Ligue 1,France
-Metz,Dijon,1,1,2020-21,2020-11-08,Ligue 1,France
-Lens,Reims,4,4,2020-21,2020-11-08,Ligue 1,France
 Lorient,Nantes,0,2,2020-21,2020-11-08,Ligue 1,France
+Lens,Reims,4,4,2020-21,2020-11-08,Ligue 1,France
+Metz,Dijon,1,1,2020-21,2020-11-08,Ligue 1,France
+Nimes,Angers,1,5,2020-21,2020-11-08,Ligue 1,France
 Nice,Monaco,1,2,2020-21,2020-11-08,Ligue 1,France
 Lyon,Saint-Etienne,2,1,2020-21,2020-11-08,Ligue 1,France
 Rennes,Bordeaux,0,1,2020-21,2020-11-20,Ligue 1,France
 Monaco,Paris Saint Germain,3,2,2020-21,2020-11-20,Ligue 1,France
 Brest,Saint-Etienne,4,1,2020-21,2020-11-21,Ligue 1,France
 Nantes,Metz,1,1,2020-21,2020-11-22,Ligue 1,France
-Dijon,Lens,0,1,2020-21,2020-11-22,Ligue 1,France
 Montpellier,Strasbourg,4,3,2020-21,2020-11-22,Ligue 1,France
 Reims,Nimes,0,1,2020-21,2020-11-22,Ligue 1,France
+Dijon,Lens,0,1,2020-21,2020-11-22,Ligue 1,France
 Angers,Lyon,0,1,2020-21,2020-11-22,Ligue 1,France
 Lille,Lorient,4,0,2020-21,2020-11-22,Ligue 1,France
 Lens,Nantes,1,1,2020-21,2020-11-25,Ligue 1,France
@@ -16764,30 +16795,30 @@ Strasbourg,Rennes,1,1,2020-21,2020-11-27,Ligue 1,France
 Marseille,Nantes,3,1,2020-21,2020-11-28,Ligue 1,France
 Paris Saint Germain,Bordeaux,2,2,2020-21,2020-11-28,Ligue 1,France
 Lyon,Reims,3,0,2020-21,2020-11-29,Ligue 1,France
-Lens,Angers,1,3,2020-21,2020-11-29,Ligue 1,France
 Lorient,Montpellier,0,1,2020-21,2020-11-29,Ligue 1,France
-Monaco,Nimes,3,0,2020-21,2020-11-29,Ligue 1,France
 Metz,Brest,0,2,2020-21,2020-11-29,Ligue 1,France
+Lens,Angers,1,3,2020-21,2020-11-29,Ligue 1,France
+Monaco,Nimes,3,0,2020-21,2020-11-29,Ligue 1,France
 Nice,Dijon,1,3,2020-21,2020-11-29,Ligue 1,France
 Saint-Etienne,Lille,1,1,2020-21,2020-11-29,Ligue 1,France
 Nimes,Marseille,0,2,2020-21,2020-12-04,Ligue 1,France
 Rennes,Lens,0,2,2020-21,2020-12-05,Ligue 1,France
 Montpellier,Paris Saint Germain,1,3,2020-21,2020-12-05,Ligue 1,France
 Lille,Monaco,2,1,2020-21,2020-12-06,Ligue 1,France
-Angers,Lorient,2,0,2020-21,2020-12-06,Ligue 1,France
-Bordeaux,Brest,1,0,2020-21,2020-12-06,Ligue 1,France
-Dijon,Saint-Etienne,0,0,2020-21,2020-12-06,Ligue 1,France
 Nantes,Strasbourg,0,4,2020-21,2020-12-06,Ligue 1,France
+Dijon,Saint-Etienne,0,0,2020-21,2020-12-06,Ligue 1,France
+Bordeaux,Brest,1,0,2020-21,2020-12-06,Ligue 1,France
+Angers,Lorient,2,0,2020-21,2020-12-06,Ligue 1,France
 Reims,Nice,0,0,2020-21,2020-12-06,Ligue 1,France
 Metz,Lyon,1,3,2020-21,2020-12-06,Ligue 1,France
 Saint-Etienne,Angers,0,0,2020-21,2020-12-11,Ligue 1,France
 Marseille,Monaco,2,1,2020-21,2020-12-12,Ligue 1,France
 Lens,Montpellier,2,3,2020-21,2020-12-12,Ligue 1,France
 Nice,Rennes,0,1,2020-21,2020-12-13,Ligue 1,France
+Strasbourg,Metz,2,2,2020-21,2020-12-13,Ligue 1,France
+Nantes,Dijon,1,1,2020-21,2020-12-13,Ligue 1,France
 Brest,Reims,2,1,2020-21,2020-12-13,Ligue 1,France
 Lorient,Nimes,3,0,2020-21,2020-12-13,Ligue 1,France
-Nantes,Dijon,1,1,2020-21,2020-12-13,Ligue 1,France
-Strasbourg,Metz,2,2,2020-21,2020-12-13,Ligue 1,France
 Lille,Bordeaux,2,1,2020-21,2020-12-13,Ligue 1,France
 Paris Saint Germain,Lyon,0,1,2020-21,2020-12-13,Ligue 1,France
 Angers,Strasbourg,0,2,2020-21,2020-12-16,Ligue 1,France
@@ -16796,50 +16827,50 @@ Montpellier,Metz,0,2,2020-21,2020-12-16,Ligue 1,France
 Nimes,Nice,0,2,2020-21,2020-12-16,Ligue 1,France
 Reims,Nantes,3,2,2020-21,2020-12-16,Ligue 1,France
 Paris Saint Germain,Lorient,2,0,2020-21,2020-12-16,Ligue 1,France
-Lyon,Brest,2,2,2020-21,2020-12-16,Ligue 1,France
 Monaco,Lens,0,3,2020-21,2020-12-16,Ligue 1,France
 Rennes,Marseille,2,1,2020-21,2020-12-16,Ligue 1,France
 Bordeaux,Saint-Etienne,1,2,2020-21,2020-12-16,Ligue 1,France
+Lyon,Brest,2,2,2020-21,2020-12-16,Ligue 1,France
 Metz,Lens,2,0,2020-21,2020-12-19,Ligue 1,France
 Marseille,Reims,1,1,2020-21,2020-12-19,Ligue 1,France
 Nice,Lyon,1,4,2020-21,2020-12-19,Ligue 1,France
 Brest,Montpellier,2,2,2020-21,2020-12-20,Ligue 1,France
+Saint-Etienne,Nimes,2,2,2020-21,2020-12-20,Ligue 1,France
 Strasbourg,Bordeaux,0,2,2020-21,2020-12-20,Ligue 1,France
 Dijon,Monaco,0,1,2020-21,2020-12-20,Ligue 1,France
 Nantes,Angers,1,1,2020-21,2020-12-20,Ligue 1,France
-Saint-Etienne,Nimes,2,2,2020-21,2020-12-20,Ligue 1,France
 Lorient,Rennes,0,3,2020-21,2020-12-20,Ligue 1,France
 Lille,Paris Saint Germain,0,0,2020-21,2020-12-20,Ligue 1,France
+Rennes,Metz,1,0,2020-21,2020-12-23,Ligue 1,France
 Nice,Lorient,2,2,2020-21,2020-12-23,Ligue 1,France
 Bordeaux,Reims,1,3,2020-21,2020-12-23,Ligue 1,France
 Lens,Brest,2,1,2020-21,2020-12-23,Ligue 1,France
-Rennes,Metz,1,0,2020-21,2020-12-23,Ligue 1,France
 Nimes,Dijon,1,3,2020-21,2020-12-23,Ligue 1,France
 Paris Saint Germain,Strasbourg,4,0,2020-21,2020-12-23,Ligue 1,France
 Monaco,Saint-Etienne,2,2,2020-21,2020-12-23,Ligue 1,France
-Lyon,Nantes,3,0,2020-21,2020-12-23,Ligue 1,France
 Angers,Marseille,2,1,2020-21,2020-12-23,Ligue 1,France
+Lyon,Nantes,3,0,2020-21,2020-12-23,Ligue 1,France
 Montpellier,Lille,2,3,2020-21,2020-12-23,Ligue 1,France
 Lorient,Monaco,2,5,2020-21,2021-01-06,Ligue 1,France
 Metz,Bordeaux,0,0,2020-21,2021-01-06,Ligue 1,France
 Nantes,Rennes,0,0,2020-21,2021-01-06,Ligue 1,France
 Strasbourg,Nimes,5,0,2020-21,2021-01-06,Ligue 1,France
 Brest,Nice,2,0,2020-21,2021-01-06,Ligue 1,France
-Saint-Etienne,Paris Saint Germain,1,1,2020-21,2021-01-06,Ligue 1,France
-Reims,Dijon,0,0,2020-21,2021-01-06,Ligue 1,France
-Lyon,Lens,3,2,2020-21,2021-01-06,Ligue 1,France
 Lille,Angers,1,2,2020-21,2021-01-06,Ligue 1,France
+Lyon,Lens,3,2,2020-21,2021-01-06,Ligue 1,France
 Marseille,Montpellier,3,1,2020-21,2021-01-06,Ligue 1,France
+Reims,Dijon,0,0,2020-21,2021-01-06,Ligue 1,France
+Saint-Etienne,Paris Saint Germain,1,1,2020-21,2021-01-06,Ligue 1,France
+Rennes,Lyon,2,2,2020-21,2021-01-09,Ligue 1,France
+Reims,Saint-Etienne,3,1,2020-21,2021-01-09,Ligue 1,France
 Nimes,Lille,0,1,2020-21,2021-01-09,Ligue 1,France
-Bordeaux,Lorient,2,1,2020-21,2021-01-09,Ligue 1,France
-Dijon,Marseille,0,0,2020-21,2021-01-09,Ligue 1,France
-Lens,Strasbourg,0,1,2020-21,2021-01-09,Ligue 1,France
-Metz,Nice,1,1,2020-21,2021-01-09,Ligue 1,France
-Monaco,Angers,3,0,2020-21,2021-01-09,Ligue 1,France
 Montpellier,Nantes,1,1,2020-21,2021-01-09,Ligue 1,France
 Paris Saint Germain,Brest,3,0,2020-21,2021-01-09,Ligue 1,France
-Reims,Saint-Etienne,3,1,2020-21,2021-01-09,Ligue 1,France
-Rennes,Lyon,2,2,2020-21,2021-01-09,Ligue 1,France
+Metz,Nice,1,1,2020-21,2021-01-09,Ligue 1,France
+Lens,Strasbourg,0,1,2020-21,2021-01-09,Ligue 1,France
+Monaco,Angers,3,0,2020-21,2021-01-09,Ligue 1,France
+Dijon,Marseille,0,0,2020-21,2021-01-09,Ligue 1,France
+Bordeaux,Lorient,2,1,2020-21,2021-01-09,Ligue 1,France
 Montpellier,Monaco,2,3,2020-21,2021-01-15,Ligue 1,France
 Marseille,Nimes,1,2,2020-21,2021-01-16,Ligue 1,France
 Angers,Paris Saint Germain,0,1,2020-21,2021-01-16,Ligue 1,France
@@ -16855,18 +16886,18 @@ Lens,Nice,0,1,2020-21,2021-01-23,Ligue 1,France
 Monaco,Marseille,3,1,2020-21,2021-01-23,Ligue 1,France
 Bordeaux,Angers,2,1,2020-21,2021-01-24,Ligue 1,France
 Reims,Brest,1,0,2020-21,2021-01-24,Ligue 1,France
-Metz,Nantes,2,0,2020-21,2021-01-24,Ligue 1,France
 Dijon,Strasbourg,1,1,2020-21,2021-01-24,Ligue 1,France
+Metz,Nantes,2,0,2020-21,2021-01-24,Ligue 1,France
 Rennes,Lille,0,1,2020-21,2021-01-24,Ligue 1,France
 Saint-Etienne,Lyon,0,5,2020-21,2021-01-24,Ligue 1,France
 Lorient,Dijon,3,2,2020-21,2021-01-27,Ligue 1,France
 Lyon,Bordeaux,2,1,2020-21,2021-01-29,Ligue 1,France
 Montpellier,Lens,1,2,2020-21,2021-01-30,Ligue 1,France
 Nice,Saint-Etienne,0,1,2020-21,2021-01-31,Ligue 1,France
-Strasbourg,Reims,0,1,2020-21,2021-01-31,Ligue 1,France
-Brest,Metz,2,4,2020-21,2021-01-31,Ligue 1,France
 Angers,Nimes,3,1,2020-21,2021-01-31,Ligue 1,France
+Brest,Metz,2,4,2020-21,2021-01-31,Ligue 1,France
 Lorient,Paris Saint Germain,3,2,2020-21,2021-01-31,Ligue 1,France
+Strasbourg,Reims,0,1,2020-21,2021-01-31,Ligue 1,France
 Lille,Dijon,1,0,2020-21,2021-01-31,Ligue 1,France
 Nantes,Monaco,1,2,2020-21,2021-01-31,Ligue 1,France
 Bordeaux,Lille,0,3,2020-21,2021-02-03,Ligue 1,France
@@ -16874,17 +16905,17 @@ Metz,Montpellier,1,1,2020-21,2021-02-03,Ligue 1,France
 Reims,Angers,0,0,2020-21,2021-02-03,Ligue 1,France
 Rennes,Lorient,1,1,2020-21,2021-02-03,Ligue 1,France
 Strasbourg,Brest,2,2,2020-21,2021-02-03,Ligue 1,France
-Dijon,Lyon,0,1,2020-21,2021-02-03,Ligue 1,France
-Lens,Marseille,2,2,2020-21,2021-02-03,Ligue 1,France
+Saint-Etienne,Nantes,1,1,2020-21,2021-02-03,Ligue 1,France
 Monaco,Nice,2,1,2020-21,2021-02-03,Ligue 1,France
 Paris Saint Germain,Nimes,3,0,2020-21,2021-02-03,Ligue 1,France
-Saint-Etienne,Nantes,1,1,2020-21,2021-02-03,Ligue 1,France
+Dijon,Lyon,0,1,2020-21,2021-02-03,Ligue 1,France
+Lens,Marseille,2,2,2020-21,2021-02-03,Ligue 1,France
 Lorient,Reims,1,0,2020-21,2021-02-06,Ligue 1,France
 Lyon,Strasbourg,3,0,2020-21,2021-02-06,Ligue 1,France
 Lens,Rennes,0,0,2020-21,2021-02-06,Ligue 1,France
 Brest,Bordeaux,2,1,2020-21,2021-02-07,Ligue 1,France
-Nimes,Monaco,3,4,2020-21,2021-02-07,Ligue 1,France
 Saint-Etienne,Metz,1,0,2020-21,2021-02-07,Ligue 1,France
+Nimes,Monaco,3,4,2020-21,2021-02-07,Ligue 1,France
 Montpellier,Dijon,4,2,2020-21,2021-02-07,Ligue 1,France
 Nice,Angers,3,0,2020-21,2021-02-07,Ligue 1,France
 Nantes,Lille,0,2,2020-21,2021-02-07,Ligue 1,France
@@ -16893,10 +16924,10 @@ Paris Saint Germain,Nice,2,1,2020-21,2021-02-13,Ligue 1,France
 Reims,Lens,1,1,2020-21,2021-02-13,Ligue 1,France
 Lyon,Montpellier,1,2,2020-21,2021-02-13,Ligue 1,France
 Monaco,Lorient,2,2,2020-21,2021-02-14,Ligue 1,France
-Rennes,Saint-Etienne,0,2,2020-21,2021-02-14,Ligue 1,France
+Dijon,Nimes,0,2,2020-21,2021-02-14,Ligue 1,France
 Metz,Strasbourg,1,2,2020-21,2021-02-14,Ligue 1,France
 Angers,Nantes,1,3,2020-21,2021-02-14,Ligue 1,France
-Dijon,Nimes,0,2,2020-21,2021-02-14,Ligue 1,France
+Rennes,Saint-Etienne,0,2,2020-21,2021-02-14,Ligue 1,France
 Lille,Brest,0,0,2020-21,2021-02-14,Ligue 1,France
 Bordeaux,Marseille,0,0,2020-21,2021-02-14,Ligue 1,France
 Marseille,Nice,3,2,2020-21,2021-02-17,Ligue 1,France
@@ -16915,56 +16946,72 @@ Rennes,Nice,1,2,2020-21,2021-02-26,Ligue 1,France
 Bordeaux,Metz,1,2,2020-21,2021-02-27,Ligue 1,France
 Dijon,Paris Saint Germain,0,4,2020-21,2021-02-27,Ligue 1,France
 Monaco,Brest,2,0,2020-21,2021-02-28,Ligue 1,France
-Angers,Lens,2,2,2020-21,2021-02-28,Ligue 1,France
-Lorient,Saint-Etienne,2,1,2020-21,2021-02-28,Ligue 1,France
 Nimes,Nantes,1,1,2020-21,2021-02-28,Ligue 1,France
 Reims,Montpellier,0,0,2020-21,2021-02-28,Ligue 1,France
+Angers,Lens,2,2,2020-21,2021-02-28,Ligue 1,France
+Lorient,Saint-Etienne,2,1,2020-21,2021-02-28,Ligue 1,France
 Lille,Strasbourg,1,1,2020-21,2021-02-28,Ligue 1,France
 Marseille,Lyon,1,1,2020-21,2021-02-28,Ligue 1,France
-Saint-Etienne,Lens,2,3,2020-21,2021-03-03,Ligue 1,France
-Metz,Angers,0,1,2020-21,2021-03-03,Ligue 1,France
-Nice,Nimes,2,1,2020-21,2021-03-03,Ligue 1,France
 Brest,Dijon,3,1,2020-21,2021-03-03,Ligue 1,France
 Lyon,Rennes,1,0,2020-21,2021-03-03,Ligue 1,France
+Metz,Angers,0,1,2020-21,2021-03-03,Ligue 1,France
+Nice,Nimes,2,1,2020-21,2021-03-03,Ligue 1,France
+Saint-Etienne,Lens,2,3,2020-21,2021-03-03,Ligue 1,France
+Strasbourg,Monaco,1,0,2020-21,2021-03-03,Ligue 1,France
+Nantes,Reims,1,2,2020-21,2021-03-03,Ligue 1,France
 Bordeaux,Paris Saint Germain,0,1,2020-21,2021-03-03,Ligue 1,France
 Lille,Marseille,2,0,2020-21,2021-03-03,Ligue 1,France
 Montpellier,Lorient,1,1,2020-21,2021-03-03,Ligue 1,France
-Nantes,Reims,1,2,2020-21,2021-03-03,Ligue 1,France
-Strasbourg,Monaco,1,0,2020-21,2021-03-03,Ligue 1,France
 Marseille,Rennes,1,0,2020-21,2021-03-10,Ligue 1,France
 Reims,Lyon,1,1,2020-21,2021-03-12,Ligue 1,France
 Angers,Saint-Etienne,0,1,2020-21,2021-03-13,Ligue 1,France
 Marseille,Brest,3,1,2020-21,2021-03-13,Ligue 1,France
 Nimes,Montpellier,1,1,2020-21,2021-03-14,Ligue 1,France
-Dijon,Bordeaux,1,3,2020-21,2021-03-14,Ligue 1,France
-Lens,Metz,2,2,2020-21,2021-03-14,Ligue 1,France
-Lorient,Nice,1,1,2020-21,2021-03-14,Ligue 1,France
 Rennes,Strasbourg,1,0,2020-21,2021-03-14,Ligue 1,France
+Lorient,Nice,1,1,2020-21,2021-03-14,Ligue 1,France
+Lens,Metz,2,2,2020-21,2021-03-14,Ligue 1,France
+Dijon,Bordeaux,1,3,2020-21,2021-03-14,Ligue 1,France
 Monaco,Lille,0,0,2020-21,2021-03-14,Ligue 1,France
 Paris Saint Germain,Nantes,1,2,2020-21,2021-03-14,Ligue 1,France
 Saint-Etienne,Monaco,0,4,2020-21,2021-03-19,Ligue 1,France
 Metz,Rennes,1,3,2020-21,2021-03-20,Ligue 1,France
 Nice,Marseille,3,0,2020-21,2021-03-20,Ligue 1,France
 Strasbourg,Lens,1,2,2020-21,2021-03-21,Ligue 1,France
-Nantes,Lorient,1,1,2020-21,2021-03-21,Ligue 1,France
-Montpellier,Bordeaux,3,1,2020-21,2021-03-21,Ligue 1,France
-Dijon,Reims,0,1,2020-21,2021-03-21,Ligue 1,France
 Brest,Angers,0,0,2020-21,2021-03-21,Ligue 1,France
+Dijon,Reims,0,1,2020-21,2021-03-21,Ligue 1,France
+Montpellier,Bordeaux,3,1,2020-21,2021-03-21,Ligue 1,France
+Nantes,Lorient,1,1,2020-21,2021-03-21,Ligue 1,France
 Lille,Nimes,1,2,2020-21,2021-03-21,Ligue 1,France
 Lyon,Paris Saint Germain,2,4,2020-21,2021-03-21,Ligue 1,France
 Monaco,Metz,4,0,2020-21,2021-04-03,Ligue 1,France
 Paris Saint Germain,Lille,0,1,2020-21,2021-04-03,Ligue 1,France
 Lens,Lyon,1,1,2020-21,2021-04-03,Ligue 1,France
 Angers,Montpellier,1,1,2020-21,2021-04-04,Ligue 1,France
-Reims,Rennes,2,2,2020-21,2021-04-04,Ligue 1,France
-Bordeaux,Strasbourg,2,3,2020-21,2021-04-04,Ligue 1,France
-Lorient,Brest,1,0,2020-21,2021-04-04,Ligue 1,France
 Nantes,Nice,1,2,2020-21,2021-04-04,Ligue 1,France
+Bordeaux,Strasbourg,2,3,2020-21,2021-04-04,Ligue 1,France
+Reims,Rennes,2,2,2020-21,2021-04-04,Ligue 1,France
+Lorient,Brest,1,0,2020-21,2021-04-04,Ligue 1,France
 Nimes,Saint-Etienne,0,2,2020-21,2021-04-04,Ligue 1,France
 Marseille,Dijon,2,0,2020-21,2021-04-04,Ligue 1,France
 Metz,Lille,0,2,2020-21,2021-04-09,Ligue 1,France
 Strasbourg,Paris Saint Germain,1,4,2020-21,2021-04-10,Ligue 1,France
 Montpellier,Marseille,3,3,2020-21,2021-04-10,Ligue 1,France
+Rennes,Nantes,1,0,2020-21,2021-04-11,Ligue 1,France
+Brest,Nimes,1,1,2020-21,2021-04-11,Ligue 1,France
+Lens,Lorient,4,1,2020-21,2021-04-11,Ligue 1,France
+Nice,Reims,0,0,2020-21,2021-04-11,Ligue 1,France
+Saint-Etienne,Bordeaux,4,1,2020-21,2021-04-11,Ligue 1,France
+Monaco,Dijon,3,0,2020-21,2021-04-11,Ligue 1,France
+Lyon,Angers,3,0,2020-21,2021-04-11,Ligue 1,France
+Lille,Montpellier,1,1,2020-21,2021-04-16,Ligue 1,France
+Angers,Rennes,0,3,2020-21,2021-04-17,Ligue 1,France
+Marseille,Lorient,3,2,2020-21,2021-04-17,Ligue 1,France
+Paris Saint Germain,Saint-Etienne,3,2,2020-21,2021-04-18,Ligue 1,France
+Dijon,Nice,2,0,2020-21,2021-04-18,Ligue 1,France
+Brest,Lens,1,1,2020-21,2021-04-18,Ligue 1,France
+Reims,Metz,0,0,2020-21,2021-04-18,Ligue 1,France
+Nimes,Strasbourg,1,1,2020-21,2021-04-18,Ligue 1,France
+Bordeaux,Monaco,0,3,2020-21,2021-04-18,Ligue 1,France
 Bologna,Fiorentina,1,1,2009-10,2009-08-22,Serie A,Italy
 Siena,AC Milan,1,2,2009-10,2009-08-22,Serie A,Italy
 Inter,Bari,1,1,2009-10,2009-08-23,Serie A,Italy
@@ -21153,8 +21200,8 @@ Sassuolo,Cagliari,1,1,2020-21,2020-09-20,Serie A,Italy
 Juventus,Sampdoria,3,0,2020-21,2020-09-20,Serie A,Italy
 AC Milan,Bologna,2,0,2020-21,2020-09-21,Serie A,Italy
 Torino,Atalanta,2,4,2020-21,2020-09-26,Serie A,Italy
-Cagliari,Lazio,0,2,2020-21,2020-09-26,Serie A,Italy
 Sampdoria,Benevento,2,3,2020-21,2020-09-26,Serie A,Italy
+Cagliari,Lazio,0,2,2020-21,2020-09-26,Serie A,Italy
 Inter,Fiorentina,4,3,2020-21,2020-09-26,Serie A,Italy
 Spezia,Sassuolo,1,4,2020-21,2020-09-27,Serie A,Italy
 Verona,Udinese,1,0,2020-21,2020-09-27,Serie A,Italy
@@ -21162,8 +21209,8 @@ Napoli,Genoa,6,0,2020-21,2020-09-27,Serie A,Italy
 Crotone,AC Milan,0,2,2020-21,2020-09-27,Serie A,Italy
 Roma,Juventus,2,2,2020-21,2020-09-27,Serie A,Italy
 Bologna,Parma Calcio 1913,4,1,2020-21,2020-09-28,Serie A,Italy
-Benevento,Inter,2,5,2020-21,2020-09-30,Serie A,Italy
 Udinese,Spezia,0,2,2020-21,2020-09-30,Serie A,Italy
+Benevento,Inter,2,5,2020-21,2020-09-30,Serie A,Italy
 Lazio,Atalanta,1,4,2020-21,2020-09-30,Serie A,Italy
 Fiorentina,Sampdoria,1,2,2020-21,2020-10-02,Serie A,Italy
 Sassuolo,Crotone,4,1,2020-21,2020-10-03,Serie A,Italy
@@ -21178,8 +21225,8 @@ Inter,AC Milan,1,2,2020-21,2020-10-17,Serie A,Italy
 Sampdoria,Lazio,3,0,2020-21,2020-10-17,Serie A,Italy
 Crotone,Juventus,1,1,2020-21,2020-10-17,Serie A,Italy
 Bologna,Sassuolo,3,4,2020-21,2020-10-18,Serie A,Italy
-Torino,Cagliari,2,3,2020-21,2020-10-18,Serie A,Italy
 Spezia,Fiorentina,2,2,2020-21,2020-10-18,Serie A,Italy
+Torino,Cagliari,2,3,2020-21,2020-10-18,Serie A,Italy
 Udinese,Parma Calcio 1913,3,2,2020-21,2020-10-18,Serie A,Italy
 Roma,Benevento,5,2,2020-21,2020-10-18,Serie A,Italy
 Verona,Genoa,0,0,2020-21,2020-10-19,Serie A,Italy
@@ -21199,8 +21246,8 @@ Bologna,Cagliari,3,2,2020-21,2020-10-31,Serie A,Italy
 Udinese,AC Milan,1,2,2020-21,2020-11-01,Serie A,Italy
 Spezia,Juventus,1,4,2020-21,2020-11-01,Serie A,Italy
 Torino,Lazio,3,4,2020-21,2020-11-01,Serie A,Italy
-Napoli,Sassuolo,0,2,2020-21,2020-11-01,Serie A,Italy
 Roma,Fiorentina,2,0,2020-21,2020-11-01,Serie A,Italy
+Napoli,Sassuolo,0,2,2020-21,2020-11-01,Serie A,Italy
 Sampdoria,Genoa,1,1,2020-21,2020-11-01,Serie A,Italy
 Verona,Benevento,3,1,2020-21,2020-11-02,Serie A,Italy
 Genoa,Torino,1,2,2020-21,2020-11-04,Serie A,Italy
@@ -21209,27 +21256,27 @@ Cagliari,Sampdoria,2,0,2020-21,2020-11-07,Serie A,Italy
 Benevento,Spezia,0,3,2020-21,2020-11-07,Serie A,Italy
 Parma Calcio 1913,Fiorentina,0,0,2020-21,2020-11-07,Serie A,Italy
 Lazio,Juventus,1,1,2020-21,2020-11-08,Serie A,Italy
+Torino,Crotone,0,0,2020-21,2020-11-08,Serie A,Italy
 Atalanta,Inter,1,1,2020-21,2020-11-08,Serie A,Italy
 Genoa,Roma,1,3,2020-21,2020-11-08,Serie A,Italy
-Torino,Crotone,0,0,2020-21,2020-11-08,Serie A,Italy
 Bologna,Napoli,0,1,2020-21,2020-11-08,Serie A,Italy
 AC Milan,Verona,2,2,2020-21,2020-11-08,Serie A,Italy
 Crotone,Lazio,0,2,2020-21,2020-11-21,Serie A,Italy
 Spezia,Atalanta,0,0,2020-21,2020-11-21,Serie A,Italy
 Juventus,Cagliari,2,0,2020-21,2020-11-21,Serie A,Italy
 Fiorentina,Benevento,0,1,2020-21,2020-11-22,Serie A,Italy
-Inter,Torino,4,2,2020-21,2020-11-22,Serie A,Italy
-Roma,Parma Calcio 1913,3,0,2020-21,2020-11-22,Serie A,Italy
-Sampdoria,Bologna,1,2,2020-21,2020-11-22,Serie A,Italy
 Verona,Sassuolo,0,2,2020-21,2020-11-22,Serie A,Italy
+Sampdoria,Bologna,1,2,2020-21,2020-11-22,Serie A,Italy
+Roma,Parma Calcio 1913,3,0,2020-21,2020-11-22,Serie A,Italy
+Inter,Torino,4,2,2020-21,2020-11-22,Serie A,Italy
 Udinese,Genoa,1,0,2020-21,2020-11-22,Serie A,Italy
 Napoli,AC Milan,1,3,2020-21,2020-11-22,Serie A,Italy
 Sassuolo,Inter,0,3,2020-21,2020-11-28,Serie A,Italy
 Benevento,Juventus,1,1,2020-21,2020-11-28,Serie A,Italy
 Atalanta,Verona,0,2,2020-21,2020-11-28,Serie A,Italy
 Lazio,Udinese,1,3,2020-21,2020-11-29,Serie A,Italy
-Bologna,Crotone,1,0,2020-21,2020-11-29,Serie A,Italy
 AC Milan,Fiorentina,2,0,2020-21,2020-11-29,Serie A,Italy
+Bologna,Crotone,1,0,2020-21,2020-11-29,Serie A,Italy
 Cagliari,Spezia,2,2,2020-21,2020-11-29,Serie A,Italy
 Napoli,Roma,4,0,2020-21,2020-11-29,Serie A,Italy
 Torino,Sampdoria,2,2,2020-21,2020-11-30,Serie A,Italy
@@ -21238,8 +21285,8 @@ Spezia,Lazio,1,2,2020-21,2020-12-05,Serie A,Italy
 Juventus,Torino,2,1,2020-21,2020-12-05,Serie A,Italy
 Inter,Bologna,3,1,2020-21,2020-12-05,Serie A,Italy
 Verona,Cagliari,1,1,2020-21,2020-12-06,Serie A,Italy
-Parma Calcio 1913,Benevento,0,0,2020-21,2020-12-06,Serie A,Italy
 Roma,Sassuolo,0,0,2020-21,2020-12-06,Serie A,Italy
+Parma Calcio 1913,Benevento,0,0,2020-21,2020-12-06,Serie A,Italy
 Crotone,Napoli,0,4,2020-21,2020-12-06,Serie A,Italy
 Sampdoria,AC Milan,1,2,2020-21,2020-12-06,Serie A,Italy
 Fiorentina,Genoa,1,1,2020-21,2020-12-07,Serie A,Italy
@@ -21248,20 +21295,20 @@ Crotone,Spezia,4,1,2020-21,2020-12-12,Serie A,Italy
 Torino,Udinese,2,3,2020-21,2020-12-12,Serie A,Italy
 Lazio,Verona,1,2,2020-21,2020-12-12,Serie A,Italy
 Cagliari,Inter,1,3,2020-21,2020-12-13,Serie A,Italy
+Napoli,Sampdoria,2,1,2020-21,2020-12-13,Serie A,Italy
 Atalanta,Fiorentina,3,0,2020-21,2020-12-13,Serie A,Italy
 Bologna,Roma,1,5,2020-21,2020-12-13,Serie A,Italy
-Napoli,Sampdoria,2,1,2020-21,2020-12-13,Serie A,Italy
 Genoa,Juventus,1,3,2020-21,2020-12-13,Serie A,Italy
 AC Milan,Parma Calcio 1913,2,2,2020-21,2020-12-13,Serie A,Italy
 Udinese,Crotone,0,0,2020-21,2020-12-15,Serie A,Italy
 Benevento,Lazio,1,1,2020-21,2020-12-15,Serie A,Italy
 Juventus,Atalanta,1,1,2020-21,2020-12-16,Serie A,Italy
-Fiorentina,Sassuolo,1,1,2020-21,2020-12-16,Serie A,Italy
-Genoa,AC Milan,2,2,2020-21,2020-12-16,Serie A,Italy
-Inter,Napoli,1,0,2020-21,2020-12-16,Serie A,Italy
-Parma Calcio 1913,Cagliari,0,0,2020-21,2020-12-16,Serie A,Italy
 Spezia,Bologna,2,2,2020-21,2020-12-16,Serie A,Italy
 Verona,Sampdoria,1,2,2020-21,2020-12-16,Serie A,Italy
+Inter,Napoli,1,0,2020-21,2020-12-16,Serie A,Italy
+Fiorentina,Sassuolo,1,1,2020-21,2020-12-16,Serie A,Italy
+Genoa,AC Milan,2,2,2020-21,2020-12-16,Serie A,Italy
+Parma Calcio 1913,Cagliari,0,0,2020-21,2020-12-16,Serie A,Italy
 Roma,Torino,3,1,2020-21,2020-12-17,Serie A,Italy
 Fiorentina,Verona,1,1,2020-21,2020-12-19,Serie A,Italy
 Sampdoria,Crotone,3,1,2020-21,2020-12-19,Serie A,Italy
@@ -21276,31 +21323,31 @@ Lazio,Napoli,2,0,2020-21,2020-12-20,Serie A,Italy
 Crotone,Parma Calcio 1913,2,1,2020-21,2020-12-22,Serie A,Italy
 Juventus,Fiorentina,0,3,2020-21,2020-12-22,Serie A,Italy
 Verona,Inter,1,2,2020-21,2020-12-23,Serie A,Italy
-AC Milan,Lazio,3,2,2020-21,2020-12-23,Serie A,Italy
-Bologna,Atalanta,2,2,2020-21,2020-12-23,Serie A,Italy
-Napoli,Torino,1,1,2020-21,2020-12-23,Serie A,Italy
-Roma,Cagliari,3,2,2020-21,2020-12-23,Serie A,Italy
-Sampdoria,Sassuolo,2,3,2020-21,2020-12-23,Serie A,Italy
 Spezia,Genoa,1,2,2020-21,2020-12-23,Serie A,Italy
 Udinese,Benevento,0,2,2020-21,2020-12-23,Serie A,Italy
+Sampdoria,Sassuolo,2,3,2020-21,2020-12-23,Serie A,Italy
+Bologna,Atalanta,2,2,2020-21,2020-12-23,Serie A,Italy
+Napoli,Torino,1,1,2020-21,2020-12-23,Serie A,Italy
+AC Milan,Lazio,3,2,2020-21,2020-12-23,Serie A,Italy
+Roma,Cagliari,3,2,2020-21,2020-12-23,Serie A,Italy
 Inter,Crotone,6,2,2020-21,2021-01-03,Serie A,Italy
+Atalanta,Sassuolo,5,1,2020-21,2021-01-03,Serie A,Italy
+Cagliari,Napoli,1,4,2020-21,2021-01-03,Serie A,Italy
+Fiorentina,Bologna,0,0,2020-21,2021-01-03,Serie A,Italy
+Genoa,Lazio,1,1,2020-21,2021-01-03,Serie A,Italy
 Parma Calcio 1913,Torino,0,3,2020-21,2021-01-03,Serie A,Italy
 Roma,Sampdoria,1,0,2020-21,2021-01-03,Serie A,Italy
-Genoa,Lazio,1,1,2020-21,2021-01-03,Serie A,Italy
 Spezia,Verona,0,1,2020-21,2021-01-03,Serie A,Italy
-Cagliari,Napoli,1,4,2020-21,2021-01-03,Serie A,Italy
-Atalanta,Sassuolo,5,1,2020-21,2021-01-03,Serie A,Italy
-Fiorentina,Bologna,0,0,2020-21,2021-01-03,Serie A,Italy
 Benevento,AC Milan,0,2,2020-21,2021-01-03,Serie A,Italy
 Juventus,Udinese,4,1,2020-21,2021-01-03,Serie A,Italy
 Cagliari,Benevento,1,2,2020-21,2021-01-06,Serie A,Italy
-Torino,Verona,1,1,2020-21,2021-01-06,Serie A,Italy
 Sassuolo,Genoa,2,1,2020-21,2021-01-06,Serie A,Italy
+Torino,Verona,1,1,2020-21,2021-01-06,Serie A,Italy
+Lazio,Fiorentina,2,1,2020-21,2021-01-06,Serie A,Italy
 Sampdoria,Inter,2,1,2020-21,2021-01-06,Serie A,Italy
 Crotone,Roma,1,3,2020-21,2021-01-06,Serie A,Italy
 Bologna,Udinese,2,2,2020-21,2021-01-06,Serie A,Italy
 Atalanta,Parma Calcio 1913,3,0,2020-21,2021-01-06,Serie A,Italy
-Lazio,Fiorentina,2,1,2020-21,2021-01-06,Serie A,Italy
 Napoli,Spezia,1,2,2020-21,2021-01-06,Serie A,Italy
 AC Milan,Juventus,1,3,2020-21,2021-01-06,Serie A,Italy
 Benevento,Atalanta,1,4,2020-21,2021-01-09,Serie A,Italy
@@ -21378,26 +21425,26 @@ Spezia,Parma Calcio 1913,2,2,2020-21,2021-02-27,Serie A,Italy
 Bologna,Lazio,2,0,2020-21,2021-02-27,Serie A,Italy
 Verona,Juventus,1,1,2020-21,2021-02-27,Serie A,Italy
 Sampdoria,Atalanta,0,2,2020-21,2021-02-28,Serie A,Italy
+Crotone,Cagliari,0,2,2020-21,2021-02-28,Serie A,Italy
 Udinese,Fiorentina,1,0,2020-21,2021-02-28,Serie A,Italy
 Inter,Genoa,3,0,2020-21,2021-02-28,Serie A,Italy
-Crotone,Cagliari,0,2,2020-21,2021-02-28,Serie A,Italy
 Napoli,Benevento,2,0,2020-21,2021-02-28,Serie A,Italy
 Roma,AC Milan,1,2,2020-21,2021-02-28,Serie A,Italy
 Juventus,Spezia,3,0,2020-21,2021-03-02,Serie A,Italy
 Sassuolo,Napoli,3,3,2020-21,2021-03-03,Serie A,Italy
-Cagliari,Bologna,1,0,2020-21,2021-03-03,Serie A,Italy
 Fiorentina,Roma,1,2,2020-21,2021-03-03,Serie A,Italy
 Genoa,Sampdoria,1,1,2020-21,2021-03-03,Serie A,Italy
 AC Milan,Udinese,1,1,2020-21,2021-03-03,Serie A,Italy
 Benevento,Verona,0,3,2020-21,2021-03-03,Serie A,Italy
+Cagliari,Bologna,1,0,2020-21,2021-03-03,Serie A,Italy
 Atalanta,Crotone,5,1,2020-21,2021-03-03,Serie A,Italy
 Parma Calcio 1913,Inter,1,2,2020-21,2021-03-04,Serie A,Italy
 Spezia,Benevento,1,1,2020-21,2021-03-06,Serie A,Italy
 Udinese,Sassuolo,2,0,2020-21,2021-03-06,Serie A,Italy
 Juventus,Lazio,3,1,2020-21,2021-03-06,Serie A,Italy
 Roma,Genoa,1,0,2020-21,2021-03-07,Serie A,Italy
-Fiorentina,Parma Calcio 1913,3,3,2020-21,2021-03-07,Serie A,Italy
 Verona,AC Milan,0,2,2020-21,2021-03-07,Serie A,Italy
+Fiorentina,Parma Calcio 1913,3,3,2020-21,2021-03-07,Serie A,Italy
 Crotone,Torino,4,2,2020-21,2021-03-07,Serie A,Italy
 Sampdoria,Cagliari,2,2,2020-21,2021-03-07,Serie A,Italy
 Napoli,Bologna,3,1,2020-21,2021-03-07,Serie A,Italy
@@ -21408,8 +21455,8 @@ Sassuolo,Verona,3,2,2020-21,2021-03-13,Serie A,Italy
 Benevento,Fiorentina,1,4,2020-21,2021-03-13,Serie A,Italy
 Genoa,Udinese,1,1,2020-21,2021-03-13,Serie A,Italy
 Bologna,Sampdoria,3,1,2020-21,2021-03-14,Serie A,Italy
-Parma Calcio 1913,Roma,2,0,2020-21,2021-03-14,Serie A,Italy
 Torino,Inter,1,2,2020-21,2021-03-14,Serie A,Italy
+Parma Calcio 1913,Roma,2,0,2020-21,2021-03-14,Serie A,Italy
 Cagliari,Juventus,1,3,2020-21,2021-03-14,Serie A,Italy
 AC Milan,Napoli,0,1,2020-21,2021-03-14,Serie A,Italy
 Torino,Sassuolo,3,2,2020-21,2021-03-17,Serie A,Italy
@@ -21417,19 +21464,19 @@ Parma Calcio 1913,Genoa,1,2,2020-21,2021-03-19,Serie A,Italy
 Crotone,Bologna,2,3,2020-21,2021-03-20,Serie A,Italy
 Spezia,Cagliari,2,1,2020-21,2021-03-20,Serie A,Italy
 Verona,Atalanta,0,2,2020-21,2021-03-21,Serie A,Italy
-Sampdoria,Torino,1,0,2020-21,2021-03-21,Serie A,Italy
-Juventus,Benevento,0,1,2020-21,2021-03-21,Serie A,Italy
 Udinese,Lazio,0,1,2020-21,2021-03-21,Serie A,Italy
+Juventus,Benevento,0,1,2020-21,2021-03-21,Serie A,Italy
+Sampdoria,Torino,1,0,2020-21,2021-03-21,Serie A,Italy
 Fiorentina,AC Milan,2,3,2020-21,2021-03-21,Serie A,Italy
 Roma,Napoli,0,2,2020-21,2021-03-21,Serie A,Italy
 AC Milan,Sampdoria,1,1,2020-21,2021-04-03,Serie A,Italy
-Cagliari,Verona,0,2,2020-21,2021-04-03,Serie A,Italy
-Atalanta,Udinese,3,2,2020-21,2021-04-03,Serie A,Italy
+Napoli,Crotone,4,3,2020-21,2021-04-03,Serie A,Italy
+Genoa,Fiorentina,1,1,2020-21,2021-04-03,Serie A,Italy
+Benevento,Parma Calcio 1913,2,2,2020-21,2021-04-03,Serie A,Italy
 Sassuolo,Roma,2,2,2020-21,2021-04-03,Serie A,Italy
 Lazio,Spezia,2,1,2020-21,2021-04-03,Serie A,Italy
-Genoa,Fiorentina,1,1,2020-21,2021-04-03,Serie A,Italy
-Napoli,Crotone,4,3,2020-21,2021-04-03,Serie A,Italy
-Benevento,Parma Calcio 1913,2,2,2020-21,2021-04-03,Serie A,Italy
+Atalanta,Udinese,3,2,2020-21,2021-04-03,Serie A,Italy
+Cagliari,Verona,0,2,2020-21,2021-04-03,Serie A,Italy
 Torino,Juventus,2,2,2020-21,2021-04-03,Serie A,Italy
 Bologna,Inter,0,1,2020-21,2021-04-03,Serie A,Italy
 Juventus,Napoli,2,1,2020-21,2021-04-07,Serie A,Italy
@@ -21437,3 +21484,18 @@ Inter,Sassuolo,2,1,2020-21,2021-04-07,Serie A,Italy
 Spezia,Crotone,3,2,2020-21,2021-04-10,Serie A,Italy
 Parma Calcio 1913,AC Milan,1,3,2020-21,2021-04-10,Serie A,Italy
 Udinese,Torino,0,1,2020-21,2021-04-10,Serie A,Italy
+Inter,Cagliari,1,0,2020-21,2021-04-11,Serie A,Italy
+Sampdoria,Napoli,0,2,2020-21,2021-04-11,Serie A,Italy
+Verona,Lazio,0,1,2020-21,2021-04-11,Serie A,Italy
+Juventus,Genoa,3,1,2020-21,2021-04-11,Serie A,Italy
+Roma,Bologna,1,0,2020-21,2021-04-11,Serie A,Italy
+Fiorentina,Atalanta,2,3,2020-21,2021-04-11,Serie A,Italy
+Benevento,Sassuolo,0,1,2020-21,2021-04-12,Serie A,Italy
+Crotone,Udinese,1,2,2020-21,2021-04-17,Serie A,Italy
+Sampdoria,Verona,3,1,2020-21,2021-04-17,Serie A,Italy
+Sassuolo,Fiorentina,3,1,2020-21,2021-04-17,Serie A,Italy
+Cagliari,Parma Calcio 1913,4,3,2020-21,2021-04-17,Serie A,Italy
+AC Milan,Genoa,2,1,2020-21,2021-04-18,Serie A,Italy
+Atalanta,Juventus,1,0,2020-21,2021-04-18,Serie A,Italy
+Lazio,Benevento,5,3,2020-21,2021-04-18,Serie A,Italy
+Bologna,Spezia,4,1,2020-21,2021-04-18,Serie A,Italy
