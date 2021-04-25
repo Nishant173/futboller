@@ -2,6 +2,7 @@ from typing import Any, Dict, List, Union
 import numpy as np
 import pandas as pd
 
+from futbol import config
 from . import filters
 from .league_standings import (get_win_count,
                                get_loss_count,
@@ -50,7 +51,7 @@ def get_h2h_stats(data: pd.DataFrame,
         draws = get_draw_count(data=df_by_matchup, team=team)
         goals_scored = get_goals_scored(data=df_by_matchup, team=team)
         clean_sheets = get_clean_sheet_count(data=df_by_matchup, team=team)
-        routs = get_rout_count(data=df_by_matchup, team=team, goal_margin=3)
+        routs = get_rout_count(data=df_by_matchup, team=team, goal_margin=config.BIG_RESULT_GOAL_MARGIN)
         df_temp = pd.DataFrame(data={
             'team': team,
             'games_played': games_played,
@@ -96,8 +97,8 @@ def _get_absolute_partitioned_stats(data: pd.DataFrame,
         'goals_allowed': df.groupby(by="partition_number").apply(get_goals_allowed, team=team),
         'clean_sheets': df.groupby(by="partition_number").apply(get_clean_sheet_count, team=team),
         'clean_sheets_against': df.groupby(by="partition_number").apply(get_clean_sheets_against_count, team=team),
-        'big_wins': df.groupby(by="partition_number").apply(get_rout_count, team=team, goal_margin=3),
-        'big_losses': df.groupby(by="partition_number").apply(get_capitulation_count, team=team, goal_margin=3),
+        'big_wins': df.groupby(by="partition_number").apply(get_rout_count, team=team, goal_margin=config.BIG_RESULT_GOAL_MARGIN),
+        'big_losses': df.groupby(by="partition_number").apply(get_capitulation_count, team=team, goal_margin=config.BIG_RESULT_GOAL_MARGIN),
     }).reset_index()
     df_abs_partitioned_stats['points'] = 3 * df_abs_partitioned_stats['wins'] + df_abs_partitioned_stats['draws']
     df_abs_partitioned_stats['goal_difference'] = df_abs_partitioned_stats['goals_scored'] - df_abs_partitioned_stats['goals_allowed']

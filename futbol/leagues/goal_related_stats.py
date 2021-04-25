@@ -1,4 +1,6 @@
 import pandas as pd
+
+from futbol import config
 from .models import LeagueMatch
 from .utils import (
     get_goals_scored_per_match,
@@ -21,7 +23,7 @@ def get_goal_related_stats() -> pd.DataFrame:
         'games_played': df.groupby(by=['league', 'month_group']).apply(len),
         'avg_goals_scored': df.groupby(by=['league', 'month_group']).apply(get_goals_scored_per_match),
         'avg_goal_difference': df.groupby(by=['league', 'month_group']).apply(get_goal_difference_per_match),
-        'percent_one_sided_games': df.groupby(by=['league', 'month_group']).apply(get_big_results_percentage, goal_margin=3),
+        'percent_one_sided_games': df.groupby(by=['league', 'month_group']).apply(get_big_results_percentage, goal_margin=config.BIG_RESULT_GOAL_MARGIN),
         'percent_games_with_clean_sheets': df.groupby(by=['league', 'month_group']).apply(get_clean_sheets_percentage),
     }).reset_index()
     df_grs_over_time['month_group_verbose'] = df_grs_over_time['month_group'].apply(verbosify_month_group)

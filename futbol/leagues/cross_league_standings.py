@@ -1,5 +1,6 @@
 import pandas as pd
 
+from futbol import config
 from . import filters
 from .league_standings import (get_results_string,
                                get_cumulative_points,
@@ -52,8 +53,8 @@ def get_cross_league_standings() -> pd.DataFrame:
         ga = get_goals_allowed(data=df_by_team, team=team)
         cs = get_clean_sheet_count(data=df_by_team, team=team)
         csa = get_clean_sheets_against_count(data=df_by_team, team=team)
-        routs = get_rout_count(data=df_by_team, team=team, goal_margin=3)
-        capitulations = get_capitulation_count(data=df_by_team, team=team, goal_margin=3)
+        routs = get_rout_count(data=df_by_team, team=team, goal_margin=config.BIG_RESULT_GOAL_MARGIN)
+        capitulations = get_capitulation_count(data=df_by_team, team=team, goal_margin=config.BIG_RESULT_GOAL_MARGIN)
         df_temp = pd.DataFrame(data={
             'team': team,
             'games_played': games_played,
