@@ -269,19 +269,19 @@ def reformat_best_performers(data: pd.DataFrame) -> Any:
     for league, df_temp in data.groupby(by='league'):
         dict_best_performers[league] = {
             'bestAvgGoalsScored': {
-                'teams': df_temp[df_temp['stat_name'] == 'bestAvgGoalsScored']['teams'],
+                'teams': df_temp[df_temp['stat_name'] == 'bestAvgGoalsScored']['teams'].iloc[0],
                 'reading': df_temp[df_temp['stat_name'] == 'bestAvgGoalsScored']['stat_reading'].iloc[0],
             },
             'bestAvgGoalsAllowed': {
-                'teams': df_temp[df_temp['stat_name'] == 'bestAvgGoalsAllowed']['teams'],
+                'teams': df_temp[df_temp['stat_name'] == 'bestAvgGoalsAllowed']['teams'].iloc[0],
                 'reading': df_temp[df_temp['stat_name'] == 'bestAvgGoalsAllowed']['stat_reading'].iloc[0],
             },
             'bestCleanSheetPercent': {
-                'teams': df_temp[df_temp['stat_name'] == 'bestCleanSheetPercent']['teams'],
+                'teams': df_temp[df_temp['stat_name'] == 'bestCleanSheetPercent']['teams'].iloc[0],
                 'reading': df_temp[df_temp['stat_name'] == 'bestCleanSheetPercent']['stat_reading'].iloc[0],
             },
             'bestBigWinPercent': {
-                'teams': df_temp[df_temp['stat_name'] == 'bestBigWinPercent']['teams'],
+                'teams': df_temp[df_temp['stat_name'] == 'bestBigWinPercent']['teams'].iloc[0],
                 'reading': df_temp[df_temp['stat_name'] == 'bestBigWinPercent']['stat_reading'].iloc[0],
             },
         }
