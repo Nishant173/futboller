@@ -25,8 +25,8 @@ class LeagueTitleRace:
         self._max_num_games_per_team = config.NUM_GAMES_PER_TEAM_BY_LEAGUE[league]
         self._league_leader = self._get_league_leader()
         self._max_points = self._get_max_points()
-        self._teams_with_max_points = self._list_teams_with_max_points()
-        self._teams_without_max_points = self._list_teams_without_max_points()
+        self._teams_with_max_points = self._list_teams(has_max_points=True)
+        self._teams_without_max_points = self._list_teams(has_max_points=False)
         return None
     
     @property
@@ -63,19 +63,14 @@ class LeagueTitleRace:
     def _get_max_points(self) -> int:
         return self._df_ls['points'].max()
     
-    def _list_teams_with_max_points(self) -> List[str]:
+    def _list_teams(self, has_max_points: bool) -> List[str]:
         df_ls = self._df_ls
         max_points = self._max_points
-        teams_with_max_points = df_ls[df_ls['points'] == max_points]['team'].tolist()
-        return teams_with_max_points
-    
-    def _list_teams_without_max_points(self) -> List[str]:
-        all_teams = self.unique_teams
-        teams_with_max_points = self._teams_with_max_points
-        teams_without_max_points = list(
-            set(all_teams).difference(set(teams_with_max_points))
-        )
-        return teams_without_max_points
+        if has_max_points:
+            teams = df_ls[df_ls['points'] == max_points]['team'].tolist()
+        else:
+            teams = df_ls[df_ls['points'] != max_points]['team'].tolist()
+        return teams
     
     def _can_win_the_league(self,
                             team: str,
@@ -96,13 +91,13 @@ class LeagueTitleRace:
 
     def get_league_title_contenders(self) -> pd.DataFrame:
         """
-        Returns DataFrame having the following additional columns: ['can_win_the_league']
+        Returns DataFrame having `LeagueStandings` data and the following additional columns: ['can_win_the_league']
         
         Note: Only works on current season's `LeagueStandings` data (as the standings can change).
         Limitations: Only considers points that can be accumulated by teams chasing the league leaders.
         """
         df_ls = self._df_ls.copy(deep=True)
-        all_teams = sorted(self.unique_teams)
+        all_teams = self.unique_teams
         
         list_can_be_league_winner = []
         for team in all_teams:
@@ -126,7 +121,7 @@ class LeagueTitleRace:
         return df_league_title_contenders
     
     @property
-    def is_league_decided(self) -> bool:
+    def is_league_winner_decided(self) -> bool:
         df_league_title_contenders = self.get_league_title_contenders()
         return df_league_title_contenders['can_win_the_league'].sum() == 1
     
@@ -139,7 +134,7 @@ class LeagueTitleRace:
     @property
     def league_winner(self) -> str:
         """Returns league winner if the league is decided. Otherwise, returns 'NA'"""
-        if self.is_league_decided:
+        if self.is_league_winner_decided:
             return self._league_leader
         return "NA"
     
