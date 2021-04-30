@@ -26,6 +26,7 @@ def get_general_stats(request):
     df_csls = queries.get_current_season_league_standings()
     df_csls['cumulative_points'] = df_csls['cumulative_points'].apply(listify_string_of_nums)
     df_csls['cumulative_goal_difference'] = df_csls['cumulative_goal_difference'].apply(listify_string_of_nums)
+    dict_is_league_winner_decided = wrangler.get_current_season_league_situation(data=df_csls)
     df_csbp = wrangler.get_best_performers(data=df_csls, season=config.CURRENT_SEASON)
     dict_csbp = wrangler.reformat_best_performers(data=df_csbp)
     df_csls = switch_column_casing(data=df_csls, func=sc2lcc)
@@ -40,6 +41,7 @@ def get_general_stats(request):
         'avg_goal_difference_by_league': dict_grs_by_league['avg_goal_difference'],
         'current_season': config.CURRENT_SEASON,
         'current_season_league_leaders': dict_current_season_league_leaders,
+        'is_league_winner_decided': dict_is_league_winner_decided,
         'current_season_league_standings': dict_csls,
         'current_season_best_performers': dict_csbp,
     }

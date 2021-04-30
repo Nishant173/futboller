@@ -15,6 +15,7 @@ from .league_standings import (get_win_count,
                                get_capitulation_count,
                                get_results_string,
                                get_longest_streak)
+from .league_title_race import LeagueTitleRace
 from .utils import sort_by_date_string_column
 from py_utils.data_analysis.transform import (
     add_partitioning_column,
@@ -258,6 +259,35 @@ def get_best_performers(data: pd.DataFrame, season: str) -> pd.DataFrame:
         )
         df_best_perf = pd.concat(objs=[df_best_perf, df_best_perf_by_league], ignore_index=True, sort=False)
     return df_best_perf
+
+
+def get_current_season_league_situation(data: pd.DataFrame) -> Dict[str, bool]:
+    """
+    Takes DataFrame having current season's league standings (for all leagues).
+    Returns dictionary having keys = league names and values = True | False.
+    True if the respective league winner is decided; False otherwise.
+    """
+    try:
+        df_csls = data.copy(deep=True)
+        leagues = df_csls['league'].unique().tolist()
+        dict_is_league_winner_decided = {}
+        for league in leagues:
+            ltr_obj = LeagueTitleRace(
+                df_league_standings=df_csls,
+                league=league,
+                season=config.CURRENT_SEASON,
+            )
+            dict_is_league_winner_decided[league] = ltr_obj.is_league_winner_decided
+    except Exception as e:
+        print(f"Error in LeagueTitleRace calculation. ErrorMsg: {e}")
+        dict_is_league_winner_decided = {
+            'Bundesliga': False,
+            'EPL': False,
+            'La Liga': False,
+            'Ligue 1': False,
+            'Serie A': False,
+        }
+    return dict_is_league_winner_decided
 
 
 def reformat_best_performers(data: pd.DataFrame) -> Any:
