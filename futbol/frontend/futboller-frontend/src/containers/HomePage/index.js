@@ -101,6 +101,7 @@ class Home extends React.Component {
         let avgGoalDifferenceByLeague = {}
         let currentSeason = ""
         let currentSeasonLeagueLeaders = {}
+        let isLeagueWinnerDecided = {}
         let currentSeasonLeagueStandings = {}
         let currentSeasonBestPerformers = {}
         let titleCurrentSeasonLeagueStandings = ""
@@ -110,6 +111,7 @@ class Home extends React.Component {
             avgGoalDifferenceByLeague = GeneralStatsData['avgGoalDifferenceByLeague']
             currentSeason = GeneralStatsData['currentSeason']
             currentSeasonLeagueLeaders = GeneralStatsData['currentSeasonLeagueLeaders']
+            isLeagueWinnerDecided = GeneralStatsData['isLeagueWinnerDecided']
             currentSeasonLeagueStandings = GeneralStatsData['currentSeasonLeagueStandings']
             currentSeasonBestPerformers = GeneralStatsData['currentSeasonBestPerformers']
             titleCurrentSeasonLeagueStandings = `League Standings (${currentSeason}) - ${this.state.league}`
@@ -210,19 +212,39 @@ class Home extends React.Component {
                         <h3>Current season's league leaders ({currentSeason}) <FlagOutlined /></h3>
                         <Row style={{alignItems: 'center'}}>
                             <Col span={4}>
-                                <Statistic title="Bundesliga" value={currentSeasonLeagueLeaders['Bundesliga']} />
+                                <Statistic
+                                    title="Bundesliga"
+                                    value={currentSeasonLeagueLeaders['Bundesliga']}
+                                    suffix={isLeagueWinnerDecided['Bundesliga'] ? " (C)" : null}
+                                />
                             </Col>
                             <Col span={5}>
-                                <Statistic title="EPL" value={currentSeasonLeagueLeaders['EPL']} />
+                                <Statistic
+                                    title="EPL"
+                                    value={currentSeasonLeagueLeaders['EPL']}
+                                    suffix={isLeagueWinnerDecided['EPL'] ? " (C)" : null}
+                                />
                             </Col>
                             <Col span={5}>
-                                <Statistic title="La Liga" value={currentSeasonLeagueLeaders['La Liga']} />
+                                <Statistic
+                                    title="La Liga"
+                                    value={currentSeasonLeagueLeaders['La Liga']}
+                                    suffix={isLeagueWinnerDecided['La Liga'] ? " (C)" : null}
+                                />
                             </Col>
                             <Col span={5}>
-                                <Statistic title="Ligue 1" value={currentSeasonLeagueLeaders['Ligue 1']} />
+                                <Statistic
+                                    title="Ligue 1"
+                                    value={currentSeasonLeagueLeaders['Ligue 1']}
+                                    suffix={isLeagueWinnerDecided['Ligue 1'] ? " (C)" : null}
+                                />
                             </Col>
                             <Col span={5}>
-                                <Statistic title="Serie A" value={currentSeasonLeagueLeaders['Serie A']} />
+                                <Statistic
+                                    title="Serie A"
+                                    value={currentSeasonLeagueLeaders['Serie A']}
+                                    suffix={isLeagueWinnerDecided['Serie A'] ? " (C)" : null}
+                                />
                             </Col>
                         </Row>
 
