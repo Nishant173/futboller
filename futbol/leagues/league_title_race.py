@@ -45,14 +45,6 @@ class LeagueTitleRace:
         )
         return is_valid_input_dataframe
     
-    def __list_teams(self, has_max_points: bool) -> List[str]:
-        max_points = self.max_points
-        if has_max_points:
-            teams = self.__df_ls[self.__df_ls['points'] == max_points]['team'].tolist()
-        else:
-            teams = self.__df_ls[self.__df_ls['points'] != max_points]['team'].tolist()
-        return teams
-    
     @property
     def unique_teams(self) -> List[str]:
         return sorted(self.__df_ls['team'].unique().tolist())
@@ -63,11 +55,11 @@ class LeagueTitleRace:
     
     @property
     def teams_with_max_points(self) -> List[str]:
-        return self.__list_teams(has_max_points=True)
+        return self.__df_ls[self.__df_ls['points'] == self.max_points]['team'].tolist()
     
     @property
     def teams_without_max_points(self) -> List[str]:
-        return self.__list_teams(has_max_points=False)
+        return self.__df_ls[self.__df_ls['points'] != self.max_points]['team'].tolist()
     
     @property
     def league_season_has_concluded(self) -> bool:
