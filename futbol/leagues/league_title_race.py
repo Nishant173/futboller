@@ -109,9 +109,6 @@ class LeagueTitleRace:
     def get_league_title_contenders(self) -> pd.DataFrame:
         """
         Returns DataFrame having `LeagueStandings` data and the following additional columns: ['can_win_the_league']
-        
-        Note: Only works on current season's `LeagueStandings` data (as the standings can change).
-        Limitations: Only considers points that can be accumulated by teams chasing the league leaders.
         """
         df_ls = self.__df_ls.copy(deep=True)
         all_teams = self.unique_teams
