@@ -71,8 +71,7 @@ class LeagueTitleRace:
     
     @property
     def league_season_has_concluded(self) -> bool:
-        is_league_season_over = (self.__df_ls['games_played'].sum() == self.num_unique_teams * self.__max_num_games_per_team)
-        return is_league_season_over
+        return (self.__df_ls['games_played'].sum() == self.num_unique_teams * self.__max_num_games_per_team)
     
     @property
     def league_leader(self) -> str:
@@ -87,16 +86,18 @@ class LeagueTitleRace:
                              team: str,
                              position: int,
                              games_played: int,
-                             points: int) -> bool:
+                             points: int,
+                             points_of_current_league_leader: int,
+                             league_season_has_concluded: bool) -> bool:
         """
-        Returns True if the team can make up enough points to catch up to the team/s having
-        maximum points currently. Returns False otherwise.
+        Returns True if the given team can make up enough points to catch up to the team/s having
+        maximum points currently; otherwise returns False.
         """
-        if self.league_season_has_concluded:
+        if league_season_has_concluded:
             if position == 1:
                 return True
             return False
-        points_of_current_league_leader = self.max_points
+        # Logic for an ongoing league season
         has_max_points = (points_of_current_league_leader == points)
         if has_max_points:
             return True
@@ -114,8 +115,10 @@ class LeagueTitleRace:
         """
         df_ls = self.__df_ls.copy(deep=True)
         all_teams = self.unique_teams
+        league_season_has_concluded = self.league_season_has_concluded
+        points_of_current_league_leader = self.max_points
         
-        list_can_be_league_winner = []
+        can_be_league_winner = []
         for team in all_teams:
             dict_standings_by_team = df_ls[df_ls['team'] == team].iloc[0].to_dict()
             can_win_the_league = self.__can_win_the_league(
@@ -123,12 +126,14 @@ class LeagueTitleRace:
                 position=dict_standings_by_team['position'],
                 games_played=dict_standings_by_team['games_played'],
                 points=dict_standings_by_team['points'],
+                points_of_current_league_leader=points_of_current_league_leader,
+                league_season_has_concluded=league_season_has_concluded,
             )
-            list_can_be_league_winner.append({
+            can_be_league_winner.append({
                 'team': team,
                 'can_win_the_league': can_win_the_league,
             })
-        df_can_be_league_winner = pd.DataFrame(data=list_can_be_league_winner)
+        df_can_be_league_winner = pd.DataFrame(data=can_be_league_winner)
         df_league_title_contenders = pd.merge(
             left=df_ls,
             right=df_can_be_league_winner,
@@ -138,19 +143,18 @@ class LeagueTitleRace:
         return df_league_title_contenders
     
     @property
-    def is_league_winner_decided(self) -> bool:
-        df_league_title_contenders = self.get_league_title_contenders()
-        return df_league_title_contenders['can_win_the_league'].sum() == 1
-    
-    @property
     def teams_in_title_race(self) -> List[str]:
         df_ltc = self.get_league_title_contenders()
         teams_still_in_title_race = df_ltc[df_ltc['can_win_the_league'] == True]['team'].tolist()
         return teams_still_in_title_race
     
     @property
+    def is_league_winner_decided(self) -> bool:
+        return len(self.teams_in_title_race) == 1
+    
+    @property
     def league_winner(self) -> str:
-        """Returns league winner if the league is decided. Otherwise, returns 'NA'"""
+        """Returns league winner if the league is decided; otherwise returns 'NA'"""
         if self.is_league_winner_decided:
             return self.league_leader
         return "NA"
