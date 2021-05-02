@@ -1,6 +1,9 @@
 from typing import List
 import pandas as pd
 from futbol import config
+from py_utils.data_analysis.explore import (
+    has_all_expected_columns,
+)
 
 
 class InvalidLeagueStandingsError(Exception):
@@ -21,6 +24,7 @@ class LeagueTitleRace:
         self.__league = league
         self.__season = season
         self.__max_num_games_per_team = config.NUM_GAMES_PER_TEAM_BY_LEAGUE[self.__league]
+        self.__expected_columns = ['position', 'team', 'games_played', 'points', 'goal_difference']
         if not self.__is_valid:
             raise InvalidLeagueStandingsError(
                 "Expected DataFrame having `LeagueStandings` data for the given league and season. Got invalid data"
@@ -38,10 +42,15 @@ class LeagueTitleRace:
         has_the_given_season = (self.__season in self.__df_ls['season'].unique().tolist())
         has_all_needed_teams = (self.num_unique_teams == config.NUM_TEAMS_BY_LEAGUE[self.__league])
         has_correct_length = (len(self.__df_ls) == config.NUM_TEAMS_BY_LEAGUE[self.__league])
+        has_expected_columns = has_all_expected_columns(
+            data=self.__df_ls,
+            expected_columns=self.__expected_columns,
+        )
         is_valid_input_dataframe = (
             has_only_one_league & has_only_one_season
             & has_the_given_league & has_the_given_season
             & has_all_needed_teams & has_correct_length
+            & has_expected_columns
         )
         return is_valid_input_dataframe
     
