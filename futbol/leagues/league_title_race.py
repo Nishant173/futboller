@@ -20,22 +20,23 @@ class LeagueTitleRace:
         Takes in DataFrame of `LeagueStandings` data, along with league name and season name.
         Columns expected in the DataFrame: ['position', 'team', 'games_played', 'points', 'goal_difference']
         """
-        self.__df_ls = df_league_standings[(df_league_standings['league'] == league) & (df_league_standings['season'] == season)]
+        self.__df_ls = df_league_standings[(df_league_standings['league'] == league) & (df_league_standings['season'] == season)].copy(deep=True)
         self.__league = league
         self.__season = season
         self.__max_num_games_per_team = config.NUM_GAMES_PER_TEAM_BY_LEAGUE[self.__league]
         self.__expected_columns = ['position', 'team', 'games_played', 'points', 'goal_difference']
-        if not self.__is_valid:
-            raise InvalidLeagueStandingsError(
-                "Expected DataFrame having `LeagueStandings` data for the given league and season. Got invalid data"
-            )
+        self.__validate_inputs()
         return None
     
     def __str__(self) -> str:
         return f"LeagueTitleRace - {self.__league} ({self.__season})"
     
-    @property
-    def __is_valid(self) -> bool:
+    def __validate_inputs(self) -> None:
+        """
+        Validation method that is to be called at the end of the constructor.
+        Will throw an appropriate error if necessary.
+        Returns None if no errors are caught.
+        """
         has_only_one_league = (self.__df_ls['league'].nunique() == 1)
         has_only_one_season = (self.__df_ls['season'].nunique() == 1)
         has_the_given_league = (self.__league in self.__df_ls['league'].unique().tolist())
@@ -46,13 +47,25 @@ class LeagueTitleRace:
             data=self.__df_ls,
             expected_columns=self.__expected_columns,
         )
-        is_valid_input_dataframe = (
-            has_only_one_league & has_only_one_season
-            & has_the_given_league & has_the_given_season
-            & has_all_needed_teams & has_correct_length
-            & has_expected_columns
-        )
-        return is_valid_input_dataframe
+        if not has_only_one_league:
+            raise InvalidLeagueStandingsError(f"Expected only one league's data, but got {self.__df_ls['league'].nunique()}")
+        if not has_only_one_season:
+            raise InvalidLeagueStandingsError(f"Expected only one season's data, but got {self.__df_ls['season'].nunique()}")
+        if not has_the_given_league:
+            raise InvalidLeagueStandingsError(f"Expected the league '{self.__league}' to be in the DataFrame")
+        if not has_the_given_season:
+            raise InvalidLeagueStandingsError(f"Expected the season '{self.__season}' to be in the DataFrame")
+        if not has_all_needed_teams:
+            raise InvalidLeagueStandingsError(
+                f"Expected {config.NUM_TEAMS_BY_LEAGUE[self.__league]} teams for the league '{self.__league}', but got {self.num_unique_teams}"
+            )
+        if not has_correct_length:
+            raise InvalidLeagueStandingsError(
+                f"Expected DataFrame to have {config.NUM_TEAMS_BY_LEAGUE[self.__league]} rows i.e; one row per team, but got {len(self.__df_ls)} rows"
+            )
+        if not has_expected_columns:
+            raise InvalidLeagueStandingsError(f"Expected columns {self.__expected_columns}, but got {self.__df_ls.columns.tolist()}")
+        return None
     
     @property
     def unique_teams(self) -> List[str]:
