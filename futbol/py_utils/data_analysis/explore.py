@@ -22,10 +22,10 @@ def get_column_availability_info(data: pd.DataFrame,
     all_columns = data.columns.tolist()
     expected_columns = list(expected_columns)
     columns_available = list(
-        set(all_columns).intersection(set(expected_columns))
+        set(expected_columns).intersection(set(all_columns))
     )
     columns_missing = list(
-        set(all_columns).difference(set(columns_available))
+        set(expected_columns).difference(set(all_columns))
     )
     dict_obj = {
         'columns_available': columns_available,
