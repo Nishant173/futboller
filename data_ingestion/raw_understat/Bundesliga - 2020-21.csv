@@ -137,9 +137,9 @@ Arminia Bielefeld,Hertha Berlin,1,0,Germany,Bundesliga,2020-21,2021-01-10
 Union Berlin,Bayer Leverkusen,1,0,Germany,Bundesliga,2020-21,2021-01-15
 Werder Bremen,Augsburg,2,0,Germany,Bundesliga,2020-21,2021-01-16
 FC Cologne,Hertha Berlin,0,0,Germany,Bundesliga,2020-21,2021-01-16
-Borussia Dortmund,Mainz 05,1,1,Germany,Bundesliga,2020-21,2021-01-16
 Hoffenheim,Arminia Bielefeld,0,0,Germany,Bundesliga,2020-21,2021-01-16
 Wolfsburg,RasenBallsport Leipzig,2,2,Germany,Bundesliga,2020-21,2021-01-16
+Borussia Dortmund,Mainz 05,1,1,Germany,Bundesliga,2020-21,2021-01-16
 VfB Stuttgart,Borussia M.Gladbach,2,2,Germany,Bundesliga,2020-21,2021-01-16
 Bayern Munich,Freiburg,2,1,Germany,Bundesliga,2020-21,2021-01-17
 Eintracht Frankfurt,Schalke 04,3,1,Germany,Bundesliga,2020-21,2021-01-17
@@ -153,8 +153,8 @@ Freiburg,Eintracht Frankfurt,2,2,Germany,Bundesliga,2020-21,2021-01-20
 Augsburg,Bayern Munich,0,1,Germany,Bundesliga,2020-21,2021-01-20
 Arminia Bielefeld,VfB Stuttgart,3,0,Germany,Bundesliga,2020-21,2021-01-20
 Borussia M.Gladbach,Borussia Dortmund,4,2,Germany,Bundesliga,2020-21,2021-01-22
-Arminia Bielefeld,Eintracht Frankfurt,1,5,Germany,Bundesliga,2020-21,2021-01-23
 Augsburg,Union Berlin,2,1,Germany,Bundesliga,2020-21,2021-01-23
+Arminia Bielefeld,Eintracht Frankfurt,1,5,Germany,Bundesliga,2020-21,2021-01-23
 Mainz 05,RasenBallsport Leipzig,3,2,Germany,Bundesliga,2020-21,2021-01-23
 Freiburg,VfB Stuttgart,2,1,Germany,Bundesliga,2020-21,2021-01-23
 Bayer Leverkusen,Wolfsburg,0,1,Germany,Bundesliga,2020-21,2021-01-23
@@ -162,19 +162,19 @@ Hertha Berlin,Werder Bremen,1,4,Germany,Bundesliga,2020-21,2021-01-23
 Schalke 04,Bayern Munich,0,4,Germany,Bundesliga,2020-21,2021-01-24
 Hoffenheim,FC Cologne,3,0,Germany,Bundesliga,2020-21,2021-01-24
 VfB Stuttgart,Mainz 05,2,0,Germany,Bundesliga,2020-21,2021-01-29
-Werder Bremen,Schalke 04,1,1,Germany,Bundesliga,2020-21,2021-01-30
-Union Berlin,Borussia M.Gladbach,1,1,Germany,Bundesliga,2020-21,2021-01-30
-Eintracht Frankfurt,Hertha Berlin,3,1,Germany,Bundesliga,2020-21,2021-01-30
-Borussia Dortmund,Augsburg,3,1,Germany,Bundesliga,2020-21,2021-01-30
 Bayern Munich,Hoffenheim,4,1,Germany,Bundesliga,2020-21,2021-01-30
+Borussia Dortmund,Augsburg,3,1,Germany,Bundesliga,2020-21,2021-01-30
+Eintracht Frankfurt,Hertha Berlin,3,1,Germany,Bundesliga,2020-21,2021-01-30
+Union Berlin,Borussia M.Gladbach,1,1,Germany,Bundesliga,2020-21,2021-01-30
+Werder Bremen,Schalke 04,1,1,Germany,Bundesliga,2020-21,2021-01-30
 RasenBallsport Leipzig,Bayer Leverkusen,1,0,Germany,Bundesliga,2020-21,2021-01-30
 FC Cologne,Arminia Bielefeld,3,1,Germany,Bundesliga,2020-21,2021-01-31
 Wolfsburg,Freiburg,3,0,Germany,Bundesliga,2020-21,2021-01-31
 Hertha Berlin,Bayern Munich,0,1,Germany,Bundesliga,2020-21,2021-02-05
+Freiburg,Borussia Dortmund,2,1,Germany,Bundesliga,2020-21,2021-02-06
 Augsburg,Wolfsburg,0,2,Germany,Bundesliga,2020-21,2021-02-06
 Mainz 05,Union Berlin,1,0,Germany,Bundesliga,2020-21,2021-02-06
 Bayer Leverkusen,VfB Stuttgart,5,2,Germany,Bundesliga,2020-21,2021-02-06
-Freiburg,Borussia Dortmund,2,1,Germany,Bundesliga,2020-21,2021-02-06
 Schalke 04,RasenBallsport Leipzig,0,3,Germany,Bundesliga,2020-21,2021-02-06
 Borussia M.Gladbach,FC Cologne,1,2,Germany,Bundesliga,2020-21,2021-02-06
 Hoffenheim,Eintracht Frankfurt,1,3,Germany,Bundesliga,2020-21,2021-02-07
@@ -188,10 +188,10 @@ Eintracht Frankfurt,FC Cologne,2,0,Germany,Bundesliga,2020-21,2021-02-14
 Wolfsburg,Borussia M.Gladbach,0,0,Germany,Bundesliga,2020-21,2021-02-14
 Bayern Munich,Arminia Bielefeld,3,3,Germany,Bundesliga,2020-21,2021-02-15
 Arminia Bielefeld,Wolfsburg,0,3,Germany,Bundesliga,2020-21,2021-02-19
-FC Cologne,VfB Stuttgart,0,1,Germany,Bundesliga,2020-21,2021-02-20
-Eintracht Frankfurt,Bayern Munich,2,1,Germany,Bundesliga,2020-21,2021-02-20
 Freiburg,Union Berlin,0,1,Germany,Bundesliga,2020-21,2021-02-20
+FC Cologne,VfB Stuttgart,0,1,Germany,Bundesliga,2020-21,2021-02-20
 Borussia M.Gladbach,Mainz 05,1,2,Germany,Bundesliga,2020-21,2021-02-20
+Eintracht Frankfurt,Bayern Munich,2,1,Germany,Bundesliga,2020-21,2021-02-20
 Schalke 04,Borussia Dortmund,0,4,Germany,Bundesliga,2020-21,2021-02-20
 Augsburg,Bayer Leverkusen,1,1,Germany,Bundesliga,2020-21,2021-02-21
 Hertha Berlin,RasenBallsport Leipzig,0,3,Germany,Bundesliga,2020-21,2021-02-21
@@ -206,11 +206,11 @@ Union Berlin,Hoffenheim,1,1,Germany,Bundesliga,2020-21,2021-02-28
 Mainz 05,Augsburg,0,1,Germany,Bundesliga,2020-21,2021-02-28
 Bayer Leverkusen,Freiburg,1,2,Germany,Bundesliga,2020-21,2021-02-28
 Schalke 04,Mainz 05,0,0,Germany,Bundesliga,2020-21,2021-03-05
+Eintracht Frankfurt,VfB Stuttgart,1,1,Germany,Bundesliga,2020-21,2021-03-06
+Freiburg,RasenBallsport Leipzig,0,3,Germany,Bundesliga,2020-21,2021-03-06
 Hertha Berlin,Augsburg,2,1,Germany,Bundesliga,2020-21,2021-03-06
 Borussia M.Gladbach,Bayer Leverkusen,0,1,Germany,Bundesliga,2020-21,2021-03-06
 Hoffenheim,Wolfsburg,2,1,Germany,Bundesliga,2020-21,2021-03-06
-Freiburg,RasenBallsport Leipzig,0,3,Germany,Bundesliga,2020-21,2021-03-06
-Eintracht Frankfurt,VfB Stuttgart,1,1,Germany,Bundesliga,2020-21,2021-03-06
 Bayern Munich,Borussia Dortmund,4,2,Germany,Bundesliga,2020-21,2021-03-06
 FC Cologne,Werder Bremen,1,1,Germany,Bundesliga,2020-21,2021-03-07
 Arminia Bielefeld,Union Berlin,0,0,Germany,Bundesliga,2020-21,2021-03-07
@@ -273,3 +273,5 @@ Wolfsburg,Borussia Dortmund,0,2,Germany,Bundesliga,2020-21,2021-04-24
 Freiburg,Hoffenheim,1,1,Germany,Bundesliga,2020-21,2021-04-24
 Union Berlin,Werder Bremen,3,1,Germany,Bundesliga,2020-21,2021-04-24
 Bayer Leverkusen,Eintracht Frankfurt,3,1,Germany,Bundesliga,2020-21,2021-04-24
+RasenBallsport Leipzig,VfB Stuttgart,2,0,Germany,Bundesliga,2020-21,2021-04-25
+Borussia M.Gladbach,Arminia Bielefeld,5,0,Germany,Bundesliga,2020-21,2021-04-25
