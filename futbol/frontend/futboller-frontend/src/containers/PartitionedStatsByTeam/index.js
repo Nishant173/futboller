@@ -10,7 +10,10 @@ import { DataTableComponent } from '../../components/tables/Table'
 import { ExportToExcel } from '../../components/tableExporters'
 import { getValuesByKey } from '../../jsUtils/general'
 import { CONTAINER_STYLES, EXCEL_EXPORTER_STYLES } from '../../config'
-import { COLUMNS_PARTITIONED_STATS_BY_TEAM } from './tableColumns'
+import {
+    COLUMNS_PARTITIONED_STATS_BY_TEAM,
+    COLUMNS_PARTITIONED_STATS_OVER_SEASONS_BY_TEAM,
+} from './tableColumns'
 
 import LEAGUE_NAMES from '../../Leagues.json'
 import TEAM_NAMES_BY_LEAGUE from '../../TeamsByLeague.json'
@@ -43,6 +46,7 @@ class PartitionedStatsByTeam extends React.Component {
 
     updateData() {
         this.props.getPartitionedStatsData(this.state.team)
+        this.props.getPartitionedStatsOverSeasonsData(this.state.team)
     }
 
     updateWrangledData() {
@@ -74,13 +78,22 @@ class PartitionedStatsByTeam extends React.Component {
     }
 
     render() {
-        const { PartitionedStats, PartitionedStatsApiStatus } = this.props
+        const {
+            PartitionedStats,
+            PartitionedStatsApiStatus,
+            PartitionedStatsOverSeasons,
+            PartitionedStatsOverSeasonsApiStatus,
+        } = this.props
         const { wrangledDataObj } = this.state
-        const dataIsAvailable = (PartitionedStats.length > 0)
+        const dataIsAvailable = (PartitionedStats.length > 0 && PartitionedStatsOverSeasons.length > 0)
         
         let titlePartitionedStats = ""
         if (dataIsAvailable) {
             titlePartitionedStats = `Partitioned stats over time - ${PartitionedStats[0].team}`
+        }
+        let titlePartitionedStatsOverSeasons = ""
+        if (dataIsAvailable) {
+            titlePartitionedStatsOverSeasons = `Partitioned stats over seasons - ${PartitionedStatsOverSeasons[0].team}`
         }
         
         const teamsMenu = (
@@ -119,7 +132,7 @@ class PartitionedStatsByTeam extends React.Component {
                 </Button>
 
                 {
-                    PartitionedStatsApiStatus === 'initiated' ?
+                    PartitionedStatsApiStatus === 'initiated' || PartitionedStatsOverSeasonsApiStatus === 'initiated' ?
                     <Loader />
                     : null
                 }
@@ -127,6 +140,24 @@ class PartitionedStatsByTeam extends React.Component {
                 {
                     dataIsAvailable ?
                     <>
+                        <br /><br />
+                        <div style={EXCEL_EXPORTER_STYLES}>
+                            <ExportToExcel
+                                filenameWithoutExtension={titlePartitionedStatsOverSeasons}
+                                sheetName={titlePartitionedStatsOverSeasons}
+                                data={PartitionedStatsOverSeasons}
+                                columnInfo={COLUMNS_PARTITIONED_STATS_OVER_SEASONS_BY_TEAM}
+                                columnLabelAccessor="name"
+                                columnValueAccessor="selector"
+                            />
+                        </div>
+                        <DataTableComponent 
+                            title={titlePartitionedStatsOverSeasons}
+                            arrayOfObjects={PartitionedStatsOverSeasons}
+                            columns={COLUMNS_PARTITIONED_STATS_OVER_SEASONS_BY_TEAM}
+                            defaultSortField="season"
+                            pagination={true}
+                        />
                         <br /><br />
                         <div style={EXCEL_EXPORTER_STYLES}>
                             <ExportToExcel
@@ -201,6 +232,8 @@ const mapStateToProps = (state) => {
     return {
         PartitionedStats: state.PartitionedStatsReducer.PartitionedStats,
         PartitionedStatsApiStatus: state.PartitionedStatsReducer.PartitionedStatsApiStatus,
+        PartitionedStatsOverSeasons: state.PartitionedStatsReducer.PartitionedStatsOverSeasons,
+        PartitionedStatsOverSeasonsApiStatus: state.PartitionedStatsReducer.PartitionedStatsOverSeasonsApiStatus,
     }
 }
 
@@ -208,6 +241,9 @@ const mapDispatchToProps = (dispatch) => {
     return {
         getPartitionedStatsData: (team) => {
             dispatch(PartitionedStatsActions.getPartitionedStatsData(team))
+        },
+        getPartitionedStatsOverSeasonsData: (team) => {
+            dispatch(PartitionedStatsActions.getPartitionedStatsOverSeasonsData(team))
         },
     }
 }
