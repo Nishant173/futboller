@@ -199,6 +199,19 @@ ENDPOINTS = [
         "methods": ["GET"],
     },
     {
+        "endpoint": f"{API_VERSION}/leagues/partitioned-stats-over-seasons/",
+        "description": "Gets list having partitioned-stats over seasons (by team). The partitions will be in ascending order of season",
+        "parameters": [
+            {
+                "name": "team",
+                "datatype": "string",
+                "required": True,
+            },
+        ],
+        "example": f"{API_VERSION}/leagues/partitioned-stats-over-seasons/?team=Manchester United",
+        "methods": ["GET"],
+    },
+    {
         "endpoint": f"{API_VERSION}/leagues/goal-related-stats/",
         "description": "Gets dictionary having goal related stats over time (by leagues). Keys = league name, and values = list of goal related stats over time (for respective league)",
         "parameters": [],
