@@ -162,6 +162,7 @@ def _get_abs_partitioned_stats_over_seasons(data: pd.DataFrame) -> pd.DataFrame:
         'longest_draw_streak', 'longest_unbeaten_streak',
     ]
     df.drop(labels=columns_to_drop, axis=1, inplace=True)
+    df.sort_values(by='season', ascending=True, ignore_index=True, inplace=True)
     return df
 
 
