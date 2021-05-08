@@ -170,6 +170,24 @@ def get_partitioned_stats(request):
 
 
 @api_view(['GET'])
+def get_partitioned_stats_over_seasons(request):
+    team = request.GET['team']
+    qs_ls = LeagueStandings.objects.filter(team=team)
+    df_ls = queryset_to_dataframe(qs=qs_ls, drop_id=True)
+    if df_ls.empty:
+        return Response(data=[], status=status.HTTP_200_OK)
+    df_partitioned_stats_over_seasons = wrangler.get_partitioned_stats_over_seasons(
+        data=df_ls,
+        normalize=True,
+    )
+    if df_partitioned_stats_over_seasons.empty:
+        return Response(data=[], status=status.HTTP_200_OK)
+    df_partitioned_stats_over_seasons = switch_column_casing(data=df_partitioned_stats_over_seasons, func=sc2lcc)
+    partitioned_stats_over_seasons = dataframe_to_list(data=df_partitioned_stats_over_seasons)
+    return Response(data=partitioned_stats_over_seasons, status=status.HTTP_200_OK)
+
+
+@api_view(['GET'])
 def get_goal_related_stats(request):
     qs_grs = GoalRelatedStats.objects.all()
     df_goal_related_stats = queryset_to_dataframe(qs=qs_grs, drop_id=True)

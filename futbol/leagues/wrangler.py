@@ -151,6 +151,32 @@ def get_partitioned_stats(data: pd.DataFrame,
     return df_partitioned_stats
 
 
+def _get_abs_partitioned_stats_over_seasons(data: pd.DataFrame) -> pd.DataFrame:
+    """
+    Helper function that gets absolute partitioned stats (over seasons) by team.
+    Returns DataFrame wherein each row has stats of one season of team's matches.
+    """
+    df = data.copy(deep=True)
+    columns_to_drop = [
+        'cumulative_points', 'cumulative_goal_difference', 'longest_win_streak', 'longest_loss_streak',
+        'longest_draw_streak', 'longest_unbeaten_streak',
+    ]
+    df.drop(labels=columns_to_drop, axis=1, inplace=True)
+    return df
+
+
+def get_partitioned_stats_over_seasons(data: pd.DataFrame,
+                                       normalize: bool) -> pd.DataFrame:
+    """
+    Takes DataFrame having `LeagueStandings` data of one team (for all available seasons).
+    Returns DataFrame having partitioned stats over seasons (either absolute or normalized) for the given team.
+    """
+    df_partitioned_stats_over_seasons = _get_abs_partitioned_stats_over_seasons(data=data)
+    if normalize:
+        df_partitioned_stats_over_seasons = _get_normalized_partitioned_stats(data=df_partitioned_stats_over_seasons)
+    return df_partitioned_stats_over_seasons
+
+
 def _get_goal_differences(data: pd.DataFrame, team: str):
     """
     Takes in `LeagueMatch` data of one team, along with name of said team.
