@@ -125,33 +125,21 @@ class LeagueTitleRace:
         Returns DataFrame having `LeagueStandings` data and the following additional columns: ['can_win_the_league']
         """
         df_ls = self.__df_ls.copy(deep=True)
-        all_teams = self.unique_teams
         league_season_has_concluded = self.league_season_has_concluded
         points_of_current_league_leader = self.max_points
         
-        can_be_league_winner = []
-        for team in all_teams:
-            dict_standings_by_team = df_ls[df_ls['team'] == team].iloc[0].to_dict()
-            can_win_the_league = self.__can_win_the_league(
-                team=team,
-                position=dict_standings_by_team['position'],
-                games_played=dict_standings_by_team['games_played'],
-                points=dict_standings_by_team['points'],
+        df_ls['can_win_the_league'] = df_ls.apply(
+            lambda df_temp: self.__can_win_the_league(
+                team=df_temp['team'],
+                position=df_temp['position'],
+                games_played=df_temp['games_played'],
+                points=df_temp['points'],
                 points_of_current_league_leader=points_of_current_league_leader,
                 league_season_has_concluded=league_season_has_concluded,
-            )
-            can_be_league_winner.append({
-                'team': team,
-                'can_win_the_league': can_win_the_league,
-            })
-        df_can_be_league_winner = pd.DataFrame(data=can_be_league_winner)
-        df_league_title_contenders = pd.merge(
-            left=df_ls,
-            right=df_can_be_league_winner,
-            how='outer',
-            on=['team'],
+            ),
+            axis=1,
         )
-        return df_league_title_contenders
+        return df_ls
     
     def __can_finish_in_top_n(self,
                               nth_position: int,
