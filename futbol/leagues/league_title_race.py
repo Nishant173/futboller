@@ -153,6 +153,59 @@ class LeagueTitleRace:
         )
         return df_league_title_contenders
     
+    def __can_finish_in_top_n(self,
+                              nth_position: int,
+                              points_of_team_in_nth_position: int,
+                              league_season_has_concluded: bool,
+                              team: str,
+                              position: int,
+                              games_played: int,
+                              points: int) -> bool:
+        """
+        Returns True if the given team can make up enough points to reach the top 'n' positions
+        in the league table; otherwise returns False.
+        """
+        if league_season_has_concluded:
+            if position <= nth_position:
+                return True
+            return False
+        # Logic for an ongoing league season
+        has_enough_points_already = (points >= points_of_team_in_nth_position)
+        if has_enough_points_already:
+            return True
+        games_remaining = self.__max_num_games_per_team - games_played
+        max_points_limit_of_this_team = points + (games_remaining * 3)
+        can_finish_in_top_n = (max_points_limit_of_this_team >= points_of_team_in_nth_position)
+        return can_finish_in_top_n
+    
+    def get_top_n_contenders(self, top_n: int) -> pd.DataFrame:
+        """
+        Returns DataFrame having `LeagueStandings` data and the following additional columns: ["can_finish_in_top_{top_n}"]
+        """
+        if top_n > len(self.__df_ls):
+            raise ValueError("Value of `top_n` must be <= positions available in the DataFrame")
+        df_ls = self.__df_ls.copy(deep=True)
+        league_season_has_concluded = self.league_season_has_concluded
+        points_of_team_in_nth_position = df_ls[df_ls['position'] == top_n]['points'].iloc[0]
+        df_ls[f"can_finish_in_top_{top_n}"] = df_ls.apply(
+            lambda df_temp: self.__can_finish_in_top_n(
+                nth_position=top_n,
+                points_of_team_in_nth_position=points_of_team_in_nth_position,
+                league_season_has_concluded=league_season_has_concluded,
+                team=df_temp['team'],
+                position=df_temp['position'],
+                games_played=df_temp['games_played'],
+                points=df_temp['points'],
+            ),
+            axis=1,
+        )
+        return df_ls
+    
+    def get_teams_in_race_for_top_n(self, top_n: int) -> List[str]:
+        df_top_n_contenders = self.get_top_n_contenders(top_n=top_n)
+        teams_in_race_for_top_n = df_top_n_contenders[df_top_n_contenders[f"can_finish_in_top_{top_n}"] == True]['team'].tolist()
+        return teams_in_race_for_top_n
+    
     @property
     def teams_in_title_race(self) -> List[str]:
         df_ltc = self.get_league_title_contenders()
